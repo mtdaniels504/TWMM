@@ -1,0 +1,2656 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .pollDisplayBody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 220px;
+        border: 1px solid black;
+        padding: 1px;
+    }
+
+    .pollChoices {
+        position: relative;
+        width: 100%;
+        height: 210px;
+        overflow: hidden;
+        border: 1px solid rgb(0, 0, 222);
+        border-radius: 2px;
+    }
+
+    .SpollChoices, .SpollStyle {
+        background: rgba(222, 222, 222, 1);
+        border: 2px solid rgb(0, 0, 222);
+        border-radius: 3px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .pollChoice {
+        border: 1px solid rgb(0, 0, 222);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    .pollMidText {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .pollMidText div {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-wrap: whitespace;
+        opacity: 0.97;
+    }
+
+    .SpollChoices .pollChoice, .SpollStyle .pollChoice {
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+        transition: all 0.2s ease;
+    }
+    
+    .SpollChoices .pollChoice:hover, .SpollStyle .pollChoice:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+        transform: translate(-.1px, .1px);
+    }
+
+    .pollChoice div {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        text-wrap: whitespace;
+        background: #eee;
+        opacity: 0.97;
+        border: 1.2px solid #bbb;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+        transition: all 0.16s ease;
+    }
+
+
+    .pollChoice div:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+        transform: scale(1.005);
+    }
+
+    .pollChoice div:active {
+        transform: scale(.992);
+        border: 1px solid #cfac3b;
+        box-shadow: 0 0 1px rgba(212, 175, 55, 0.6);
+    }
+
+    .normPollChoice {top: 12.5%; left: 12.5%; width: 75%; height: 75%;}
+    .widePollChoice {top: 15%; left: 10%; width: 80%; height: 70%;}
+    .tallPollChoice {left: 15%; top: 5%; height: 90%; width: 70%;}
+
+
+
+    /* ------ 2 ------ */
+
+
+    /* -- Standard -- */
+
+    /*2UD*/
+    .up2Choice {background: #ff5f5f; height: 50%;}
+    .down2Choice {background: #5f5fff; height: 50%; top: 50%;}
+
+    /*2LR*/
+    .left2Choice {background: #ff5f5f; width: 50%;}
+    .right2Choice {background: #5f5fff; width: 50%; left: 50%;}
+
+    /*diU*/
+    .diUleftChoice {background: #5f5fff; clip-path: polygon(0 0, 100% 100%, 0 100%);} 
+    .diUrightChoice {background: #ff5f5f; clip-path: polygon(0 0, 100% 0, 100% 100%);}
+
+    .diUleftChoice div {bottom: 5%; left: 5%; width: 40%; height: 40%;}
+    .diUrightChoice div {top: 5%; right: 5%; width: 40%; height: 40%;}
+    
+    /*diD*/
+    .diDleftChoice {background: #ff5f5f; clip-path: polygon(0 0, 100% 0, 0 100%);}
+    .diDrightChoice {background: #5f5fff; clip-path: polygon(100% 0, 100% 100%, 0 100%);}
+
+    .diDleftChoice div {top: 5%; left: 5%; width: 40%; height: 40%;}
+    .diDrightChoice div {bottom: 5%; right: 5%; width: 40%; height: 40%;}
+
+    /*All2*/
+    .all2upChoice {background: #bf5fff; height: 33%;}
+    .all2leftChoice {background: #5f5fff; width: 50%; height: 66%; top: 33%;}
+    .all2rightChoice {background: #ff5f5f; width: 50%; height: 66%; top: 33%; left: 50%;}
+
+    /*None2*/
+    .none2leftChoice {background: #5f5fff; width: 50%; height: 66%;}
+    .none2rightChoice {background: #ff5f5f; width: 50%; height: 66%; left: 50%;}
+    .none2downChoice {background: #ffbf5f; height: 33%; top: 66%;}
+        
+    /*Both2*/
+    .both2upChoice {background: #bf5fff; height: 25%;}
+    .both2leftChoice {background: #5f5fff; width: 50%; height: 50%; top: 25%;}
+    .both2rightChoice {background: #ff5f5f; width: 50%; height: 50%; top: 25%; left: 50%;}
+    .both2downChoice {background: #ffbf5f; height: 25%; top: 75%;}
+
+
+    /* -- Member -- */
+
+    /*2UD*/
+    .up2SChoice {background: #ff5f5f; width: 80%; height: 40%; top: 6.25%; left: 10%;}
+    .down2SChoice {background: #5f5fff; width: 80%;  height: 40%; top: 53.75%; left: 10%;}
+
+    /*2LR*/
+    .left2SChoice {background: #ff5f5f; height: 80%; width: 40%; left: 6.25%; top: 10%;}
+    .right2SChoice {background: #5f5fff; height: 80%; width: 40%; left: 53.75%; top: 10%;}
+
+    /*diU*/
+    .diUleftSChoice {bottom: 3%; left: 3%; width: 45%; height: 45%; background: #5f5fff;} 
+    .diUrightSChoice {top: 3%; right: 3%; width: 45%; height: 45%; background: #ff5f5f;}
+    
+    /*diD*/
+    .diDleftSChoice {top: 3%; left: 3%; width: 45%; height: 45%; background: #ff5f5f;}
+    .diDrightSChoice {bottom: 3%; right: 3%; width: 45%; height: 45%; background: #5f5fff;}
+
+    /*All2*/
+    .all2upSChoice {background: #bf5fff; height: 30%; width: 86.68%; top: 3.33%; left: 6.66%;}
+    .all2leftSChoice {background: #5f5fff; width: 41.67%; height: 60%; top: 36.66%; left: 6.66%;}
+    .all2rightSChoice {background: #ff5f5f; width: 41.67%; height: 60%; top: 36.66%; left: 51.67%;}
+
+    /*None2*/
+    .none2leftSChoice {background: #5f5fff; width: 41.67%; height: 60%; top: 3.33%; left: 6.66%;}
+    .none2rightSChoice {background: #ff5f5f; width: 41.67%; height: 60%; top: 3.33%; left: 51.67%;}
+    .none2downSChoice {background: #ffbf5f; height: 30%; width: 86.67%; top: 66.66%; left: 6.66%;}
+        
+    /*Both2*/
+    .both2upSChoice {background: #bf5fff; width: 86.68%; height: 20%; top: 5%; left: 6.66%;}
+    .both2leftSChoice {background: #5f5fff; width: 41.67%; height: 40%; top: 30%; left: 6.66%;}
+    .both2rightSChoice {background: #ff5f5f; width: 41.67%; height: 40%; top: 30%; left: 51.67%;}
+    .both2downSChoice {background: #ffbf5f;  width: 86.68%; height: 20%; top: 75%; left: 6.66%;}
+
+
+
+    /* ------ 3 ------ */
+
+
+    /* -- Standard -- */
+
+    /*Col3*/
+    .col3-1Choice {background: #ff5f5f; width: 33%;}
+    .col3-2Choice {background: #5f5fff; width: 33%; left: 33%;}
+    .col3-3Choice {background: #ffff5f; width: 33%; left: 66%;}
+
+    .col3-1Choice div {height: 70%; top: 15%;}
+    .col3-2Choice div {height: 70%; top: 15%;}
+    .col3-3Choice div {height: 70%; top: 15%;}
+
+    /*List3*/
+    .list3-1Choice {background: #ff5f5f; height: 33%;}
+    .list3-2Choice {background: #5f5fff; height: 33%; top: 33%;}
+    .list3-3Choice {background: #ffff5f; height: 33%; top: 66%;}
+
+    /*All3*/
+    .all3upChoice {background: #5fff5f; width: 99%; height: 33%;}
+    .all3leftChoice {background: #5f5fff; width: 33%; height: 66%; top: 33%;}
+    .all3middleChoice {background: #ffff5f; width: 33%; height: 66%; top: 33%; left: 33%;}
+    .all3rightChoice {background: #ff5f5f; width: 33%; height: 66%; top: 33%; left: 66%;}
+
+    /*None3*/
+    .none3leftChoice {background: #5f5fff; width: 33%; height: 66%;}
+    .none3middleChoice {background: #ffff5f; width: 33%; height: 66%; left: 33%;}
+    .none3rightChoice {background: #ff5f5f; width: 33%; height: 66%; left: 66%;}
+    .none3downChoice {background: #ffbf5f; width: 99%; height: 33%; top: 66%;}
+
+    /*Both3*/
+    .both3upChoice {background: #5fff5f; width: 99%; height: 25%;}
+    .both3leftChoice {background: #5f5fff; width: 33%; height: 50%; top: 25%;}
+    .both3middleChoice {background: #ffff5f; width: 33%; height: 50%; top: 25%; left: 33%;}
+    .both3rightChoice {background: #ff5f5f; width: 33%; height: 50%; top: 25%; left: 66%;}
+    .both3downChoice {background: #ffbf5f; width: 99%; height: 25%; top: 75%;}
+
+    
+    /* -- Member -- */
+ 
+    /*Col3*/
+    .col3-1SChoice {background: #ff5f5f; width: 30%; height: 80%; top: 10%; left: 2.5%;}
+    .col3-2SChoice {background: #5f5fff; width: 30%; height: 80%; top: 10%; left: 35%;}
+    .col3-3SChoice {background: #ffff5f; width: 30%; height: 80%; top: 10%; left: 67.5%;}
+
+    /*List3*/
+    .list3-1SChoice {background: #ff5f5f; height: 27%; width: 90%; top: 4.75%; left: 5%;}
+    .list3-2SChoice {background: #5f5fff; height: 27%; width: 90%; top: 36.5%; left: 5%;}
+    .list3-3SChoice {background: #ffff5f; height: 27%; width: 90%; top: 68.25%; left: 5%;}
+
+    /*All3*/
+    .all3upSChoice {background: #5fff5f; width: 86.68%; height: 27%; top: 4.33%; left: 6.66%;}
+    .all3leftSChoice {background: #5f5fff; width: 30%; height: 60%; top: 35.66%; left: 2.5%;}
+    .all3middleSChoice {background: #ffff5f; width: 30%; height: 60%; top: 35.66%; left: 35%;}
+    .all3rightSChoice {background: #ff5f5f; width: 30%; height: 60%; top: 35.66%; left: 67.5%;}
+
+    /*None3*/
+    .none3leftSChoice {background: #5f5fff; width: 30%; height: 60%; top: 4.33%; left: 2.5%;}
+    .none3middleSChoice {background: #ffff5f; width: 30%; height: 60%; top: 4.33%; left: 35%;}
+    .none3rightSChoice {background: #ff5f5f; width: 30%; height: 60%; top: 4.33%; left: 67.5%;}
+    .none3downSChoice {background: #ffbf5f; width: 86.68%; height: 27%; top: 68.66%; left: 6.66%;}
+
+    /*Both3*/
+    .both3upSChoice {background: #5fff5f; width: 86.68%; height: 20%; top: 5%; left: 6.66%;}
+    .both3leftSChoice {background: #5f5fff; width: 30%; height: 40%; top: 30%; left: 2.5%;}
+    .both3middleSChoice {background: #ffff5f; width: 30%; height: 40%; top: 30%; left: 35%;}
+    .both3rightSChoice {background: #ff5f5f; width: 30%; height: 40%; top: 30%; left: 67.5%;}
+    .both3downSChoice {background: #ffbf5f; width: 86.68%; height: 20%; top: 75%; left: 6.66%;}
+
+    /* -- Premium -- */
+ 
+    /*Tri3*/
+    .tri3upSChoice {background: #ff5f5f; width: 40%; height: 40%; top: 5%; left: 30%;}
+    .tri3leftSChoice {background: #5f5fff; width: 40%; height: 40%; top: 55%; left: 5%;}
+    .tri3rightSChoice {background: #ffff5f; width: 40%; height: 40%;; top: 55%; right: 5%;}
+
+    /*Oly3*/
+    .flok3upSChoice {background: #ff5f5f; width: 40%; height: 40%; top: 55%; left: 30%;}
+    .flok3leftSChoice {background: #5f5fff; width: 40%; height: 40%; top: 5%; left: 5%;}
+    .flok3rightSChoice {background: #ffff5f; width: 40%; height: 40%; top: 5%; right: 5%;}
+       
+
+
+    /* ------ 4 ------ */
+
+
+    /* -- Standard -- */
+
+    /*Grid4*/
+    .grid4-1aChoice {background: #ff5f5f; width: 50%; height: 50%;}
+    .grid4-1bChoice {background: #bf5fff; width: 50%; height: 50%; left: 50%;}
+    .grid4-2aChoice {background: #5f5fff; width: 50%; height: 50%; top: 50%;}
+    .grid4-2bChoice {background: #ffff5f; width: 50%; height: 50%; top: 50%; left: 50%;}
+
+    /*List4*/
+    .list4-1Choice {background: #ff5f5f; height: 25%;}
+    .list4-2Choice {background: #bf5fff; height: 25%; top: 25%;}
+    .list4-3Choice {background: #5f5fff; height: 25%; top: 50%;}
+    .list4-4Choice {background: #ffff5f; height: 25%; top: 75%;}
+
+    /*All4*/
+    .all4-AChoice {background: #5fff5f; height: 24%;}
+    .all4-1Choice {background: #ff5f5f; width: 50%; height: 38%; top: 24%;}
+    .all4-2Choice {background: #bf5fff; width: 50%; height: 38%; top: 24%; left: 50%;}
+    .all4-3Choice {background: #5f5fff; width: 50%; height: 38%; top: 62%;}
+    .all4-4Choice {background: #ffff5f; width: 50%; height: 38%; top: 62%; left: 50%;}
+
+    /*None4*/
+    .none4-1Choice {background: #ff5f5f; width: 50%; height: 38%;}
+    .none4-2Choice {background: #bf5fff; width: 50%; height: 38%; left: 50%;}
+    .none4-3Choice {background: #5f5fff; width: 50%; height: 38%; top: 38%;}
+    .none4-4Choice {background: #ffff5f; width: 50%; height: 38%; top: 38%; left: 50%;}
+    .none4-NChoice {background: #ffbf5f; height: 24%; top: 76%;}
+
+    /*Both4*/
+    .both4-AChoice {background: #5fff5f; height: 20%;}
+    .both4-1Choice {background: #ff5f5f; width: 50%; height: 30%; top: 20%;}
+    .both4-2Choice {background: #bf5fff; width: 50%; height: 30%; top: 20%; left: 50%;}
+    .both4-3Choice {background: #ffff5f; width: 50%; height: 30%; top: 50%;}
+    .both4-4Choice {background: #5f5fff; width: 50%; height: 30%; top: 50%; left: 50%;}
+    .both4-NChoice {background: #ffbf5f; height: 20%; top: 80%;}
+
+
+    /* -- Member -- */
+
+    /*Grid4*/
+    .grid4-1aSChoice {background: #ff5f5f; width: 44%; height: 44%; top: 4%; left: 4%;}
+    .grid4-1bSChoice {background: #bf5fff; width: 44%; height: 44%; top: 4%; left: 52%;}
+    .grid4-2aSChoice {background: #5f5fff; width: 44%; height: 44%; top: 52%; left: 4%;}
+    .grid4-2bSChoice {background: #ffff5f; width: 44%; height: 44%; top: 52%; left: 52%;}
+
+    /*List4*/
+    .list4-1SChoice {background: #ff5f5f; width: 90%; height: 21.25%; top: 3%; left: 5%;}
+    .list4-2SChoice {background: #bf5fff; width: 90%; height: 21.25%; top: 27.25%; left: 5%;}
+    .list4-3SChoice {background: #5f5fff; width: 90%; height: 21.25%; top: 51.5%; left: 5%;}
+    .list4-4SChoice {background: #ffff5f; width: 90%; height: 21.25%; top: 75.75%; left: 5%;}
+
+    /*All4*/
+    .all4-ASChoice {background: #5fff5f; width: 90%; height: 22%; top: 3%; left: 5%;}
+    .all4-1SChoice {background: #ff5f5f; width: 44%; height: 33%; top: 28%; left: 4%;}
+    .all4-2SChoice {background: #bf5fff; width: 44%; height: 33%; top: 28%; left: 52%;}
+    .all4-3SChoice {background: #5f5fff; width: 44%; height: 33%; top: 64%; left: 4%;}
+    .all4-4SChoice {background: #ffff5f; width: 44%; height: 33%; top: 64%; left: 52%;}
+
+    /*None4*/
+    .none4-1SChoice {background: #ff5f5f; width: 44%; height: 33%; top: 3%; left: 4%;}
+    .none4-2SChoice {background: #bf5fff; width: 44%; height: 33%; top: 3%; left: 52%;}
+    .none4-3SChoice {background: #5f5fff; width: 44%; height: 33%; top: 39%; left: 4%;}
+    .none4-4SChoice {background: #ffff5f; width: 44%; height: 33%; top: 39%; left: 52%;}
+    .none4-NSChoice {background: #ffbf5f; width: 90%; height: 22%; top: 75%; left: 5%;}
+
+    /*Both4*/
+    .both4-ASChoice {background: #5fff5f; width: 90%; height: 17%; top: 2%; left: 5%;}
+    .both4-1SChoice {background: #ff5f5f; width: 44%; height: 28%; top: 21%; left: 4%;}
+    .both4-2SChoice {background: #bf5fff; width: 44%; height: 28%; top: 21%; left: 52%;}
+    .both4-3SChoice {background: #ffff5f; width: 44%; height: 28%; top: 51%; left: 4%;}
+    .both4-4SChoice {background: #5f5fff; width: 44%; height: 28%; top: 51%; left: 52%;}
+    .both4-NSChoice {background: #ffbf5f; width: 90%; height: 17%; top: 81%; left: 5%;}
+
+
+    /* -- Premium -- */
+
+    /*UDLR*/
+    .up4Choice {background: #ff5f5f; clip-path: polygon(50% 50%, 0 0, 100% 0);}
+    .left4Choice {background: #5f5fff; clip-path: polygon(50% 50%, 0 100%, 0 0);}
+    .right4Choice {background: #ffff5f; clip-path: polygon(50% 50%, 100% 0, 100% 100%);}
+    .down4Choice {background: #5fff5f; clip-path: polygon(50% 50%, 100% 100%, 0 100%);}
+
+    .up4Choice div { width: 32%; height: 20%; top: 4%; left: 34%;}
+    .left4Choice div { width: 32%; height: 20%; top: 40%; left: 3%;}
+    .right4Choice div { width: 32%; height: 20%; top: 40%; left: 65%;}
+    .down4Choice div { width: 32%; height: 20%; top: 76%; left: 34%;}
+    
+    /*Mid4*/
+    .tl4Choice {background: #ff5f5f; clip-path: polygon(20% 50%, 0 50%, 0 0, 50% 0, 50% 20%);}
+    .tr4Choice {background: #ffff5f; clip-path: polygon(50% 20%, 50% 0, 100% 0, 100% 50%, 80% 50%);}
+    .bl4Choice {background: #5f5fff; clip-path: polygon(20% 50%, 0 50%, 0 100%, 50% 100%, 50% 80%);}
+    .br4Choice {background: #bf5fff; clip-path: polygon(50% 80%, 50% 100%, 100% 100%, 100% 50%, 80% 50%);}
+    .m4Choice {background: #c0c0c0; clip-path: polygon(20% 50%, 50% 20%, 80% 50%, 50% 80%);}
+
+    .tl4Choice div {top: 6%; left: 6%; width: 26%; height: 26%;}
+    .tr4Choice div {top: 6%; right: 6%; width: 26%; height: 26%;}
+    .bl4Choice div {bottom: 6%; left: 6%; width: 26%; height: 26%;}
+    .br4Choice div {bottom: 6%; right: 6%; width: 26%; height: 26%;}
+    .m4Choice div {background: transparent; border: none; box-shadow: none; 
+                    top: 37%; left: 37%; width: 26%; height: 26%;}
+
+
+    /* ------ 5 ------ */
+
+    /* -- Standard -- */
+
+    /*Grid5*/
+    .grid5-1aChoice {background: #ff5f5f; width: 33.33%; height: 50%;}
+    .grid5-1bChoice {background: #bf5fff; width: 33.33%; height: 50%; left: 33.33%;}
+    .grid5-1cChoice {background: #bf5fff; width: 33.33%; height: 50%; left: 66.66%;}
+    .grid5-2aChoice {background: #5f5fff; width: 33.33%; height: 50%; top: 50%; left: 16.67%;}
+    .grid5-2bChoice {background: #ffff5f; width: 33.33%; height: 50%; top: 50%; left: 50%;}
+
+    /*List5*/
+    .list5-1Choice {background: #ff5f5f; height: 20%;}
+    .list5-2Choice {background: #bf5fff; height: 20%; top: 20%;}
+    .list5-3Choice {background: #5f5fff; height: 20%; top: 40%;}
+    .list5-4Choice {background: #ffff5f; height: 20%; top: 60%;}
+    .list5-5Choice {background: #5fffff; height: 20%; top: 80%;}
+
+    /*All5*/
+    .all5-AChoice {background: #5fff5f; height: 24%;}
+    .all5-1aChoice {background: #ff5f5f; width: 33.33%; height: 38%; top: 24%;}
+    .all5-1bChoice {background: #bf5fff; width: 33.33%; height: 38%; top: 24%; left: 33.33%;}
+    .all5-1cChoice {background: #5f5fff; width: 33.33%; height: 38%; top: 24%; left: 66.66%;}
+    .all5-2aChoice {background: #ffff5f; width: 33.33%; height: 38%; top: 62%; left: 16.67%;}
+    .all5-2bChoice {background: #5fffff; width: 33.33%; height: 38%; top: 62%; left: 50%;}
+
+    /*None5*/
+    .none5-1aChoice {background: #ff5f5f; width: 33.33%; height: 38%;}
+    .none5-1bChoice {background: #bf5fff; width: 33.33%; height: 38%; left: 33.33%;}
+    .none5-1cChoice {background: #5f5fff; width: 33.33%; height: 38%; left: 66.66%;}
+    .none5-2aChoice {background: #ffff5f; width: 33.33%; height: 38%; top: 38%; left: 16.67%;}
+    .none5-2bChoice {background: #5fffff; width: 33.33%; height: 38%; top: 38%; left: 50%;}
+    .none5-NChoice {background: #ffbf5f; height: 25%; top: 76%;}
+
+    /*Both5*/
+    .both5-AChoice {background: #5fff5f; height: 18%;}
+    .both5-1aChoice {background: #ff5f5f; width: 33.33%; height: 32%; top: 18%;}
+    .both5-1bChoice {background: #bf5fff; width: 33.33%; height: 32%; top: 18%; left: 33.33%;}
+    .both5-1cChoice {background: #5f5fff; width: 33.33%; height: 32%; top: 18%; left: 66.66%;}
+    .both5-2aChoice {background: #ffff5f; width: 33.33%; height: 32%; top: 50%; left: 16.67%;}
+    .both5-2bChoice {background: #5fffff; width: 33.33%; height: 32%; top: 50%; left: 50%;}
+    .both5-NChoice {background: #ffbf5f; height: 18%; top: 82%;}
+
+
+    /* -- Member -- */
+
+    /*Up5*/
+    .up5-1aSChoice {background: #ff5f5f; width: 40%; height: 28%; top: 4%; left: 30%;}
+    .up5-2aSChoice {background: #5f5fff; width: 40%; height: 28%; top: 36%; left: 7.5%;}
+    .up5-2bSChoice {background: #ffff5f; width: 40%; height: 28%; top: 36%; right: 7.5%;}
+    .up5-3aSChoice {background: #bf5fff; width: 40%; height: 28%; top: 68%; left: 7.5%;}
+    .up5-3bSChoice {background: #ff5fbf; width: 40%; height: 28%;; top: 68%; right: 7.5%;}
+
+    /*Down5*/
+    .down5-1aSChoice {background: #ff5f5f; width: 40%; height: 28%; top: 4%; left: 7.5%;}
+    .down5-1bSChoice {background: #5f5fff; width: 40%; height: 28%; top: 4%; right: 7.5%;}
+    .down5-2aSChoice {background: #ffff5f; width: 40%; height: 28%; top: 36%; left: 7.5%;}
+    .down5-2bSChoice {background: #bf5fff; width: 40%; height: 28%; top: 36%; right: 7.5%;}
+    .down5-3aSChoice {background: #ff5fbf; width: 40%; height: 28%; bottom: 4%; left: 30%;}
+
+    /*UFO5*/
+    .ufo5-1aSChoice {background: #ff5f5f; width: 28%; height: 40%; top: 7.5%; left: 20%;}
+    .ufo5-1bSChoice {background: #5f5fff; width: 28%; height: 40%; top: 7.5%; right: 20%;}
+    .ufo5-2aSChoice {background: #ffff5f; width: 28%; height: 40%; bottom: 7.5%; left: 4%;}
+    .ufo5-2bSChoice {background: #bf5fff; width: 28%; height: 40%; bottom: 7.5%; left: 36%;}
+    .ufo5-2cSChoice {background: #ff5fbf; width: 28%; height: 40%; bottom: 7.5%; left: 68%;}
+
+    /*Oly5*/
+    .oly5-1aSChoice {background: #ffff5f; width: 28%; height: 40%; top: 7.5%; left: 4%;}
+    .oly5-1bSChoice {background: #bf5fff; width: 28%; height: 40%; top: 7.5%; left: 36%;}
+    .oly5-1cSChoice {background: #ff5fbf; width: 28%; height: 40%; top: 7.5%; left: 68%;}
+    .oly5-2aSChoice {background: #ff5f5f; width: 28%; height: 40%; bottom: 7.5%; left: 20%;}
+    .oly5-2bSChoice {background: #5f5fff; width: 28%; height: 40%; bottom: 7.5%; right: 20%;}
+
+    /*All4*/
+    .all5-ASChoice {background: #5fff5f; width: 90%; height: 22%; top: 3%; left: 5%;}
+    .all5-1aSChoice {background: #ff5f5f; width: 30%; height: 33%; top: 28%; left: 2.5%;}
+    .all5-1bSChoice {background: #bf5fff; width: 30%; height: 33%; top: 28%; left: 35%;}
+    .all5-1cSChoice {background: #5f5fff; width: 30%; height: 33%; top: 28%; left: 67.5%;}
+    .all5-2aSChoice {background: #ffff5f; width: 30%; height: 33%; top: 64%; left: 18.75%;}
+    .all5-2bSChoice {background: #5fffff; width: 30%; height: 33%; top: 64%; left: 51.25%;}
+
+    /*None4*/
+    .none5-1aSChoice {background: #ff5f5f; width: 30%; height: 33%; top: 3%; left: 2.5%;}
+    .none5-1bSChoice {background: #bf5fff; width: 30%; height: 33%; top: 3%; left: 35%;}
+    .none5-1cSChoice {background: #5f5fff; width: 30%; height: 33%; top: 3%; left: 67.5%;}
+    .none5-2aSChoice {background: #ffff5f; width: 30%; height: 33%; top: 39%; left: 18.75%;}
+    .none5-2bSChoice {background: #5fffff; width: 30%; height: 33%; top: 39%; left: 51.25%;}
+    .none5-NSChoice {background: #5fff5f; width: 90%; height: 22%; top: 75%; left: 5%;}
+
+    /*Both4*/
+    .both5-ASChoice {background: #5fff5f; width: 90%; height: 17%; top: 2%; left: 5%;}
+    .both5-1aSChoice {background: #ff5f5f; width: 30%; height: 28%; top: 21%; left: 2.5%;}
+    .both5-1bSChoice {background: #bf5fff; width: 30%; height: 28%; top: 21%; left: 35%;}
+    .both5-1cSChoice {background: #5f5fff; width: 30%; height: 28%; top: 21%; left: 67.5%;}
+    .both5-2aSChoice {background: #ffff5f; width: 30%; height: 28%; top: 51%; left: 18.75%;}
+    .both5-2bSChoice {background: #5fffff; width: 30%; height: 28%; top: 51%; left: 51.25%;}
+    .both5-NSChoice {background: #ffbf5f; width: 90%;  height: 17%; top: 81%; left: 5%;}
+
+    /* -- Premium -- */
+
+    /*Tri5*/
+    .tri5-1aChoice {background: #ff5f5f; width: 32%; height: 28%; top: 4%; left: 34%;}
+    .tri5-2aChoice {background: #5f5fff; width: 32%; height: 28%; top: 36%; left: 16%;}
+    .tri5-2bChoice {background: #ffff5f; width: 32%; height: 28%; top: 36%; left: 52%;}
+    .tri5-3aChoice {background: #bf5fff; width: 32%; height: 28%; top: 68%; left: 2%;}
+    .tri5-3bChoice {background: #ff5fbf; width: 32%; height: 28%; top: 68%; left: 66%;}
+
+    /*Flok5*/
+    .flok5-1aChoice {background: #ff5f5f; width: 32%; height: 28%; top: 4%; left: 2%;}
+    .flok5-1bChoice {background: #5f5fff; width: 32%; height: 28%; top: 4%; left: 66%;}
+    .flok5-2aChoice {background: #ffff5f; width: 32%; height: 28%; top: 36%; left: 16%;}
+    .flok5-2bChoice {background: #bf5fff; width: 32%; height: 28%; top: 36%; left: 52%;}
+    .flok5-3aChoice {background: #ff5fbf; width: 32%; height: 28%; top: 68%; left: 34%;}
+
+    /*UDLRM*/
+    .up5Choice {background: #ff5f5f; width: 30%; height: 30%; top: 2.5%; left: 35%;}
+    .down5Choice {background: #5f5fff; width: 30%; height: 30%; top: 67.5%; left: 35%;}
+    .middle5Choice {background: #ffff5f; width: 30%; height: 30%; top: 35%; left: 35%;}
+    .left5Choice {background: #bf5fff; width: 30%; height: 30%; top: 35%; left: 2.5%;}
+    .right5Choice {background: #ff5fbf; width: 30%; height: 30%; top: 35%; left: 67.5%;}
+    
+    /*X5*/
+    .x5-1aChoice {background: #ff5f5f; width: 36%; height: 28%; top: 4%; left: 6.66%;}
+    .x5-1bChoice {background: #5f5fff; width: 36%; height: 28%; top: 4%; left: 57.33%;}
+    .x5-mChoice {background: #ffff5f; width: 36%; height: 28%; top: 36%; left: 32%;}
+    .x5-2aChoice {background: #bf5fff; width:36%; height: 28%; top: 68%; left: 6.66%;}
+    .x5-2bChoice {background: #ff5fbf; width: 36%; height: 28%; top: 68%; left: 57.33%;}
+
+    /*Star5*/
+    .star5-1Choice {background: #ff5f5f; clip-path: polygon(0 0, 0 33.33%, 50% 50%, 50% 0);}
+    .star5-2Choice {background: #5f5fff; clip-path: polygon(50% 0, 50% 50%, 100% 33.33%, 100% 0);}
+    .star5-3Choice {background: #ffff5f; clip-path: polygon(0 33.33%, 0 100%, 10% 100%, 50% 50%);}
+    .star5-4Choice {background: #bf5fff; clip-path: polygon(10% 100%, 90% 100%, 50% 50%);}
+    .star5-5Choice {background: #ff5fbf; clip-path: polygon(90% 100%, 100% 100%, 100% 33.33%, 50% 50%);}
+
+    .star5-1Choice div {width: 30%; height: 24%; top: 10%; left: 16.66%;}
+    .star5-2Choice div {width: 30%; height: 24%; top: 10%; left: 53.33%;}
+    .star5-3Choice div {width: 30%; height: 24%; top: 45%; left: 2%;}
+    .star5-4Choice div {width: 30%; height: 24%; top: 74%; left: 35%;}
+    .star5-5Choice div {width: 30%; height: 24%; top: 45%; left: 68%;}
+
+    /*Mid5*/
+    .mid5-1Choice {background: #ff5f5f; clip-path: polygon(0 0, 0 33.33%, 50% 50%, 50% 0);}
+    .mid5-2Choice {background: #5f5fff; clip-path: polygon(50% 0, 50% 50%, 100% 33.33%, 100% 0);}
+    .mid5-3Choice {background: #ffff5f; clip-path: polygon(0 33.33%, 0 100%, 10% 100%, 50% 50%);}
+    .mid5-4Choice {background: #bf5fff; clip-path: polygon(10% 100%, 90% 100%, 50% 50%);}
+    .mid5-5Choice {background: #ff5fbf; clip-path: polygon(90% 100%, 100% 100%, 100% 33.33%, 50% 50%);}
+    .mid5-mChoice {background: #c0c0c0; clip-path: polygon(50% 35%, 35% 44.97%, 35% 68.78%, 65% 68.78%, 65% 44.97%);}
+    
+    .mid5-1Choice div {width: 27%; height: 24%; top: 10%; left: 19.66%;}
+    .mid5-2Choice div {width: 27%; height: 24%; top: 10%; left: 53.33%;}
+    .mid5-3Choice div {width: 27%; height: 24%; top: 45%; left: 3.33%;}
+    .mid5-4Choice div {width: 27%; height: 24%; top: 74%; left: 36.5%;}
+    .mid5-5Choice div {width: 27%; height: 24%; top: 45%; left: 69.99%;}
+    .mid5-mChoice div {width: 24%; height: 21%; top: 43%; left: 38%;}
+
+
+
+    /* ------ 6 ------ */
+
+
+    /* -- Standard -- */
+
+    /*Col6*/
+    .col6-1aChoice {background: #ff5f5f; width: 33.33%; height: 50%;}
+    .col6-1bChoice {background: #5f5fff; width: 33.33%; height: 50%; left: 33.33%;}
+    .col6-1cChoice {background: #ffff5f; width: 33.33%; height: 50%; left: 66.66%;}
+    .col6-2aChoice {background: #bf5fff; width: 33.33%; height: 50%; top: 50%;}
+    .col6-2bChoice {background: #afff5f; width: 33.33%; height: 50%; top: 50%; left: 33.33%;}
+    .col6-2cChoice {background: #5fffff; width: 33.33%; height: 50%; top: 50%; left: 66.66%;}
+
+    .list6-1aChoice {background: #ff5f5f; width: 50%; height: 33.33%;}
+    .list6-1bChoice {background: #5f5fff; width: 50%; height: 33.33%; left: 50%;}
+    .list6-2aChoice {background: #ffff5f; width: 50%; height: 33.33%; top: 33.33%;}
+    .list6-2bChoice {background: #afff5f; width: 50%; height: 33.33%; top: 33.33%; left: 50%;}
+    .list6-3aChoice {background: #bf5fff; width: 50%; height: 33.33%; top: 66.66%;}
+    .list6-3bChoice {background: #5fffff; width: 50%; height: 33.33%; top: 66.66%; left: 50%;}
+
+    .all6-AChoice {background: #5fff5f; height: 25%;}
+    .all6-1aChoice {background: #ff5f5f; width: 33.33%; height: 37.5%; top: 25%;}
+    .all6-1bChoice {background: #5f5fff; width: 33.33%; height: 37.5%; top: 25%; left: 33.33%;}
+    .all6-1cChoice {background: #ffff5f; width: 33.33%; height: 37.5%; top: 25%; left: 66.66%;}
+    .all6-2aChoice {background: #bf5fff; width: 33.33%; height: 37.5%; top: 62.5%;}
+    .all6-2bChoice {background: #ff5fbf; width: 33.33%; height: 37.5%; top: 62.5%; left: 33.33%;}
+    .all6-2cChoice {background: #5fffff; width: 33.33%; height: 37.5%; top: 62.5%; left: 66.66%;}
+
+    .none6-1aChoice {background: #ff5f5f; width: 33.33%; height: 37.5%;}
+    .none6-1bChoice {background: #5f5fff; width: 33.33%; height: 37.5%; left: 33.33%;}
+    .none6-1cChoice {background: #ffff5f; width: 33.33%; height: 37.5%; left: 66.66%;}
+    .none6-2aChoice {background: #afff5f; width: 33.33%; height: 37.5%; top: 37.5%;}
+    .none6-2bChoice {background: #ff5fbf; width: 33.33%; height: 37.5%; top: 37.5%; left: 33.33%;}
+    .none6-2cChoice {background: #5fffff; width: 33.33%; height: 37.5%; top: 37.5%; left: 66.66%;}
+    .none6-NChoice {background: #ffbf5f; height: 25%; top: 75%;}
+
+    .both6-AChoice {background: #5fff5f; height: 18%;}
+    .both6-1aChoice {background: #ff5f5f; width: 33.33%; height: 32%; top: 18%;}
+    .both6-1bChoice {background: #5f5fff; width: 33.33%; height: 32%; top: 18%; left: 33.33%;}
+    .both6-1cChoice {background: #ffff5f; width: 33.33%; height: 32%; top: 18%; left: 66.66%;}
+    .both6-2aChoice {background: #bf5fff; width: 33.33%; height: 32%; top: 50%;}
+    .both6-2bChoice {background: #ff5fbf; width: 33.33%; height: 32%; top: 50%; left: 33.33%;}
+    .both6-2cChoice {background: #5fffff; width: 33.33%; height: 32%; top: 50%; left: 66.66%;}
+    .both6-NChoice {background: #ffbf5f; height: 18%; top: 82%;}
+
+        
+    /* -- Member -- */
+
+    /*Col6*/
+    .col6-1aSChoice {background: #ff5f5f; width: 30%; height: 45%; top: 3.33%; left: 2.5%;}
+    .col6-1bSChoice {background: #5f5fff; width: 30%; height: 45%; top: 3.33%; left: 35%;}
+    .col6-1cSChoice {background: #ffff5f; width: 30%; height: 45%; top: 3.33%; left: 67.5%;}
+    .col6-2aSChoice {background: #bf5fff; width: 30%; height: 45%; top: 51.66%; left: 2.5%;}
+    .col6-2bSChoice {background: #afff5f; width: 30%; height: 45%; top: 51.66%; left: 35%;}
+    .col6-2cSChoice {background: #5fffff; width: 30%; height: 45%; top: 51.66%; left: 67.5%;}
+
+    /*List6*/
+    .list6-1aSChoice {background: #ff5f5f; width: 45%; height: 30%; top: 2.5%; left: 3.33%;}
+    .list6-1bSChoice {background: #5f5fff; width: 45%; height: 30%; top: 2.5%; left: 51.66%;}
+    .list6-2aSChoice {background: #ffff5f; width: 45%; height: 30%; top: 35%; left: 3.33%;}
+    .list6-2bSChoice {background: #afff5f; width: 45%; height: 30%; top: 35%; left: 51.66%;}
+    .list6-3aSChoice {background: #bf5fff; width: 45%; height: 30%; top: 67.5%; left: 3.33%;}
+    .list6-3bSChoice {background: #5fffff; width: 45%; height: 30%; top: 67.5%; left: 51.66%;}
+
+    /*All6*/
+    .all6-ASChoice {background: #5fff5f; width: 90%; height: 22%; top: 3%; left: 5%;}
+    .all6-1aSChoice {background: #ff5f5f; width: 30%; height: 33%; top: 28%; left: 2.5%;}
+    .all6-1bSChoice {background: #5f5fff; width: 30%; height: 33%; top: 28%; left: 35%;}
+    .all6-1cSChoice {background: #ffff5f; width: 30%; height: 33%; top: 28%; left: 67.5%;}
+    .all6-2aSChoice {background: #bf5fff; width: 30%; height: 33%; top: 64%; left: 2.5%;}
+    .all6-2bSChoice {background: #ff5fbf; width: 30%; height: 33%; top: 64%; left: 35%;}
+    .all6-2cSChoice {background: #5fffff; width: 30%; height: 33%; top: 64%; left: 67.5%;}
+
+    /*None6*/
+    .none6-1aSChoice {background: #ff5f5f; width: 30%; height: 33%; top: 3%; left: 2.5%;}
+    .none6-1bSChoice {background: #5f5fff; width: 30%; height: 33%; top: 3%; left: 35%;}
+    .none6-1cSChoice {background: #ffff5f; width: 30%; height: 33%; top: 3%; left: 67.5%;}
+    .none6-2aSChoice {background: #afff5f; width: 30%; height: 33%; top: 39%; left: 2.5%;}
+    .none6-2bSChoice {background: #ff5fbf; width: 30%; height: 33%; top: 39%; left: 35%;}
+    .none6-2cSChoice {background: #5fffff; width: 30%; height: 33%; top: 39%; left: 67.5%;}
+    .none6-NSChoice {background: #ffbf5f; width: 90%; height: 22%; top: 75%; left: 5%;}
+
+    /*Both6*/
+    .both6-ASChoice {background: #5fff5f; height: 18%; width: 90%; top: 2%; left: 5%;}
+    .both6-1aSChoice {background: #ff5f5f; width: 30%; height: 28%; top: 22%; left: 2.5%;}
+    .both6-1bSChoice {background: #5f5fff; width: 30%; height: 28%; top: 22%; left: 35%;}
+    .both6-1cSChoice {background: #ffff5f; width: 30%; height: 28%; top: 22%; left: 67.5%;}
+    .both6-2aSChoice {background: #bf5fff; width: 30%; height: 28%; top: 52%; left: 2.5%;}
+    .both6-2bSChoice {background: #ff5fbf; width: 30%; height: 28%; top: 52%; left: 35%;}
+    .both6-2cSChoice {background: #5fffff; width: 30%; height: 28%; top: 52%; left: 67.5%;}
+    .both6-NSChoice {background: #ffbf5f; height: 18%; width: 90%; top: 5%; top: 82%; left: 5%;}
+
+    /* -- Premium -- */
+
+    /*Tri6*/
+    .tri6-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 34%;}
+    .tri6-2aChoice {background: #5f5fff; width: 30%; height: 28%; top: 36%; left: 18.75%;}
+    .tri6-2bChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 51.25%;}
+    .tri6-3aChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .tri6-3bChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 35%;}
+    .tri6-3cChoice {background: #afff5f; width: 30%; height: 28%; top: 68%; left: 67.5%;}
+
+    /*Flok6*/
+    .flok6-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .flok6-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .flok6-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .flok6-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 18.75%;}
+    .flok6-2bChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 51.25%;}
+    .flok6-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 34%;}
+
+    /*Star6*/
+    .star6-1Choice {background: #ff5f5f; clip-path: polygon(50% 0, 0 0, 0 13.33%, 50% 50%);}
+    .star6-2Choice {background: #5f5fff; clip-path: polygon(50% 0, 50% 50%, 100% 13.33%, 100% 0);}
+    .star6-3Choice {background: #ffff5f; clip-path: polygon(100% 13.33%, 50% 50%, 100% 86.66%);}
+    .star6-4Choice {background: #bf5fff; clip-path: polygon(100% 86.66%, 50% 50%, 50% 100%, 100% 100%);}
+    .star6-5Choice {background: #afff5f; clip-path: polygon(50% 100%, 50% 50%, 0 86.66%, 0 100%);}
+    .star6-6Choice {background: #ff5fbf; clip-path: polygon(0 86.66%, 0 13.33%, 50% 50%);}
+
+    .star6-1Choice div {width: 24%; height: 18%; top: 5%; left: 22.66%;}
+    .star6-2Choice div {width: 24%; height: 18%; top: 5%; left: 53.33%;}
+    .star6-3Choice div {width: 24%; height: 18%; top: 41%; left: 71%;}
+    .star6-4Choice div {width: 24%; height: 18%; top: 77%; left: 53.33%;}
+    .star6-5Choice div {width: 24%; height: 18%; top: 77%; left: 22.66%;}
+    .star6-6Choice div {width: 24%; height: 18%; top: 41%; left: 5%;}
+
+    /*Mid6*/
+    .mid6-1Choice {background: #ff5f5f; clip-path: polygon(50% 0, 0 0, 0 13.33%, 50% 50%);}
+    .mid6-2Choice {background: #5f5fff; clip-path: polygon(50% 0, 50% 50%, 100% 13.33%, 100% 0);}
+    .mid6-3Choice {background: #ffff5f; clip-path: polygon(100% 13.33%, 50% 50%, 100% 86.66%);}
+    .mid6-4Choice {background: #bf5fff; clip-path: polygon(100% 86.66%, 50% 50%, 50% 100%, 100% 100%);}
+    .mid6-5Choice {background: #afff5f; clip-path: polygon(50% 100%, 50% 50%, 0 86.66%, 0 100%);}
+    .mid6-6Choice {background: #ff5fbf; clip-path: polygon(0 86.66%, 0 13.33%, 50% 50%);}
+    .mid6-mChoice {background: #c0c0c0; clip-path: polygon(50% 30%, 33.33% 37.75%, 33.33% 62.25%, 
+                                                            50% 70%, 66.66% 62.25%, 66.66% 37.75%);}
+
+    .mid6-1Choice div {width: 24%; height: 18%; top: 5%; left: 22.66%;}
+    .mid6-2Choice div {width: 24%; height: 18%; top: 5%; left: 53.33%;}
+    .mid6-3Choice div {width: 24%; height: 18%; top: 41%; left: 71%;}
+    .mid6-4Choice div {width: 24%; height: 18%; top: 77%; left: 53.33%;}
+    .mid6-5Choice div {width: 24%; height: 18%; top: 77%; left: 22.66%;}
+    .mid6-6Choice div {width: 24%; height: 18%; top: 41%; left: 5%;}
+    
+    .mid6-mChoice div {width: 20%; height: 18%; top: 41%; left: 40%;}
+
+
+
+    /* ------ 7 ------ */
+    
+
+    /* -- Member -- */
+
+    /*Up7*/
+    .up7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 18.75%;}
+    .up7-1bChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 51.25%;}
+    .up7-2aChoice {background: #5f5fff; width: 30%; height: 28%; top: 36%; left: 18.75%;}
+    .up7-2bChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 51.25%;}
+    .up7-3aChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .up7-3bChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 35%;}
+    .up7-3cChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 67.5%;}
+
+    /*Down7*/
+    .down7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .down7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .down7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .down7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 18.75%;}
+    .down7-2bChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 51.25%;}
+    .down7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 18.75%;}
+    .down7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 51.25%;}    
+
+    .poll7Box {
+        background: transparent;
+        border-top: 1.2px solid #333;
+        border-left: 1.2px solid #333;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 2px 0 0 0;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        width: 30%; height: 60%; top: 36%; left: 67.5%;
+    }
+
+    /*Tri7*/
+    .tri7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 18.75%;}
+    .tri7-1bChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 51.25%;}
+    .tri7-2aChoice {background: #5f5fff; width: 30%; height: 28%; top: 36%; left: 10%;}
+    .tri7-2bChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 60%;}
+    .tri7-3aChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .tri7-3bChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 35%;}
+    .tri7-3cChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 67.5%;}
+
+    /*Flok7*/
+    .flok7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .flok7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .flok7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .flok7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 10%;}
+    .flok7-2bChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 60%;}
+    .flok7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 18.75%;}
+    .flok7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 51.25%;}
+
+    /*All7*/
+    .all7-1aChoice {background: #5fffff; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .all7-1bChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .all7-1cChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .all7-2aChoice {background: #afff5f; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .all7-2bChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 35%;}
+    .all7-3aChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .all7-3bChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 35%;} 
+    .all7-AChoice {background: #5fff5f; width: calc(100% - 8.33%); height: calc(100% - 6.66%); bottom: 0; right: 0;}
+
+    /*None7*/
+    .none7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .none7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .none7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .none7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .none7-2bChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 35%;}
+    .none7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .none7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 35%;}  
+    .none7-NChoice {background: #ffbf5f; width: calc(100% - 8.33%); height: calc(100% - 6.66%); bottom: 0; right: 0;} 
+        
+    /*Both7*/
+    .both7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .both7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .both7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .both7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .both7-2bChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 35%;} 
+    .both7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .both7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 35%;} 
+    .both7-AChoice {background: #5fff5f; width: calc(100% - 8.33%); height: calc(50% - 8.33%); bottom: 52%; right: 0;} 
+    .both7-NChoice {background: #ffbf5f; width: calc(100% - 8.33%); height: calc(50% - 8.33%); bottom: 0; right: 0;}
+
+    /*Premium*/
+    
+    /*Shoe7*/
+    .shoe7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .shoe7-1bChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .shoe7-2aChoice {background: #5f5fff; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .shoe7-2bChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 67.5%;}
+    .shoe7-3aChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .shoe7-3bChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 35%;}
+    .shoe7-3cChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 67.5%;}
+
+    /*Turn7*/
+    .turn7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .turn7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .turn7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .turn7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .turn7-2bChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 67.5%;}
+    .turn7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .turn7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 67.5%;}   
+        
+    /*Att7*/
+    .att7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .att7-1bChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .att7-1cChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .att7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .att7-3aChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .att7-3bChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 35%;}
+    .att7-3cChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 67.5%;}
+
+    /*Rep7*/
+    .rep7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .rep7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .rep7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .rep7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 67.5%;}
+    .rep7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .rep7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 35%;} 
+    .rep7-3cChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 67.5%;}  
+    
+    /*I7*/
+    .i7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .i7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 35%;}
+    .i7-1cChoice {background: #afff5f; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .i7-2aChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 35%;}
+    .i7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .i7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 35%;}
+    .i7-3cChoice {background: #bf5fff; width: 30%; height: 28%; top: 68%; left: 67.5%;}   
+
+    /*H7*/
+    .h7-1aChoice {background: #ff5f5f; width: 30%; height: 28%; top: 4%; left: 2.5%;}
+    .h7-1bChoice {background: #5f5fff; width: 30%; height: 28%; top: 4%; left: 67.5%;}
+    .h7-2aChoice {background: #afff5f; width: 30%; height: 28%; top: 36%; left: 2.5%;}
+    .h7-2bChoice {background: #ffff5f; width: 30%; height: 28%; top: 36%; left: 35%;}
+    .h7-2cChoice {background: #bf5fff; width: 30%; height: 28%; top: 36%; left: 67.5%;}
+    .h7-3aChoice {background: #ff5fbf; width: 30%; height: 28%; top: 68%; left: 2.5%;}
+    .h7-3bChoice {background: #5fffff; width: 30%; height: 28%; top: 68%; left: 67.5%;} 
+
+</style>
+
+<!-- Standard (Free): Basic, Control Of: 
+        Background (Box), Border (div), FontColor -->
+<!-- Special ($2.99): Nicer, Control Of: 
+        ChoiceSize, Border (Container), Image Upload (div),
+                Background (Container), Opacity, Font-Size -->
+<!-- Premium ($5.99): Best, Control Of: 
+        Image Upoad (Container), Extra Fonts, Custom -->
+
+
+
+<!-- 2 Choices -->
+<h3>2 Choices</h3>
+<!-- Standard -->
+<p>Standard</p>
+ <div class="pollDisplayBody">
+    2UD
+    <div class="pollChoices">
+        <div class="pollChoice up2Choice">
+            <div class="normPollChoice">Up</div>
+        </div>
+        <div class="pollChoice down2Choice">
+            <div class="normPollChoice">Down</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    2LR
+    <div class="pollChoices">
+        <div class="pollChoice left2Choice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice right2Choice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    diU
+    <div class="pollChoices">
+        <div class="pollChoice diUleftChoice">
+            <div>Left</div>
+        </div>
+        <div class="pollChoice diUrightChoice">
+            <div>Right</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    diD
+    <div class="pollChoices">
+        <div class="pollChoice diDleftChoice">
+            <div>Left</div>
+        </div>
+        <div class="pollChoice diDrightChoice">
+            <div>Right</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    All2
+    <div class="pollChoices">
+        <div class="pollChoice all2upChoice">
+            <div class="widePollChoice">Both</div>
+        </div>
+        <div class="pollChoice all2leftChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice all2rightChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None2
+    <div class="pollChoices">
+        <div class="pollChoice none2leftChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice none2rightChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice none2downChoice">
+            <div class="widePollChoice">Neither</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both2
+    <div class="pollChoices">
+        <div class="pollChoice both2upChoice">
+            <div class="widePollChoice">Both</div>
+        </div>
+        <div class="pollChoice both2leftChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice both2rightChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice both2downChoice">
+            <div class="widePollChoice">Neither</div>
+        </div>
+    </div>
+</div>
+
+<!-- Member -->
+<p>Member</p>
+<div class="pollDisplayBody">
+    2UD
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice up2SChoice">
+            <div class="widePollChoice">Up</div>
+        </div>
+        <div class="pollChoice down2SChoice">
+            <div class="widePollChoice">Down</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    2LR
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice left2SChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice right2SChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    diU
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice diUleftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice diUrightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    diD
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice diDleftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice diDrightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    All2
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice all2upSChoice">
+            <div class="widePollChoice">Both</div>
+        </div>
+        <div class="pollChoice all2leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice all2rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    None2
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice none2leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice none2rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice none2downSChoice">
+            <div class="widePollChoice">Neither</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both2
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice both2upSChoice">
+            <div class="widePollChoice">Both</div>
+        </div>
+        <div class="pollChoice both2leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice both2rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice both2downSChoice">
+            <div class="widePollChoice">Neither</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 3 Choices -->
+<h3>3 Choices</h3>
+
+<!-- Standard -->
+<p>Standard</p>
+
+<div class="pollDisplayBody">
+    Col3
+    <div class="pollChoices">
+        <div class="pollChoice col3-1Choice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice col3-2Choice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice col3-3Choice">
+            <div class="normPollChoice">3</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    List3
+    <div class="pollChoices">
+        <div class="pollChoice list3-1Choice">
+            <div class="widePollChoice">1</div>
+        </div>
+        <div class="pollChoice list3-2Choice">
+            <div class="widePollChoice">2</div>
+        </div>
+        <div class="pollChoice list3-3Choice">
+            <div class="widePollChoice">3</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    All3
+    <div class="pollChoices">
+        <div class="pollChoice all3upChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all3leftChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice all3middleChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice all3rightChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None3
+    <div class="pollChoices">
+        <div class="pollChoice none3leftChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice none3middleChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice none3rightChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice none3downChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both3
+    <div class="pollChoices">
+        <div class="pollChoice both3upChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both3leftChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice both3middleChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice both3rightChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice both3downChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+<!-- Member -->
+<p>Member</p>
+<div class="pollDisplayBody">
+    Col3
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice col3-1SChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice col3-2SChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice col3-3SChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    List3
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice list3-1SChoice">
+            <div class="widePollChoice">1</div>
+        </div>
+        <div class="pollChoice list3-2SChoice">
+            <div class="widePollChoice">2</div>
+        </div>
+        <div class="pollChoice list3-3SChoice">
+            <div class="widePollChoice">3</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    All3
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice all3upSChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all3leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice all3middleSChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice all3rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None3
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice none3leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice none3middleSChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice none3rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice none3downSChoice">
+            <div class="widePollChoice">None of the Above</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both3
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice both3upSChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both3leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice both3middleSChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice both3rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+        <div class="pollChoice both3downSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Premium -->
+<p>Premium</p>
+<div class="pollDisplayBody">
+    Tri3
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice tri3upSChoice">
+            <div class="normPollChoice">Up</div>
+        </div>
+        <div class="pollChoice tri3leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice tri3rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Flok3
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice flok3upSChoice">
+            <div class="normPollChoice">Down</div>
+        </div>
+        <div class="pollChoice flok3leftSChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice flok3rightSChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 4 Choices -->
+<h3>4 Choices</h3>
+
+<!-- Standard -->
+<p>Standard</p>
+
+<div class="pollDisplayBody"> 
+    Grid4                                      
+    <div class="pollChoices" >
+        <div class="pollChoice grid4-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice grid4-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice grid4-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice grid4-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">  
+    List4                                        
+    <div class="pollChoices">
+        <div class="pollChoice list4-1Choice">
+            <div class="widePollChoice">1</div>
+        </div>
+        <div class="pollChoice list4-2Choice">
+            <div class="widePollChoice">2</div>
+        </div>
+        <div class="pollChoice list4-3Choice">
+            <div class="widePollChoice">3</div>
+        </div>
+        <div class="pollChoice list4-4Choice">
+            <div class="widePollChoice">4</div>
+        </div>
+    </div>   
+</div>
+
+
+<div class="pollDisplayBody">
+    All4
+    <div class="pollChoices">
+        <div class="pollChoice all4-AChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all4-1Choice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice all4-2Choice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice all4-3Choice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice all4-4Choice">
+            <div class="normPollChoice">4</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None4
+    <div class="pollChoices">
+        <div class="pollChoice none4-1Choice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice none4-2Choice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice none4-3Choice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice none4-4Choice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice none4-NChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both4
+    <div class="pollChoices">
+        <div class="pollChoice both4-AChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both4-1Choice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice both4-2Choice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice both4-3Choice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice both4-4Choice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice both4-NChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Member -->
+<p>Member</p>
+<div class="pollDisplayBody"> 
+    Grid4                                      
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice grid4-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice grid4-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice grid4-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice grid4-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">  
+    List4                                        
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice list4-1SChoice">
+            <div class="widePollChoice">1</div>
+        </div>
+        <div class="pollChoice list4-2SChoice">
+            <div class="widePollChoice">2</div>
+        </div>
+        <div class="pollChoice list4-3SChoice">
+            <div class="widePollChoice">3</div>
+        </div>
+        <div class="pollChoice list4-4SChoice">
+            <div class="widePollChoice">4</div>
+        </div>
+    </div>   
+</div>
+
+
+<div class="pollDisplayBody">
+    All4
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice all4-ASChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all4-1SChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice all4-2SChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice all4-3SChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice all4-4SChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None4
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice none4-1SChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice none4-2SChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice none4-3SChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice none4-4SChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice none4-NSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both4
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice both4-ASChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both4-1SChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice both4-2SChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice both4-3SChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice both4-4SChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice both4-NSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Premium -->
+<p>Premium</p>
+<div class="pollDisplayBody">
+    UDLR
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice up4Choice">
+            <div>Up</div>
+        </div>
+        <div class="pollChoice down4Choice">
+            <div>Down</div>
+        </div>
+        <div class="pollChoice left4Choice">
+            <div>Left</div>
+        </div>
+        <div class="pollChoice right4Choice">
+            <div>Right</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    Mid4
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice tl4Choice">
+            <div>TL</div>
+        </div>
+        <div class="pollChoice tr4Choice">
+            <div>TR</div>
+        </div>
+        <div class="pollChoice m4Choice">
+            <div>Middle</div>
+        </div>
+        <div class="pollChoice bl4Choice">
+            <div>BL</div>
+        </div>
+        <div class="pollChoice br4Choice">
+            <div>BR</div>
+        </div>
+    </div>  
+</div>
+
+
+
+<!-- 5 Choices -->
+<h3>5 Choices</h3>
+
+<!-- Standard -->
+<p>Standard</p>
+<div class="pollDisplayBody"> 
+    Grid5                                   
+    <div class="pollChoices">
+        <div class="pollChoice grid5-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice grid5-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice grid5-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice grid5-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice grid5-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">  
+    List5                                     
+    <div class="pollChoices">
+        <div class="pollChoice list5-1Choice">
+            <div class="widePollChoice">1</div>
+        </div>
+        <div class="pollChoice list5-2Choice">
+            <div class="widePollChoice">2</div>
+        </div>
+        <div class="pollChoice list5-3Choice">
+            <div class="widePollChoice">3</div>
+        </div>
+        <div class="pollChoice list5-4Choice">
+            <div class="widePollChoice">4</div>
+        </div>
+        <div class="pollChoice list5-5Choice">
+            <div class="widePollChoice">5</div>
+        </div>
+    </div>   
+</div>
+
+<div class="pollDisplayBody">
+    All5
+    <div class="pollChoices">
+        <div class="pollChoice all5-AChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all5-1aChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice all5-1bChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice all5-1cChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice all5-2aChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice all5-2bChoice">
+            <div class="normPollChoice">5</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None5
+    <div class="pollChoices">
+        <div class="pollChoice none5-1aChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice none5-1bChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice none5-1cChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice none5-2aChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice none5-2bChoice">
+            <div class="normPollChoice">5</div>
+        </div>
+        <div class="pollChoice none5-NChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both5
+    <div class="pollChoices">
+        <div class="pollChoice both5-AChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both5-1aChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice both5-1bChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice both5-1cChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice both5-2aChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice both5-2bChoice">
+            <div class="normPollChoice">5</div>
+        </div>
+        <div class="pollChoice both5-NChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Member -->
+<p>Member</p>
+<div class="pollDisplayBody">
+    Up5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice up5-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice up5-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice up5-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice up5-3aSChoice">
+            <div class="normPollChoice">3a</div>
+        </div>       
+        <div class="pollChoice up5-3bSChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    Down5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice down5-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice down5-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice down5-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice down5-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice down5-3aSChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    UFO5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice ufo5-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice ufo5-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice ufo5-2aSChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice ufo5-2bSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice ufo5-2cSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Oly5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice oly5-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice oly5-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice oly5-1cSChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice oly5-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice oly5-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    All5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice all5-ASChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all5-1aSChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice all5-1bSChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice all5-1cSChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice all5-2aSChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice all5-2bSChoice">
+            <div class="normPollChoice">5</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice none5-1aSChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice none5-1bSChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice none5-1cSChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice none5-2aSChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice none5-2bSChoice">
+            <div class="normPollChoice">5</div>
+        </div>
+        <div class="pollChoice none5-NSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both5
+    <div class="pollChoices SpollChoices">
+        <div class="pollChoice both5-ASChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both5-1aSChoice">
+            <div class="normPollChoice">1</div>
+        </div>
+        <div class="pollChoice both5-1bSChoice">
+            <div class="normPollChoice">2</div>
+        </div>
+        <div class="pollChoice both5-1cSChoice">
+            <div class="normPollChoice">3</div>
+        </div>
+        <div class="pollChoice both5-2aSChoice">
+            <div class="normPollChoice">4</div>
+        </div>
+        <div class="pollChoice both5-2bSChoice">
+            <div class="normPollChoice">5</div>
+        </div>
+        <div class="pollChoice both5-NSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+<!-- Premium -->
+<p>Premium</p>
+<div class="pollDisplayBody">
+    Tri5
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice tri5-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice tri5-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice tri5-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice tri5-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice tri5-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Flok5
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice flok5-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice flok5-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice flok5-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice flok5-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice flok5-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    UDLRM
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice up5Choice">
+            <div class="normPollChoice">Up</div>
+        </div>
+        <div class="pollChoice down5Choice">
+            <div class="normPollChoice">Down</div>
+        </div>
+        <div class="pollChoice middle5Choice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice left5Choice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice right5Choice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    X5
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice x5-1aChoice">
+            <div class="normPollChoice">Up</div>
+        </div>
+        <div class="pollChoice x5-1bChoice">
+            <div class="normPollChoice">Down</div>
+        </div>
+        <div class="pollChoice x5-mChoice">
+            <div class="normPollChoice">Middle</div>
+        </div>
+        <div class="pollChoice x5-2aChoice">
+            <div class="normPollChoice">Left</div>
+        </div>
+        <div class="pollChoice x5-2bChoice">
+            <div class="normPollChoice">Right</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    Star5
+    <div class="pollChoices">
+        <div class="pollChoice star5-1Choice">
+            <div>1</div>
+        </div>
+        <div class="pollChoice star5-2Choice">
+            <div>2</div>
+        </div>
+        <div class="pollChoice star5-3Choice">
+            <div>3</div>
+        </div>
+        <div class="pollChoice star5-4Choice">
+            <div>4</div>
+        </div>
+        <div class="pollChoice star5-5Choice">
+            <div>5</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    Mid5
+    <div class="pollChoices">
+        <div class="pollChoice mid5-1Choice">
+            <div>1</div>
+        </div>
+        <div class="pollChoice mid5-2Choice">
+            <div>2</div>
+        </div>
+        <div class="pollChoice mid5-3Choice">
+            <div>3</div>
+        </div>
+        <div class="pollChoice mid5-4Choice">
+            <div>4</div>
+        </div>
+        <div class="pollChoice mid5-5Choice">
+            <div>5</div>
+        </div>
+        <div class="pollMidText mid5-mChoice">
+            <div>Middle</div>
+        </div>
+    </div>  
+</div>
+
+
+
+<!-- 6 Choices -->
+<h3>6 Choices</h3>
+
+<!-- Standard -->
+<p>Standard</p>
+
+<div class="pollDisplayBody">
+    Col6
+    <div class="pollChoices">
+        <div class="pollChoice col6-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice col6-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice col6-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice col6-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice col6-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice col6-2cChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    List6
+    <div class="pollChoices">
+        <div class="pollChoice list6-1aChoice">
+            <div class="widePollChoice">1a</div>
+        </div>
+        <div class="pollChoice list6-1bChoice">
+            <div class="widePollChoice">1b</div>
+        </div>
+        <div class="pollChoice list6-2aChoice">
+            <div class="widePollChoice">2a</div>
+        </div>
+        <div class="pollChoice list6-2bChoice">
+            <div class="widePollChoice">2b</div>
+        </div>
+        <div class="pollChoice list6-3aChoice">
+            <div class="widePollChoice">3a</div>
+        </div>
+        <div class="pollChoice list6-3bChoice">
+            <div class="widePollChoice">3b</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    All6
+    <div class="pollChoices">
+        <div class="pollChoice all6-AChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all6-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice all6-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice all6-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice all6-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice all6-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice all6-2cChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None6
+    <div class="pollChoices">
+        <div class="pollChoice none6-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice none6-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice none6-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice none6-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice none6-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice none6-2cChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+        <div class="pollChoice none6-NChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both6
+    <div class="pollChoices">
+        <div class="pollChoice both6-AChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both6-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice both6-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice both6-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice both6-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice both6-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice both6-2cChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+        <div class="pollChoice both6-NChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+<!-- Member -->
+<p>Member</p>
+<div class="pollDisplayBody">
+    Col6
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice col6-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice col6-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice col6-1cSChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice col6-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice col6-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice col6-2cSChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    List6
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice list6-1aSChoice">
+            <div class="widePollChoice">1a</div>
+        </div>
+        <div class="pollChoice list6-1bSChoice">
+            <div class="widePollChoice">1b</div>
+        </div>
+        <div class="pollChoice list6-2aSChoice">
+            <div class="widePollChoice">2a</div>
+        </div>
+        <div class="pollChoice list6-2bSChoice">
+            <div class="widePollChoice">2b</div>
+        </div>
+        <div class="pollChoice list6-3aSChoice">
+            <div class="widePollChoice">3a</div>
+        </div>
+        <div class="pollChoice list6-3bSChoice">
+            <div class="widePollChoice">3b</div>
+        </div>
+    </div>
+</div>
+
+<div class="pollDisplayBody">
+    All6
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice all6-ASChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice all6-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice all6-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice all6-1cSChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice all6-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice all6-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice all6-2cSChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None6
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice none6-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice none6-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice none6-1cSChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice none6-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice none6-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice none6-2cSChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+        <div class="pollChoice none6-NSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both6
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice both6-ASChoice">
+            <div class="widePollChoice">All</div>
+        </div>
+        <div class="pollChoice both6-1aSChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice both6-1bSChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice both6-1cSChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice both6-2aSChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice both6-2bSChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice both6-2cSChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+        <div class="pollChoice both6-NSChoice">
+            <div class="widePollChoice">None</div>
+        </div>
+    </div>
+</div>
+
+<!-- Premium -->
+<p>Premium</p>
+<div class="pollDisplayBody">
+    Tri5
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice tri6-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice tri6-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice tri6-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice tri6-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice tri6-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice tri6-3cChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Flok5
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice flok6-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice flok6-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice flok6-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice flok6-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice flok6-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice flok6-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Star6
+    <div class="pollChoices">
+        <div class="pollChoice star6-1Choice">
+            <div>1</div>
+        </div>
+        <div class="pollChoice star6-2Choice">
+            <div>2</div>
+        </div>
+        <div class="pollChoice star6-3Choice">
+            <div>3</div>
+        </div>
+        <div class="pollChoice star6-4Choice">
+            <div>4</div>
+        </div>
+        <div class="pollChoice star6-5Choice">
+            <div>5</div>
+        </div>
+        <div class="pollChoice star6-6Choice">
+            <div>6</div>
+        </div>
+    </div>  
+</div>
+<div class="pollDisplayBody">
+    Mid6
+    <div class="pollChoices">
+        <div class="pollChoice mid6-1Choice">
+            <div>1</div>
+        </div>
+        <div class="pollChoice mid6-2Choice">
+            <div>2</div>
+        </div>
+        <div class="pollChoice mid6-3Choice">
+            <div>3</div>
+        </div>
+        <div class="pollChoice mid6-4Choice">
+            <div>4</div>
+        </div>
+        <div class="pollChoice mid6-5Choice">
+            <div>5</div>
+        </div>
+        <div class="pollChoice mid6-6Choice">
+            <div>6</div>
+        </div>
+        <div class="pollMidText mid6-mChoice">
+            <div>Middle</div>
+        </div>
+    </div>  
+</div>
+
+------ No More Free Options ------
+<!-- 7 Choices -->
+<h3>7 Choices</h3>
+
+<!-- Member -->
+<p>Member</p>
+<div class="pollDisplayBody">
+    Up7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice up7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice up7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice up7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice up7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice up7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice up7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice up7-3cChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Down7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice down7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice down7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice down7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice down7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice down7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice down7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice down7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Tri7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice tri7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice tri7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice tri7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice tri7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice tri7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice tri7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice tri7-3cChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Flok7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice flok7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice flok7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice flok7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice flok7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice flok7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice flok7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice flok7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    All7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice all7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice all7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice all7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice all7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice all7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice all7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice all7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="poll7Box">
+            <div class="pollChoice all7-AChoice">
+                <div class="normPollChoice">All</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    None7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice none7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice none7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice none7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice none7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice none7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice none7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice none7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="poll7Box">
+            <div class="pollChoice none7-NChoice">
+                <div class="normPollChoice">None</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Both7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice both7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice both7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice both7-1cChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+        <div class="pollChoice both7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice both7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice both7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice both7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="poll7Box">
+            <div class="pollChoice both7-AChoice">
+                <div class="normPollChoice">All</div>
+            </div>
+            <div class="pollChoice both7-NChoice">
+                <div class="normPollChoice">None</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Premium -->
+<p>Premium</p>
+<div class="pollDisplayBody">
+    Shoe7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice shoe7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice shoe7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice shoe7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice shoe7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice shoe7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice shoe7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice shoe7-3cChoice">
+            <div class="normPollChoice">3c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Turn7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice turn7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice turn7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice turn7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice turn7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice turn7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice turn7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice turn7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Att7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice att7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice att7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice att7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice att7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice att7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice att7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice att7-3cChoice">
+            <div class="normPollChoice">3c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    Rep7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice rep7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice rep7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice rep7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice rep7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice rep7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice rep7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice rep7-3cChoice">
+            <div class="normPollChoice">3c</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    I7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice i7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice i7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice i7-1cChoice">
+            <div class="normPollChoice">1c</div>
+        </div>
+        <div class="pollChoice i7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice i7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice i7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+        <div class="pollChoice i7-3cChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+<div class="pollDisplayBody">
+    H7
+    <div class="pollChoices SpollStyle">
+        <div class="pollChoice h7-1aChoice">
+            <div class="normPollChoice">1a</div>
+        </div>
+        <div class="pollChoice h7-1bChoice">
+            <div class="normPollChoice">1b</div>
+        </div>
+        <div class="pollChoice h7-2aChoice">
+            <div class="normPollChoice">2a</div>
+        </div>
+        <div class="pollChoice h7-2bChoice">
+            <div class="normPollChoice">2b</div>
+        </div>
+        <div class="pollChoice h7-2cChoice">
+            <div class="normPollChoice">2c</div>
+        </div>
+        <div class="pollChoice h7-3aChoice">
+            <div class="normPollChoice">3a</div>
+        </div>
+        <div class="pollChoice h7-3bChoice">
+            <div class="normPollChoice">3b</div>
+        </div>
+    </div>
+</div>
+
+<!-- 8 Choices -->
+8 Choices
+
+<!-- Standard -->
+<!-- Member -->
+<!-- Premium -->
+
+<!-- 9 Choices -->
+9 Choices
+
+<!-- Standard -->
+<!-- Member -->
+<!-- Premium -->
+
+<!-- 10 Choices -->
+10 Choices
+
+<!-- Standard -->
+<!-- Member -->
+<!-- Premium -->
+
+<!-- 11 Choices -->
+11 Choices
+
+<!-- Standard -->
+<!-- Member -->
+<!-- Premium -->
+
+<!-- 12 Choices -->
+12 Choices
+
+<!-- Standard -->
+<!-- Member -->
+<!-- Premium -->
+
+
