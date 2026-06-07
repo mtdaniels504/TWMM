@@ -78,7 +78,7 @@
             h5, p, 
             span, details, a, strong, 
             input, textarea, option, label  {
-                font-size: clamp(0.55rem, 0.3rem + .7dvw, 0.75rem);
+                font-size: clamp(0.55rem, 0.3rem + .68dvw, 0.72rem);
                 text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.03);
             }
 
@@ -94,6 +94,10 @@
 
             .fineP, select {
                 font-size: clamp(0.375rem, 0.25rem + 0.6dvw, 0.45rem);
+            }
+
+            .fineLogIn {
+                text-decoration: underline;
             }
 
 
@@ -134,6 +138,7 @@
             }
 
             select {
+                border-radius: 1px;
                 text-overflow: ellipsis;
                 overflow: hidden
             }
@@ -233,6 +238,14 @@
                 height: calc(17px + 0.35vw);
                 max-height: 20px;
                 width: auto;
+                padding: 0 5px;
+            }
+
+            .fullSmallButton {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+                width: 100%;
                 padding: 0 5px;
             }
 
@@ -355,7 +368,7 @@
 
             /*DisplayIcon(Transparent/Fine)*/
 
-            .displayIcons, .displayIcon {
+            .displayIcons, .displayIcon, .fineIcon {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -368,6 +381,10 @@
             
             .displayIcon {
                 font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
+            }
+
+            .fineIcon {
+                font-size: clamp(0.3rem, 0.3rem + 0.6dvw, 0.45rem);
             }
 
 
@@ -414,6 +431,46 @@
                 cursor: grab;
             }
 
+            
+
+            /* Checkbox */
+
+            .checkbox {
+                min-width: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                width: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                max-width: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                min-height: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                height: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                max-height: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                padding: 2px;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+                margin: 0;
+                cursor: pointer;
+            }
+
+                /* Hide the actual HTML checkbox completely */
+            .custom-checkbox input {
+                display: none;
+            }
+
+                /* Hide the FontAwesome icon by default */
+            .custom-checkbox input + .checkbox i {
+                display: none;
+            }
+
+                /* AUTOMATICALLY show the icon when the checkbox is checked */
+            .custom-checkbox input:checked + .checkbox  i {
+                display: flex;
+            }
+
+            .fa-check {
+                margin: 0 0 -1px 0;
+            }
 
             
             /*searchIcon*/
@@ -433,6 +490,12 @@
             }
 
 
+            /* Page Numbers */
+
+            .pageNumbers {
+                margin: 5px;
+                gap: 5px;
+            }
 
             /*bodyTab/contToggle*/
             
@@ -597,8 +660,8 @@
                 align-items: center;
                 margin: 0;
                 padding: 0;
-                width: 100%;
-                max-width: 100%;
+                width: 100vw;
+                max-width: 100vw;
                 height: 100%;
                 flex: 1;
                 border: none;
@@ -670,7 +733,26 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 5px 10px;
-                bottom: 0;
+                bottom: 2px;
+            }
+
+            .tailHs, .tailButtons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                gap: 10px;
+            }
+
+            .tailHs {
+                margin-left: 5dvw;
+                margin-right: auto;
+            }
+
+            .tailButtons {
+                margin-right: 5dvw;
             }
 
             /* ----- Body Section ----- */
@@ -1126,6 +1208,26 @@
                 cursor: pointer;
                 padding: 4px;
             }
+
+            .subNavRow3 {
+                gap: 5px;
+            }
+
+            .subNavRowImg {
+                min-width: unset;
+                width: auto;
+                max-width: unset;
+                min-height: unset;
+                height: auto;
+                max-height: 10px;
+            }         
+            
+            .subNavRowP2 {
+                margin-left: auto;
+                margin-right: 10px;
+            }
+
+
 
             .applyFiltersButton {
                 min-height: 18px;
@@ -2718,6 +2820,90 @@
 
 
 
+            /* Base Slider Container */
+            .featuredSlider {
+                display: flex;
+                justify-content: flex-start;
+                padding: 5px;
+                gap: 10px;
+                border: none;
+                overflow-y: hidden;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+                scrollbar-width: none;
+            }
+
+            /* Hide scrollbar */
+            .vehicle-description::-webkit-scrollbar {
+                display: none; /* Hides the scrollbar for WebKit browsers */
+            }
+
+            #featuredSlider-mobile {
+                display: none;
+                gap: 5px;
+                max-width: calc(100dvw - 26px);
+            }
+
+            /* Individual Slide */
+            .featuredSlide {
+                background: transparent;
+                border: none;
+                padding: 0;
+                margin: 0;
+                flex: 0 0 auto;
+            }
+
+            /* Slide Content Box */
+            .featuredSlideContent {
+                background: transparent;
+                border: none;
+                padding: 0;
+                margin: 0;
+                position: relative;
+                height: calc(2.2rem + 2.8dvh);
+                aspect-ratio: 5 / 3.1;
+                overflow: hidden;
+                border-radius: 1px;
+                max-width: calc(100dvw - 16px);
+            }
+
+            /* Image Optimization */
+            .featuredSlideContent img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Elegant Text Overlay */
+            .slideOverlay {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                background: transparent;
+                border: none;
+                padding: 0;
+                margin: 0 -1px -0.25px 0;
+            }
+
+
+            /* Reverse-Diagonal Bottom Right Price Tag */
+            .slidePrice {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                background: #ffffff;
+                color: #000000;
+                padding: 3px 8px 3px 10px;
+                text-align: flex-end;
+                /* Diagonal angle clip */
+                clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+            }
+
+
+
             /* ---------- Nested Content Styles --------- */
 
             .content {
@@ -2941,8 +3127,149 @@
                 align-items: center;
                 overflow-y: auto;
                 overflow-x: hidden;
-                text-align: left;
+                text-align: left;            
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
             }
+
+            /* Hide scrollbar */
+            .sideBarPageBody::-webkit-scrollbar {
+                display: none;
+            }
+
+            .sideBarContent, .sideBarBody {
+                flex-grow: 1;
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+            }
+
+            .sideBarHeader {
+                width: 100%;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                text-align: center;
+            }
+
+            .sideBarTab, .sideBarBodyHead, 
+            .sideBodyHeadLeft, .sideBodyHeadMain, .sideBodyHeadRight,
+            .sideBarPage, .initialSideBarPageBody {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .sideBarTab {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 5px 5px 0px 5px;
+                gap: 5px;
+            } 
+
+            .sideBarTabHr {
+                height: 1px;
+            }
+
+
+            .sideBarBodyHead {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                width: 100%;
+                padding: 1.5dvh 5px 5px 5px;
+            }
+
+            .sideBodyHeadLeft {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .sideBodyHeadLeft2 {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-end;
+                width: 2%;
+                gap: 5px;
+                margin: 2px;
+                padding: 2px;
+                flex-wrap: nowrap;
+                overflow: visible;
+            }
+
+            .sideBodyHeadLeft div {
+                margin-right: 10px;
+            }
+
+
+
+            .sideBodyHeadMain {
+                margin-top: -5px;
+                margin-left: -4px;
+            }
+
+            .sideBodyHeadRight {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+            }
+
+            .sideBarPage {
+                height: auto;
+            }
+            
+            .sideBarPageBody {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                text-align: center;
+                height: 100%;
+                max-height: calc(36dvh - 2.8dvw);
+                overflow-y: auto;
+                overflow-x: hidden;
+                gap: 5px;                
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Hide scrollbar */
+            .sideBarPageBody::-webkit-scrollbar {
+                display: none;
+            }
+
+
+            .initialSideBarPageBody {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                gap: 12px;
+                padding: 8px 12px;
+            }
+
+            .sideBarPageTail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                gap: 2px;
+            }
+
+            .sideBarNav {
+                width: 100%;
+            }
+
 
             #tools-dropdown {
                 justify-content: flex-start;
@@ -2981,6 +3308,326 @@
                 border-radius: 2px 2px 0px 0px;
                 border: 1px solid #046df8;
             }
+
+
+            /* Sub Cart */
+
+            #sideBarPage-cartActive hr {
+                width: 100%;
+            }
+
+            .subContent-cart,
+            .cartHead, .cartBody1, .initialCartHead,
+            .cartBodyImg, .cartBodyList div {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+
+
+            .subContentContainer {
+                width: 100%;
+            }
+
+            .subContent-cart {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+
+            .cartHead {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                gap: 2px;
+            }
+
+            .initialCartHead {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 2px;
+                margin-top: 1px;
+            }
+
+            .cartBody {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 2px;
+            }
+
+            .cartPart {
+                flex-grow: 1;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .cartBody1 {
+                flex-grow: 1;
+                width: 100%;
+                height: 100%;
+            }
+
+            .cartBodyImg {
+                object-fit: contain;
+                padding-right: 2px;
+                overflow: hidden;
+            }
+
+            .cartBodyImg img {
+                border-radius: 1px;
+            }
+
+            .cartBodyImg h5 {
+                margin-right: 100%;
+                margin-bottom: 2px;
+            }
+
+            .cartBodyAlt {
+                flex-grow: 1;
+                width: 100%;
+                min-height: calc(30% - 2px);
+                height: 100%;
+            }
+
+            .cartBody2 {
+                flex-grow: 1;
+                width: 100%;
+                height: 100%;
+            }
+
+            .cartBodyList, .cartBodyList1, .cartBodyList2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+                width: 100%;
+                height: 100%;
+            }
+
+            .cartBodyList h6 {
+                margin-bottom: 5px;
+            }
+
+            .cartBodyList span {
+                font-weight: 600;
+            }
+
+            .cartBodyList i {
+                font-size: clamp(0.375rem, 0.25rem + 0.6dvw, 0.45rem);
+            }
+
+            .cartBodyDetails {
+                justify-content: flex-start;
+                height: 50%;
+                max-height: 80px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            .cartBodyList1, .cartBodyList2 {
+                gap: 2.5px;
+            }
+
+            .cartBodyListRow {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .cartBodyListRow > p:nth-child(2) {
+                text-align: right;
+                text-wrap: none;
+                overflow: hidden;
+            }
+
+            .cartBodyListItem2 {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                gap: 5px;
+            }
+
+            #cartBodyListRow-delivery {
+                margin-top: 6px;
+            }
+
+            .cartTotals {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-end;
+                gap: 2px;
+            }
+
+            .cartTotals h5 {
+                margin: 2.5px;
+                margin-right: auto;
+            }
+
+            .cartTotals span {
+                font-weight: 600;
+            }
+
+            .cartTotalsContainer, .cartTotalsRow1,
+            .cartTotalsRowItem, .cartTotalsBillingBox,
+            .cartTotalsAddressColumn,
+            .cartTotalsBox, .cartTotalsContent, 
+            .cartTotalsColumn1, .cartTotalsColumn2,
+            .cartTotalsSub, .cartTotalsRowSub {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .cartTotalsContainer {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 20px;
+                width: 100%;
+            }
+            
+            .cartTotalsRow1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                min-width: calc(30%);
+                width: calc(30%);
+                width: calc(30%);
+            }
+
+            .cartTotalsBillingBox, .cartTotalsHistoryBox {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .cartTotalsHistoryBox {
+                justify-content: space-between;
+                align-items: flex-end;
+                height: 100%;
+            }
+            
+            .cartTotalsBillingBox p {
+                max-width: 100%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                text-wrap: nowrap;
+            }
+
+            #cartTotalsColumn1-history {
+                margin-top: -20px;
+            }
+
+            .cartTotalsRowItem {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .cartTotalsBillingBox .cartTotalsRowItem {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+                gap: 1px;
+            }
+
+            .cartTotalsAddressColumn {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+                gap: 0;
+                padding: 0;
+                margin: 0;
+            }
+
+            .cartTotalsBox {
+                min-width: calc(60% - 32px);
+                width: calc(60% - 32px);
+                width: calc(60% - 32px);
+            }
+
+            .cartTotalsContent {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .cartTotalsColumn1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+            .cartsTotalsContainerHistory .cartTotalsColumn1 {
+                gap: 2px;
+                bottom: 0;
+                margin: 0;
+                margin-top: auto;
+                width: 100%;
+                height: 100%;
+            }
+
+            .cartsTotalsContainerHistory .cartTotalsRowItem {
+                padding: 0;
+                margin: 0;
+            }
+
+            .cartTotalsColumn2 {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-end;
+                gap: 2px;
+            }
+
+            .cartTotalsSub {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: space-between;
+                margin: -2px 0 0 0;
+                gap: 2px;
+            }
+
+            .cartTotalsRowSub {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+
+            /* -- Services -- */
 
 
             #servicesContent {
@@ -3402,8 +4049,10 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                width: 90%;
-                border-radius: 5px;
+                width: 92%;
+                background: transparent;
+                border: none;
+                box-shadow: 0;
             }
 
             /* Create a container for the input group */
@@ -3435,9 +4084,7 @@
 
             /* Style the search button */
             .custom-button {
-                padding: 10px 20px;
                 border: none;
-                border-radius: 0px 0px 5px 5px;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
             }
@@ -3622,7 +4269,7 @@
                 width: 100%;
             }
 
-            #map div {
+#map div {
     background: transparent;
     border: none;
     box-shadow: none;
@@ -3633,10 +4280,9 @@
 #map {
     z-index: 220;
     flex-grow: 1;
-    width: 90%;
-    height: calc(100dvh - 70px);
-    max-height: calc(100dvh - 70px);
-    border-radius: 16px; /* Smoother, modern pill geometry corners */
+    width: 92%;
+    height: calc(100dvh - 300px);
+    max-height: calc(100dvh - 300px);
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft floating atmosphere */
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -4231,10 +4877,6 @@
                     margin: 0;
                 }
 
-                .details-and-featured {
-                    padding: 10px;
-                }
-
                 .nestedSearchandP {
                     padding: 5px 20px;
                 }
@@ -4293,12 +4935,15 @@
                 }
 
 
-
-                /* Style for the container that holds both sections */
                 .details-and-featured {
+                    padding: 10px;
                     flex-direction: column;
                     justify-content: center;
                     gap: 10px;
+                }
+
+                .featured-listings-container {
+                    width: 100%;
                 }
 
 
@@ -4313,6 +4958,86 @@
                         }
 
                         @media screen and (max-width: 800px) {
+
+                            /* SubNav Styles */              
+                            
+                            .subNavRow3 {
+                                gap: 3px;
+                            }
+
+                            /*--------------------SubNav Styles-----------------------*/
+
+                            #cart-dropdown {
+                                width: calc(100px + 32dvw);
+                            }
+                            .cartBody {
+                                flex-direction: column;
+                            }
+
+                            .cartPart {
+                                flex-direction: row;
+                            }
+                            
+                            .cartBody1 {
+                                width: 100%;
+                                height: 60%;
+                            }
+
+                            .cartBodyImg {
+                                height: 100%;
+                                width: 60%;
+                                padding-right: 0;
+                            }
+
+                            .cartBodyAlt {
+                                min-width: calc(30% - 2px);
+                                width: 100%;
+                                min-height: 0;
+                                height: 100%;
+                                padding: 2px 5px;
+                                background: transparent;
+                                border: none;
+                                box-shadow: none;
+                            }
+
+                            .cartBody2 {
+                                height: 40%;
+                                width: 100%;
+                                flex-direction: column;
+                            }
+
+                            .cartBodyDetails {
+                                max-height: 40px;
+                            }
+
+                            .cartBodyCheckout {
+                                width: 100%;
+                            }
+
+                            .cartsTotalsContainerHistory {
+                                flex-direction: column;
+                                justify-content: flex-start;
+                                align-items: center;
+                                width: 100%;
+                                gap: 2px;
+                            }
+                            
+                            #cartTotalsColumn1-history {
+                                margin-top: 0;
+                            }
+
+                            .cartTotalsColumn1-history2 {
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: space-between;
+                                align-items: center;
+                            }
+
+
+                            /* Header Styles */            
+                
+                            /*--------------------Header Styles-----------------------*/
+
 
                             .headerContent {
                                 display: none;
@@ -4383,12 +5108,12 @@
                             .leftContent {
                                 height: 100%;
                                 width: 100%;
-                                margin-bottom: -4%;
+                                margin-bottom: -8%;
                             }
 
                             .leftContent img {
                                 min-width: 100%;
-                                height: 300px;
+                                min-height: 400px;
                                 border-radius: 1px;
                                 object-fit: contain;
                                 justify-self: flex-start;
@@ -4410,12 +5135,13 @@
                                 text-align: center;
                                 justify-content: center;
                                 align-items: center;
-                                padding: 8px;
-                                margin: 4px 6px;
+                                padding: 10px 6px 6px 6px;
+                                margin: 6px 8px;
                                 width: auto;
                                 height: auto;
                                 background-color: #fffffff0;
                                 border: 1px solid #f8f8f8;
+                                border-radius: 1px;
                                 box-shadow: 0 0 10px rgba(0, 0, 0, .1);
                             }
 
@@ -4428,6 +5154,14 @@
                                 flex-direction: column-reverse;
                                 justify-content: center;
                                 align-items: center;
+                            }
+
+                            #featuredSlider-desktop {
+                                display: none;
+                            }
+
+                            #featuredSlider-mobile {
+                                display: flex;
                             }
 
                             .nested-bodyTabs-ad {
@@ -4816,7 +5550,533 @@
 
                 <!-- Dropdown Menu -->
                 <div class="sideBar" id="cart-dropdown">
-                    <div class="subNavGroup subNavGroup1">
+                    <div class="subNavGroup subNavGroup1 sideBarContent">
+                        <div class="subNavGroup sideBarHeader">
+                            <div class="navTab sideBarTab" id="sideBarTab-cartActive" 
+                                data-activeCheck="true" data-section="cart-dropdown" data-target="sideBarPage-cartActive"
+                                data-h="Active Cart" data-h2="sideBarH-cart" data-slug="sideBarTabHr-cartActive"
+                            >
+                                <p class="lesserP">Active</p>
+                                <hr class="sideBarTabHr" id="sideBarTabHr-cartActive">
+                            </div>    
+                            <hr class="vertHr shadow">                        
+                            <div class="navTab sideBarTab" id="sideBarTab-cartHistory" 
+                                data-activeCheck="true" data-section="cart-dropdown" data-target="sideBarPage-cartHistory"
+                                data-h="Cart History" data-h2="sideBarH-cart" data-slug="sideBarTabHr-cartHistory"
+                            >
+                                <p class="lesserP">History</p>
+                                <hr class="sideBarTabHr" id="sideBarTabHr-cartHistory" style="display: none;">
+                            </div>   
+                            <hr class="vertHr shadow">                           
+                            <div class="navTab sideBarTab" id="sideBarTab-cartCards" 
+                                data-activeCheck="true" data-section="cart-dropdown" data-target="sideBarPage-cartCards"
+                                data-h="Payment Options" data-h2="sideBarH-cart" data-slug="sideBarTabHr-cartCards"
+                            >
+                                <p class="lesserP">Cards</p>
+                                <hr class="sideBarTabHr" id="sideBarTabHr-cartCards" style="display: none;">
+                            </div> 
+                        </div>
+
+                        <div class="subNavGroup sideBarBody">
+                            <div class="cartHead">
+                                <div class="initialCartHead">
+                                    <p class="fineP fineLogIn">Log In</p>
+                                    <p class="fineP">or</p>
+                                    <p class="fineP fineLogIn">Sign Up</p>
+                                </div>
+                            </div>
+                            <div class="sideBarBodyHead">
+                                <div class="sideBodyHeadLeft">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" class="checkboxAll" id="checkboxAll-cart">
+                                        <div class="checkbox">
+                                            <i class="fineIcon fa-solid fa-check"></i>
+                                        </div>
+                                    </label>
+                                    <p class="fineP">Items:</p>
+                                    <p class="fineP" id="cartTotalsItem-itemsQuantity">0</p>
+                                </div>
+                                <div class="sideBodyHeadMain">
+                                <h5 id="sideBarH-cart">Active Cart</h5>
+                                </div>
+                                <div class="sideBodyHeadRight">
+                                    <i class="displayIcon fa-solid fa-floppy-disk"></i>
+                                    <i class="displayIcon fa-solid fa-trash-can"></i>
+                                    <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                </div>
+                            </div>
+                            <div class="page sideBarPage active" id="sideBarPage-cartActive">
+                                <div class="sideBarPageBody">
+                                    <div class="initialSideBarPageBody">
+                                        <p class="lesserP">There are currently no items in your cart</p>
+                                        <p class="lesserP">Please refresh the page or shop now!</p>
+                                    </div>
+                                    <div class="subContent-cart" style="display: none;">
+                                        <div class="cartBody">
+                                            <div class="cartPart cartBody1">
+                                                <div class="cartBodyImg">
+                                                    <div class="sideBodyHeadLeft sideBodyHeadLeft2">
+                                                        <label class="custom-checkbox">
+                                                            <input type="checkbox">
+                                                            <div class="checkbox">
+                                                                <i class="fineIcon fa-solid fa-check"></i>
+                                                            </div>
+                                                        </label>
+                                                        <h5 class="lesserP" id="cartActive-cartNumber">1.</h5>
+                                                        <h5 class="lesserP" id="cartActive-vehicleType">Car</h5>
+                                                    </div>
+                                                    <img src="IMG_5260.JPG">
+                                                </div>
+                                                <div class="cartBodyAlt">
+                                                    <p class="lesserP">This is an example text for what the alt of an image may be.</p>
+                                                </div>
+                                            </div>
+                                            <div class="cartPart cartBody2">
+                                                <div class="cartBodyList cartBodyDetails">
+                                                    <div class="cartBodyList1">
+                                                        <h6>Vehicle Details</h6>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Make:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-make">Hyundai</p>
+                                                        </div>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Model:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-model">Tucson</p>
+                                                        </div>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Year:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-year">2018</p>
+                                                        </div>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Color:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-color">Grey</p>
+                                                        </div>
+                                                        <div class="cartBodyList2" id="cartBodyList2" style="display: none;">
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Trim:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-trim">UT</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Theme:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-condition">Used, Needs Repair</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Color:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-mileage">100,000</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Drive Type:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-driveType">All-Wheel Drive</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Fuel Type:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-fuelType">Regular, 87</p>
+                                                            </div>
+                                                        </div>
+                                                        <i class="displayIcon fa-solid fa-ellipsis" data-target="cartBodyList2"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cartBodyList cartBodyList1 cartBodyCheckOut">
+                                                    <h6>Checkout</h6>
+                                                    <div class="cartBodyListRow">
+                                                        <p class="lesserP cartBodyListItem">Quantity:</p>
+                                                        <div class="cartBodyListItem2">
+                                                            <i class="displayIcon fa-solid fa-minus"></i>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-quantity">1</p>
+                                                            <i class="displayIcon fa-solid fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cartBodyListRow">
+                                                        <p class="lesserP cartBodyListItem">Price:</p>
+                                                        <p class="lesserP cartBodyListItem" id="cartActive-price">$12,000</p>
+                                                    </div>
+                                                    <hr class="shadow">
+                                                    <div class="cartBodyListRow">
+                                                        <span class="lesserP cartBodyListItem">Sub Total:</span>
+                                                        <p class="lesserP cartBodyListItem" id="cartActive-subtotal">$12,000</p>
+                                                    </div>
+
+                                                    <div class="cartBodyListRow" id="cartBodyListRow-delivery">
+                                                        <p class="lesserP cartBodyListItem">Delivery Option:</p>
+                                                        <p class="lesserP cartBodyListItem" id="cartActive-deliveryOption">Pick Up</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="shadow">
+                                    </div>
+                                </div>
+                                <div class="cartTotals" style="display: none;">
+                                    <h5>Cart Totals</h5>
+                                    <div class="cartTotalsContainer">
+                                        <div class="cartTotalsColumn1">
+                                            <div class="cartTotalsBillingBox">
+                                                <div class="cartTotalsRowItem">
+                                                    <p class="lesserP">Name:</p>
+                                                    <p class="lesserP" id="cartTotalsItem-userName">Matthew T. Daniels</p>
+                                                </div>
+                                                <div class="cartTotalsRowItem">
+                                                    <p class="lesserP">Address:</p>
+                                                    
+                                                    <div class="cartTotalsAddressColumn">
+                                                        <p class="lesserP" id="cartTotalsItem-adressLine1">32 Whiffle Tree Rd</p>
+                                                        <p class="lesserP" id="cartTotalsItem-addressLine2">Wallingford, CT 06492</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cartTotalsRowItem">
+                                                <p class="lesserP">Active Card:</p>
+                                                <p class="lesserP" id="cartTotalsItem-itemsQuantity">****4548</p>
+                                            </div>
+                                        </div>
+                                        <div class="cartTotalsBox">
+                                            <div class="cartTotalsContent">
+                                                <div class="cartTotalsColumn1">
+                                                    <p class="lesserP">Price:</p>
+                                                    <p class="lesserP">Taxes:</p>
+                                                    <p class="lesserP">Fees:</p>
+                                                </div>
+                                                <div class="cartTotalsColumn2">
+                                                    <p class="lesserP" id="cartTotalsItem-totalPrice">$26,000</p>
+                                                    <p class="lesserP" id="cartTotalsItem-taxes">$608.02</p>
+                                                    <p class="lesserP" id="cartTotalsItem-fees">$46.98</p>
+                                                </div>
+                                            </div>
+                                            <div class="cartTotalsSub">
+                                                <hr class="shadow">
+                                                <div class="cartTotalsRowSub">
+                                                    <span class="lesserP">Sub Total:</span>
+                                                    <p class="lesserP" id="cartTotalsItem-subtotal">$26,655</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sideBarPageTail">
+                                    <button class="lesserP smallButton">Refresh</button>
+                                    <button class="lesserP smallButton">Shop Now!</button>
+                                    <button class="lesserP smallButton" style="display: none;">Pay Now</button>
+                                </div>                                
+                            </div>
+                            <div class="page sideBarPage" id="sideBarPage-cartHistory" style="display: none;">
+                                <div class="sideBarPageBody">
+                                    <div class="initialSideBarPageBody" style="display: none;">
+                                        <p class="lesserP">No Cart History found</p>
+                                        <p class="lesserP">Please refresh the page or start your journey now!</p>
+                                    </div>
+                                    <div class="subContent-cart">
+                                        <div class="subContentContainer">
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_6081.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
+                                                <p class="lesserP subNavRowP1">Honda Accord</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_5260.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
+                                                <p class="lesserP subNavRowP1">Hyundai Sante Fe</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_6702.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
+                                                <p class="lesserP subNavRowP1">Jeep Cherokee</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_5414.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
+                                                <p class="lesserP subNavRowP1">windsheild Wiper</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_5332.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
+                                                <p class="lesserP subNavRowP1">windsheild Wiper</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_6149.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
+                                                <p class="lesserP subNavRowP1">Car Mat</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_6727.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
+                                                <p class="lesserP subNavRowP1">Buggati z12</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_5643.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
+                                                <p class="lesserP subNavRowP1">BMW H2</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_5414.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
+                                                <p class="lesserP subNavRowP1">'Tires (Set of 4)'</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                            <div class="subNavRow subNavRow3">
+                                                <label class="custom-checkbox">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox">
+                                                        <i class="fineIcon fa-solid fa-check"></i>
+                                                    </div>
+                                                </label>
+                                                <img class="subNavRowImg" src="IMG_6724.JPG">
+                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
+                                                <p class="lesserP subNavRowP1">Oldsmobile Legacy</p>
+                                                <p class="lesserP subNavRowP2">11/09/1994</p>
+                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                            </div>
+                                        </div>
+                                        <div class="displayIcons pageNumbers">
+                                            <i class="displayIcon pageNumber">&lt;&lt;</i>
+                                            <i class="displayIcon pageNumber fa-solid fa-minus"></i>
+                                            <i class="displayIcon pageNumber">1</i>
+                                            <i class="displayIcon pageNumber">2</i>
+                                            <i class="displayIcon pageNumber">3</i>
+                                            <i class="displayIcon pageNumber">4</i>
+                                            <i class="displayIcon pageNumber">5</i>
+                                            <i class="displayIcon pageNumber fa-solid fa-plus"></i>
+                                            <i class="displayIcon pageNumber">>></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="cartTotals">
+                                    <h5>Cart Insights</h5>
+                                    <div class="cartTotalsContainer cartsTotalsContainerHistory">
+                                        <div class="cartTotalsColumn1">
+                                            <div class="cartTotalsInsightGraphs">
+                                            </div>
+                                        </div>
+                                        <div class="cartTotalsHistoryBox cartTotalsColumn1-history2">
+                                            <div class="cartTotalsColumn1">                        
+                                                <div class="cartTotalsHistoryBox">
+                                                    <div class="cartTotalsColumn1">
+                                                        <h6 class="lesserP">Insights</h6>
+                                                        <div class="cartTotalsRowItem">
+                                                            <p class="lesserP">Total Cart:</p>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">62</p>
+                                                        </div>
+                                                        <div class="cartTotalsRowItem">
+                                                            <p class="lesserP">Viewed Total:</p>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">$2,967,354</p>
+                                                        </div>
+                                                        <div class="cartTotalsRowItem">
+                                                            <p class="lesserP">Paid For:</p>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">24</p>
+                                                        </div>
+                                                        <div class="cartTotalsRowItem">
+                                                            <p class="lesserP">Paid Total:</p>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">$16,246</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cartTotalsColumn1">                        
+                                                <div class="cartTotalsHistoryBox">
+                                                    <div class="cartTotalsColumn1">
+                                                        <h6 class="fineP">Top Filters</h6>
+                                                        <div class="cartTotalsRowItem">
+                                                            <span class="fineP">Gas</span>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">324</p>
+                                                        </div>
+                                                        <div class="cartTotalsRowItem">
+                                                            <span class="fineP">Cars</span>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">128</p>
+                                                        </div>
+                                                        <div class="cartTotalsRowItem">
+                                                            <span class="fineP">Honda</span>
+                                                            <p class="lesserP" id="cartTotalsItem-userName">97</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cartTotalsColumn1" id="cartTotalsColumn1-history">                        
+                                            <div class="subNavGroup sideBarHeader">
+                                                <button class="fullSmallButton lesserP navTab2" id="sideBarTab-cartActive"
+                                                    data-section="cartTotalsColumn1-history" data-target="cartTotalsHistoryBox-all"
+                                                    data-targetClass=".cartTotalsHistoryBox"
+                                                >
+                                                    All
+                                                </button>    
+                                                <hr class="vertHr shadow">                        
+                                                <button class="fullSmallButton lesserP navTab2" id="sideBarTab-cartHistory"
+                                                    data-section="cartTotalsColumn1-history" data-target="cartTotalsHistoryBox-paid"
+                                                    data-targetClass=".cartTotalsHistoryBox"
+                                                >
+                                                    Paid
+                                                </button>
+                                            </div>      
+                                            <div class="cartTotalsHistoryBox cartTotalsColumn1-history2" id="cartTotalsHistoryBox-all">
+                                                <div class="cartTotalsColumn1">
+                                                    <h6 class="lesserP">Types:</h6>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Vehicles:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">32</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Parts:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">42</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Services:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">26</p>
+                                                    </div>
+                                                </div>
+                                                <div class="cartTotalsColumn1">
+                                                    <h6 class="lesserP">Planes:</h6>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Land:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">70</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Sea:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">26</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Air:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">3</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Space:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cartTotalsHistoryBox cartTotalsColumn1-history2" id="cartTotalsHistoryBox-paid" style="display: none;">
+                                                <div class="cartTotalsColumn1">
+                                                    <h6 class="lesserP">Types:</h6>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Vehicles:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">2</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Parts:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">8</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Services:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">14</p>
+                                                    </div>
+                                                </div>
+                                                <div class="cartTotalsColumn1">
+                                                    <h6 class="lesserP">Planes:</h6>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Land:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">22</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Sea:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">1</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Air:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">0</p>
+                                                    </div>
+                                                    <div class="cartTotalsRowItem">
+                                                        <p class="lesserP">Space:</p>
+                                                        <p class="lesserP" id="cartTotalsItem-userName">1</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="sideBarPageTail">
+                                    <button class="lesserP smallButton">Refresh</button>
+                                    <button class="lesserP smallButton">Shop Now!</button>
+                                    <button class="lesserP smallButton" style="display: none;">See All</button>
+                                </div>
+                            </div>
+                            <div class="page sideBarPage" id="sideBarPage-cartCards" style="display: none;">
+                                <div class="sideBarPageBody">
+                                    <div class="initialSideBarPageBody">
+                                        <p class="lesserP">No Payment History found</p>
+                                        <p class="lesserP">Please refresh the page or add a card here</p>
+                                    </div>
+                                </div>
+                                <div class="sideBarPageTail sideBarPageTail2">
+                                    <button class="lesserP smallButton">More</button>
+                                    <button class="lesserP smallButton">Add</button>
+                                    <button class="lesserP smallButton" style="display: none;">Save</button>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sideBarNav">
                         <!--subNavHome-->
                         <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
                             <div class="subNavRow subNavBlue">
@@ -4825,85 +6085,149 @@
                             </div>
                         </a>
 
-                        <hr class="navLinksBoxShadow shadow">
-
-                        <div class="subNavGroup">
-                        </div>
-                    </div>
-
-                    <div class="subNavGroup subNavBlueWhite">
-                                                                                                    
-                        <!--subNavHelp-->
-                        <div class="subNavRow" data-target="#bodySubNav-help" data-slug="#mainSubMore-help">
-                            <span class="subNavItem">FAQs/Help</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-help">▼</i>
-                        </div>  
-                        <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-help" style="display: none;">
-                            <hr class="subNavHr">
-                            <div class="subNavMoreBox">
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Frequently Asked Questions</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Help</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">About Us</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Terms of Services</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#cartSubNav-help" data-slug="#cartSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="cartSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="cartSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
-                        <!--subNavSettings-->
-                        <div class="subNavRow" data-target="#bodySubNav-settings" data-slug="#mainSubMore-settings">
-                            <span class="subNavItem">Settings</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-settings">▼</i>
-                        </div>
-                        <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-settings" style="display: none;">
-                            <hr class="subNavHr">
-                            <div class="subNavMoreBox">
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">General</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Preferences</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Account</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#cartSubNav-settings" data-slug="#cartSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="cartSubMore-settings">▼</i>
                             </div>
-                        </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="cartSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>                                                
                 <!-- Dropdown Menu -->
                 <div class="sideBar" id="chat-dropdown">
-                    <div class="subNavGroup subNavGroup1">
+                    <div class="subNavGroup subNavGroup1 sideBarContent">
+                        <div class="subNavGroup sideBarHeader">
+                            <div class="navTab sideBarTab" id="sideBarTab-chatAlerts" 
+                                data-section="chat-dropdown" data-target="sideBarPage-chatAlerts"
+                                data-h="Notifications" data-h2="sideBarH-chat" data-slug="sideBarTabHr-chatAlerts"
+                            >
+                                <p class="lesserP">Notifications</p>
+                                <hr class="sideBarTabHr" id="sideBarTabHr-chatAlerts">
+                            </div>  
+                            <hr class="vertHr shadow">                            
+                            <div class="navTab sideBarTab" id="sideBarTab-chatNew" 
+                                data-section="chat-dropdown" data-target="sideBarPage-chatNew"
+                                data-h="New Messages" data-h2="sideBarH-chat" data-slug="sideBarTabHr-chatNew"
+                            >
+                                <p class="lesserP">New Messages</p>
+                                <hr class="sideBarTabHr" id="sideBarTabHr-chatNew" style="display: none;">
+                            </div>    
+                            <hr class="vertHr shadow">                          
+                            <div class="navTab sideBarTab" id="sideBarTab-chatAll" 
+                                data-section="chat-dropdown" data-target="sideBarPage-chatAll"
+                                data-h="Messenger History" data-h2="sideBarH-chat" data-slug="sideBarTabHr-chatAll"
+                            >
+                                <p class="lesserP">All Messages</p>
+                                <hr class="sideBarTabHr" id="sideBarTabHr-chatAll" style="display: none;">
+                            </div>
+                        </div>
+                        <hr class="navLinksBoxShadow shadow">
+
+                        <div class="subNavGroup sideBarBody">
+                            <div class="sideBarBodyHead">
+                                <h5 id="sideBarH-chat">Notifications</h5>
+                            </div>
+                            <div class="page sideBarPage" id="sideBarPage-chatAlerts">
+                                <div class="sideBarPageBody">
+                                    <div class="initialSideBarPageBody">
+                                        <p class="lesserP">There are currently no new notifications</p>
+                                    </div>
+                                </div>
+                                <div class="sideBarPageTail">
+                                    <button class="lesserP smallButton">Refresh</button>
+                                    <button class="lesserP smallButton">See All</button>
+                                </div>                                
+                            </div>
+                            <div class="page sideBarPage" id="sideBarPage-chatNew" style="display: none;">
+                                <div class="sideBarPageBody">
+                                    <div class="initialSideBarPageBody">
+                                        <p class="lesserP">There are currently no new messages</p>
+                                    </div>
+                                </div>
+                                <div class="sideBarPageTail sideBarPageTail">
+                                    <button class="lesserP smallButton">Refresh</button>
+                                    <button class="lesserP smallButton">Go to Messenger</button>
+                                </div>
+                            </div>
+                            <div class="page sideBarPage" id="sideBarPage-chatAll" style="display: none;">
+                                <div class="sideBarPageBody">
+                                    <div class="initialSideBarPageBody">
+                                        <p class="lesserP">No Messenger History found</p>
+                                        <p class="lesserP">Please refresh the page or go to the messenger to get started now!</p>
+                                    </div>
+                                </div>
+                                <div class="sideBarPageTail sideBarPageTail">
+                                    <button class="lesserP smallButton">Refresh</button>
+                                    <button class="lesserP smallButton">Go to Messenger</button>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sideBarNav">
                         <!--subNavHome-->
                         <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
                             <div class="subNavRow subNavBlue">
@@ -4912,80 +6236,215 @@
                             </div>
                         </a>
 
-                        <hr class="navLinksBoxShadow shadow">
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#chatSubNav-help" data-slug="#chatSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="chatSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="chatSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
 
-                        <div class="subNavGroup">
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#chatSubNav-settings" data-slug="#chatSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="chatSubMore-settings">▼</i>
+                            </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="chatSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sideBar" id="account-dropdown">
+                    <div class="subNavGroup subNavGroup1">
+                        <div class="subNavGroup sideBarBody">
+                            <div class="sideBarBodyHead">
+                                <h5 id="sideBarH-account">Oasis Account</h5>
+                            </div>
+                            <div class="page sideBarPage" id="sideBarPage-accountActive">
+                                <div class="sideBarPageBody">
+
+                                </div>
+                                <div class="sideBarPageTail">
+                                    <button class="lesserP smallButton">Sign Up</button>
+                                    <p class="lesserP">Or</p>
+                                    <button class="lesserP smallButton">Log In</button>
+                                </div>                                
+                            </div>
+                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#accountsideNav-prefernces" data-slug="#accountSideMore-preferences">
+                                <span class="subNavItem">Preferences</span>
+                                <i class="subNavButton subMoreToggle" id="accountSideMore-preferences">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="accountSideNav-preferences" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Notifications</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Display/Background</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Switch Accounts</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>                                        
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Log Out</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">FAQs/Help</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="subNavGroup subNavBlueWhite">
-                                                                                                    
-                        <!--subNavHelp-->
-                        <div class="subNavRow" data-target="#bodySubNav-help" data-slug="#mainSubMore-help">
-                            <span class="subNavItem">FAQs/Help</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-help">▼</i>
-                        </div>  
-                        <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-help" style="display: none;">
-                            <hr class="subNavHr">
-                            <div class="subNavMoreBox">
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Frequently Asked Questions</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Help</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">About Us</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Terms of Services</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
+                    <div class="sideBarNav">
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
                             </div>
-                        </div>
+                        </a>
 
-                        <!--subNavSettings-->
-                        <div class="subNavRow" data-target="#bodySubNav-settings" data-slug="#mainSubMore-settings">
-                            <span class="subNavItem">Settings</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-settings">▼</i>
-                        </div>
-                        <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-settings" style="display: none;">
-                            <hr class="subNavHr">
-                            <div class="subNavMoreBox">
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">General</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Preferences</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Account</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#accountSubNav-help" data-slug="#accountSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="accountSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="accountSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
 
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#accountSubNav-settings" data-slug="#accountSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="accountSubMore-settings">▼</i>
+                            </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="accountSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -5670,14 +7129,94 @@
                                 </div>
                             </div>
               
-                            <div class="bodyMain">
+                            <div class="bodyMain">            
                                 <div class="bodyTabs-and-search">
                                     <div class="bodyTabs">
                                         <button class="fullButton bodyTab active">Vehicles</button>
                                         <button class="fullButton bodyTab">Parts</button>
                                         <button class="fullButton bodyTab">Services</button>
                                     </div>
-                                    
+                                    <div class="featuredSlider" id="featuredSlider-mobile">
+                                        <!-- Slide 1 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_5260.JPG" alt="Featured Listing 1">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$450,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Slide 2 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_5332.JPG" alt="Featured Listing 2">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$620,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 3 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_5357.JPG" alt="Featured Listing 3">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$385,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 4 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_5414.JPG" alt="Featured Listing 4">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$710,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 5 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_5643.JPG" alt="Featured Listing 5">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$540,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 6 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_6081.JPG" alt="Featured Listing 6">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$495,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 7 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_6149.JPG" alt="Featured Listing 7">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$825,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Slide 8 -->
+                                        <div class="featuredSlide">
+                                            <div class="featuredSlideContent">
+                                                <img src="IMG_6428.JPG" alt="Featured Listing 8">
+                                                <div class="slideOverlay">
+                                                    <span class="fineP slidePrice">$310,000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>     
                                     <div class="body-search-section">
                                         <form class="body-search-form" id="mobile-body-search-form">
                                             <label for="mobile-welcome-vehicleType">Vehicle Type:</label>
@@ -5742,8 +7281,169 @@
                                             </select>
                                             <button type="button" id="mobile-body-searchButton">Search</button>
                                         </form>
-                                    </div>
+                                    </div>  
                                 </div>
+
+                                <div class="featuredSlider" id="featuredSlider-desktop">
+                                    <!-- Slide 1 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5260.JPG" alt="Featured Listing 1">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Slide 2 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5332.JPG" alt="Featured Listing 2">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$620,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5357.JPG" alt="Featured Listing 3">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$385,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 4 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5414.JPG" alt="Featured Listing 4">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$710,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 5 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5643.JPG" alt="Featured Listing 5">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$540,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 6 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_6081.JPG" alt="Featured Listing 6">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$495,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 7 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_6149.JPG" alt="Featured Listing 7">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$825,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 8 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_6428.JPG" alt="Featured Listing 8">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$310,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                        <!-- Slide 1 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5260.JPG" alt="Featured Listing 1">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$450,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Slide 2 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5332.JPG" alt="Featured Listing 2">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$620,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5357.JPG" alt="Featured Listing 3">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$385,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 4 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5414.JPG" alt="Featured Listing 4">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$710,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 5 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_5643.JPG" alt="Featured Listing 5">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$540,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 6 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_6081.JPG" alt="Featured Listing 6">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$495,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 7 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_6149.JPG" alt="Featured Listing 7">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$825,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 8 -->
+                                    <div class="featuredSlide">
+                                        <div class="featuredSlideContent">
+                                            <img src="IMG_6428.JPG" alt="Featured Listing 8">
+                                            <div class="slideOverlay">
+                                                <span class="fineP slidePrice">$310,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
                                         
                                 <!-- Vehicles Content with Buy, Sell, Rent bodyTabs -->
                                 <div class="content" id="vehiclesContent">
@@ -6572,36 +8272,36 @@
                                         <input class="userInput" id="serviceSearchBar" placeholder="Search Vehicles Here!"
                                             data-function="serviceSearchFunction" data-self="serviceSearchBar" data-searchListener="true"
                                         >
-                                        <button class="widthButton searchIcon" id="searchButton">Search</button>
+                                        <button class=" lesserPwidthButton searchIcon" id="searchButton">Search</button>
                                     </div>
                                     <hr>
                         
                                     <div class="service-sections">
                                         <!-- List Services -->
                                         <div class="service-section" id="listServicesContent">
-                                            <h3>List Your Services</h3>
-                                            <p>Are you a service provider? List your services and reach potential customers.</p>
+                                            <h3 class="lesserP">List Your Services</h3>
+                                            <p class="lesserP">Are you a service provider? List your services and reach potential customers.</p>
                                             <a href="https://www.worldmotormarket.com/listings-template#content-services">
-                                                <button class="widthButton list-button">List Services</button>
+                                                <button class=" lesserP widthButton list-button">List Services</button>
                                             </a>
                                         </div>
 
                                         <!-- Trusted Provider Sign-up -->
                                         <div class="service-section" id="trustedProviderContent">
-                                            <h3>Become a Trusted Provider</h3>
-                                            <p>Join our network of trusted service providers and connect with customers.</p>
-                                            <button class="widthButton list-button" id="trusted-provider-button">Sign Up</button>
+                                            <h3 class="lesserP">Become a Trusted Provider</h3>
+                                            <p class="lesserP">Join our network of trusted service providers and connect with customers.</p>
+                                            <button class=" lesserPwidthButton list-button" id="trusted-provider-button">Sign Up</button>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mcontainer">
                                     <div id="map-container">
                                         <div id="map-container-content">
-                                            <h3>Search for Vehicles, Parts, and Services in your area.</h3>
+                                            <h3 lesserP>Search for Vehicles, Parts, and Services in your area.</h3>
                                             <div class="custom-input-group">
                                                 <input type="text" id="addressInput" class="custom-input" placeholder="Enter an address or place name">
                                                 <input type="text" id="zipcodeInput" class="custom-input" placeholder="Enter a US zipcode" autocomplete="postal-code">
-                                                <button onclick="searchLocation()" class="custom-button">Search</button>
+                                                <button class="lesserP fullSmallButton" onclick="searchLocation()" class="custom-button">Search</button>
                                             </div>           
                                         </div>         
                                         <!-- Create a div element to hold the map -->
@@ -6623,7 +8323,7 @@
                                     </div> 
                                 </div>
                             </div>
-                            <div class="Part" id="BodyTail">
+                            <div class="Part" id="BodyTail" style="display: none;">
                                 <div class="part" id="TailHead"></div>
                                 <div class="part" id="TailMain">
                                     <div class="TailContainer">
@@ -6684,9 +8384,16 @@
 
                     <!-- Home Tail -->
                     <section class="Tail part" id="mainTail">
-                        <i class="fa-solid fa-gear"></i>
-                        <button class="widthButton moreButton">Learn More</button>
-                        <i class="fa-solid fa-user"></i>
+                        <i class="IconA fa-solid fa-gear"></i>
+                        <div class="tailHs">
+                            <h6 class="fineP">A Xanthera Group Company</h6>
+                            <h6 class="fineP">2026</h6>
+                        </div>
+                        <div class="tailButtons">
+                            <button class="lesserP smallButton moreButton">About Us</button>
+                            <button class="lesserP smallButton moreButton">Contact Us</button>
+                        </div>
+                        <i class="IconA fa-solid fa-user"></i>
                     </section>
 
                 </div>
@@ -9172,6 +10879,7 @@
                     h4: {color: `${cobalt1}`},
                     h5: {color: `${cobalt1}`},
                     h6: {color: `${cobalt1}`},
+                    '.fineLogIn': {color: `${cobalt1}`},
                     
                     //Special
                     i: {color: `${cobalt1}`},
@@ -9181,7 +10889,7 @@
                     'select, textarea, input': {border: `1px solid ${cobalt1}`},
                     'input:hover, input:hover, input:hover': {border: `1.2px solid ${cobalt2}`},
                     'input:focus, input:focus, input:focus': {border: `1px solid ${cobaltDark}`},
-
+                    
                     hr: {background: `${cobalt1}`},
                     '.shadow': {background: `${greyDark}`, opacity: '.08'},
    
@@ -10120,6 +11828,29 @@
                 });
             });
 
+
+
+            // Fa-Ellipsis
+
+            const ellipsi = document.querySelectorAll('.fa-ellipsis');
+
+            ellipsi.forEach(ellipsis => {
+                const dataTarget = document.getElementById(ellipsis.getAttribute('data-target'));
+
+                ellipsis.addEventListener('click', () =>{
+                    if (dataTarget) {
+                        if (dataTarget.style.display === 'none' || dataTarget.style.display === '') {
+                            dataTarget.style.display = 'flex';
+                        } else {
+
+                            // Insert Code to Display Full Listing
+
+                            return
+                        }
+                    }
+                })
+            })
+
         </script>
         <script>
 
@@ -10331,9 +12062,25 @@
             });
 
 
+            // Checkbox (Master & Child)
+
+            const masterCheckbox = document.querySelector('#checkboxAll-cart');
+
+            masterCheckbox.addEventListener('change', () => {
+                let childCheckboxes = document.querySelectorAll('#cart-dropdown .sideBarPage.active .custom-checkbox input');
+
+                childCheckboxes.forEach(checkbox => {
+                    // Exclude the master checkbox itself from the loop
+                    if (checkbox !== masterCheckbox) {
+                        checkbox.checked = masterCheckbox.checked;
+                    }
+                });
+            });
+
+
 
             //Bookmark/Check (Switch & *Save*)
-            const checkIcons = document.querySelectorAll('.fa-check');
+            const checkIcons = document.querySelectorAll('#Extended .fa-check');
             const bookmarkIcons = document.querySelectorAll('.fa-bookmark');
 
             checkIcons.forEach(check => {
@@ -10568,13 +12315,18 @@
 
                 //Nav Tab Dataset
                 const section = document.getElementById(navTab.getAttribute('data-section'));
-                
+
                 const relPages = section.querySelectorAll(`.page`);
                 const relNavTabs = section.querySelectorAll(`.navTab`);
 
                 const target = document.getElementById(navTab.getAttribute('data-target'));
                 const h2 = document.getElementById(navTab.getAttribute('data-h2'));
                 const h = navTab.getAttribute('data-h');
+
+
+                const navTabHrAll = section.querySelectorAll('.sideBarTabHr');
+                const dataSlug = document.getElementById(navTab.getAttribute('data-slug'));
+                const dataActiveCheck = navTab.getAttribute('data-activeCheck');
 
 
                 navTab.addEventListener('click', () => {
@@ -10588,6 +12340,16 @@
                     target.style.display = 'block';
                     h2.textContent = `${h}`;
 
+                    if (dataSlug) {
+                        navTabHrAll.forEach(hr => {hr.style.display = 'none'});
+                        dataSlug.style.display = 'block';
+                    }
+
+                    if (dataActiveCheck) {
+                        relPages.forEach(page => {page.classList.remove('active')});
+                        target.classList.add('active');
+                    }
+
                     //If Search Tab Look for Search Query
                     if (navTab === document.querySelector('#extNavTab-search')) {
                         if (extSearchBar.value !== '') {
@@ -10596,6 +12358,24 @@
                     }
                 });
             });
+
+            // NavTabs2
+
+            const navTabs2 = document.querySelectorAll(`.navTab2`);
+
+            navTabs2.forEach(navTab => {
+                //Nav Tab Dataset
+                const section = document.getElementById(navTab.getAttribute('data-section'));
+                const targetClass = section.querySelectorAll(navTab.getAttribute('data-targetClass'));
+                const target = document.getElementById(navTab.getAttribute('data-target'));
+
+                navTab.addEventListener('click', () => {
+                    //Display Target Body and Add Actives
+                    targetClass.forEach(t => t.style.display = 'none');
+                    target.style.display = 'flex';
+                });
+            });
+
 
 
             // Titles & Head Pop Ups
