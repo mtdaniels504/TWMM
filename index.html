@@ -2860,7 +2860,7 @@
                 padding: 0;
                 margin: 0;
                 position: relative;
-                height: calc(2.2rem + 2.8dvh);
+                height: calc(2.25rem + 2.75dvh);
                 aspect-ratio: 5 / 3.1;
                 overflow: hidden;
                 border-radius: 1px;
@@ -3132,6 +3132,11 @@
                 -webkit-overflow-scrolling: touch;
             }
 
+            .sideBarTools {
+                justify-content: flex-start;
+                gap: 4px;
+            }
+
             /* Hide scrollbar */
             .sideBarPageBody::-webkit-scrollbar {
                 display: none;
@@ -3267,13 +3272,10 @@
             }
 
             .sideBarNav {
+                margin-top: auto;
                 width: 100%;
             }
 
-
-            #tools-dropdown {
-                justify-content: flex-start;
-            }
 
             /* Style the navigation options in the dropdown */
             .nav-option,
@@ -4228,8 +4230,10 @@
                 justify-content: center;
                 align-items: center;
                 width: 100%;
+                max-width: 100%;
                 height: 100%;
                 max-height: 100%;
+                object-fit: contain;
             }
 
             .nav-content-content hr {
@@ -4240,25 +4244,21 @@
 
 
             .nav-coupon {
-                min-width: 60%;
-                width: 60%;
-                max-width: 60%;
-                min-height: 60%;
-                height: 60%;
-                max-height: 60%;
+                width: auto;
+                max-width: 100%;
+                height: 100%;
+                max-height: 100%;
             }
 
             .nav-cC-2 {
+                flex-grow: 1;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 text-align: left;
-                min-width: 50%;
-                width: 50%;
-                max-width: 50%;
-                min-height: 100%;
-                max-height: 100%;
+                width: 100%;
+                height: 100%;
                 margin: 0;
                 padding: 0;
             }
@@ -5132,6 +5132,10 @@
                                 align-items: center;
                             }
 
+                            .nested-content-header {
+                                margin: 4px auto;
+                            }
+
                             #featuredSlider-desktop {
                                 display: none;
                             }
@@ -5181,11 +5185,6 @@
                                 justify-content: center;
                                 align-items: center;
                                 text-align: left;
-                                min-width: 100%;
-                                width: 100%;
-                                min-height: 75%;
-                                height: 75%;
-                                max-height: 75%;
                                 margin: 0;
                                 padding: 0;
                             }
@@ -5736,11 +5735,11 @@
                             </div>
                             <div class="page sideBarPage" id="sideBarPage-cartHistory" style="display: none;">
                                 <div class="sideBarPageBody">
-                                    <div class="initialSideBarPageBody">
+                                    <div class="initialSideBarPageBody" style="display: none;">
                                         <p class="lesserP">No Cart History found</p>
                                         <p class="lesserP">Please refresh the page or start your journey now!</p>
                                     </div>
-                                    <div class="subContent-cart" style="display: none;">
+                                    <div class="subContent-cart">
                                         <div class="subContentContainer">
                                             <div class="subNavRow subNavRow3">
                                                 <label class="custom-checkbox">
@@ -5887,7 +5886,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="cartTotals"  style="display: none;">
+                                <div class="cartTotals">
                                     <h5>Cart Insights</h5>
                                     <div class="cartTotalsContainer cartsTotalsContainerHistory">
                                         <div class="cartTotalsColumn1">
@@ -6426,7 +6425,7 @@
 
 
                 <!-- Dropdown Menu -->
-                <div class="sideBar" id="buyerTools-dropdown">
+                <div class="sideBar sideBarTools" id="buyerTools-dropdown">
                     <a href="#" class="nav-option disabled-link" id="nav-option-buy-process">Buying Process</a>
                     <a href="#step1" class="nav-option" data-content="nav-unit-research">Step 1: Research Vehicle Models</a>
                     <a href="#step2" class="nav-option" data-content="nav-unit-budget">Step 2: Set a Budget</a>
@@ -6440,6 +6439,86 @@
                     <a href="#step9" class="nav-option" data-content="nav-unit-warranty">Warranty/Insurance</a>
                     <a href="#step10" class="nav-option" data-content="nav-unit-financing">Financing</a>
                     <a href="#step11" class="nav-option" data-content="nav-unit-custom">Customization/Upgrades</a>
+                    
+                    <div class="sideBarNav">
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                            </div>
+                        </a>
+
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#buyerVehSubNav-help" data-slug="#buyerVehSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="buyerVehSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="buyerVehSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#buyerVehSubNav-settings" data-slug="#buyerVehSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="buyerVehSubMore-settings">▼</i>
+                            </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="buyerVehSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             
                 <!-- Dropdown Menu for Seller Tools -->
@@ -6456,6 +6535,86 @@
                     <a href="#seller-service3" class="nav-option" data-content="nav-unit-pricing">Pricing Guidelines</a>
                     <a href="#seller-service2" class="nav-option" data-content="nav-unit-repairs">Vehicle Inspections and Repairs</a>
                     <a href="#seller-service4" class="nav-option" data-content="nav-unit-legal">Legal and Documentation</a>
+                                    
+                    <div class="sideBarNav">
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                            </div>
+                        </a>
+
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#buyerVehSubNav-help" data-slug="#buyerVehSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="buyerVehSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="buyerVehSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#sellerVehSubNav-settings" data-slug="#sellerVehSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="sellerVehSubMore-settings">▼</i>
+                            </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="sellerVehSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                                                             
@@ -6474,6 +6633,86 @@
                     <a href="#parts-step9" class="nav-option" data-content="nav-unit-inspectionsp">Inspections</a>
                     <a href="#parts-step10" class="nav-option" data-content="nav-unit-warrantyp">Warranty/Returns</a>
                     <a href="#parts-step11" class="nav-option" data-content="nav-unit-financingp">Financing</a>
+                    
+                    <div class="sideBarNav">
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                            </div>
+                        </a>
+
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#buyerPartSubNav-help" data-slug="#buyerPartSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="buyerPartSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="buyerPartSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#buyerPartSubNav-settings" data-slug="#buyerPartSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="buyerPartSubMore-settings">▼</i>
+                            </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="buyerPartSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Dropdown Menu for Parts Seller Tools -->
@@ -6490,6 +6729,86 @@
                     <a href="#seller-parts-service3" class="nav-option" data-content="nav-unit-pricingp">Pricing Guidelines</a>
                     <a href="#seller-parts-service2" class="nav-option" data-content="nav-unit-inspectionsp">Parts Inspections and Repairs</a>
                     <a href="#seller-parts-service4" class="nav-option" data-content="nav-unit-legalp">Legal and Documentation</a>
+                                    
+                    <div class="sideBarNav">
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                            </div>
+                        </a>
+
+                        <div class="subNavGroup subNavBlueWhite">
+                                                                                                        
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#sellerPartsSubNav-help" data-slug="#sellerPartsSubMore-help">
+                                <span class="subNavItem">FAQs/Help</span>
+                                <i class="subNavButton subMoreToggle" id="sellerPartsSubMore-help">▼</i>
+                            </div>  
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="sellerPartsSubNav-help" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Frequently Asked Questions</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Help</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">About Us</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Terms of Services</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!--subNavSettings-->
+                            <div class="subNavRow" data-target="#sellerPartsSubNav-settings" data-slug="#sellerPartsSubMore-settings">
+                                <span class="subNavItem">Settings</span>
+                                <i class="subNavButton subMoreToggle" id="sellerPartsSubMore-settings">▼</i>
+                            </div>
+                            <!--subNavMoreHelp-->
+                            <div class="subNavMore" id="sellerPartsSubNav-settings" style="display: none;">
+                                <hr class="subNavHr">
+                                <div class="subNavMoreBox">
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">General</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Preferences</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                    <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                        <div class="subNavRow2">
+                                            <span class="subNavItem">Account</span>
+                                            <i class="subNavButton subPlusButton">+</i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
 
 
@@ -6512,12 +6831,12 @@
                                 <div class="navLinksShadows">
                                     <hr class="vertHr shadow navLinksHr">
                                 </div>
-                                <button class="navLink" onclick="window.location.href='https://www.worldmotormarket.com/oasis-member'"
+                                <button class="navLink" onclick="window.location.href='https://www.worldmotormarket.com/maps'"
                                     >Map</button>
                                 <div class="navLinksShadows">
                                     <hr class="vertHr shadow navLinksHr">
                                 </div>
-                                <button class="navLink" onclick="window.location.href='https://www.worldmotormarket.com/maps'"
+                                <button class="navLink" onclick="window.location.href='https://www.worldmotormarket.com/oasis-member'"
                                     >Oasis</button>
                                 <div class="navLinksShadows">
                                     <hr class="vertHr shadow navLinksHr">
@@ -9874,6 +10193,9 @@
                                             <img class="nav-coupon" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                         </div>
                                     </div>
+                                    <div class="nav-cC-2">
+                                        <p class="lesserP">Placeholder Text</p>
+                                    </div>
                                     <hr>
                                     <div class="nav-cC-1">
                                         <div class="nav-cC-text" id="nav-cC-ad2">
@@ -9883,6 +10205,10 @@
                                         <div class="nav-cC-coupon">
                                             <img class="nav-coupon" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                         </div>
+                                    </div>
+                                    <hr>
+                                    <div class="nav-cC-2">
+                                        <p class="lesserP">Placeholder Text</p>
                                     </div>
                                 </div>
                                 <div class="nav-content-button">
@@ -9904,6 +10230,9 @@
                                             <img class="nav-coupon" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                         </div>
                                     </div>
+                                    <div class="nav-cC-2">
+                                        <p class="lesserP">Placeholder Text</p>
+                                    </div>
                                     <hr>
                                     <div class="nav-cC-1">
                                         <div class="nav-cC-text" id="nav-cCc-ad2">
@@ -9913,6 +10242,9 @@
                                         <div class="nav-cC-coupon">
                                             <img class="nav-coupon" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                         </div>
+                                    </div>
+                                    <div class="nav-cC-2">
+                                        <p class="lesserP">Placeholder Text</p>
                                     </div>
                                 </div>
                                 <div class="nav-content-button">
