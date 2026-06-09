@@ -733,7 +733,6 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 5px 10px;
-                bottom: 2px;
             }
 
             .tailHs, .tailButtons {
@@ -1167,15 +1166,15 @@
 
             .subNav {
                 position: absolute;
-                width: calc(100px + 20dvw);
+                width: calc(150px + 15dvw);
                 height: auto;
             }
 
-            #mainSubNav, #bodySubNav {
+            #mainSubNav, .bodySubNav {
                 z-index: 800;
                 top: clamp(107.5px, 80px + 3.6dvw, 122px);
                 left: 3px;
-                height: calc(100dvh - 124px - 4.6dvw);
+                height: calc(100dvh - 134px - 3dvw);
                 max-height: 100%;
                 display: flex;
                 flex-direction: column;
@@ -3120,7 +3119,7 @@
                 z-index: 800;
                 top: clamp(107.5px, 80px + 3.6dvw, 122px);
                 right: 3px;
-                height: calc(100dvh - 124px - 4.6dvw);
+                height: calc(100dvh - 134px - 3dvw);
                 max-height: 100%;
                 flex-direction: column;
                 justify-content: space-between;
@@ -3186,7 +3185,7 @@
                 justify-content: space-between;
                 align-items: flex-end;
                 width: 100%;
-                padding: 1.5dvh 5px 5px 5px;
+                padding: 1dvh 5px 5px 5px;
             }
 
             .sideBodyHeadLeft {
@@ -3237,7 +3236,7 @@
                 align-items: center;
                 text-align: center;
                 height: 100%;
-                max-height: calc(36dvh - 2.8dvw);
+                max-height: calc(35dvh - 2.75dvw);
                 overflow-y: auto;
                 overflow-x: hidden;
                 gap: 5px;                
@@ -3362,6 +3361,7 @@
                 justify-content: center;
                 align-items: center;
                 width: 100%;
+                height: 100%;
                 margin: 2px;
             }
 
@@ -3375,14 +3375,14 @@
                 align-items: center;
             }
 
-
             .cartBody1 {
-                flex-grow: 1;
-                width: 100%;
-                height: 100%;
+                justify-content: flex-start;
+                margin-top: 2px;
+                margin-bottom: auto;
             }
 
             .cartBodyImg {
+                height: 60%;
                 object-fit: contain;
                 padding-right: 2px;
                 overflow: hidden;
@@ -3390,6 +3390,7 @@
 
             .cartBodyImg img {
                 border-radius: 1px;
+                max-width: 96%;
             }
 
             .cartBodyImg h5 {
@@ -3400,7 +3401,6 @@
             .cartBodyAlt {
                 flex-grow: 1;
                 width: 100%;
-                min-height: calc(30% - 2px);
                 height: 100%;
             }
 
@@ -4396,7 +4396,122 @@
 }
 
 
+    .reminders-container {
+        width: 100%;
+        max-height: calc(50dvh - 10dvw);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
 
+    .form-group {
+        display: flex;
+        align-items: space-between;
+        width: 100%;
+        gap: 5px;
+    }
+
+
+    .form-group.vertical {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+        flex: 1;
+        width: 100%;
+        border-radius: 1px;
+        padding: 1px 2px;
+    }
+
+    /* Action Buttons */
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10%;
+    }
+
+    .btn:disabled {
+      color: var(--ios-gray);
+      cursor: not-allowed;
+    }
+
+    /* Reminders List Display */
+    .reminders-list {
+      margin-top: 25px;
+    }
+
+    .list-title {
+      text-transform: uppercase;
+    }
+
+    .reminder-item {
+      display: flex;
+      align-items: flex-start;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .checkbox-btn {
+      width: 22px;
+      height: 22px;
+      border: 2px solid var(--ios-border);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .checkbox-btn:hover {
+      background-color: #f2f2f7;
+    }
+
+    .reminder-content {
+      flex: 1;
+    }
+
+    .reminder-title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .priority-marker {
+      font-weight: bold;
+    }
+    .p-low { color: var(--priority-low); }
+    .p-medium { color: var(--priority-med); }
+    .p-high { color: var(--priority-high); }
+
+
+    .reminder-notes {
+      color: var(--ios-gray);
+      margin-top: 2px;
+    }
+
+    .reminder-meta {
+      color: var(--ios-gray);
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .meta-date { color: #ff3b30; } /* iOS uses red/orange text for alert times */
+    .meta-loc { color: var(--ios-gray); }
+
+    .empty-state {
+      text-align: center;
+      color: var(--ios-gray);
+      padding: 4px 0;
+    }
 
 
                             
@@ -4935,7 +5050,15 @@
 
                         @media screen and (max-width: 800px) {
 
-                            /* SubNav Styles */              
+                            /* SubNav Styles */      
+                            
+                            .subNav {
+                                width: 57.5dvw;
+                            }
+
+                            .sideBar {
+                                width: 67.5dvw;
+                            }
                             
                             .subNavRow3 {
                                 gap: 3px;
@@ -4943,51 +5066,14 @@
 
                             /*--------------------SubNav Styles-----------------------*/
 
-                            #cart-dropdown {
-                                width: calc(100px + 32dvw);
-                            }
-                            .cartBody {
-                                flex-direction: column;
-                            }
-
-                            .cartPart {
-                                flex-direction: row;
-                            }
                             
-                            .cartBody1 {
-                                width: 100%;
-                                height: 60%;
+                            #sideBarPageBody-cartHistory {
+                                max-height: calc(25dvh - 2.75dvw);
                             }
 
-                            .cartBodyImg {
-                                height: 100%;
-                                width: 60%;
-                                padding-right: 0;
-                            }
 
-                            .cartBodyAlt {
-                                min-width: calc(30% - 2px);
-                                width: 100%;
-                                min-height: 0;
-                                height: 100%;
-                                padding: 2px 5px;
-                                background: transparent;
-                                border: none;
-                                box-shadow: none;
-                            }
-
-                            .cartBody2 {
-                                height: 40%;
-                                width: 100%;
-                                flex-direction: column;
-                            }
-
-                            .cartBodyDetails {
-                                max-height: 40px;
-                            }
-
-                            .cartBodyCheckout {
-                                width: 100%;
+                            #cartTotals-cartHistory {
+                                padding-top: 2px;
                             }
 
                             .cartsTotalsContainerHistory {
@@ -5332,7 +5418,7 @@
                         <!--subNavHelp-->
                         <div class="subNavRow" data-target="#mainSubNav-help" data-slug="#mainSubMore-help">
                             <span class="subNavItem">FAQs/Help</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-help">▼</i>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="mainSubMore-help"></i>
                         </div>  
                         <!--subNavMoreHelp-->
                         <div class="subNavMore" id="mainSubNav-help" style="display: none;">
@@ -5368,7 +5454,7 @@
                         <!--subNavSettings-->
                         <div class="subNavRow" data-target="#mainSubNav-settings" data-slug="#mainSubMore-settings">
                             <span class="subNavItem">Settings</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-settings">▼</i>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="mainSubMore-settings"></i>
                         </div>
                         <!--subNavMoreHelp-->
                         <div class="subNavMore" id="mainSubNav-settings" style="display: none;">
@@ -5399,7 +5485,7 @@
                 </div>
 
                 <!--bodySubNav(Head)-->
-                <div class="subNav" id="bodySubNav" style="display: none;">
+                <div class="subNav bodySubNav" id="bodySubNav-world" style="display: none;">
 
                     <div class="subNavGroup subNavGroup1">
 
@@ -5483,12 +5569,12 @@
                     <div class="subNavGroup subNavBlueWhite">
                                                                                                     
                         <!--subNavHelp-->
-                        <div class="subNavRow" data-target="#bodySubNav-help" data-slug="#mainSubMore-help">
+                        <div class="subNavRow" data-target="#bodySubNav-worldHelp" data-slug="#bodySubMore-worldHelp">
                             <span class="subNavItem">FAQs/Help</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-help">▼</i>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-help"></i>
                         </div>  
                         <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-help" style="display: none;">
+                        <div class="subNavMore" id="bodySubNav-worldHelp" style="display: none;">
                             <hr class="subNavHr">
                             <div class="subNavMoreBox">
                                 <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
@@ -5519,12 +5605,332 @@
                         </div>
 
                         <!--subNavSettings-->
-                        <div class="subNavRow" data-target="#bodySubNav-settings" data-slug="#mainSubMore-settings">
+                        <div class="subNavRow" data-target="#bodySubNav-worldSettings" data-slug="#bodySubMore-worldSettings">
                             <span class="subNavItem">Settings</span>
-                            <i class="subNavButton subMoreToggle" id="mainSubMore-settings">▼</i>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-worldSettings"></i>
                         </div>
                         <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-settings" style="display: none;">
+                        <div class="subNavMore" id="bodySubNav-worldSettings" style="display: none;">
+                            <hr class="subNavHr">
+                            <div class="subNavMoreBox">
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">General</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Preferences</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Account</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="subNav bodySubNav" id="bodySubNav-help" style="display: none;">
+
+                    <div class="subNavGroup subNavGroup1">
+
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                            </div>
+                        </a>
+
+                        <hr class="navLinksBoxShadow shadow">
+
+                        <div class="subNavGroup">
+                            <form class="filterForm">
+                                <div class="filterRow">
+                                    <label for="filterAddress">Address:</label>
+                                    <input type="text" id="filterAddress" name="filterAddress" placeholder="Enter Address">
+                                </div>
+                                <div class="filterRow">
+                                    <label for="filterCity">City:</label>
+                                    <input type="text" id="filterCity" name="filterCity" placeholder="Enter City">
+                                </div>
+                                <div class="filterRowDuo">
+                                    <div class="filterRow">
+                                        <label for="filterState">State:</label>
+                                        <input type="text" id="filterState" name="filterState" placeholder="Enter State">
+                                    </div>
+                                    <div class="filterRow">
+                                        <label for="filterZip">Zip Code:</label>
+                                        <input type="text" id="filterZip" name="filterZip" placeholder="Enter Zip Code">
+                                    </div>
+                                </div>
+                                <div class="filterRow">
+                                    <label for="filterStoreName">Store Name or Reference Point:</label>
+                                    <input type="text" id="filterStoreName" name="filterStoreName" placeholder="e.g., Shell, Walmart, Main St.">
+                                </div>
+                                <div class="filterRow">
+                                    <div class="halfRow">
+                                        <label for="distanceRange">Distance (miles):</label>
+                                        <input type="text" id="distanceValue" name="distanceValue" placeholder="Enter Radius">
+                                        <input type="range" id="distanceRange" name="distanceRange" min="0" max="20" step="1">
+                                    </div>
+                                </div>
+                                <button type="submit" class="fullButton applyFiltersButton">Apply Filters</button>
+                            </form>
+                        </div>
+
+                        <hr class="navLinksBoxShadow shadow">
+
+                        <div class="subNavGroup">
+                        
+                            <!--subNavListings-->
+                            <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">The World Motor Market</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>
+                            </a>
+
+                            <!--subNavMap-->
+                            <a href="https://www.gas-watch.com" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Gas Watch by The World Motor Market</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>
+                            </a>
+
+                            <!--subNavBlog-->
+                            <a href="https://www.xantheragroup.com" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Xanthera Group, LLC.</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>  
+                            </a> 
+
+                        </div>
+
+                    </div>
+
+                    <div class="subNavGroup subNavBlueWhite">
+                                                                                                    
+                        <!--subNavHelp-->
+                        <div class="subNavRow" data-target="#bodySubNav-helpHelp" data-slug="#bodySubMore-helpHelp">
+                            <span class="subNavItem">FAQs/Help</span>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-helpHelp"></i>
+                        </div>  
+                        <!--subNavMoreHelp-->
+                        <div class="subNavMore" id="bodySubNav-helpHelp" style="display: none;">
+                            <hr class="subNavHr">
+                            <div class="subNavMoreBox">
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Frequently Asked Questions</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Help</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">About Us</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Terms of Services</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--subNavSettings-->
+                        <div class="subNavRow" data-target="#bodySubNav-helpSettings" data-slug="#bodySubMore-helpSettings">
+                            <span class="subNavItem">Settings</span>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-helpSettings"></i>
+                        </div>
+                        <!--subNavMoreHelp-->
+                        <div class="subNavMore" id="bodySubNav-helpSettings" style="display: none;">
+                            <hr class="subNavHr">
+                            <div class="subNavMoreBox">
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">General</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Preferences</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Account</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="subNav bodySubNav" id="bodySubNav-list" style="display: none;">
+
+                    <div class="subNavGroup subNavGroup1">
+
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem">Home</span>
+                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                            </div>
+                        </a>
+
+                        <hr class="navLinksBoxShadow shadow">
+
+                        <div class="subNavGroup">
+                            <div class="reminders-container">
+                                <h4>Reminders</h4>
+
+                                <!-- iOS Styled Input Form Box -->
+                                <form id="reminder-form">
+                                    <div class="ios-card">
+                                        <div class="form-group">
+                                            <input type="text" id="title" placeholder="Title" required>
+                                        </div>
+                                        <div class="form-group vertical">
+                                            <textarea id="notes" placeholder="Notes"></textarea>
+                                        </div>
+                                        </div>
+
+                                        <div class="ios-card">
+                                        <div class="form-group">
+                                            <label class="lesserP" for="datetime">Details</label>
+                                            <input type="datetime-local" id="datetime">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="lesserP" for="location">Location</label>
+                                            <input type="text" id="location" placeholder="e.g., Home, Work">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="lesserP" for="priority">Priority</label>
+                                            <select id="priority">
+                                            <option class="" value="none">None</option>
+                                            <option class="" value="low">Low</option>
+                                            <option class="" value="medium">Medium</option>
+                                            <option class="" value="high">High</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-container">
+                                        <button type="button" class="smallButton btn" id="clear-btn">Clear</button>
+                                        <button type="submit" class="smallButton btn" id="add-btn">Add</button>
+                                    </div>
+                                </form>
+
+                                <!-- Reminders Display List -->
+                                <div class="reminders-list">
+                                    <div class="lesserP list-title">My Tasks</div>
+                                    <div class="lesserP" id="list-items-container">
+                                    <!-- Dynamic list elements will be added here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="navLinksBoxShadow shadow">
+
+                        <div class="subNavGroup">
+                        
+                            <!--subNavListings-->
+                            <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">The World Motor Market</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>
+                            </a>
+
+                            <!--subNavMap-->
+                            <a href="https://www.gas-watch.com" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Gas Watch by The World Motor Market</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>
+                            </a>
+
+                            <!--subNavBlog-->
+                            <a href="https://www.xantheragroup.com" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Xanthera Group, LLC.</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>  
+                            </a> 
+
+                        </div>
+
+                    </div>
+
+                    <div class="subNavGroup subNavBlueWhite">
+                                                                                                    
+                        <!--subNavHelp-->
+                        <div class="subNavRow" data-target="#bodySubNav-listHelp" data-slug="#bodySubMore-help">
+                            <span class="subNavItem">FAQs/Help</span>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-listHelp"></i>
+                        </div>  
+                        <!--subNavMoreHelp-->
+                        <div class="subNavMore" id="bodySubNav-listHelp" style="display: none;">
+                            <hr class="subNavHr">
+                            <div class="subNavMoreBox">
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Frequently Asked Questions</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Help</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">About Us</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                                <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
+                                    <div class="subNavRow2">
+                                        <span class="subNavItem">Terms of Services</span>
+                                        <i class="subNavButton subPlusButton">+</i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!--subNavSettings-->
+                        <div class="subNavRow" data-target="#bodySubNav-listSettings" data-slug="#bodySubMore-listSettings">
+                            <span class="subNavItem">Settings</span>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-listSettings"></i>
+                        </div>
+                        <!--subNavMoreHelp-->
+                        <div class="subNavMore" id="bodySubNav-listSettings" style="display: none;">
                             <hr class="subNavHr">
                             <div class="subNavMoreBox">
                                 <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
@@ -5615,6 +6021,98 @@
                                         <p class="lesserP">Please refresh the page or shop now!</p>
                                     </div>
                                     <div class="subContent-cart">
+                                        <div class="cartBody">
+                                            <div class="cartPart cartBody1">
+                                                <div class="cartBodyImg">
+                                                    <div class="sideBodyHeadLeft sideBodyHeadLeft2">
+                                                        <label class="custom-checkbox">
+                                                            <input type="checkbox">
+                                                            <div class="checkbox">
+                                                                <i class="fineIcon fa-solid fa-check"></i>
+                                                            </div>
+                                                        </label>
+                                                        <h5 class="lesserP" id="cartActive-cartNumber">1.</h5>
+                                                        <h5 class="lesserP" id="cartActive-vehicleType">Car</h5>
+                                                    </div>
+                                                    <img src="IMG_5260.JPG">
+                                                </div>
+                                                <div class="cartBodyAlt">
+                                                    <p class="lesserP">This is an example text for what the alt of an image may be.</p>
+                                                </div>
+                                            </div>
+                                            <div class="cartPart cartBody2">
+                                                <div class="cartBodyList cartBodyDetails">
+                                                    <div class="cartBodyList1">
+                                                        <h6>Vehicle Details</h6>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Make:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-make">Hyundai</p>
+                                                        </div>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Model:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-model">Tucson</p>
+                                                        </div>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Year:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-year">2018</p>
+                                                        </div>
+                                                        <div class="cartBodyListRow">
+                                                            <p class="lesserP cartBodyListItem">Color:</p>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-color">Grey</p>
+                                                        </div>
+                                                        <div class="cartBodyList2" id="cartBodyList2" style="display: none;">
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Trim:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-trim">UT</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Theme:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-condition">Like New</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Color:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-mileage">100,000</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Drive Type:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-driveType">All-Wheel Drive</p>
+                                                            </div>
+                                                            <div class="cartBodyListRow">
+                                                                <p class="lesserP cartBodyListItem">Fuel Type:</p>
+                                                                <p class="lesserP cartBodyListItem" id="cartActive-fuelType">Regular, 87</p>
+                                                            </div>
+                                                        </div>
+                                                        <i class="displayIcon fa-solid fa-ellipsis" data-target="cartBodyList2"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="cartBodyList cartBodyList1 cartBodyCheckOut">
+                                                    <h6>Checkout</h6>
+                                                    <div class="cartBodyListRow">
+                                                        <p class="lesserP cartBodyListItem">Quantity:</p>
+                                                        <div class="cartBodyListItem2">
+                                                            <i class="displayIcon fa-solid fa-minus"></i>
+                                                            <p class="lesserP cartBodyListItem" id="cartActive-quantity">1</p>
+                                                            <i class="displayIcon fa-solid fa-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cartBodyListRow">
+                                                        <p class="lesserP cartBodyListItem">Price:</p>
+                                                        <p class="lesserP cartBodyListItem" id="cartActive-price">$12,000</p>
+                                                    </div>
+                                                    <hr class="shadow">
+                                                    <div class="cartBodyListRow">
+                                                        <span class="lesserP cartBodyListItem">Sub Total:</span>
+                                                        <p class="lesserP cartBodyListItem" id="cartActive-subtotal">$12,000</p>
+                                                    </div>
+
+                                                    <div class="cartBodyListRow" id="cartBodyListRow-delivery">
+                                                        <p class="lesserP cartBodyListItem">Delivery Option:</p>
+                                                        <p class="lesserP cartBodyListItem" id="cartActive-deliveryOption">Pick Up</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="shadow">
                                         <div class="cartBody">
                                             <div class="cartPart cartBody1">
                                                 <div class="cartBodyImg">
@@ -5762,7 +6260,7 @@
                                 </div>                                
                             </div>
                             <div class="page sideBarPage" id="sideBarPage-cartHistory" style="display: none;">
-                                <div class="sideBarPageBody">
+                                <div class="sideBarPageBody" id="sideBarPageBody-cartHistory">
                                     <div class="initialSideBarPageBody" style="display: none;">
                                         <p class="lesserP">No Cart History found</p>
                                         <p class="lesserP">Please refresh the page or start your journey now!</p>
@@ -5914,7 +6412,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="cartTotals">
+                                <div class="cartTotals" id="cartTotals-cartHistory">
                                     <h5>Cart Insights</h5>
                                     <div class="cartTotalsContainer cartsTotalsContainerHistory">
                                         <div class="cartTotalsHistoryBox cartTotalsColumn1-history2">
@@ -6089,7 +6587,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#cartSubNav-help" data-slug="#cartSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="cartSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="cartSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="cartSubNav-help" style="display: none;">
@@ -6125,7 +6623,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#cartSubNav-settings" data-slug="#cartSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="cartSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="cartSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="cartSubNav-settings" style="display: none;">
@@ -6240,7 +6738,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#chatSubNav-help" data-slug="#chatSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="chatSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="chatSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="chatSubNav-help" style="display: none;">
@@ -6276,7 +6774,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#chatSubNav-settings" data-slug="#chatSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="chatSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="chatSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="chatSubNav-settings" style="display: none;">
@@ -6327,7 +6825,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#accountsideNav-prefernces" data-slug="#accountSideMore-preferences">
                                 <span class="subNavItem">Preferences</span>
-                                <i class="subNavButton subMoreToggle" id="accountSideMore-preferences">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="accountSideMore-preferences"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="accountSideNav-preferences" style="display: none;">
@@ -6380,7 +6878,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#accountSubNav-help" data-slug="#accountSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="accountSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="accountSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="accountSubNav-help" style="display: none;">
@@ -6416,7 +6914,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#accountSubNav-settings" data-slug="#accountSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="accountSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="accountSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="accountSubNav-settings" style="display: none;">
@@ -6478,7 +6976,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#buyerVehSubNav-help" data-slug="#buyerVehSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="buyerVehSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="buyerVehSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="buyerVehSubNav-help" style="display: none;">
@@ -6514,7 +7012,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#buyerVehSubNav-settings" data-slug="#buyerVehSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="buyerVehSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="buyerVehSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="buyerVehSubNav-settings" style="display: none;">
@@ -6574,7 +7072,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#buyerVehSubNav-help" data-slug="#buyerVehSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="buyerVehSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="buyerVehSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="buyerVehSubNav-help" style="display: none;">
@@ -6610,7 +7108,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#sellerVehSubNav-settings" data-slug="#sellerVehSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="sellerVehSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="sellerVehSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="sellerVehSubNav-settings" style="display: none;">
@@ -6672,7 +7170,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#buyerPartSubNav-help" data-slug="#buyerPartSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="buyerPartSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="buyerPartSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="buyerPartSubNav-help" style="display: none;">
@@ -6708,7 +7206,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#buyerPartSubNav-settings" data-slug="#buyerPartSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="buyerPartSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="buyerPartSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="buyerPartSubNav-settings" style="display: none;">
@@ -6768,7 +7266,7 @@
                             <!--subNavHelp-->
                             <div class="subNavRow" data-target="#sellerPartsSubNav-help" data-slug="#sellerPartsSubMore-help">
                                 <span class="subNavItem">FAQs/Help</span>
-                                <i class="subNavButton subMoreToggle" id="sellerPartsSubMore-help">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="sellerPartsSubMore-help"></i>
                             </div>  
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="sellerPartsSubNav-help" style="display: none;">
@@ -6804,7 +7302,7 @@
                             <!--subNavSettings-->
                             <div class="subNavRow" data-target="#sellerPartsSubNav-settings" data-slug="#sellerPartsSubMore-settings">
                                 <span class="subNavItem">Settings</span>
-                                <i class="subNavButton subMoreToggle" id="sellerPartsSubMore-settings">▼</i>
+                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="sellerPartsSubMore-settings"></i>
                             </div>
                             <!--subNavMoreHelp-->
                             <div class="subNavMore" id="sellerPartsSubNav-settings" style="display: none;">
@@ -7794,13 +8292,13 @@
                                             <div class="IconAs bodyNavIcons">
                                                 <!-- Icon -->
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-world" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-help" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-list" data-section="Home"
                                                 ></i>
                                             </div>
                     
@@ -8082,13 +8580,13 @@
                                             <div class="IconAs bodyNavIcons">
                                                 <!-- Icon -->
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-world" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-helpFull" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-list" data-section="Home"
                                                 ></i>
                                             </div>
                                             
@@ -8177,13 +8675,13 @@
                                             <div class="IconAs bodyNavIcons">
                                                 <!-- Icon -->
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-world" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-helpFull" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-list" data-section="Home"
                                                 ></i>
                                             </div>
 
@@ -8523,13 +9021,13 @@
                                             <div class="IconAs bodyNavIcons">
                                                 <!-- Icon -->
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-world" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-helpFull" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
-                                                    data-sub="bodySubNav" data-section="Home"
+                                                    data-sub="bodySubNav-list" data-section="Home"
                                                 ></i>
                                             </div>
 
@@ -8788,7 +9286,7 @@
                                             <!--subNavFriends-->
                                             <div class="subNavRow" data-target="#extSubNav-friends" data-slug="#extSubMore-friends">
                                                 <span class="subNavItem">Friends</span>
-                                                <i class="subNavButton subMoreToggle" id="extSubMore-friends">▼</i>
+                                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="extSubMore-friends"></i>
                                             </div>
                                             <!--subNavMore-->
                                             <div class="subNavMore" id="extSubNav-friends" style="display: none;">
@@ -8808,7 +9306,7 @@
                                             <!--subNavHelp-->
                                             <div class="subNavRow" data-target="#extSubNav-help" data-slug="#extSubMore-help">
                                                 <span class="subNavItem">Help</span>
-                                                <i class="subNavButton subMoreToggle" id="extSubMore-help">▼</i>
+                                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="extSubMore-help"></i>
                                             </div>
                                             <!--subNavMore-->
                                             <div class="subNavMore" id="extSubNav-help" style="display: none;">
@@ -8824,7 +9322,7 @@
                                             <!--subNavSettings-->
                                             <div class="subNavRow" data-target="#extSubNav-settings" data-slug="#extSubMore-settings">
                                                 <span class="subNavItem">Settings</span>
-                                                <i class="subNavButton subMoreToggle" id="extSubMore-settings">▼</i>
+                                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="extSubMore-settings"></i>
                                             </div>
                                             <!--subNavMore-->
                                             <div class="subNavMore" id="extSubNav-settings" style="display: none;">
@@ -8844,7 +9342,7 @@
                                             <!--subNavAccount-->
                                             <div class="subNavRow" data-target="#extSubNav-account" data-slug="#extSubMore-account">
                                                 <span class="subNavItem">Account</span>
-                                                <i class="subNavButton subMoreToggle" id="extSubMore-account">▼</i>
+                                                <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="extSubMore-account"></i>
                                             </div>
                                             <!--subNavMore-->
                                             <div class="subNavMore" id="extSubNav-account" style="display: none;">
@@ -8958,7 +9456,7 @@
                                     <div class="displayHead">
                                         <h3 class="display-pollName" id="extDisplay-pollName">Name of Poll</h3>
                                         <div class="IconAs">
-                                            <i class="displayIconTop IconA interactiveIcon fa-solid fa-circle-question"
+                                            <i class="displayIconTop IconA interactiveIcon question fa-solid fa-circle-question"
                                                 data-target1="#cloud1" data-target2="#cloud2" data-target3="#cloud3"
                                                 data-slug="#displayReportHelp">
                                             </i>
@@ -8980,7 +9478,7 @@
                                                     <div class="cloudHelpNav">
                                                         <div class="subNavRow cloudHelpRow" data-target="#displaySubNav-help_exQ" data-slug="#displaySubMore-help_exQ">
                                                             <span class="subNavItem">Help</span>
-                                                            <i class="subNavButton subMoreToggle" id="displaySubMore-help_exQ">▼</i>
+                                                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="displaySubMore-help_exQ"></i>
                                                         </div>
                                                         <div class="subNavMore cloudHelpMore" id="displaySubNav-help_exQ" style="display: none;">
                                                             <hr class="subNavHr">
@@ -8993,11 +9491,11 @@
                                                         </div>
                                                         <div class="subNavRow cloudHelpRow">
                                                             <span class="subNavItem">Account</span>
-                                                            <i class="subNavButton subMoreToggle">▼</i>
+                                                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down"></i>
                                                         </div>
                                                         <div class="subNavRow cloudHelpRow">
                                                             <span class="subNavItem">Settings</span>
-                                                            <i class="subNavButton subMoreToggle">▼</i>
+                                                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down"></i>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -9023,7 +9521,7 @@
                                                 <div class="displayReport" id="displayReportSettings" style="display: none;">
                                                     <div class="subNavRow" data-target="#displaySubNav-help_exS" data-slug="#displaySubMore-help_exS">
                                                         <span class="subNavItem">Help</span>
-                                                        <i class="subNavButton subMoreToggle" id="displaySubMore-help_exS">▼</i>
+                                                        <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="displaySubMore-help_exS"></i>
                                                     </div>
                                                     <div class="subNavMore" id="displaySubNav-help_exS" style="display: none;">
                                                         <hr class="subNavHr">
@@ -9036,11 +9534,11 @@
                                                     </div>
                                                     <div class="subNavRow">
                                                         <span class="subNavItem">Account</span>
-                                                        <i class="subNavButton subMoreToggle">▼</i>
+                                                        <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down"></i>
                                                     </div>
                                                     <div class="subNavRow">
                                                         <span class="subNavItem">Settings</span>
-                                                        <i class="subNavButton subMoreToggle">▼</i>
+                                                        <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -11991,6 +12489,7 @@
                             subNav.style.display = 'none';
                         }
 
+                        console.log(subNav.style.display);
 
                         function blurbodySubNav(event) {
                             
@@ -12185,6 +12684,101 @@
 
         </script>
         <script>
+            // DOM Elements
+            const form = document.getElementById('reminder-form');
+            const titleInput = document.getElementById('title');
+            const notesInput = document.getElementById('notes');
+            const datetimeInput = document.getElementById('datetime');
+            const locationInput = document.getElementById('location');
+            const priorityInput = document.getElementById('priority');
+            const container = document.getElementById('list-items-container');
+            const clearBtn = document.getElementById('clear-btn');
+
+            // App State Array
+            let reminders = [];
+
+            // Format date helper matching clean look
+            function formatDisplayDate(dateString) {
+                if (!dateString) return '';
+                const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+                return new Date(dateString).toLocaleDateString('en-US', options);
+            }
+
+            // Render Function
+            function renderReminders() {
+                container.innerHTML = '';
+
+                if (reminders.length === 0) {
+                container.innerHTML = '<div class="empty-state">No Reminders</div>';
+                return;
+                }
+
+                reminders.forEach((reminder, index) => {
+                // Priority exclamation marks matching iOS
+                let priorityExclamations = '';
+                let priorityClass = '';
+                if (reminder.priority === 'low') { priorityExclamations = '!'; priorityClass = 'p-low'; }
+                if (reminder.priority === 'medium') { priorityExclamations = '!!'; priorityClass = 'p-medium'; }
+                if (reminder.priority === 'high') { priorityExclamations = '!!!'; priorityClass = 'p-high'; }
+
+                const formattedDate = formatDisplayDate(reminder.datetime);
+
+                const reminderHTML = `
+                    <div class="reminder-item">
+                    <div class="checkbox-btn" onclick="deleteReminder(${index})" title="Mark complete"></div>
+                    <div class="reminder-content">
+                        <div class="reminder-title-row">
+                        ${priorityExclamations ? `<span class="priority-marker ${priorityClass}">${priorityExclamations}</span>` : ''}
+                        <span class="reminder-title">${reminder.title}</span>
+                        </div>
+                        ${reminder.notes ? `<div class="reminder-notes">${reminder.notes}</div>` : ''}
+                        
+                        ${formattedDate || reminder.location ? `
+                        <div class="reminder-meta">
+                            ${formattedDate ? `<span class="meta-date">⏰ ${formattedDate}</span>` : ''}
+                            ${reminder.location ? `<span class="meta-loc">📍 ${reminder.location}</span>` : ''}
+                        </div>
+                        ` : ''}
+                    </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', reminderHTML);
+                });
+            }
+
+            // Handle Add Item Form Submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const newReminder = {
+                title: titleInput.value.trim(),
+                notes: notesInput.value.trim(),
+                datetime: datetimeInput.value,
+                location: locationInput.value.trim(),
+                priority: priorityInput.value
+                };
+
+                reminders.push(newReminder);
+                renderReminders();
+                form.reset();
+            });
+
+            // Handle Remove Item
+            function deleteReminder(index) {
+                // Mimics the item fading/disappearing when the iOS radial button is checked
+                reminders.splice(index, 1);
+                renderReminders();
+            }
+
+            // Handle Manual Form Reset
+            clearBtn.addEventListener('click', () => {
+                form.reset();
+            });
+
+            // Initial Empty Render View
+            renderReminders();
+        </script>
+        <script>
 
             /*Icons*/
 
@@ -12280,7 +12874,7 @@
 
 
             //Cloud Help
-            const questionIcons = document.querySelectorAll('.fa-circle-question');
+            const questionIcons = document.querySelectorAll('.question');
 
             let qClick = 0;
 
