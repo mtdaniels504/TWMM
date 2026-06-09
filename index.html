@@ -4455,23 +4455,25 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .checkbox-btn {
-      width: 22px;
-      height: 22px;
-      border: 2px solid var(--ios-border);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 2px;
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
+.checkbox-btn {
+  width: 16px;          /* Made smaller to look sleeker */
+  height: 16px;         /* Made smaller to look sleeker */
+  border: 1px solid var(--ios-border); /* Thinner border for a cleaner look */
+  border-radius: 2px;   /* Matches your 1-2px border-radius design */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;      /* Aligns better with small title text */
+  flex-shrink: 0;
+  background-color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
 
-    .checkbox-btn:hover {
-      background-color: #f2f2f7;
-    }
+.checkbox-btn:hover {
+  background-color: rgba(0, 122, 255, 0.1); /* Subtle blue tint on hover */
+  border-color: var(--ios-blue);            /* Clearer interactive cue */
+}
 
     .reminder-content {
       flex: 1;
@@ -12725,7 +12727,9 @@
 
                 const reminderHTML = `
                     <div class="reminder-item">
-                    <div class="checkbox-btn" onclick="deleteReminder(${index})" title="Mark complete"></div>
+                    <div class="checkbox-btn" onclick="deleteReminder(event, ${index})" title="Mark complete">
+                        <i class="displayIcon fa-solid fa-xmark"></i>
+                    </div>
                     <div class="reminder-content">
                         <div class="reminder-title-row">
                         ${priorityExclamations ? `<span class="priority-marker ${priorityClass}">${priorityExclamations}</span>` : ''}
@@ -12764,8 +12768,10 @@
             });
 
             // Handle Remove Item
-            function deleteReminder(index) {
-                // Mimics the item fading/disappearing when the iOS radial button is checked
+            function deleteReminder(event, index) {
+                // Stops the click from bubbling up and triggering the sidebar's close event
+                event.stopPropagation(); 
+                
                 reminders.splice(index, 1);
                 renderReminders();
             }
