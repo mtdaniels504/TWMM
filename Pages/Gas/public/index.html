@@ -1,0 +1,3549 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Gas Watch by TWMM</title>
+        <meta name="description" content="Find the cheapest gas prices in your area instantly. Search by city, zip code, or address on our interactive live fuel map to save money on gas today.">
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        
+
+        <style id="General">
+
+            /* ----- General ----- */
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                height: auto;
+                font-family: 'Satoshi', sans-serif;
+                transition: all 0.3s ease;
+            }
+
+            section {
+                z-index: 200;
+                margin: clamp(2px, 0.5dvw, 5px);
+                padding: clamp(2px, 0.5dvw, 5px);
+                width: 100%;
+                border-radius: 4px;
+                box-shadow: 0 0 10px rgba(242, 242, 246, 0.2);
+            }            
+            
+            section:hover {
+                box-shadow: 0 0 10px rgba(242, 242, 246, 0.3);
+            }
+
+            div {
+                margin: 1px;
+                padding: 2px;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+            }
+
+            /* For Specific Use-Case
+
+            div:hover {
+                background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+            }
+
+            */
+
+
+            /* -- Text -- */
+
+            h1 {
+                font-weight: 800;
+                font-size: clamp(1rem, 0.75rem + 1.5dvw, 1.5rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.09);
+            }
+
+            h2 {
+                font-weight: 750;
+                font-size: clamp(.75rem, 0.5rem + 1.28dvw, 1.25rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
+            }
+
+            h3, h4 {
+                font-weight: 625;
+                font-size: clamp(0.625rem, 0.375rem + 1.06dvw, .9rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+            }
+
+            button  {
+                font-size: clamp(0.57rem, 0.5rem + .7dvw, 0.85rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.03);
+            }
+            
+            h5, p, 
+            span, details, a, strong, label,
+            input, textarea, select, option  {
+                font-size: clamp(0.55rem, 0.3rem + .7dvw, 0.75rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.03);
+            }
+
+
+            strong, label {
+                font-weight: 600;
+            }
+
+
+            .lesserP, h6 {
+                font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.5rem);
+            }
+
+            .fineP {
+                font-size: clamp(0.375rem, 0.25rem + 0.6dvw, 0.45rem);
+            }
+
+
+            /* -- Special -- */
+
+            /*Inputs(Textrea)/Selects*/
+
+            input, select, textarea {
+                outline: none;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            input:hover, select:hover, textarea:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+
+            input:focus, select:focus, textarea:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            input {
+                padding-left: 2.5px;
+            }
+
+            textarea {
+                padding: 2px;
+            }
+
+            select {
+                padding: 4px;
+            }
+
+
+            a{
+                text-decoration: none;
+                color: inherit;
+            }
+
+
+            .userInput {
+                width: 100%;
+                border-radius: 2px 0px 0px 2px;
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+            }
+
+
+            /*Images*/
+
+            .imgContainer {
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+                object-fit: contain;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+
+            /*Hr*/
+
+            hr {
+                width: 96%;
+                height: 1.5px;
+                margin: 0 auto;
+                border: none;
+            }
+
+            .vertHr {
+                width: 1.5px;
+                height: 96%;
+            }
+
+
+            /* -- Buttons -- */
+
+            button {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                min-height: 22px;
+                height: 2.9dvw;
+                max-height: 32px;
+                perspective: 5px;
+                border-radius: 2.5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            button:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            button:focus, button.active {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+            
+
+            .fullButton {
+                width: 100%;
+            }
+
+            .widthButton {
+                min-width: 66px;
+                width: 12dvw;
+                max-width: 100px;
+            }
+
+            .smallButton {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+                width: auto;
+                padding: 0 5px;
+            }
+
+            .sendButton {
+                border-radius: 0 2px 2px 0;
+            }
+
+
+            /*--Icons--*/
+            
+
+            i, .IconAs, .IconA, .IconB, 
+            .IconCs, .IconC, .IconD {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 2px;
+            }
+
+            /*A(Clear/Large)*/
+            .IconAs {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                gap: calc(.1rem + .2dvw);
+            }
+
+            .IconA {
+                min-width: 24px;
+                width: calc(20px + .6dvw);
+                max-width: 28px;
+                min-height: 24px;
+                height: calc(20px + .6dvw);
+                max-height: 28px;
+                font-size: clamp(0.8rem, 0.4rem + .5dvw, 1rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+            }
+
+            .IconA:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+            }
+
+            .IconA:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+            }
+
+
+            /*B(Color/Large)*/
+            .IconB {
+                min-width: 24px;
+                width: calc(20px + .6dvw);
+                max-width: 28px;
+                min-height: 24px;
+                height: calc(20px + .6dvw);
+                max-height: 28px;
+                font-size: clamp(0.7rem, 0.4rem + .5dvw, 1rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .IconB:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .IconB:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+
+            /*C(Clear/Small)*/
+
+            .IconCs {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding-right: 2px;
+            }
+
+            .IconC {
+                min-width: 16px;
+                width: calc(12px + .6dvw);
+                max-width: 20px;
+                min-height: 16px;
+                height: calc(12px + .6dvw);
+                max-height: 20px;
+                line-height: 16px;
+                font-size: clamp(0.62rem, 0.6rem + .55dvw, .8rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+            }
+                        
+            .IconC:hover, .IconC.active:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .IconC.active {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+            }
+
+            
+            /*D(Color/Small)*/
+            .IconD {
+                min-width: 16px;
+                width: calc(12px + .6dvw);
+                max-width: 20px;
+                min-height: 16px;
+                height: calc(12px + .6dvw);
+                max-height: 20px;
+                line-height: 16px;
+                font-size: clamp(0.62rem, 0.6rem + .55dvw, .8rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .IconD:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .IconD:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+
+            /*DisplayIcon(Transparent/Fine)*/
+
+            .displayIcons, .displayIcon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .displayIcon {
+                font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
+            }
+
+
+            /*Int Icons*/
+
+            .intIconsBottom {
+                justify-content: space-between;
+                width: 100%;
+                opacity: .45;
+            }
+
+            .intsBottom:hover {
+                opacity: .9;
+            }
+
+            .intIconsLeft {
+                margin-right: auto;
+            }
+
+            .intIconsRight {
+                margin-left: auto;
+            }
+
+
+            
+            /*FA Types*/
+
+
+            .tabToggle, .cloudHelpSection {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+                        
+            .tabToggle, .navArrow, .cloudHelpSection {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+  
+            .fa-grip-horizontal {
+                cursor: grab;
+            }
+
+
+            
+            /*searchIcon*/
+            
+            .searchIcon {
+                border-radius: 0 2px 2px 0;
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+            }
+
+
+            /*exitButton*/
+
+            .exitButton {
+                align-self: flex-start;
+            }
+
+
+
+            /*tab/contToggle*/
+            
+            .tabToggle {
+                flex-direction: column;
+                margin: 0;
+                gap: .2px;
+            }
+
+            .tabToggle i {
+                font-size: clamp(0.65rem, 0.15rem + 1vw, 0.8rem);
+            }
+
+            .tabToggle > :first-child {
+                margin-bottom: -5px;
+            }
+
+            .tabToggle > :nth-child(2) {
+                margin-bottom: -2px;
+            }
+
+
+            .contSizeToggle {
+                margin: auto;
+                gap: 0px;
+                padding: 1px 0;
+                position: absolute; /* or fixed */
+                touch-action: none; /* REQUIRED: stops browser from scrolling/panning */
+                user-select: none;  /* stops text highlighting while dragging */
+                -webkit-user-select: none;
+                overflow: hidden;   /* keeps content tidy during resize */
+            }
+
+
+            /*navArrows*/
+
+            .navArrow {
+                margin: auto 0;
+                height: 100%;
+                width: 6%;
+                opacity: .11;
+                cursor: pointer;
+            }
+
+            .navArrow:hover {
+                opacity: 0.22;
+            }
+
+            .prevArrow {
+                left: 0;
+                border: none;
+                border-radius: 0 10px 10px 0;
+            }
+
+            .nextArrow {
+                right: 0;
+                border: none;
+                border-radius: 10px 0 0 10px;
+            }
+
+            .navArrow i {
+                transform: scale(0.8, 2.5);
+            }
+
+
+            /* -- CloudHelp -- */
+
+            .cloud, .cloudHelpSection {
+                position: absolute;
+                text-shadow: none;
+            }
+
+            .cloudHelpSection {
+                flex-direction: column;
+                text-align: center;
+            }
+
+
+            .cloud {
+                z-index: 820;
+                opacity: 0;
+                transition: opacity .9s ease-in-out;
+            }
+            
+            .visible {
+                opacity: 1 !important;
+            }
+
+
+            #cloud1 {
+                width: calc(1rem + 1dvw);
+                height: calc(1rem + 1dvw);
+                font-size: calc(1rem + 1dvw);
+                top: calc(0.1rem + 1dvw);
+                right: calc(3rem + 3dvw);
+                transform: rotate(45deg);
+            }
+
+            #cloud2 {
+                width: calc(1.5rem + 1.5dvw);
+                height: calc(1.5rem + 1.5dvw);
+                font-size: calc(1.5rem + 1.5dvw);
+                top: calc(1rem + 2dvw);
+                right: calc(4rem + 4.5dvw);
+                transform: rotate(210deg);
+            }
+
+            #cloud3 {
+                font-size: calc(10rem + 10dvw);
+                width: calc(10rem + 10dvw);
+                height: calc(10rem + 10dvw);
+                top: -8px;
+                right: calc(7rem + 7dvw);
+                text-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+            }
+
+
+            .cloudHelpSection {
+                z-index: 825;
+                top: calc(1.5rem + 1.5dvw);
+                right: calc(6.75rem + 6.75dvw);
+            }
+
+            .cloudHelpSection h5 {
+                margin-top: calc(1rem + 1dvw);
+            }
+
+            .cloudHelpHShadow {
+                width: 90%;
+                margin: 2px 0 6px 0;
+            }
+
+
+            .cloudHelpNav {
+                width: calc(8rem + 8dvw);
+                height: calc(4.5rem + 4.5dvw);
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+
+            /* gearSpin div */
+
+            .gearSpin {
+                margin: 0;
+                padding: 0;
+            }
+
+        </style>
+
+        <style id="Standard">
+
+            /* ----- Standard ----- */
+
+            /* -- General Page -- */
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+
+            .Nav, .Head, .Tail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .Nav {
+                background: transparent;
+                margin-top: 0;
+            }
+
+            .Head {
+                flex-direction: column;
+            }
+
+            .Body {
+                flex-grow: 1;
+                width: 100%;
+            }
+
+            .Tail {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px 10px;
+                bottom: 0;
+            }
+
+            .part {
+                width: 100%;
+            }
+
+            .page {
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                
+            #Home {
+                flex: 1;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: -2px 0 0 -2px;
+                padding: 0;
+                width: 100%;
+                height: auto;
+                align-self: flex-start;
+                justify-self: flex-start;
+            }
+
+
+
+            /* -- setionHead -- */
+
+            .sectionHead {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 auto;
+                min-width: 120px;
+                width: 30dvw;
+                height: 30px;
+                margin-right: 2.5px;
+            }
+
+
+            .sectionHeadH2 {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+            
+            .headPopUp {
+                z-index: 820;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                text-align: center;
+                position: absolute;
+                opacity: .98;
+                min-width: 120px;
+                width: 30dvw;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .headPopUp:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+            .headPopUpH2 {
+                cursor: pointer;
+                padding: 8px 4.5px;
+                width: 100%;
+            }
+            
+
+            .search {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            
+            .navTabs {                
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px;
+            }
+
+            .navTab {
+                flex-basis: calc(33% - 5px);
+            }
+
+
+
+            /* -- Logo -- */
+
+            .logoTitleCont, .logo, .logoPic,
+            .logoTitle, .logoTitleBox,
+            .loadingScreen {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+                
+            .logoTitleCont, .logo, .logoPic, .logoTitleBox,
+            .logoTitle, .loadingScreen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            /*Logo Container*/ 
+
+            .logoTitleCont {
+                gap: calc(0.4dvw + 2.4px);
+            }
+
+            .logoTitleContN {
+                margin: 0 4px;
+                padding-left: 5px;
+                height: 44px;
+                min-width: 96px;
+                width: calc(90px + 5dvw);
+                max-width: 200px;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+            }
+
+
+            /*Logos*/
+
+            .logo {
+                min-width: 21px;
+                width: calc(.8rem + 1.2dvw);
+                max-width: 26px;
+                min-height: 21px;
+                height: calc(.8rem + 1.2dvw);
+                max-height: 26px;
+                border-radius: 50%;
+            }
+
+            
+            /*Logoitle*/
+
+            .logoTitleBox {
+                flex-direction: column;
+            }
+
+            .logoTitle {
+                justify-content: flex-start;
+                width: auto;
+                min-height: 13px;
+                height: calc(.78rem + 1dvw);
+                max-height: 26px;
+                background: transparent;
+            }
+
+            .logoTitleBox hr {
+                height: 1.2px;
+                width: 60%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+            }
+
+
+            /*Loading Logo*/
+
+            #loadScreen1 {
+                flex-direction: column;
+                width: 100%;
+                height: 100dvh;
+                margin-top: -5%;
+                font-size: 32px;
+                transition: display 1s ease;
+            }
+
+            .loadingLogo {
+                min-width: 32px;
+                width: 32px;
+                max-width: 32px;
+                min-height: 32px;
+                max-height: 32px;
+                height: 32px;
+                margin-right: 5px;
+            }
+
+
+            .loadLogoTitle {
+                min-height: 36px;
+                height: 36px;
+                max-height: 36px;
+            }
+            
+                        
+            /* The spinning wheel style */
+            .loader {
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                animation: spin 1s linear infinite;
+                margin: 13px auto;
+            }
+
+            /* The rotation animation */
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+
+
+            /* -- Nav Links -- */
+
+            
+            /*navLinks*/
+
+            .navExitCont {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                justify-self: flex-end;
+                align-self: flex-end;
+                margin-left: auto;
+                padding: 5px 5px 2.5px 6px;
+                border-radius: 2.5px;
+                margin-bottom: 2.5px;
+                gap: clamp(4px, 0.2rem + 1.5dvw, 60px);
+            }
+
+            .navLinksBox, .navLinks {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+            }
+            
+            .navLinks {
+                flex-direction: row;
+                gap: calc(0.01rem + 0.12dvw);
+            }
+
+            .navLink {
+                border-radius: 3px 3px 1px 1px;
+                min-width: 42px;
+                width: 10dvw;
+                max-width: 200px;
+                margin: 0;
+                box-shadow: none;
+            }
+
+
+            /*NavLinks Hr's*/
+            .navLinksHr {
+                width: 1px;
+                height: 30px;
+                align-self: flex-end;
+                margin-bottom: 2px;
+            }
+
+            .navLinksBoxShadows {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 1px 0 0 0;
+                padding: 0.5px 0 0 0;
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 0 0 1px 1px;
+                border-left: none;
+                border-right: none;
+            }
+
+            .navLinksShadows {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: -6px;
+                padding: 0;
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+                border-radius: 2px 2px 0.1px 0.1px;
+            }
+                        
+            .navLinksHr {
+                height: 16px;
+                width: 1px;
+                box-shadow: none;
+                margin: 0;
+            }
+
+
+            /* -- SubNav -- */
+
+            .headNav, .subNavMore, .subNavMoreBox {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .headNav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .subNav {
+                position: absolute;
+                width: calc(200px + 5dvw);
+                height: auto;
+                gap: 1px;
+                z-index: 999;
+                top: 60px;
+                left: 0;
+            }
+
+            .subNavRow, .subNavRow2 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                padding: 4px;
+            }
+
+            .subNavRow2 {
+                margin-left: 10px;
+            }
+
+            .subNavMore {
+                display: flex;
+                justify-content: flex-end;
+                align-items: stretch;
+                gap: 1px;
+            }
+
+            .subNavHr {
+                width: 1.5px;
+                height: auto;
+                margin: 1px 0 3px 8px;
+            }
+
+            .subNavMoreBox {
+                flex: 1;
+                margin: 0 0 0 -3px;
+                padding-left: 0;
+            }
+
+            /*subNavButtons*/
+
+            .subNavButton {
+                line-height: 1;
+                cursor: pointer;
+            }
+
+            .subPlusButton {
+                font-weight: 600;
+                margin-right: 4px;
+            }
+
+            .subMoreToggle {
+                transform: rotate(-90deg);
+                margin-right: 1px;
+            }
+
+
+            /* -- FilterDisplay -- */
+
+            .filterDisplay {
+                position: absolute;
+                width: calc(200px + 5dvw);
+                height: calc(100dvh - 60px);
+                z-index: 999;
+                top: 60px;
+                right: 0;
+            }
+
+            .filterForm {
+                width: 100%;
+            }
+
+            .filterForm input {
+                width: 100%;
+            }
+
+            .filterRow, .halfRow {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin: 4px 0;
+                padding: 4px;
+                gap: 4px;
+                width: 100%;
+            }
+
+            .filterRowDuo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                gap: 4px;
+            }
+
+            .filterRowDuo .filterRow {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .halfRow {
+                width: 50%;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .priceRangeInputs {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                gap: 4px;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+
+            /* -- DisplayBox -- */
+
+            .displayReports, #displayReportHelp, .displayBox {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .display-pollName, .displayedDirections {
+                margin: 0;
+            }
+
+            .displayHead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-left: 12px;
+            }
+
+            .display-pollName {
+                margin-left: 2px;
+            }
+
+            /*displayReport*/
+
+            .displayReports {
+                position: absolute;
+                align-self: flex-start;
+                justify-self: flex-end;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-start;
+            }
+
+            .displayReport {
+                flex-direction: column;
+                width: calc(5rem + 20dvw);
+            }
+
+            #flagReportReason {
+                border-radius: 2px 2px 0.5px 0.5px;
+            }
+
+            .flagReportInput {
+                min-height: 50px;
+                max-height: 100px;
+                border-radius: 0.5px 0.5px 0.5px 0.5px;
+            }
+
+            .displayReportSubmit {
+                border-radius: 0.5px 0.5px 2px 2px;
+            }
+
+            /*PollDisplay*/
+
+            .pollCreation, .displayBody, .pollDisplayBody,
+            .pollDisplayBox {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+
+            .pollDisplay {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: space-between;
+                height: 430px;
+                width: 100%;
+            }
+
+            .pollTitle {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 2px 10px;
+                width: 100%;
+                height: 38px;
+            }
+
+            .displayedDirections {
+                width: 100%;
+            }
+
+            .pollCreation {
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: flex-end;
+            }
+
+            .createdBy, .createdOn {
+                margin: 0;
+                padding: 1px 0;
+            }
+
+            /*PollChoices*/
+
+            .pollDisplayBody {
+                min-width: 100%;
+                height: 392.5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pollDisplayBox {
+                width: 86%;
+                height: 392.5px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
+            }
+
+            .pollChoices {
+                position: relative;
+                width: 100%;
+                height: 345px;
+                overflow: hidden;
+                border: 1px solid rgb(0, 0, 222);
+                border-radius: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .SpollChoices, .SpollStyle {
+                background: rgba(222, 222, 222, 1);
+                border: 2px solid rgb(0, 0, 222);
+                border-radius: 3px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .pollChoice {
+                border: 1px solid rgb(0, 0, 222);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+
+            .pollMidText {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+
+            .pollMidText div {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                text-wrap: whitespace;
+                opacity: 0.97;
+            }
+
+            .SpollChoices .pollChoice, .SpollStyle .pollChoice {
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+                transition: all 0.2s ease;
+            }
+            
+            .SpollChoices .pollChoice:hover, .SpollStyle .pollChoice:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+                transform: translate(-.1px, .1px);
+            }
+
+            .pollChoice div {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                text-wrap: whitespace;
+                background: #eee;
+                opacity: 0.97;
+                border: 1.2px solid #bbb;
+                border-radius: 4px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+                transition: all 0.16s ease;
+            }
+
+
+            .pollChoice div:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+                transform: scale(1.005);
+            }
+
+            .pollChoice div:active {
+                transform: scale(.992);
+                border: 1px solid #cfac3b;
+                box-shadow: 0 0 1px rgba(212, 175, 55, 0.6);
+            }
+
+            .normPollChoice {top: 12.5%; left: 12.5%; width: 75%; height: 75%;}
+            .widePollChoice {top: 15%; left: 10%; width: 80%; height: 70%;}
+            .tallPollChoice {left: 15%; top: 5%; height: 90%; width: 70%;}
+
+            /*Mid6*/
+            .mid6-1Choice {background: #ff5f5f; clip-path: polygon(50% 0, 0 0, 0 13.33%, 50% 50%);}
+            .mid6-2Choice {background: #5f5fff; clip-path: polygon(50% 0, 50% 50%, 100% 13.33%, 100% 0);}
+            .mid6-3Choice {background: #ffff5f; clip-path: polygon(100% 13.33%, 50% 50%, 100% 86.66%);}
+            .mid6-4Choice {background: #bf5fff; clip-path: polygon(100% 86.66%, 50% 50%, 50% 100%, 100% 100%);}
+            .mid6-5Choice {background: #afff5f; clip-path: polygon(50% 100%, 50% 50%, 0 86.66%, 0 100%);}
+            .mid6-6Choice {background: #ff5fbf; clip-path: polygon(0 86.66%, 0 13.33%, 50% 50%);}
+            .mid6-mChoice {background: #c0c0c0; clip-path: polygon(50% 30%, 33.33% 37.75%, 33.33% 62.25%, 
+                                                                    50% 70%, 66.66% 62.25%, 66.66% 37.75%);}
+
+            .mid6-1Choice div {width: 24%; height: 18%; top: 5%; left: 22.66%;}
+            .mid6-2Choice div {width: 24%; height: 18%; top: 5%; left: 53.33%;}
+            .mid6-3Choice div {width: 24%; height: 18%; top: 41%; left: 71%;}
+            .mid6-4Choice div {width: 24%; height: 18%; top: 77%; left: 53.33%;}
+            .mid6-5Choice div {width: 24%; height: 18%; top: 77%; left: 22.66%;}
+            .mid6-6Choice div {width: 24%; height: 18%; top: 41%; left: 5%;}
+            
+            .mid6-mChoice div {width: 20%; height: 18%; top: 41%; left: 40%;}
+
+
+            .displayTail {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+
+            /* -- ChatPages -- */
+            
+            
+            .chatPage, .chatPageHead h3, 
+            .chatBoards, .chatBoard {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+
+            /*chatContainer*/
+            .chatContainer {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            
+            .chatContainer::-webkit-scrollbar-track {width: 0;}
+
+            .chatHead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+            /*chatTabs*/
+            .chatTabs {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 1px;
+            }
+
+            /*chatIcons(Head)*/
+            .chatIcons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .extChatIcon {
+                margin-right: 5px;
+            }
+
+            /*ChatPageHeader*/  
+            .chatPageHead {
+                padding: 7px;
+                margin-left: auto;
+                width: 100px;
+                margin-right: 15px;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .chatHeadPopUp {
+                z-index: 850;
+                opacity: .98;
+                top: 102.5px;
+                left: 61px;
+            }
+
+            .chatHeadH3PopUp {
+                min-width: 100px;
+                width: 100px;
+                padding: 8px 4.5px;
+                margin: 0;
+                color: #333;
+                width: 100%;
+                cursor: pointer;
+                transition: color 0.2s ease;
+            }
+
+            .chatHeadH3PopUp:hover {
+                color: #005daf;
+            }
+
+            .chatHeadH3PopUp.active {
+                color: #05509b;
+            }
+
+            .HeadPopUp hr {
+                min-width: 100%;
+            }
+
+            /*chatBody*/
+            .chatBody {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .chatPage {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: space-between;
+                height: calc(100dvh - 450px);
+                width: 100%;
+            }
+
+            /*chatSorts*/
+            .chatPage h4 {
+                padding: 0;
+                margin: 2px;
+            }
+
+            .chatSorts {
+                padding: 2px 8px;
+                margin: 0 2px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .chatSort {
+                width: 14.28%;
+                height: 22px;
+                text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, .02);
+                margin: 0;
+                border-radius: 2px;
+                border: 1.5px solid transparent;
+                outline: transparent;
+                padding: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .chatSort:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .08);
+            }
+
+            .chatSort:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .06);
+            }
+
+            .chatSort.active {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .06);
+            }
+
+            .chatSort.active:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .08);
+            }
+
+            /*chatBoards*/
+            .chatBox h5 {
+                padding: 0 5px;
+                margin: auto;
+            }
+
+            .chatBox {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            .gridChatBoard {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2px;
+            }
+
+            .exitFChat {
+                width: 10px;
+                height: 10px;
+                align-self: flex-start;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                outline: transparent;
+                border-radius: 1px;
+            }
+
+            .fchatBody {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            /*opinionDisplay*/
+            .opinionLikes, .opinionLikeCount, .opinionLikeCount,
+            .userChatInfo 
+            {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .opinionHead {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 4%;
+            }
+            
+            .opinionLikes,
+            .opinionLikesUp, .opinionLikesDown {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .opinionLikes {
+                gap: 4px;
+                margin-left: auto;
+                margin-right: 5px;
+            }
+
+            .opinionBox {
+                margin: 0;
+                padding: 0;
+            }
+
+            .opinionHead i {
+                margin-left: 5px;
+            }
+
+            .userChatInfo {
+                display: flex;
+                align-items: center;
+                gap: 3%;
+            }
+
+            .userChatProfPic {
+                width: 15px;
+                height: 15px;
+                margin-right: 0;
+                margin-bottom: 2px;
+            }
+
+            .opinionLikesUp, .opinionLikesDown {
+                gap: 2px;
+            }
+
+            .opinionLikesUp i,
+            .opinionLikeCount, .opinionLikeCount p {
+                margin: 0;
+                padding: 2px;
+            }
+
+            .smallChat {
+                min-height: 210px;
+                max-height: 210px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            
+            .smallChat::-webkit-scrollbar {width: 2px;}
+            .smallChat::-webkit-scrollbar-track:hover {background: transparent}
+            .smallChat::-webkit-scrollbar-thumb {width: 1px;}
+            .smallChat::-webkit-scrollbar:hover {width: 2.5px;}
+            .smallChat::-webkit-scrollbar:hover .smallChat::-webkit-scrollbar-thumb {
+                width: 1.5px;
+            }
+
+            .opinionGTBox {
+                border: none;
+                border-radius: 0%;
+                background: transparent;
+                margin: 1.5px;
+                box-shadow: none;
+            }
+
+            .opinionGTBox:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+
+            .chatDisplayHr {
+                width: 96%;
+                height: 2px;
+                margin-top: 1px;
+                margin-bottom: 5px;
+                margin-left: auto;
+                margin-right: auto;
+                border: none;
+                border-radius: 1px;
+            }
+
+            .chatInput {
+                align-self: flex-end;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+        </style>
+
+        <style id="Specific">
+
+            /* ----- Section Specific ----- */
+
+            /* -- Back Planes -- */
+
+            #Back, .backPlane {
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                flex: 1;
+                border: none;
+            }
+
+            #plane1 {
+                z-index: 001;
+            }
+
+            #plane2 {
+                z-index: 050;
+            }
+
+            #plane3 {
+                z-index: 100;
+                opacity: 0;
+                transition: opacity 1s ease;
+            }
+
+            /* ----- Ext Section ----- */
+
+            #Extended {
+                z-index: 800;
+                position: fixed;
+                min-width: calc(100% - 4px);
+                width: 99.5dvw;
+                max-width: calc(100% - 10px);
+                min-height: calc(100% - 4px);
+                height: calc(100dvh - 1dvw);
+                max-height: calc(100% - 10px);
+            }
+
+            .extPageTail {
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .extNav, .extSearch, .extLinks,
+            .extPage, .extNavTabsToggle {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+
+            /*extNavSearch*/       
+
+            .extHeadPopUp {
+                top: clamp(102.5px, 5px + 9dvw, 170px);
+            }
+
+
+            /* ----- Nav Section ----- */
+
+            #navHead, #navBody {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .tm {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 95%;
+            }
+
+            #extPageTail {
+                z-index: 808;
+                position: absolute;
+                bottom: 50px;
+                left: 14px;
+                width: calc(100% - 26.5px);
+            }
+
+
+            /* ----- Head Section ----- */
+
+
+            /* ----- Body Section ----- */
+
+            #BodyMain {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-evenly;
+                gap: 10px;
+            }
+
+            .Left {
+                width: 10%;
+            }
+            
+            .Center {
+                flex: 1;
+                width: auto;
+                height: 100%;
+            }
+
+            .Right {
+                flex: 1;
+                width: auto;
+                height: 100%;
+            }
+
+
+            /* ----- Tail Section ----- */
+
+            #TailMain {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .TailContainer {
+                width: calc(50% - 10px);
+            }
+
+
+            /* ----- Post Section ----- */
+
+            .PostRow {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .PostItem {
+                width: 30%;
+            }
+
+#map div {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+
+
+#map {
+    z-index: 220;
+    flex-grow: 1;
+    width: 100%;
+    height: calc(100dvh - 70px);
+    max-height: calc(100dvh - 70px);
+    border-radius: 16px; /* Smoother, modern pill geometry corners */
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft floating atmosphere */
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#map:hover {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   DYNAMIC GAS PRICE MARKER BUBBLES
+   ========================================================================== */
+.gas-price-marker {
+    background: #10b981 !important; /* Fresh, modern emerald green accent color */
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 8px !important; /* Clean tracking pill shape layout */
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important; /* Balanced colored drop shadow */
+    padding: 4px 8px;
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    /* CRITICAL LAYOUT ENGINES FOR LEAFLET MARKERS */
+    width: auto !important;
+    height: auto !important;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+}
+
+/* Hover state enhancement: Price tags swell slightly when mouse glides over them */
+.gas-price-marker:hover {
+    background: #059669 !important; /* Slightly deeper emerald green on focus */
+    transform: translate(-50%, -50%) scale(1.1) !important; /* Micro-scaling physical feedback */
+    box-shadow: 0 6px 16px rgba(5, 150, 105, 0.45) !important;
+    z-index: 800 !important; /* Forces hovered price straight to top visible depth layer */
+}
+
+/* ==========================================================================
+   CARDS POPUP CONTAINER DESIGN
+   ========================================================================== */
+/* Clean overrides targeting Leaflet's built-in background container frameworks */
+.leaflet-popup-content-wrapper {
+    background: #ffffff !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15) !important;
+    padding: 4px;
+}
+
+.leaflet-popup-tip {
+    align-self: flex-end;
+    margin-top: 20px;
+    background: #ffffff !important; /* Matches tip pointer seamlessly to main card body */
+}
+
+.custom-popup {
+    font-family: 'Poppins', sans-serif;
+    padding: 6px 8px;
+    min-width: 200px;
+    max-width: 260px;
+}
+
+.custom-popup h3 {
+    color: #1e293b; /* Premium slate-dark heading color choice */
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.3px;
+}
+
+.custom-popup p {
+    color: #64748b; /* Soft muted gray for readability on text strings */
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 10px 0;
+}
+
+/* Premium currency sticker pill element inside the popup cards layout */
+.price-tag {
+    background: #f0fdf4 !important; /* Very light subtle pale green backdrop tint wrapper */
+    color: #166534 !important; /* Rich deep forestry green foreground text string */
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(22, 101, 52, 0.1) !important;
+}
+
+/* ==========================================================================
+   USER COORDINATE POSITION IDENTIFIER MARKER
+   ========================================================================== */
+.black-marker-icon {
+    background-color: #0f172a; /* Smooth midnight-black matte shading tone */
+    border: 3px solid #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.2), 0 4px 10px rgba(0,0,0,0.3); /* Smooth target sonar pulse glow circle lines */
+    width: 16px !important;
+    height: 16px !important;
+    padding: 2px;
+    transform: translate(-50%, -50%);
+}
+
+        </style>
+
+        <style id="Dynamic"></style>
+
+    </head>
+    <body>
+        <!-- -- Back Planes -- -->
+
+        <div id="Back">
+        <div class="backPlane" id="plane1">
+        <div class="backPlane" id="plane2">
+
+            <!-- Loading Screen -->
+            <div class="loadingScreen" id="loadScreen1" style="color: #005daf;">
+                <div class="logoTitleCont">
+                    <div class="logoTitleBox">
+                        <img class="logoTitle loadLogoTitle" src="logoTitle.png">
+                    </div>
+                </div>
+                <div class="loader"></div>
+            </div>
+
+        <div class="backPlane" id="plane3">
+
+            <section class="Nav part" id="Nav">
+
+                <div class="IconAs">
+                    <!-- navIcon -->
+                    <div class="IconAs navHeadIcons">
+                        <i class="IconA fa-solid fa-bars"
+                            data-sub="subNav" data-section="Nav"
+                        ></i>
+                    </div>
+
+                    <!-- Ext Logo -->
+                    <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                        <div class="logoTitleCont logoTitleContN">
+                            <div class="logoTitleBox">
+                                <img class="logoTitle" src="logoTitle.png">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                
+                <!-- extSearchBar -->
+                <div class="search">
+                    <input class="userInput" id="searchBar" placeholder="Search Zip Codes and Cities Here!"
+                        data-function="searchFunction" data-self="searchBar" data-searchListener="true"
+                    >
+                    <i class="IconB searchIcon fa-solid fa-magnifying-glass" id="extSearchIcon"></i>
+                </div>
+
+
+                <!-- NavIcons (left(A)) -->
+                <div class="IconAs">
+                    <div class="IconA">
+                        <i class="fa-solid fa-sort"></i>
+                    </div>
+                    <div class="IconA">
+                        <i class="fa-solid fa-filter" data-target="filterDisplay"></i>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <!-- Body -->
+            <section class="Body part" id="extBody">
+                <div class="displayBox">   
+                    <!-- Create a div element to hold the map -->
+                    <div id="map">
+                        <!-- Map will be dynamically populated in script -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Extended -->
+
+            <div class="subNav" id="subNav" style="display: none;">
+
+                <!--subNavHome-->
+                <div class="subNavRow">
+                    <span class="subNavItem">Home</span>
+                    <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                </div>
+
+                <!--subNavHelp-->
+                <div class="subNavRow" data-target="#subNav-help" data-slug="#subMore-help">
+                    <span class="subNavItem">Help</span>
+                    <i class="subNavButton subMoreToggle" id="subMore-help">▼</i>
+                </div>
+                <!--subNavMore-->
+                <div class="subNavMore" id="subNav-help" style="display: none;">
+                    <hr class="subNavHr">
+                    <div class="subNavMoreBox">
+                        <div class="subNavRow2">
+                            <span class="subNavItem">FAQs</span>
+                            <i class="subNavButton subPlusButton">+</i>
+                        </div>
+                    </div>
+                </div>         
+                
+                <!--subNavSettings-->
+                <div class="subNavRow" data-target="#subNav-settings" data-slug="#subMore-settings">
+                    <span class="subNavItem">Settings</span>
+                    <i class="subNavButton subMoreToggle" id="subMore-settings">▼</i>
+                </div>
+                <!--subNavMore-->
+                <div class="subNavMore" id="subNav-settings" style="display: none;">
+                    <hr class="subNavHr">
+                    <div class="subNavMoreBox">
+                        <div class="subNavRow2">
+                            <span class="subNavItem">Accessibility</span>
+                            <i class="subNavButton subPlusButton">+</i>
+                        </div>
+                        <div class="subNavRow2">
+                            <span class="subNavItem">Preferences</span>
+                            <i class="subNavButton subPlusButton">+</i>
+                        </div>
+                    </div>
+                </div>
+
+                <!--subNavAccount-->
+                <div class="subNavRow" data-target="#subNav-account" data-slug="#subMore-account">
+                    <span class="subNavItem">Account</span>
+                    <i class="subNavButton subMoreToggle" id="subMore-account">▼</i>
+                </div>
+                <!--subNavMore-->
+                <div class="subNavMore" id="subNav-account" style="display: none;">
+                    <hr class="subNavHr">
+                    <div class="subNavMoreBox">
+                        <div class="subNavRow2">
+                            <span class="subNavItem">My Account</span>
+                            <i class="subNavButton subPlusButton">+</i>
+                        </div>
+                        <div class="subNavRow2">
+                            <span class="subNavItem">Create Account</span>
+                            <i class="subNavButton subPlusButton">+</i>
+                        </div>
+                        <div class="subNavRow2">
+                            <span class="subNavItem">Sign In</span>
+                            <i class="subNavButton subPlusButton">+</i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="filterDisplay" id="filterDisplay" style="display: none;">
+                <form class="filterForm">
+                    <div class="filterRow">
+                        <label for="filterAddress">Address:</label>
+                        <input type="text" id="filterAddress" name="filterAddress" placeholder="Enter Address">
+                    </div>
+                    <div class="filterRow">
+                        <label for="filterCity">City:</label>
+                        <input type="text" id="filterCity" name="filterCity" placeholder="Enter City">
+                    </div>
+                    <div class="filterRowDuo">
+                        <div class="filterRow">
+                            <label for="filterState">State:</label>
+                            <input type="text" id="filterState" name="filterState" placeholder="Enter State">
+                        </div>
+                        <div class="filterRow">
+                            <label for="filterZip">Zip Code:</label>
+                            <input type="text" id="filterZip" name="filterZip" placeholder="Enter Zip Code">
+                        </div>
+                    </div>
+                    <div class="filterRow">
+                        <label for="filterStoreName">Store Name or Reference Point:</label>
+                        <input type="text" id="filterStoreName" name="filterStoreName" placeholder="e.g., Shell, Walmart, Main St.">
+                    </div>
+                    <div class="filterRow">
+                        <div class="halfRow">
+                            <label for="distanceRange">Distance (miles):</label>
+                            <input type="text" id="distanceValue" name="distanceValue" placeholder="Enter Radius">
+                            <input type="range" id="distanceRange" name="distanceRange" min="0" max="20" step="1">
+                        </div>
+                    </div>
+                    <div class="filterRow" style="display: none;">
+                        <label for="priceRangeMin">Price Range ($):</label>
+                        <div class="priceRangeInputs">
+                            <input type="text" id="priceMinValue" name="priceMinValue" placeholder="Min">
+                            <span class="priceRangeSeparator">To</span>
+                            <input type="text" id="priceValue" name="priceValue" placeholder="Max">
+                        </div>
+                    </div>
+                    <div class="filterRow" style="display: none;">
+                        <label for="fuelType">Fuel Type:</label>
+                        <select id="fuelType" name="fuelType">
+                            <option value="">Any</option>
+                            <option value="regular">Regular</option>
+                            <option value="midgrade">Midgrade</option>
+                            <option value="premium">Premium</option>
+                            <option value="diesel">Diesel</option>
+                        </select>
+                    </div>
+                    <button type="submit" class=" fullButton applyFiltersButton">Apply Filters</button>
+                </form>
+            </div>
+
+            </div>
+        </section>
+
+        <script>
+            function isInAppBrowser() {
+                const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+                return (
+                    ua.includes("FBAN") ||
+                    ua.includes("FBAV") ||
+                    ua.includes("Instagram") ||
+                    ua.includes("Line") ||
+                    ua.includes("Twitter")
+                );
+            }
+
+            if (isInAppBrowser()) {
+
+                document.addEventListener("DOMContentLoaded", () => {
+
+                    const url = "https://gas-watch.com";
+
+                    const overlay = document.createElement("div");
+
+                    overlay.style.cssText = `
+                        position:fixed;
+                        inset:0;
+                        background:#000;
+                        color:#fff;
+                        z-index:999999;
+                        display:flex;
+                        flex-direction:column;
+                        justify-content:center;
+                        align-items:center;
+                        text-align:center;
+                        padding:24px;
+                        font-family: sans-serif;
+                    `;
+
+                    overlay.innerHTML = `
+                        <h2 style="margin-bottom:12px;">
+                            Best used in Safari or Chrome
+                        </h2>
+
+                        <p style="opacity:0.8; font-size:14px; word-break:break-all;">
+                            ${url}
+                        </p>
+                    `;
+
+                    document.body.appendChild(overlay);
+                });
+            }
+        </script>
+
+        <script id="colorPalette_script">
+
+            const white1 = '#fff';
+            const white2 ='#f5f8ff';
+            const white3 = '#eef0f6';
+            const whiteBlue = '#e8efff';
+            const whiteBlueNeon = '#ccddff';
+
+            const grey1 = '#eceef2';
+            const grey2 = '#e5e6e7';
+            const grey3 = '#dee0e3';
+            const greyDark = '#666';            
+
+            const black1 = '#000';
+            const black2 = '#121418';
+            const black3 = '#333';
+            
+            const cobalt1 = '#0060b5';
+            const cobalt2 = '#075baf';
+            const cobaltLight = '#2274c7';
+            const cobaltDark = '#05509b';
+
+            const colorPalettes = {
+
+                intLightNorm: {
+                    
+                    //General
+                    body: {background: `${white1}`, color: `${black2}`},
+                    section: {background: `${white2}`, border: `1.5px solid ${grey1}`},
+                    'section:hover': {background: `${white1}`, border: `1.5px solid ${white3}`},
+                    div: {background: `linear-gradient(178deg, ${white1} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
+                    
+                    //Text
+                    h1: {color: `${cobalt1}`},
+                    h2: {color: `${cobalt1}`},
+                    h3: {color: `${cobalt1}`},
+                    h4: {color: `${cobalt1}`},
+                    h5: {color: `${cobalt1}`},
+                    h6: {color: `${cobalt1}`},
+                    
+                    //Special
+                    i: {color: `${cobalt1}`},
+                    button: {background: `linear-gradient(178deg, ${cobaltLight} 0%, ${cobalt2} 100%)`, color: `${white1}`, border: `1px solid ${cobalt1}`},
+                    'button:hover, button.active:hover': {background: `linear-gradient(178deg, ${cobalt1} 0%, ${cobaltDark} 100%)`},
+                    'button:focus, button.active': {background: `linear-gradient(178deg, ${cobalt2} 0%, ${cobalt1} 100%)`},
+                    'select, textarea, input': {border: `1px solid ${cobalt1}`},
+                    'input:hover, input:hover, input:hover': {border: `1.2px solid ${cobalt2}`},
+                    'input:focus, input:focus, input:focus': {border: `1px solid ${cobaltDark}`},
+
+                    hr: {background: `${cobalt1}`},
+                    '.shadow': {background: `${greyDark}`, opacity: '.08'},
+   
+                    '::-webkit-scrollbar-track': {background: `${black3}`},
+                    '::-webkit-scrollbar-track:hover': {background: `${black2}`},
+                    '::-webkit-scrollbar-thumb': {background: `${black2}`},
+                    '::-webkit-scrollbar-thumb:hover': {background: `${black1}`},
+                    
+                    //Icon
+                    '#flagReportReason': {background: `${grey1}`},
+                    '.cloudHelpNav': {border: `1.5px solid ${grey3}`},
+                    '.cloudHelpSection h5': {color: `${white1}`},
+
+                    '.IconA': {background: `linear-gradient(178deg, ${white3} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
+                    '.IconA:hover, IconA.active:hover': {background: `linear-gradient(178deg, ${white2} 0%, ${white3} 100%)`},
+                    '.IconA:focus, .IconC.active': {background: `${grey2}`},
+
+                    '.IconB': {background: `linear-gradient(178deg, ${cobaltLight} 0%, ${cobalt2} 100%)`, color: `${white1}`, border: `1px solid ${cobalt1}`},
+                    'IconB:hover, IconB.active:hover': {background: `linear-gradient(178deg, ${cobalt1} 0%, ${cobaltDark} 100%)`},
+                    'IconB:focus, IconB.active': {background: `linear-gradient(178deg, ${cobalt2} 0%, ${cobalt1} 100%)`},
+
+                    '.IconC': {background: `linear-gradient(178deg, ${white3} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
+                    '.IconC:hover, .IconC.active:hover': {background: `linear-gradient(178deg, ${white2} 0%, ${white3} 100%)`},
+                    'IconC:focus, .IconC.active': {background: `${grey2}`},
+
+                    '.IconD': {background: `linear-gradient(178deg, ${cobaltLight} 0%, ${cobalt2} 100%)`, color: `${white1}`, border: `1px solid ${cobalt1}`},
+                    'IconD:hover, IconD.active:hover': {background: `linear-gradient(178deg, ${cobalt1} 0%, ${cobaltDark} 100%)`},
+                    'IconD:focus, IconD.active': {background: `linear-gradient(178deg, ${cobalt2} 0%, ${cobalt1} 100%)`},
+
+                    '.fa-gear': {color: `${greyDark}`},
+                    '.navArrow': {color: `${white1}`},
+                    
+                    //Parts
+                    '.logoTitleContN': {background: `linear-gradient(178deg, ${white1} 0%, ${whiteBlue} 100%)`, border: `1.5px solid ${whiteBlueNeon}`},
+
+                    '.sectionHead:hover, .sectionHead:focus, .headPopUp:hover': {background: `linear-gradient(178deg, ${white2} 0%, ${white3} 100%)`},
+                    '.headPopUpH2': {color: `${black3}`},
+                    '.headPopUpH2.active': {background: `linear-gradient(180deg, ${grey1} 0%, ${grey2} 100%)`, color: `${cobalt2}`},
+                    '.headPopUpH2:hover': {background: '#d8d8d8', color: `${cobalt1}`},
+
+                    '.navLinksBox': {opacity: '.92'},
+                    '.navLinksBoxShadows': {'border-bottom': `0.25px solid ${whiteBlueNeon}`},
+                                        
+                    '.pollDisplayBody': {background: '#001120'},
+                    '.chatPage h4': {color: '#000'},
+                    '.chatSort:hover': {background: 'linear-gradient(180deg, #eaeaea 0%, #cecece 100%)'},
+                    '.chatSort:focus': {background: 'linear-gradient(180deg, #eaeaea 0%, #cdcdcd 100%)'},
+                    '.chatSort.active': {border: '1.5px solid #005daf40', background: 'linear-gradient(180deg, #e9e9e9 0%, #cbcbcb 100%)'},
+                    '.chatSort.active:hover': {background: 'linear-gradient(180deg, #e7e7e7 0%, #c9c9c9 100%)'},
+                    '.opinionGTBox': {'border-bottom': '1.5px solid #050e50'},
+                    '.opinionGTBox:nth-child(odd)': {'border-right': '1.5px solid #050e50'},
+                    '.opinionGTBox:nth-child(even)': {'border-left': '1.5px solid #050e50'},
+                    '.opinionGTBox:nth-child(n+3)': {'border-top': '1.5px solid #050e50'},
+                    '.exitFChat': {border: '1px solid #0f5999', background: 'linear-gradient(180deg, #075baf 0%, #2274c7 100%)', color: '#ffffff'},
+                    '.exitFChat:hover': {background: 'linear-gradient(180deg, #0f5999 0%, #1160af 100%)'},
+                    '.exitFChat:focus': {background: 'linear-gradient(180deg, #075baf 0%, #1160af 100%)'},
+                },
+                dark: {},
+                custom: {}
+            };
+
+
+            //Declarations
+
+            let cssString = '';
+
+            const lightPalette = colorPalettes.intLightNorm;
+            const darkPalette = colorPalettes.dark;
+            const customPalette = colorPalettes.custom;
+
+
+            function customizeColors(scheme) {
+
+
+                //loop through elements and set CSS Structure
+                for (const [element, styles] of Object.entries(scheme)) {
+                    
+                    cssString += `${element} { `; //"body { '
+
+                    //loop through styles(properties) and values
+                    for (const [property, value] of Object.entries(styles)) {
+                        cssString += `${property}: ${value};`; //color: black; ...
+                    }
+
+                    cssString += '} '; //'} "... "section {...}"
+
+                }
+
+
+                //Inject CSS into the #Dynamic Style Element
+                const styleTag = document.getElementById('Dynamic');
+                styleTag.textContent += cssString;
+
+
+                const p2 = document.getElementById('loadScreen1');
+                const p3 = document.getElementById('plane3');
+
+                setTimeout(() => {
+
+                    p2.style.display = 'none';
+                    
+                    setTimeout(() => {
+                        p3.style.opacity = '1';
+                    }, 150);
+
+                }, 650);
+            }
+
+            window.addEventListener('DOMContentLoaded', customizeColors(lightPalette));
+            
+        </script>
+
+        <script id="generalElements_script">
+
+            /* ---- General Elements ---- */
+
+            /* User Inputs */
+
+            //Submit Inputs on 'Enter'            
+            const viableInputs = document.querySelectorAll('.userInput');
+            
+            viableInputs.forEach(input => {
+
+                //viableInput Dataset (searchListener, Function)
+                const dataFunction = input.getAttribute('data-function');
+                const dataSelf = input.getAttribute('data-self');
+                const searchListener = input.getAttribute('data-listener');
+
+                //On Keydown, If 'Enter', Run dataFunction (w/resp to dataSelf)
+                input.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        window[dataFunction](dataSelf);
+                    }
+                });
+            });
+
+
+
+            /* Exit Button */
+
+            const exitButtons = document.querySelectorAll('.exitButton');
+
+            exitButtons.forEach(exitButton => {
+
+                //exitButton Dataset (Cont)
+                const dataCont = document.getElementById(exitButton.getAttribute('data-cont'));
+
+                //On Click, Display None dataCont
+                exitButton.addEventListener('click', () => {
+                    dataCont.style.display = 'none';
+                });
+            });
+
+
+
+            /* NavBars & SubNav */
+
+            const navBars = document.querySelectorAll('.fa-bars');
+
+            navBars.forEach(navBar => {
+
+                //navBar Dataset (Section, Sub)
+                const dataSection = document.getElementById(navBar.getAttribute('data-section'));
+                const subNav = document.getElementById(navBar.getAttribute('data-sub'));
+                                        
+                navBar.addEventListener('click', () => {
+
+                    if (subNav.style.display === 'none') {
+                        subNav.style.display = 'block';
+                    } else {
+                        subNav.style.display = 'none';
+                    }
+
+
+                    function blurSubNav(event) {
+                        
+                        //If Not Bars or subNav OR toggle: Display None
+                        if (!navBar.contains(event.target) && !subNav.contains(event.target)
+                            && !dataSection.querySelector('.tabToggles').contains(event.target)
+                           ) {
+
+                            //subNav
+                            subNav.style.display = 'none';
+                            
+                            //subMore
+                            const subMoreBoxes = document.querySelectorAll('.subNavMore');                
+                            const subMoreToggles = document.querySelectorAll('.subMoreToggle');
+
+                            //Display None More Box, Turn More Icon
+                            subMoreBoxes.forEach(box => {box.style.display = 'none'});
+                            subMoreToggles.forEach(t => {t.style.transform = 'rotate(-90deg)'});
+
+                            document.addEventListener('click', blur);
+
+                            return;
+                        }
+
+                        return;
+                    }
+
+                    document.addEventListener('click', blurSubNav);
+                });
+            });
+
+            //SubNav
+
+            const subNavRow = document.querySelectorAll('.subNavRow');
+
+            subNavRow.forEach(row => {
+
+                //subNav Dataset (Target, Slug)
+                const subMoreBox = document.querySelector(row.getAttribute('data-target'));
+                const subMoreToggle = document.querySelector(row.getAttribute('data-slug'));
+
+                row.addEventListener('click', () => {
+
+                    //Display More Row & Turn More Icon
+                    if (subMoreBox.style.display === 'none') {
+                        subMoreBox.style.display = 'flex';
+                        subMoreToggle.style.transform = 'rotate(0deg)';
+
+                    } else {
+                        subMoreBox.style.display = 'none';
+                        subMoreToggle.style.transform = 'rotate(-90deg)';
+                    }
+                });
+            });
+
+
+            /* FilterDisplay */
+
+            const filters = document.querySelectorAll('.fa-filter');
+
+            filters.forEach(filter => {
+
+                const dataTarget = document.getElementById(filter.getAttribute('data-target'));
+
+                filter.addEventListener('click', () => {
+
+                    if (dataTarget.style.display === 'none') {
+                        dataTarget.style.display = 'flex';
+                    } else {
+                        dataTarget.style.display = 'none';
+                    }
+
+                    function blurFilterDisplay(event) {
+                        
+                        //If Not Bars or subNav OR toggle: Display None
+                        if (!filter.contains(event.target) && !dataTarget.contains(event.target)
+                           ) {
+
+                            //filterDisplay
+                            dataTarget.style.display = 'none';
+                            
+
+                            document.addEventListener('click', blur);
+
+                            return;
+                        }
+
+                        return;
+                    }
+
+                    document.addEventListener('click', blurSubNav);
+
+                });
+
+            });
+
+
+            
+            // Tab Toggles
+            const tabToggles = document.querySelectorAll('.tabToggles');
+
+            tabToggles.forEach(icon => {
+                icon.addEventListener('click', () => {
+
+                    // Declarations
+                    const dataSection = document.getElementById(icon.getAttribute('data-section'));
+
+                    const tabMinus = dataSection.querySelector(`.tabMinus`);
+                    const tabPlus = dataSection.querySelector(`.tabPlus`);
+
+                    const relTabsBox = dataSection.querySelector(`.navTabs`);
+                    const relSubNav = dataSection.querySelector(`.subNav`);
+                    const relDisplayReports = dataSection.querySelectorAll('.displayReport');
+
+
+                    // If Display Flex
+                    if (relTabsBox.style.display === 'flex') {
+                        
+                        tabMinus.style.display = 'none';
+                        tabPlus.style.display = 'flex';
+                        relTabsBox.style.display = 'none';
+
+                        // Updates: SubNav/DisplayReport Tops, Chat Height
+                        relSubNav.style.top = '107.5px';
+                        relDisplayReports.forEach(d => {d.style.top = '149px';});
+
+                    // Else
+                    } else {
+
+                        tabPlus.style.display = 'none';
+                        tabMinus.style.display = 'flex';
+                        relTabsBox.style.display = 'flex';
+
+                        // Updates: SubNav/DisplayReport Tops, Chat Height
+                        relSubNav.style.top = '137.5px';
+                        relDisplayReports.forEach(d => {d.style.top = '185px';});
+
+                    }
+
+                });
+            });
+            
+
+            //Container Size Toggles
+            const contSizeToggles = document.querySelectorAll('.contSizeToggle');
+
+            contSizeToggles.forEach(toggle => {
+
+                const dataCont = toggle.getAttribute('data-cont');
+                const containers = document.querySelectorAll(dataCont);
+
+                let ExtendedDisplay = document.getElementById('Extended').style.display;
+                let extNavTabsDisplay = document.getElementById('extNavTabs').style.display;
+
+                let initialBaseHeight = containers[0].getBoundingClientRect().height;
+
+                // 1. Declare variables out here so they "survive" the if/else
+                let maxAllowedHeight;
+                let minAllowedHeight;
+
+                // 2. Wrap the OR condition in parentheses so the AND logic works correctly
+                if (extNavTabsDisplay === 'flex') {
+                    maxAllowedHeight = initialBaseHeight + 500;
+                    minAllowedHeight = initialBaseHeight - 500;
+                } else {
+                    maxAllowedHeight = initialBaseHeight + 530;
+                    minAllowedHeight = initialBaseHeight - 470;
+                }
+
+                // 2. This variable persists so all toggles and "pages" stay in sync
+                let sharedCurrentHeight = initialBaseHeight;
+
+                toggle.addEventListener('pointerdown', (e) => {
+                    e.preventDefault();
+                    const startY = e.clientY;
+                    
+                    // Use the height we last set, not the current element's height
+                    // (which might be 0 if the element was hidden)
+                    const startHeight = sharedCurrentHeight;
+
+                    document.querySelector('.fa-grip-horizontal').style.cursor = 'grabbing';
+                    toggle.style.cursor = 'grabbing';
+
+                    document.onpointermove = (e) => {
+                        const deltaY = startY - e.clientY;
+                        let newHeight = startHeight + deltaY;
+
+                        if (newHeight > maxAllowedHeight) newHeight = maxAllowedHeight;
+                        if (newHeight < minAllowedHeight) newHeight = minAllowedHeight;
+
+                        // Update the shared height tracker
+                        sharedCurrentHeight = newHeight;
+
+                        // Apply to ALL containers immediately
+                        containers.forEach(c => {
+                            c.style.height = `${newHeight}px`;
+                        });
+                        
+                    };
+
+                    document.onpointerup = () => {
+                        document.onpointermove = null;
+                        document.onpointerup = null;
+
+                        document.querySelector('.fa-grip-horizontal').style.cursor = 'grab';      
+                        toggle.style.cursor = 'grab';                  
+                    };
+                });
+            });
+
+        </script>
+
+        <script id="generalIcons_script">
+
+            /*Icons*/
+
+            const displayReports = document.querySelector('.displayReports');
+
+            //Gear (Spin & PopUp)
+            const gearIcons = document.querySelectorAll('.fa-gear');
+
+            gearIcons.forEach(gear => {
+                gear.addEventListener('click', () => {
+
+                    const target = gear.getAttribute('data-target');
+                    const slug = gear.getAttribute('data-slug');
+
+                    const settingsReport = document.querySelector(slug);
+                    
+                    if (settingsReport.style.display === 'none' || settingsReport.style.display === '') {
+
+                        displayReports.style.display = 'block';
+                        settingsReport.style.display = 'flex';
+
+                        gear.style.transition = 'transform 2.5s ease';
+                        gear.style.transform = 'rotate(360deg)';
+                        
+                        function blurGear(event) {
+                            if (!gear.contains(event.target) && !settingsReport.contains(event.target)) {
+                                gear.style.transition = 'transform 2.5s ease';
+                                gear.style.transform = 'rotate(-360deg)';
+
+                                displayReports.style.display = 'none';
+                                settingsReport.style.display = 'none';
+
+                                document.removeEventListener('click', blurGear);
+                            }
+                        }
+
+                        document.addEventListener('click', blurGear);
+
+                    } else {
+                        displayReports.style.display = 'none';
+
+                        gear.style.transition = 'transform 2.5s ease';
+                        gear.style.transform = 'rotate(-360deg)';
+                    }
+                });
+            });
+
+
+
+            //Flag (Color & PopUp)
+            const flagIcons = document.querySelectorAll('.fa-flag');
+            let fclicks = 0;
+
+            flagIcons.forEach(flag => {
+                flag.addEventListener('click', () => {      
+
+                    const target = flag.getAttribute('data-target');
+                    const slug = flag.getAttribute('data-slug');
+
+                    const flagReport = document.querySelector(slug);
+                    
+                    if (flag.style.color === '#0060b5' || flag.style.color === 'rgb(0, 96, 181)' || flag.style.color === '') {
+                        flag.style.color = 'darkred';
+                        flag.style.background = '#dee0e3';
+
+                        displayReports.style.display = 'block';
+                        flagReport.style.display = 'flex';
+
+                        function blurFlag(event) {
+                            if (!flag.contains(event.target) && !flagReport.contains(event.target)) {
+                                fclicks++;
+                                if (fclicks === 2) {
+                                    displayReports.style.display = 'none';
+                                    document.querySelector(slug).style.display = 'none';
+                                
+                                    fclicks = 0;
+                                    document.removeEventListener('click', blurFlag);
+                                }
+                            }
+                        }
+
+                        document.addEventListener('click', blurFlag);
+
+                    } else {
+                        flag.style.color = '#0060b5';
+                        flag.style.background = 'linear-gradient(180deg, #eef0f6 0%, #eceef2 100%)';
+                        document.querySelector(target).style.display = 'none';
+                        document.querySelector(slug).style.display = 'none';
+                    }
+                });
+            });
+
+
+
+            //Cloud Help
+            const questionIcons = document.querySelectorAll('.fa-circle-question');
+
+            let qClick = 0;
+
+            questionIcons.forEach(q => {
+                q.addEventListener('click', () => {
+                    const cloud1 = document.querySelector(q.getAttribute('data-target1'));
+                    const cloud2 = document.querySelector(q.getAttribute('data-target2'));
+                    const cloud3 = document.querySelector(q.getAttribute('data-target3'));
+
+                    const clouds = document.querySelectorAll('.fa-cloud');
+                    
+                    const container = document.querySelector(q.getAttribute('data-slug'));
+                    const cloudHelp = document.querySelector('.cloudHelpSection');
+
+                    qClick++;
+
+                    container.style.display = 'flex';
+
+                    if (qClick === 1) {
+                        setTimeout(() => {
+                            cloud1.classList.add('visible');
+                        }, 50);
+
+                        setTimeout(() => {
+                            cloud2.classList.add('visible');
+                        }, 700);
+
+                        setTimeout(() => {
+                            cloud3.classList.add('visible');
+                        }, 1500);
+                        setTimeout(() => {
+                            cloudHelp.style.display = 'flex';
+                        }, 1730);
+                    }
+                    function blurQ(event) {
+                        if (!q.contains(event.target) && !container.contains(event.target)) {
+                            container.style.display = 'none';
+
+                            if (qClick === 2) {
+
+                                clouds.forEach(c => {
+                                    c.classList.remove('visible');
+                                });
+
+                                cloudHelp.style.display = 'none';
+
+                                qClick = 0;
+                            }
+                        }
+                    }
+
+                    document.addEventListener('click', blurQ);
+                });
+            })
+
+
+
+            //Thumb (Background & *Submit*)
+            const thumbsUp = document.querySelectorAll('.fa-thumbs-up');
+            const thumbsDown = document.querySelectorAll('.fa-thumbs-down');
+                        
+            thumbsUp.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const twinID = thumb.getAttribute('data-twin');
+                    const twin = document.querySelector(twinID)
+
+                    console.log(thumb.style.background);
+                    if (thumb.style.background === 'linear-gradient(rgb(236, 236, 236) 0%, rgb(209, 209, 209) 100%)' || thumb.style.background === '') {
+                        thumb.style.background = '#05509b';
+                        thumb.style.background = '#005daf';
+                        thumb.style.color = '#ffffff';
+                        thumb.style.border = '1px solid #0f5999';
+                        thumb.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.06)';
+
+                        twin.style.background = 'linear-gradient(180deg, #ececec 0%, #d1d1d1 100%)';
+                        twin.style.color = '#0f5999';
+                        twin.style.border = '1px solid #dddddd';
+                        twin.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.03)';
+                    } else {
+                        thumb.style.background = 'linear-gradient(180deg, #ececec 0%, #d1d1d1 100%)';
+                        thumb.style.color = '#0f5999';
+                        thumb.style.border = '1px solid #dddddd';
+                        thumb.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.03)';
+                    }
+                });
+            });
+
+            thumbsDown.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const twinID = thumb.getAttribute('data-twin');
+                    const twin = document.querySelector(twinID)
+
+                    if (thumb.style.background === 'linear-gradient(rgb(236, 236, 236) 0%, rgb(209, 209, 209) 100%)' || thumb.style.background === '') {
+                        thumb.style.background = '#05509b';
+                        thumb.style.background = '#005daf';
+                        thumb.style.color = '#ffffff';
+                        thumb.style.border = '1px solid #0f5999';
+                        thumb.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.06)';
+
+                        twin.style.background = 'linear-gradient(180deg, #ececec 0%, #d1d1d1 100%)';
+                        twin.style.color = '#0f5999';
+                        twin.style.border = '1px solid #dddddd';
+                        twin.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.03)';
+                    } else {
+                        thumb.style.background = 'linear-gradient(180deg, #ececec 0%, #d1d1d1 100%)';
+                        thumb.style.color = '#0f5999';
+                        thumb.style.border = '1px solid #dddddd';
+                        thumb.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.03)';
+                    }
+                });
+            });
+
+
+
+            //Bookmark/Check (Switch & *Save*)
+            const checkIcons = document.querySelectorAll('.fa-check');
+            const bookmarkIcons = document.querySelectorAll('.fa-bookmark');
+
+            checkIcons.forEach(check => {
+                check.addEventListener('click', () => {
+                    const twinID = check.getAttribute('data-twin');
+                    const twin = document.querySelector(twinID)
+                    check.style.display = 'none';
+                    twin.style.display = 'flex';
+                });
+            });
+
+            bookmarkIcons.forEach(bookmark => {
+                bookmark.addEventListener('click', () => {
+                    const twinID = bookmark.getAttribute('data-twin');
+                    const twin = document.querySelector(twinID)
+                    bookmark.style.display = 'none';
+                    twin.style.display = 'flex';
+                });
+            });
+
+        </script>
+
+        <script>
+
+            /* ---- Chat Functionality ---- */
+
+
+            /* -- Chat Tabs -- */
+            
+            const chatTabs = document.querySelectorAll('.chatTab');
+
+            chatTabs.forEach(tab => {
+                //chatTab Dataset (target, contClass, dTitle, h)
+                const cClasses = document.querySelectorAll(tab.getAttribute('data-contClass'));
+
+                const target = document.getElementById(tab.getAttribute('data-target'));
+                const dTitle = document.getElementById(tab.getAttribute('data-title'));
+                const h = tab.getAttribute('data-h');  
+
+                tab.addEventListener('click', () => {
+                    //Displays None & Remove Actives
+                    cClasses.forEach(c => {c.style.display = 'none';});
+                    chatTabs.forEach(t => {t.classList.remove('active');});
+                    //Updates (Target Flex, dTitle = h, Add Active)
+                    target.style.display = 'flex';
+                    dTitle.textContent = `${h}`;
+                    tab.classList.add('active');
+                });
+            });
+            
+
+            /* -- Chat Title -- */
+
+            //Page Title and Pop Up
+            const chatPageTitles = document.querySelectorAll('.chatPageHead h3');
+            const chatHeadH3PopUps = document.querySelectorAll('.chatHeadH3PopUp');
+
+            chatPageTitles.forEach(title => {
+                //chatPageTitle Dataset (pop)
+                const chatHeadPopUp = document.getElementById(title.getAttribute('data-pop'));
+
+                title.addEventListener('click', () => {
+                    //Pop Display Flex
+                    chatHeadPopUp.style.display = 'flex';
+                    //blurChatNav
+                    function blurChatNav(event) {
+                        if (!document.querySelector('.chatPageHead').contains(event.target)) {
+                            //Pop Display None
+                            chatHeadPopUp.style.display = 'none';
+                            
+                            document.removeEventListener('click', blurChatNav);
+                        }
+                    }
+                    document.addEventListener('click', blurChatNav);
+                });
+            });
+
+            chatHeadH3PopUps.forEach(title => {
+                //chatHeadH3PopUp Dataset (contClass, target, tab, title, h)
+                const cClasses = document.querySelectorAll(title.getAttribute('data-contClass'));
+
+                const target = document.getElementById(title.getAttribute('data-target'));
+                const dTab = document.getElementById(title.getAttribute('data-tab'));
+                const dTitle = document.getElementById(title.getAttribute('data-title'));
+                const h = title.getAttribute('data-h');
+
+                title.addEventListener('click', () => {
+                    //Displays None & Remove Actives
+                    cClasses.forEach(body => body.style.display = 'none');
+                    chatTabs.forEach(t => t.classList.remove('active'));
+                    chatHeadH3PopUps.forEach(t => t.classList.remove('active'));
+                    //Updates (Target Flex, dTitle = h, Add Actives)
+                    target.style.display = 'flex';
+                    dTitle.textContent = `${h}`;
+                    title.classList.add('active');
+                    dTab.classList.add('active');
+                    //Hide Pop Up
+                    document.querySelector('.chatHeadPopUp').style.display = 'none';
+                });
+            });
+
+
+            /* -- Chat Sorts -- */
+
+            //Chat Sorts and Chat Boards
+            const chatSorts = document.querySelectorAll('.chatSort');
+            const chatBoards = document.querySelectorAll('.chatBoard'); 
+
+            chatSorts.forEach(sort => {
+                //chatSort Dataset (contClass, selfClass, target, check, checkSlug)
+                const specChatBoards = document.querySelectorAll(sort.getAttribute('data-contClass'));
+                const specChatSorts = document.querySelectorAll(sort.getAttribute('data-selfClass'));
+                const target = document.getElementById(sort.getAttribute('data-target'));
+                const check = document.getElementById(sort.getAttribute('data-check'));
+                const checkSlug = document.getElementById(sort.getAttribute('data-checkSlug'));
+
+                sort.addEventListener('click', () => {
+                    //Displays None & Remove Actives
+                    specChatBoards.forEach(c => {c.style.display = 'none';});
+                    check.style.display = 'none';
+                    checkSlug.style.display = 'none';
+                    specChatSorts.forEach(s => {s.classList.remove('active');});
+                    //Updates (Target Grid, Add Active)
+                    target.style.display = 'grid';
+                    sort.classList.add('active');
+                });
+            });
+
+
+            /* -- Full Chat -- */
+
+            //Click Mini-Chat-Board for Full Chat
+            chatBoards.forEach(board => {
+                //chatBoard Dataset (sClass, target, slug)
+                const sClasses = document.querySelectorAll(board.getAttribute('data-sClass'));
+                const target = document.getElementById(board.getAttribute('data-target'));
+                const slug = document.getElementById(board.getAttribute('data-slug'));
+                board.addEventListener('click', () => {
+                    //Return if on Target Full Chat
+                    if (board.id === target.id) {
+                        return
+                    } else {
+                        //Find Current Chat Boards & Display None
+                        sClasses.forEach(c => {c.style.display = 'none';});
+                        //Target Full Chat and Body Display Grid
+                        target.style.display = 'grid';
+                        slug.style.display = 'grid';
+                    }
+                });
+            });
+
+            //Exit Full Chat    
+            const exitFChats = document.querySelectorAll('.exitFChat');
+
+            exitFChats.forEach(exit => {
+                //exitFChat Dataset (target, slug, revert)                
+                const target = document.getElementById(exit.getAttribute('data-target'));                
+                const slug = document.getElementById(exit.getAttribute('data-slug'));                
+                const revert = document.querySelector(exit.getAttribute('data-revert'));
+                const revertTarget = document.getElementById(revert.getAttribute('data-target'));
+
+                exit.addEventListener('click', () => {
+                    //Display None & Add Active
+                    target.style.display = 'none';
+                    slug.style.display = 'none';
+                    //Find Active Board and Display Grid
+                    revertTarget.style.display = 'grid';
+                });
+            });
+            
+
+        </script>
+
+        <script id="filter_script">
+
+            document.addEventListener("DOMContentLoaded", () => {
+                // --- DISTANCE FILTER LOGIC ---
+                const distanceRange = document.getElementById("distanceRange");
+                const distanceValue = document.getElementById("distanceValue");
+
+                // Initialize distance at 5 miles
+                distanceRange.value = 5;
+                distanceValue.value = 5;
+
+                // Sync Slider -> Input (Strictly capping display/slider range to 10 as requested)
+                distanceRange.max = 20; 
+                distanceRange.addEventListener("input", (e) => {
+                    distanceValue.value = e.target.value;
+                });
+
+                // Sync Input -> Slider
+                distanceValue.addEventListener("input", (e) => {
+                    let val = parseFloat(e.target.value);
+                    if (!isNaN(val) && val >= 0 && val <= 10) {
+                        distanceRange.value = val;
+                    }
+                });
+            });
+
+
+            /* ==========================================================================
+            FILTER SEARCH
+            ========================================================================== */
+
+            function buildFilterSearchString() {
+
+                const storeName =
+                    document.getElementById('filterStoreName')?.value.trim();
+
+                const address =
+                    document.getElementById('filterAddress')?.value.trim();
+
+                const city =
+                    document.getElementById('filterCity')?.value.trim();
+
+                const state =
+                    document.getElementById('filterState')?.value.trim();
+
+                const zip =
+                    document.getElementById('filterZip')?.value.trim();
+
+                // Remove empty values automatically
+                const searchParts = [
+                    storeName,
+                    address,
+                    city,
+                    state,
+                    zip
+                ].filter(part => part && part.length > 0);
+
+                // Build clean comma-separated string
+                return searchParts.join(', ');
+            }
+
+            /* ==========================================================================
+            APPLY FILTERS
+            ========================================================================== */
+
+            function applyFilters(event) {
+
+                event.preventDefault();
+
+                if (isSearching) return;
+
+                const finalSearchString =
+                    buildFilterSearchString();
+
+                if (!finalSearchString) {
+
+                    alert("Please enter at least one filter field.");
+
+                    return;
+                }
+
+                console.log(
+                    "Filter search:",
+                    finalSearchString
+                );
+
+                clearMarkers();
+
+                // ZIP-only optimization
+                if (/^\d{5}$/.test(finalSearchString)) {
+
+                    searchByZipcode(finalSearchString);
+
+                } else {
+
+                    searchByPlaceName(finalSearchString);
+                }
+
+
+
+                const distanceInput =
+                    document.getElementById('distanceValue');
+
+                const distanceSlider =
+                    document.getElementById('distanceRange');
+
+                const selectedDistance =
+                    parseFloat(
+                        distanceInput?.value ||
+                        distanceSlider?.value
+                    );
+
+                if (
+                    !isNaN(selectedDistance) &&
+                    selectedDistance > 0
+                ) {
+
+                    activeRadiusMiles = selectedDistance;
+
+                } else {
+
+                    // fallback default
+                    activeRadiusMiles = 5;
+                }
+
+                console.log(
+                    "ACTIVE RADIUS:",
+                    activeRadiusMiles,
+                    "miles"
+                );
+
+
+                // Price filter
+
+                /*
+
+                const priceMaxInput = document.getElementById('priceValue');
+                const parsedMaxPrice = parseFloat(priceMaxInput?.value);
+
+                if (!isNaN(parsedMaxPrice) && parsedMaxPrice > 0) {
+                    maxPriceAllowed = parsedMaxPrice;
+                } else {
+                    maxPriceAllowed = null;
+                }
+
+                */
+
+  
+
+                const fields = [
+                    'filterStoreName',
+                    'filterAddress',
+                ];
+
+                fields.forEach(id => {
+
+                    const element =
+                        document.getElementById(id);
+
+                    if (element) {
+                        element.value = '';
+                    }
+                });
+
+                document.getElementById('filterDisplay').style.display = 'none';
+
+            }
+
+            
+        </script>
+
+
+
+        <!-- Include Leaflet JavaScript file -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <!-- Include Bootstrap JavaScript for responsive behavior -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/@popperjs/core@^2.0.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <!-- Include your custom JavaScript code -->
+        <script id="map_script">
+
+            let isSearching = false;
+            let initialLoadTriggered = false;
+            let markers = [];
+
+            let activeRadiusMiles = 5;
+            let maxPriceAllowed = null;
+
+            /* ==========================================================================
+            MAP INIT
+            ========================================================================== */
+
+            const map = L.map('map', {
+                zoomControl: true,
+                tap: false // iOS Safari touch fix
+            }).setView([39.7392, -104.9903], 12);
+
+            L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+                subdomains: '0123',                // ⚡ Distributes downloads across mt0, mt1, mt2, mt3
+                maxZoom: 20,
+                minZoom: 4,                        // 🛑 Prevents zooming out into infinite world loops
+                updateWhenIdle: true,
+                attribution: 'Map data © Google'
+            }).addTo(map);
+
+            /* ==========================================================================
+            FETCH WITH TIMEOUT
+            ========================================================================== */
+
+            async function fetchWithTimeout(resource, options = {}) {
+                const timeout = options.timeout || 15000;
+
+                const controller = new AbortController();
+                const id = setTimeout(() => controller.abort(), timeout);
+
+                try {
+                    const response = await fetch(resource, {
+                        ...options,
+                        signal: controller.signal
+                    });
+
+                    clearTimeout(id); // Clean up the timer if the server responded quickly
+                    return response;
+
+                } catch (err) {
+                    clearTimeout(id); // Clean up the timer if an immediate network error happened
+
+                    // Check if the error was caused by our 15-second countdown kill-switch
+                    if (err.name === 'AbortError') {
+                        throw new Error(`Request timed out after ${timeout / 1000} seconds.`);
+                    }
+                    
+                    throw err;
+                }
+            }
+
+            /* ==========================================================================
+            APP INIT
+            ========================================================================== */
+
+            function initApp() {
+                // 🚀 Directly routes to immediate default load without blocking for hardware GPS prompts
+                loadDefaultLocation();
+            }
+
+            /* ==========================================================================
+            DEFAULT MAIN LOADER
+            ========================================================================== */
+
+            function loadDefaultLocation() {
+                if (initialLoadTriggered) return;
+                initialLoadTriggered = true;
+
+                const lat = 39.7392;
+                const lon = -104.9903;
+
+                // Create the center marker and push it to our global array so clearMarkers() can remove it later
+                const centerMarker = L.marker([lat, lon], {
+                    icon: L.divIcon({
+                        className: 'black-marker-icon'
+                    })
+                }).addTo(map);
+                
+                centerMarker.bindPopup("<b>Hello, Denver!</b>").openPopup();
+                markers.push(centerMarker);
+
+                // Immediately fetch initial data to populate the user's screen
+                getPricesNow("80204", lat, lon);
+            }
+
+            /* ==========================================================================
+            SAFE MAP MOVEMENT
+            ========================================================================== */
+
+            function moveMapSafely(lat, lon) {
+                // 🗺️ Pro-move: Use flyTo for an elegant cinematic glide animation to the new spot
+                map.flyTo([lat, lon], map.getZoom(), {
+                    animate: true,
+                    duration: 0.8 // Buttery smooth 800ms transition
+                });
+
+                // Forces immediate tile recalculation on the next browser redraw frame without setTimeout delays
+                requestAnimationFrame(() => {
+                    map.invalidateSize({ debounceMove: true });
+                });
+            }
+
+            /* ==========================================================================
+            CLEAR MARKERS
+            ========================================================================== */
+
+            function clearMarkers() {
+                markers.forEach(marker => map.removeLayer(marker));
+                markers = [];
+            }
+
+
+/* ==========================================================================
+   GAS PRICE FETCH
+========================================================================== */
+
+async function getPricesNow(searchQuery, targetLat, targetLon) {
+
+    if (isSearching) return;
+
+    isSearching = true;
+
+    console.log("Fetching gas prices...");
+
+    const searchField = document.getElementById('searchBar');
+
+    if (searchField) {
+        searchField.placeholder = "Loading gas prices...";
+    }
+
+    const BACKEND_URL =
+        "https://gas-watch-server.onrender.com/api/gas-prices";
+
+    try {
+
+        const response = await fetchWithTimeout(BACKEND_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Cache-Control": "no-cache"
+            },
+            body: JSON.stringify({
+                search: searchQuery,
+                _t: Date.now() // 🔥 cache-buster
+            }),
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("Backend request failed.");
+        }
+
+        const datasetItems = await response.json();
+
+        if (searchField) {
+            searchField.placeholder =
+                "Search city or ZIP code...";
+        }
+
+        if (datasetItems.error) {
+            throw new Error(datasetItems.error);
+        }
+
+        if (!datasetItems || datasetItems.length === 0) {
+            alert("No gas stations found.");
+            return;
+        }
+
+        clearMarkers();
+
+        datasetItems.forEach((station, index) => {
+
+            const angle =
+                index * (360 / datasetItems.length) * (Math.PI / 180);
+
+            // 1. Set the maximum radius limit (5 miles)
+            const maxRadiusMiles = activeRadiusMiles;
+            
+            // 2. Convert that maximum limit to geographic degrees
+            const maxRadiusDegrees = maxRadiusMiles / 69; 
+
+            // 3. FIX: Randomize the radius for each item so they scatter INSIDE the circle
+            // Using Math.sqrt ensures an even spread across the circle's surface area
+            const radiusOffset = Math.sqrt(Math.random()) * maxRadiusDegrees;
+
+            const lat =
+                targetLat + (Math.sin(angle) * radiusOffset);
+
+            const lon =
+                targetLon + (Math.cos(angle) * radiusOffset);
+
+            const currentPrice =
+                parseFloat(
+                    station.price_cash ||
+                    station.price_credit ||
+                    'n/a'
+                );
+
+            const stationName =
+                station.name || "Gas Station";
+
+            const streetAddress =
+                station.address_line1 || "Address unavailable";
+
+            const locality =
+                station.address_locality || "";
+
+            const priceIcon = L.divIcon({
+                className: 'gas-price-marker',
+                html: `$${currentPrice.toFixed(2)}`
+            });
+
+            const marker = L.marker([lat, lon], {
+                icon: priceIcon
+            });
+
+            marker.bindPopup(`
+                <div class="custom-popup">
+                    <h3>${stationName}</h3>
+                    <p>${streetAddress}, ${locality}</p>
+                    <div class="price-tag">
+                        Regular: $${currentPrice.toFixed(2)}
+                    </div>
+                </div>
+            `);
+
+            
+
+            marker.addTo(map);
+
+            markers.push(marker);
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Error fetching gas prices.");
+
+    } finally {
+
+        isSearching = false;
+
+        if (searchField) {
+            searchField.placeholder =
+                "Search city or ZIP code...";
+        }
+    }
+}
+
+/* ==========================================================================
+   ZIP SEARCH
+========================================================================== */
+
+async function searchByZipcode(zipcode) {
+
+    try {
+
+        const response =
+            await fetchWithTimeout(
+                `https://api.zippopotam.us/us/${zipcode}`
+            );
+
+        if (!response.ok) {
+            throw new Error("ZIP code not found.");
+        }
+
+        const data = await response.json();
+
+        const latitude =
+            parseFloat(data.places[0]["latitude"]);
+
+        const longitude =
+            parseFloat(data.places[0]["longitude"]);
+
+        moveMapSafely(latitude, longitude);
+
+        getPricesNow(zipcode, latitude, longitude);
+
+    } catch (error) {
+
+        alert(error.message);
+    }
+}
+
+/* ==========================================================================
+   PLACE SEARCH
+========================================================================== */
+
+async function searchByPlaceName(placeName) {
+
+    try {
+
+        const url =
+            `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(placeName)}&format=json&limit=1`;
+
+        const response =
+            await fetchWithTimeout(url);
+
+        if (!response.ok) {
+            throw new Error("Location search failed.");
+        }
+
+        const data = await response.json();
+
+        if (!data.length) {
+            throw new Error("Location not found.");
+        }
+
+        const latitude = parseFloat(data[0].lat);
+        const longitude = parseFloat(data[0].lon);
+
+        moveMapSafely(latitude, longitude);
+
+        getPricesNow(placeName, latitude, longitude);
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(error.message);
+    }
+}
+
+/* ==========================================================================
+   SEARCH HANDLER
+========================================================================== */
+
+function searchLocation() {
+
+    if (isSearching) return;
+
+    const searchBar =
+        document.getElementById('searchBar');
+
+    if (!searchBar) return;
+
+    const input =
+        searchBar.value.trim();
+
+    if (!input) return;
+
+    // Dismiss mobile keyboard
+    searchBar.blur();
+
+    clearMarkers();
+
+    if (/^\d{5}$/.test(input)) {
+
+        searchByZipcode(input);
+
+    } else {
+
+        searchByPlaceName(input);
+    }
+}
+
+/* ==========================================================================
+   DOM READY
+========================================================================== */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    // 🎯 Uses your exact HTML ID hooks for ultra-precise element matching
+    const bar = document.getElementById("searchBar");
+    const icon = document.getElementById("extSearchIcon");
+
+    // iOS & Mobile Safe Enter Key Handling
+    if (bar) {
+        bar.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                bar.blur(); // 📱 Pulls down mobile keyboards so users can instantly see the Leaflet map!
+                searchLocation();
+            }
+        });
+    }
+
+    // Universal Mobile/Desktop Click Handler (Completely safe from scroll-drag glitches)
+    if (icon) {
+        icon.addEventListener("click", function(event) {
+            event.preventDefault();
+            if (bar) bar.blur(); // 📱 Retracts keyboard if they choose to tap the glass icon instead
+            searchLocation();
+        });
+    }
+
+    // ⚡ INSTANT ENGINE BOOT: Renders your '#map' layout container seamlessly
+    requestAnimationFrame(() => {
+        map.invalidateSize(true);
+        initApp(); 
+    });
+});
+
+/* ==========================================================================
+   FILTER FORM SUBMIT
+========================================================================== */
+
+const filterForm =
+    document.querySelector('.filterForm');
+
+if (filterForm) {
+
+    filterForm.addEventListener(
+        'submit',
+        applyFilters
+    );
+}
+
+</script>
+
+    </body>
+</html>

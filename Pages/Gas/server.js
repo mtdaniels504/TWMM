@@ -1,15 +1,40 @@
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config(); // Loads secret keys from a hidden file
+const compression = require('compression'); 
+require('dotenv').config(); 
+
+// 📦 DYNAMIC ENGINE: Automatically reads your exact project name from your package.json file!
+const pjson = require('./package.json');
+const PROJECT_NAME = pjson.name || 'default-app'; 
+
+// 🛸 Pull in your independent route file
+const gasPricesRoute = require('./routes/gasPrices');
+
 
 const app = express();
-app.use(express.json());
 
-// SECURITY: Only allow requests originating from your actual website domain
-const allowedOrigins = ['https://gas-watch.com', 'http://github.io', 'http://localhost:5500']; 
+app.use(compression()); 
+app.use(express.json()); 
+
+// 🛡️ SECURITY SCHEMA (UNIVERSAL SKELETON)
+const allowedOrigins = [
+    'https://gas-watch.com', // 💡 Just swap this single line for your new live brand domain name in future apps
+    'http://localhost:5500',        
+    'http://localhost:3000'         
+]; 
+
 app.use(cors({
     origin: function (origin, callback) {
+        // Safe pass if running locally or matching your exact production custom brand domain
         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            return callback(null, true);
+        }
+
+        // 🛸 DYNAMIC VERCEL SHIELD: Completely automated!
+        // Checks that the domain ends in .vercel.app AND automatically injects your true project name variable!
+        const isVercelSubdomain = origin.endsWith('.vercel.app') && origin.includes(PROJECT_NAME);
+
+        if (isVercelSubdomain) {
             callback(null, true);
         } else {
             callback(new Error('Blocked by CORS policy: Unauthorized domain request.'));
@@ -17,51 +42,14 @@ app.use(cors({
     }
 }));
 
-// The secure endpoint your frontend will talk to
-app.post('/api/gas-prices', async (req, res) => {
-    try {
-        const { search } = req.body;
-        
-        // 1. Fetch your secret token safely from the server's private environment variables
-        const APIFY_TOKEN = process.env.APIFY_TOKEN; 
-        const ACTOR_ID = "johnvc~fuelprices";
-        
-        if (!APIFY_TOKEN) {
-            return res.status(500).json({ error: "Server configuration missing API key." });
-        }
+// 🔌 Mount it instantly onto your server routing path
+app.use('/api/gas-prices', gasPricesRoute);
 
-        // 2. Strict backend-controlled input configuration
-        const inputConfig = {
-            "search": search || "Denver",
-            "fuel": 1,
-            "maxAge": 0,
-            "lang": "en",
-            "radius": 15
-        };
+// ⚡ VERCEL ADAPTATION: Local environments use port 3000, while Vercel's serverless pipeline 
+// natively manages the module export architecture automatically in production.
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`Secure gateway running locally on port ${PORT}`));
+}
 
-        const apifyUrl = `https://api.apify.com/v2/acts/${ACTOR_ID}/run-sync-get-dataset-items?token=${APIFY_TOKEN}&timeout=120`;
-
-        // 3. Make the API call from the server, entirely hidden from the browser
-        const apifyResponse = await fetch(apifyUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(inputConfig)
-        });
-
-        if (!apifyResponse.ok) {
-            throw new Error(`Apify returned status code: ${apifyResponse.status}`);
-        }
-
-        const data = await apifyResponse.json();
-        
-        // 4. Send the raw dataset items back to your frontend map
-        res.json(data);
-
-    } catch (error) {
-        console.error("Backend processing error:", error.message);
-        res.status(500).json({ error: "Failed to fetch fuel prices securely." });
-    }
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Secure gateway running on port ${PORT}`));
+module.exports = app; // Required by Vercel serverless functions
