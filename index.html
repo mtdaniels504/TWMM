@@ -70,7 +70,7 @@
                 text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
             }
 
-            button  {
+            button, .ButtonB  {
                 font-size: clamp(0.57rem, 0.5rem + .7dvw, 0.85rem);
                 text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.03);
             }
@@ -91,8 +91,12 @@
             .lesserP, h6 {
                 font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
             }
+            
+            select {
+                font-size: clamp(0.425rem, 0.3rem + 0.625dvw, 0.5rem);
+            }
 
-            .fineP, select {
+            .fineP {
                 font-size: clamp(0.375rem, 0.25rem + 0.6dvw, 0.45rem);
             }
 
@@ -147,6 +151,9 @@
             input {
                 cursor: auto;
                 padding-left: 2.5px;
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
             }
 
             textarea {
@@ -163,9 +170,6 @@
             .userInput {
                 width: 100%;
                 border-radius: 2px 0px 0px 2px;
-                min-height: 18px;
-                height: calc(17px + 0.35vw);
-                max-height: 20px;
             }
 
 
@@ -200,7 +204,7 @@
 
             /* -- Buttons -- */
 
-            button {
+            button, .ButtonB {
                 cursor: pointer;
                 display: flex;
                 justify-content: center;
@@ -789,6 +793,12 @@
 
             /* ----- Tail Section ----- */
 
+            .mainTailIcons {
+                padding: 0;
+                margin: 0;
+                gap: 10px;
+            }
+
             #TailMain {
                 display: flex;
                 justify-content: space-evenly;
@@ -1172,14 +1182,14 @@
 
             #mainSubNav, .bodySubNav {
                 z-index: 800;
-                top: clamp(107.5px, 80px + 3.6dvw, 122px);
-                left: 3px;
-                height: calc(100dvh - 134px - 3dvw);
-                max-height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
+                top: clamp(107.5px, 80px + 3.6dvw, 122px);
+                left: 3px;
+                height: calc(100dvh - 134px - 3dvw);
+                max-height: 100%;
                 overflow-y: auto;
                 overflow-x: hidden;
             }
@@ -3014,12 +3024,14 @@
                 box-shadow: none;
                 margin: 0 20px 0 0;
                 padding: 0;
+                margin: auto;
             }
 
             .nestedHead-h2Hr hr {
                 margin-top: 6px;
-                width: 98%;
+                width: 96%;
             }
+
 
             /* Nested Content H2 Styles */
             .filterForm {
@@ -3663,12 +3675,16 @@
                 align-items: center;
                 width: 100%;
                 height: 100%;
-                padding: 20px 10% 20px 10%;
-                gap: 20px;
+                padding: 10px 5% 0 5%;
+                gap: 10px;
                 text-align: center;
                 background: transparent;
                 border: none;
                 box-shadow: none;
+            }
+
+            .nestedSearchandP p {
+                margin: 0 4%;
             }
 
 
@@ -3965,17 +3981,13 @@
             /* Rent Tab Content Styles */
             #parts-rentContent,
             #rentContent {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 text-align: center;
-                padding: 40px 20px;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-                width: 95%;
-                margin: 20px auto;
-            }
-
-            #parts-rentContent:hover,
-            #rentContent:hover {
-                background-color: #f0f0f0;
-                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+                padding: 0 20px;
+                gap: 10px;
             }
 
 
@@ -4072,6 +4084,10 @@
                 box-shadow: none;
                 margin: 0;
                 padding: 0;
+            }
+
+            .mapSearchButton {
+                border-radius: 0 0 1px 1px;
             }
 
 
@@ -4970,9 +4986,6 @@
                     margin: 0;
                 }
 
-                .nestedSearchandP {
-                    padding: 5px 20px;
-                }
 
 
                 .service-sections,
@@ -5006,15 +5019,8 @@
 
                 #parts-rentContent,
                 #rentContent {
-                    width: 95%;
-                    padding: 10px 5px 20px 5px;
                     text-align: center;
                 }
-
-                .service-section p:hover {
-                    font-size: 16px;
-                }
-
 
                 #parts-rentContent h2,
                 #rentContent h2 {
@@ -5022,8 +5028,8 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    margin-top: 20px;
                     text-align: center;
+                    margin: 20px 0 10px 0;
                     width: 100%;
                 }
 
@@ -5223,6 +5229,11 @@
                             .nested-content-header {
                                 margin: 4px auto;
                             }
+
+                            .nestedHead-h2Hr hr {
+                                margin-top: 4px;
+                            }
+
 
                             #featuredSlider-desktop {
                                 display: none;
@@ -5654,38 +5665,31 @@
                         <hr class="navLinksBoxShadow shadow">
 
                         <div class="subNavGroup">
-                            <form class="filterForm">
-                                <div class="filterRow">
-                                    <label for="filterAddress">Address:</label>
-                                    <input type="text" id="filterAddress" name="filterAddress" placeholder="Enter Address">
+                        
+                            <!--subNavVehicles-->
+                            <a href="https://www.worldmotormarket.com/vehicles" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Vehicles</span>
+                                    <i class="subNavButton subPlusButton">+</i>
                                 </div>
-                                <div class="filterRow">
-                                    <label for="filterCity">City:</label>
-                                    <input type="text" id="filterCity" name="filterCity" placeholder="Enter City">
+                            </a>
+                            
+                            <!--subNavParts-->
+                            <a href="https://www.worldmotormarket.com/parts" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Parts/Supplies</span>
+                                    <i class="subNavButton subPlusButton">+</i>
                                 </div>
-                                <div class="filterRowDuo">
-                                    <div class="filterRow">
-                                        <label for="filterState">State:</label>
-                                        <input type="text" id="filterState" name="filterState" placeholder="Enter State">
-                                    </div>
-                                    <div class="filterRow">
-                                        <label for="filterZip">Zip Code:</label>
-                                        <input type="text" id="filterZip" name="filterZip" placeholder="Enter Zip Code">
-                                    </div>
+                            </a>
+                            
+                            <!--subNavServices-->
+                            <a href="https://www.worldmotormarket.com/services" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Services</span>
+                                    <i class="subNavButton subPlusButton">+</i>
                                 </div>
-                                <div class="filterRow">
-                                    <label for="filterStoreName">Store Name or Reference Point:</label>
-                                    <input type="text" id="filterStoreName" name="filterStoreName" placeholder="e.g., Shell, Walmart, Main St.">
-                                </div>
-                                <div class="filterRow">
-                                    <div class="halfRow">
-                                        <label for="distanceRange">Distance (miles):</label>
-                                        <input type="text" id="distanceValue" name="distanceValue" placeholder="Enter Radius">
-                                        <input type="range" id="distanceRange" name="distanceRange" min="0" max="20" step="1">
-                                    </div>
-                                </div>
-                                <button type="submit" class="fullButton applyFiltersButton">Apply Filters</button>
-                            </form>
+                            </a>
+
                         </div>
 
                         <hr class="navLinksBoxShadow shadow">
@@ -5693,28 +5697,36 @@
                         <div class="subNavGroup">
                         
                             <!--subNavListings-->
-                            <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
+                            <a href="https://www.worldmotormarket.com/listings-template" style="text-decoration: none; color: inherit;">
                                 <div class="subNavRow">
-                                    <span class="subNavItem">The World Motor Market</span>
+                                    <span class="subNavItem">Listings Template</span>
                                     <i class="subNavButton subPlusButton">+</i>
                                 </div>
                             </a>
 
                             <!--subNavMap-->
-                            <a href="https://www.gas-watch.com" style="text-decoration: none; color: inherit;">
+                            <a href="https://www.worldmotormarket.com/maps" style="text-decoration: none; color: inherit;">
                                 <div class="subNavRow">
-                                    <span class="subNavItem">Gas Watch by The World Motor Market</span>
+                                    <span class="subNavItem">Map</span>
                                     <i class="subNavButton subPlusButton">+</i>
                                 </div>
                             </a>
 
                             <!--subNavBlog-->
-                            <a href="https://www.xantheragroup.com" style="text-decoration: none; color: inherit;">
+                            <a href="https://www.worldmotormarket.com/blognews" style="text-decoration: none; color: inherit;">
                                 <div class="subNavRow">
-                                    <span class="subNavItem">Xanthera Group, LLC.</span>
+                                    <span class="subNavItem">Blog/News</span>
                                     <i class="subNavButton subPlusButton">+</i>
                                 </div>  
                             </a> 
+
+                            <!--subNavAccount-->
+                            <a href="https://www.worldmotormarket.com/oasis-member" style="text-decoration: none; color: inherit;">
+                                <div class="subNavRow">
+                                    <span class="subNavItem">Oasis Member</span>
+                                    <i class="subNavButton subPlusButton">+</i>
+                                </div>
+                            </a>
 
                         </div>
 
@@ -5723,12 +5735,12 @@
                     <div class="subNavGroup subNavBlueWhite">
                                                                                                     
                         <!--subNavHelp-->
-                        <div class="subNavRow" data-target="#bodySubNav-helpHelp" data-slug="#bodySubMore-helpHelp">
+                        <div class="subNavRow" data-target="#mainSubNav-help" data-slug="#mainSubMore-help">
                             <span class="subNavItem">FAQs/Help</span>
-                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-helpHelp"></i>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="mainSubMore-help"></i>
                         </div>  
                         <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-helpHelp" style="display: none;">
+                        <div class="subNavMore" id="mainSubNav-help" style="display: none;">
                             <hr class="subNavHr">
                             <div class="subNavMoreBox">
                                 <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
@@ -5759,12 +5771,12 @@
                         </div>
 
                         <!--subNavSettings-->
-                        <div class="subNavRow" data-target="#bodySubNav-helpSettings" data-slug="#bodySubMore-helpSettings">
+                        <div class="subNavRow" data-target="#mainSubNav-settings" data-slug="#mainSubMore-settings">
                             <span class="subNavItem">Settings</span>
-                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="bodySubMore-helpSettings"></i>
+                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="mainSubMore-settings"></i>
                         </div>
                         <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="bodySubNav-helpSettings" style="display: none;">
+                        <div class="subNavMore" id="mainSubNav-settings" style="display: none;">
                             <hr class="subNavHr">
                             <div class="subNavMoreBox">
                                 <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
@@ -5854,36 +5866,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <hr class="navLinksBoxShadow shadow">
-
-                        <div class="subNavGroup">
-                        
-                            <!--subNavListings-->
-                            <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">The World Motor Market</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>
-                            </a>
-
-                            <!--subNavMap-->
-                            <a href="https://www.gas-watch.com" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Gas Watch by The World Motor Market</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>
-                            </a>
-
-                            <!--subNavBlog-->
-                            <a href="https://www.xantheragroup.com" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Xanthera Group, LLC.</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>  
-                            </a> 
-
                         </div>
 
                     </div>
@@ -6018,11 +6000,11 @@
                             </div>
                             <div class="page sideBarPage active" id="sideBarPage-cartActive">
                                 <div class="sideBarPageBody">
-                                    <div class="initialSideBarPageBody" style="display: none;">
+                                    <div class="initialSideBarPageBody">
                                         <p class="lesserP">There are currently no items in your cart</p>
                                         <p class="lesserP">Please refresh the page or shop now!</p>
                                     </div>
-                                    <div class="subContent-cart">
+                                    <div class="subContent-cart" style="display: none;">
                                         <div class="cartBody">
                                             <div class="cartPart cartBody1">
                                                 <div class="cartBodyImg">
@@ -6209,7 +6191,7 @@
                                         <hr class="shadow">
                                     </div>
                                 </div>
-                                <div class="cartTotals">
+                                <div class="cartTotals" style="display: none;">
                                     <h5>Cart Totals</h5>
                                     <div class="cartTotalsContainer">
                                         <div class="cartTotalsColumn1">
@@ -6263,11 +6245,11 @@
                             </div>
                             <div class="page sideBarPage" id="sideBarPage-cartHistory" style="display: none;">
                                 <div class="sideBarPageBody" id="sideBarPageBody-cartHistory">
-                                    <div class="initialSideBarPageBody" style="display: none;">
+                                    <div class="initialSideBarPageBody">
                                         <p class="lesserP">No Cart History found</p>
                                         <p class="lesserP">Please refresh the page or start your journey now!</p>
                                     </div>
-                                    <div class="subContent-cart">
+                                    <div class="subContent-cart" style="display: none;">
                                         <div class="subContentContainer">
                                             <div class="subNavRow subNavRow3">
                                                 <label class="custom-checkbox">
@@ -6414,7 +6396,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="cartTotals" id="cartTotals-cartHistory">
+                                <div class="cartTotals" id="cartTotals-cartHistory" style="display: none;">
                                     <h5>Cart Insights</h5>
                                     <div class="cartTotalsContainer cartsTotalsContainerHistory">
                                         <div class="cartTotalsHistoryBox cartTotalsColumn1-history2">
@@ -8268,9 +8250,9 @@
                                 <div class="content" id="vehiclesContent">
                                     <div class="nested-bodyTabs-ad">
                                         <div class="bodyTabs nested-bodyTabs">
-                                            <button class="ButtonB fullButton nested-bodyTab active">Buy</button>
-                                            <button class="ButtonB fullButton nested-bodyTab">Sell</button>
-                                            <button class="ButtonB fullButton nested-bodyTab">Rent</button>
+                                            <div class="ButtonB fullButton nested-bodyTab active">Buy</div>
+                                            <div class="ButtonB fullButton nested-bodyTab">Sell</div>
+                                            <div class="ButtonB fullButton nested-bodyTab">Rent</div>
                                         </div>
                                         <div class="nested-ad-container">
                                             <div class="nested-ad">
@@ -8291,13 +8273,13 @@
                                         <div class="nested-content-header">
 
                                             <!-- Icons (left(A)) -->
-                                            <div class="IconAs bodyNavIcons">
+                                            <div class="IconAs bodyNavIcons nested-toolsDesktop">
                                                 <!-- Icon -->
+                                                <i class="nav-trigger IconC fa-solid fa-sort"
+                                                    data-sub="bodySubNav-help" data-section="Home"
+                                                ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
                                                     data-sub="bodySubNav-world" data-section="Home"
-                                                ></i>
-                                                <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav-help" data-section="Home"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
                                                     data-sub="bodySubNav-list" data-section="Home"
@@ -8313,10 +8295,9 @@
                                                 <!-- Updated HTML for the nav-trigger -->
                                                 <div class="navCont-navTrig nav-trigger"
                                                     data-section="body" data-sub="buyerTools-dropdown">
-                                                    <span class="lesserP">Buyer Tools</span>
-                                                    <i class="IconC fas fa-bars nav-icon"></i>
-                                                </div>
-                        
+                                                    <span class="lesserP nested-toolsSpan">Buyer Tools</span>
+                                                    <i class="IconC fas fa-bars nav-icon nested-toolsI"></i>
+                                                </div>                        
                                             </div>
                                         </div>
                                         
@@ -8609,25 +8590,203 @@
                                             </div>
                                         </div>
 
-                                        <div class="nestedSearchandP">
-                        
-                                            <p>Explore our different seller options for your unique vehicle.</p>
+                                        <div class="details-and-featured" id="vehicle-details-featured">
+
+                                            <div class="verticalAd" id="nested-side-ad">
+                                                <div class="ad-slide active">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>25% off!</h3>
+                                                                            <p>Get a chrstmas themed car candle now!</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>$12 off</h3>
+                                                                            <p>any new plane or RV!</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>13.42% off</h3>
+                                                                            <p>all parachute related gear!</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Buy Now!</h3>
+                                                                            <p>Helicopter Propellers half off!</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>New</h3>
+                                                                            <p>Life Vests at affordable Pricing!</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Take the Wheel!</h3>
+                                                                            <p>20% off all spaceship steering wheels</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>Sky High Savings!</h3>
+                                                                            <p>Paragliding lessons now 30% off.</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Get a Lift!</h3>
+                                                                            <p>Hydraulic jacks 17% off.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>Hot Deal!</h3>
+                                                                            <p>Electric skateboards, for when walking is too mainstream.</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Dive In!</h3>
+                                                                            <p>Buy one snorkel, get a free nose clip!</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="adPageNav">               
+                                                    <div class="dot adDot active" id="adDot-1"></div>
+                                                    <div class="dot adDot" id="adDot-2"></div>
+                                                    <div class="dot adDot" id="adDot-3"></div>
+                                                    <div class="dot adDot" id="adDot-4"></div>
+                                                    <div class="dot adDot" id="adDot-5"></div>
+                                                </div>
+                                            </div>  
+                                            <div class="nestedSearchandP">
                             
-                                            <div class="sell-sections">
-                                                <div class="sell-section" id="sell-section-list">
-                                                    <h3>List Your Vehicle</h3>
-                                                    <p>Looking to connect to buyers near you? List your car for sale with our various listing options.</p>
-                                                    <a href="https://www.worldmotormarket.com/listings-template"> <!-- Add an anchor tag with the URL as the href -->
-                                                        <button class="widthButton list-button">List Now</button>
-                                                    </a>
+                                                <p>Explore our different seller options for your unique vehicle.</p>
+                                
+                                                <div class="sell-sections">
+                                                    <div class="sell-section" id="sell-section-list">
+                                                        <h3>List Your Vehicle</h3>
+                                                        <p>Looking to connect to buyers near you? List your car for sale with our various listing options.</p>
+                                                        <a href="https://www.worldmotormarket.com/listings-template"> <!-- Add an anchor tag with the URL as the href -->
+                                                            <button class="widthButton list-button">List Now</button>
+                                                        </a>
+                                                    </div>
+                                                    <hr class="separator"> <!-- Add this line as a separator -->
+                                                    <div class="sell-section" id="sell-section-offer">
+                                                        <h3>Instant Cash Offer</h3>
+                                                        <p>Want to sell your vehicle quickly? Get an instant cash offer for your car.</p>
+                                                        <button class="widthButton offer-button">Get Offer</button>
+                                                    </div>
+                                                    <!-- First "sell-section" with the button -->
                                                 </div>
-                                                <hr class="separator"> <!-- Add this line as a separator -->
-                                                <div class="sell-section" id="sell-section-offer">
-                                                    <h3>Instant Cash Offer</h3>
-                                                    <p>Want to sell your vehicle quickly? Get an instant cash offer for your car.</p>
-                                                    <button class="widthButton offer-button">Get Offer</button>
-                                                </div>
-                                                <!-- First "sell-section" with the button -->
                                             </div>
                                         </div>
                                     </div>
@@ -8647,9 +8806,9 @@
                         
                                     <div class="nested-bodyTabs-ad">
                                         <div class="bodyTabs nested-bodyTabs">
-                                            <button class="ButtonB fullButton parts-nested-bodyTab active">Buy</button>
-                                            <button class="ButtonB fullButton parts-nested-bodyTab">Sell</button>
-                                            <button class="ButtonB fullButton parts-nested-bodyTab">Rent</button>
+                                            <div class="ButtonB fullButton parts-nested-bodyTab active">Buy</div>
+                                            <div class="ButtonB fullButton parts-nested-bodyTab">Sell</div>
+                                            <div class="ButtonB fullButton parts-nested-bodyTab">Rent</div>
                                         </div>
                                         
                                         <div class="nested-ad-container">
@@ -8676,14 +8835,14 @@
                                             <!-- Icons (left(A)) -->
                                             <div class="IconAs bodyNavIcons">
                                                 <!-- Icon -->
+                                                <i class="nav-trigger IconC fa-solid fa-list"
+                                                    data-sub="bodySubNav-list" data-section="Home"
+                                                ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
                                                     data-sub="bodySubNav-world" data-section="Home"
                                                 ></i>
-                                                <i class="nav-trigger IconC fa-solid fa-circle-question"
+                                                <i class="nav-trigger IconC fa-solid fa-sort"
                                                     data-sub="bodySubNav-helpFull" data-section="Home"
-                                                ></i>
-                                                <i class="nav-trigger IconC fa-solid fa-list"
-                                                    data-sub="bodySubNav-list" data-section="Home"
                                                 ></i>
                                             </div>
 
@@ -9025,9 +9184,6 @@
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
                                                     data-sub="bodySubNav-world" data-section="Home"
                                                 ></i>
-                                                <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav-helpFull" data-section="Home"
-                                                ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
                                                     data-sub="bodySubNav-list" data-section="Home"
                                                 ></i>
@@ -9049,26 +9205,205 @@
                                             </div>
                                         </div>
 
-                                        <div class="nestedSearchandP">
+                                        <div class="details-and-featured" id="vehicle-details-featured">
 
-                                            <p>Discover how you can turn your vehicle parts into cash by exploring our different selling options.</p>
-                            
-                                            
-                                            <div class="sell-sections">
-                                                <div class="sell-section" id="sell-parts-section-list">
-                                                    <h3>List Your Parts</h3>
-                                                    <p>Looking to connect with buyers for your vehicle parts? List your parts for sale with our various listing options.</p>
-                                                    <a href="https://www.worldmotormarket.com/listings-template"> <!-- Add an anchor tag with the URL as the href -->
-                                                        <button class="widthButton list-button">List Now</button>
-                                                    </a>
+                                            <div class="verticalAd" id="nested-side-ad">
+                                                <div class="ad-slide active">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>25% off!</h3>
+                                                                            <p>Get a chrstmas themed car candle now!</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>$12 off</h3>
+                                                                            <p>any new plane or RV!</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <hr class="separator"> <!-- Add this line as a separator -->
-                                                <div class="sell-section" id="sell-parts-section-offer">
-                                                    <h3>Instant Cash Offer</h3>
-                                                    <p>Want to sell your vehicle parts quickly? Get an instant cash offer for your parts.</p>
-                                                    <button class="widthButton offer-button">Get Offer</button>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>13.42% off</h3>
+                                                                            <p>all parachute related gear!</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Buy Now!</h3>
+                                                                            <p>Helicopter Propellers half off!</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <!-- First "sell-section" with the button -->
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>New</h3>
+                                                                            <p>Life Vests at affordable Pricing!</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Take the Wheel!</h3>
+                                                                            <p>20% off all spaceship steering wheels</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>Sky High Savings!</h3>
+                                                                            <p>Paragliding lessons now 30% off.</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Get a Lift!</h3>
+                                                                            <p>Hydraulic jacks 17% off.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-slide">
+                                                    <div class="ad-content">
+                                                        <div class="ad-Header">
+                                                            <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
+                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                        </div>
+                                                        <div class="ad-Body">
+                                                            <div class="ad-ContentHead">
+                                                                <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
+                                                                <h3>The World Motor Market</h3>
+                                                            </div>
+                                                            <div class="ad-ContentBody">
+                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                            </div>
+                                                            <div class="ad-ContentTail">
+                                                                <div class="inner-ad-slide">
+                                                                    <div class="inner-ad-slideContent">
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
+                                                                            <h3>Hot Deal!</h3>
+                                                                            <p>Electric skateboards, for when walking is too mainstream.</p>
+                                                                        </div>
+                                                                        <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
+                                                                            <h3>Dive In!</h3>
+                                                                            <p>Buy one snorkel, get a free nose clip!</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                                                
+                                                                <img class="ad-Image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="adPageNav">               
+                                                    <div class="dot adDot active" id="adDot-1"></div>
+                                                    <div class="dot adDot" id="adDot-2"></div>
+                                                    <div class="dot adDot" id="adDot-3"></div>
+                                                    <div class="dot adDot" id="adDot-4"></div>
+                                                    <div class="dot adDot" id="adDot-5"></div>
+                                                </div>
+                                            </div>  
+
+                                            <div class="nestedSearchandP">
+
+                                                <p>Discover how you can turn your vehicle parts into cash by exploring our different selling options.</p>
+                                
+                                                
+                                                <div class="sell-sections">
+                                                    <div class="sell-section" id="sell-parts-section-list">
+                                                        <h3>List Your Parts</h3>
+                                                        <p>Looking to connect with buyers for your vehicle parts? List your parts for sale with our various listing options.</p>
+                                                        <a href="https://www.worldmotormarket.com/listings-template"> <!-- Add an anchor tag with the URL as the href -->
+                                                            <button class="widthButton list-button">List Now</button>
+                                                        </a>
+                                                    </div>
+                                                    <hr class="separator"> <!-- Add this line as a separator -->
+                                                    <div class="sell-section" id="sell-parts-section-offer">
+                                                        <h3>Instant Cash Offer</h3>
+                                                        <p>Want to sell your vehicle parts quickly? Get an instant cash offer for your parts.</p>
+                                                        <button class="widthButton offer-button">Get Offer</button>
+                                                    </div>
+                                                    <!-- First "sell-section" with the button -->
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -9113,6 +9448,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="mcontainer">
                                     <div id="map-container">
                                         <div id="map-container-content">
@@ -9120,7 +9457,7 @@
                                             <div class="custom-input-group">
                                                 <input type="text" id="addressInput" class="custom-input" placeholder="Enter an address or place name">
                                                 <input type="text" id="zipcodeInput" class="custom-input" placeholder="Enter a US zipcode" autocomplete="postal-code">
-                                                <button class=" fullSmallButton" onclick="searchLocation()" class="custom-button">Search</button>
+                                                <button class="fullButton mapSearchButton" onclick="searchLocation()" class="custom-button">Search</button>
                                             </div>           
                                         </div>         
                                         <!-- Create a div element to hold the map -->
@@ -9203,7 +9540,15 @@
 
                     <!-- Home Tail -->
                     <section class="Tail part" id="mainTail">
-                        <i class="IconA fa-solid fa-gear"></i>
+                        <div class="IconAs mainTailIcons">
+                            <i class="nav-trigger IconA fa-solid fa-gear"
+                                data-sub="bodySubNav-help" data-section="mainTail"
+                            ></i>
+                            <i class="nav-trigger IconC fa-solid fa-circle-question"
+                                data-sub="bodySubNav-help" data-section="mainTail"
+                            ></i>
+                        </div>
+
                         <div class="tailHs">
                             <h6 class="fineP">A Xanthera Group Company</h6>
                             <h6 class="fineP">2026</h6>
@@ -11672,7 +12017,9 @@
             </div>
             </div>
         </div>
-        <script>
+
+
+        <script id="colorPalette_script">
 
             const white1 = '#fff';
             const white2 ='#f5f8ff';
@@ -11703,6 +12050,8 @@
                     section: {background: `${white2}`, border: `1.5px solid ${grey1}`},
                     'section:hover': {background: `${white1}`, border: `1.5px solid ${white3}`},
                     div: {background: `linear-gradient(178deg, ${white1} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
+                    '.backPlane': {background: `${white1}`, border: `${white1}`},
+                    '#Home': {background: `${white1}`, border: `${white1}`},
                     
                     //Text
                     h1: {color: `${cobalt1}`},
@@ -11737,7 +12086,7 @@
                     '.dot': {background: `linear-gradient(178deg, ${cobalt1} 0%, ${cobaltDark} 100%)`},
 
                     '.ButtonB': {background: `linear-gradient(178deg, ${white3} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`, color: `${cobalt2}`},
-                    '.ButtonB:hover, ButtonB.active:hover': {background: `linear-gradient(178deg, ${white2} 0%, ${white3} 100%)`},
+                    '.ButtonB:hover, ButtonB.active:hover': {background: `linear-gradient(178deg, ${white1} 0%, ${whiteBlue} 100%)`, border: `1.5px solid ${whiteBlueNeon}`},
                     '.ButtonB:focus, .ButtonB.active': {background: `${grey2}`},
 
                     '.IconA': {background: `linear-gradient(178deg, ${white3} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
@@ -11757,6 +12106,7 @@
                     'IconD:focus, IconD.active': {background: `linear-gradient(178deg, ${cobalt2} 0%, ${cobalt1} 100%)`},
 
                     '.fa-gear': {color: `${greyDark}`},
+                    '.greyIcon': {color: `${greyDark}`},
                     '.navArrow': {color: `${white1}`},
                     
                     //Parts
@@ -11802,6 +12152,9 @@
             const customPalette = colorPalettes.custom;
 
 
+            let activeColorPalette = lightPalette;
+
+
             function customizeColors(scheme) {
 
 
@@ -11839,7 +12192,7 @@
                 }, 650);
             }
 
-            window.addEventListener('DOMContentLoaded', customizeColors(lightPalette));
+            window.addEventListener('DOMContentLoaded', customizeColors(activeColorPalette));
             
         </script>
 
@@ -12151,277 +12504,6 @@
         const APIFY_TOKEN = "apify_api_l2Q4NRPfHdgw41q60PZMJBDgkG8ZbM1g2SeU"; 
         </script>
 
-        <script>
-            const pollLayoutsCSS = {
-                //2 Choices
-                'UD': `    
-                    .up2Choice {background: #ff5f5f; height: 50%;}
-                    .down2Choice {background: #5f5fff; height: 50%; top: 50%;}
-                    
-                    .up2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .down2Choice div {bottom: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'LR': `
-                    .left2Choice {background: #ff5f5f; width: 50%;}
-                    .right2Choice {background: #5f5fff; width: 50%; left: 50%;}
-                    
-                    .left2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .right2Choice div {top: 10%; right: 10%; width: 80%; height: 80%;}
-                `,
-                'diU': `
-                    .diUleftChoice {background: #5f5fff; clip-path: polygon(0 0, 100% 100%, 0 100%);} 
-                    .diUrightChoice {background: #ff5f5f; clip-path: polygon(0 0, 100% 0, 100% 100%);}
-                    
-                    .diUleftChoice div {bottom: 5%; left: 5%; width: 40%; height: 40%;}
-                    .diUrightChoice div {top: 5%; right: 5%; width: 40%; height: 40%;}
-                `,
-                'diD': `
-                    .diDleftChoice {background: #ff5f5f; clip-path: polygon(0 0, 100% 0, 0 100%);}
-                    .diDrightChoice {background: #5f5fff; clip-path: polygon(100% 0, 100% 100%, 0 100%);}
-                    
-                    .diDleftChoice div {top: 5%; left: 5%; width: 40%; height: 40%;}
-                    .diDrightChoice div {bottom: 5%; right: 5%; width: 40%; height: 40%;}
-                `,
-                'All2': `
-                    .all2upChoice {background: #5fff5f; height: 33%;}
-                    .all2leftChoice {background: #5f5fff; width: 50%; height: 66%; top: 33%;}
-                    .all2rightChoice {background: #ff5f5f; width: 50%; height: 66%; top: 33%; left: 50%;}
-                    
-                    .all2upChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .all2leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .all2rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'None2': `
-                    .none2leftChoice {background: #5f5fff; width: 50%; height: 66%;}
-                    .none2rightChoice {background: #ff5f5f; width: 50%; height: 66%; left: 50%;}
-                    .none2downChoice {background: #ffbf5f; height: 33%; top: 66%;}
-                    
-                    .none2leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none2rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none2downChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                'Both2': `
-                    .both2upChoice {background: #5fff5f; height: 25%;}
-                    .both2leftChoice {background: #5f5fff; width: 50%; height: 50%; top: 25%;}
-                    .both2rightChoice {background: #ff5f5f; width: 50%; height: 50%; top: 25%; left: 50%;}
-                    .both2downChoice {background: #ffbf5f; height: 25%; top: 75%;}
-                    
-                    .both2upChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both2leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both2rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both2downChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                //3 Choices
-                'TriS3': `
-                    .triS3upChoice {background: #ff5f5f; width: 40%; height: 40%; top: 5%; left: 30%;}
-                    .triS3leftChoice {background: #5f5fff; width: 40%; height: 40%; top: 55%; left: 5%;}
-                    .triS3rightChoice {background: #ffff5f; width: 40%; height: 40%;; top: 55%; right: 5%;}
-
-                    .triS3upChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .triS3leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .triS3rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'OlyS3': `
-                    .olyS3upChoice {background: #ff5f5f; width: 40%; height: 40%; top: 55%; left: 30%;}
-                    .olyS3leftChoice {background: #5f5fff; width: 40%; height: 40%; top: 5%; left: 5%;}
-                    .olyS3rightChoice {background: #ffff5f; width: 40%; height: 40%; top: 5%; right: 5%;}
-
-                    .olyS3upChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .olyS3leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .olyS3rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'Col3': `
-                    .col3-1Choice {background: #ff5f5f; width: 33%;}
-                    .col3-2Choice {background: #5f5fff; width: 33%; left: 33%;}
-                    .col3-3Choice {background: #ffff5f; width: 33%; left: 66%;}
-
-                    .col3-1Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .col3-2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .col3-3Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'List3': `
-                    .list3-1Choice {background: #ff5f5f; height: 33%;}
-                    .list3-2Choice {background: #5f5fff; height: 33%; top: 33%;}
-                    .list3-3Choice {background: #ffff5f; height: 33%; top: 66%;}
-
-                    .list3-1Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .list3-2Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .list3-3Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                'All3': `
-                    .all3upChoice {background: #5fff5f; width: 99%; height: 33%;}
-                    .all3leftChoice {background: #5f5fff; width: 33%; height: 66%; top: 33%;}
-                    .all3middleChoice {background: #ffff5f; width: 33%; height: 66%; top: 33%; left: 33%;}
-                    .all3rightChoice {background: #ff5f5f; width: 33%; height: 66%; top: 33%; left: 66%;}
-
-                    .all3upChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .all3leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .all3middleChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .all3rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'None3': `
-                    .none3leftChoice {background: #5f5fff; width: 33%; height: 66%;}
-                    .none3middleChoice {background: #ffff5f; width: 33%; height: 66%; left: 33%;}
-                    .none3rightChoice {background: #ff5f5f; width: 33%; height: 66%; left: 66%;}
-                    .none3downChoice {background: #ffbf5f; width: 99%; height: 33%; top: 66%;}
-
-                    .none3leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none3middleChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none3rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none3downChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                'Both3': `
-                    .both3upChoice {background: #5fff5f; width: 99%; height: 25%;}
-                    .both3leftChoice {background: #5f5fff; width: 33%; height: 50%; top: 25%;}
-                    .both3middleChoice {background: #ffff5f; width: 33%; height: 50%; top: 25%; left: 33%;}
-                    .both3rightChoice {background: #ff5f5f; width: 33%; height: 50%; top: 25%; left: 66%;}
-                    .both3downChoice {background: #ffbf5f; width: 99%; height: 25%; top: 75%;}
-
-                    .both3upChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .both3leftChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both3middleChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both3rightChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both3downChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                //4 Choices
-                'UDLR': `
-                    .up4Choice {background: #ff5f5f; clip-path: polygon(50% 50%, 0 0, 100% 0);}
-                    .down4Choice {background: #5fff5f; clip-path: polygon(50% 50%, 100% 100%, 0 100%);}
-                    .left4Choice {background: #5f5fff; clip-path: polygon(50% 50%, 0 100%, 0 0);}
-                    .right4Choice {background: #ffff5f; clip-path: polygon(50% 50%, 100% 0, 100% 100%);}
-
-                    .up4Choice div {top: 4%; left: 30%; width: 40%; height: 20%;}
-                    .down4Choice div {bottom: 4%; left: 30%; width: 40%; height: 20%;}
-                    .left4Choice div {top: 30%; left: 4%; width: 20%; height: 40%;}
-                    .right4Choice div {top: 30%; right: 4%; width: 20%; height: 40%;}
-                `,
-                'Grid4': `
-                    .grid4-1aChoice {background: #ff5f5f; width: 50%; height: 50%;}
-                    .grid4-1bChoice {background: #bf5fff; width: 50%; height: 50%; left: 50%;}
-                    .grid4-2aChoice {background: #5f5fff; width: 50%; height: 50%; top: 50%;}
-                    .grid4-2bChoice {background: #ffff5f; width: 50%; height: 50%; top: 50%; left: 50%;}
-
-                    .grid4-1aChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .grid4-1bChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .grid4-2aChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .grid4-2bChoice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'Col4': `
-                    .col4-1Choice {background: #ff5f5f; width: 25%;}
-                    .col4-2Choice {background: #bf5fff; width: 25%; left: 25%;}
-                    .col4-3Choice {background: #5f5fff; width: 25%; left: 50%;}
-                    .col4-4Choice {background: #ffff5f; width: 25%; left: 75%;}
-
-                    .col4-1Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .col4-2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .col4-3Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .col4-4Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'List4': `
-                    .list4-1Choice {background: #ff5f5f; height: 25%;}
-                    .list4-2Choice {background: #bf5fff; height: 25%; top: 25%;}
-                    .list4-3Choice {background: #5f5fff; height: 25%; top: 50%;}
-                    .list4-4Choice {background: #ffff5f; height: 25%; top: 75%;}
-
-                    .list4-1Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .list4-2Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .list4-3Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .list4-4Choice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                'All4': `
-                    .all4-AChoice {background: #5fff5f; height: 25%;}
-                    .all4-1Choice {background: #ff5f5f; width: 25%; height: 75%; top: 25%;}
-                    .all4-2Choice {background: #bf5fff; width: 25%; height: 75%; top: 25%; left: 25%;}
-                    .all4-3Choice {background: #5f5fff; width: 25%; height: 75%; top: 25%; left: 50%;}
-                    .all4-4Choice {background: #ffff5f; width: 25%; height: 75%; top: 25%; left: 75%;}
-
-                    .all4-AChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .all4-1Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .all4-2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .all4-3Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .all4-4Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                `,
-                'None4': `
-                    .none4-1Choice {background: #ff5f5f; width: 25%; height: 75%;}
-                    .none4-2Choice {background: #bf5fff; width: 25%; height: 75%; left: 25%;}
-                    .none4-3Choice {background: #5f5fff; width: 25%; height: 75%; left: 50%;}
-                    .none4-4Choice {background: #ffff5f; width: 25%; height: 75%; left: 75%;}
-                    .none4-NChoice {background: #ffbf5f; height: 25%; top: 75%;}
-
-                    .none4-1Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none4-2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none4-3Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none4-4Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .none4-NChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                'Both4': `
-                    .both4-AChoice {background: #5fff5f; height: 20%;}
-                    .both4-1Choice {background: #ff5f5f; width: 25%; height: 60%; top: 20%;}
-                    .both4-2Choice {background: #bf5fff; width: 25%; height: 60%; top: 20%; left: 25%;}
-                    .both4-3Choice {background: #ffff5f; width: 25%; height: 60%; top: 20%; left: 50%;}
-                    .both4-4Choice {background: #5f5fff; width: 25%; height: 60%; top: 20%; left: 75%;}
-                    .both4-NChoice {background: #ffbf5f; height: 20%; top: 80%;}
-
-                    .both4-AChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                    .both4-1Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both4-2Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both4-3Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both4-4Choice div {top: 10%; left: 10%; width: 80%; height: 80%;}
-                    .both4-NChoice div {top: 15%; left: 5%; width: 90%; height: 70%;}
-                `,
-                //5 Choices
-                'Up5': {},
-                'Down5': {},
-                'Tri5': {},
-                'Oly5': {},
-                'Star5': {},
-                'UDLRM': {},
-                'Grid5': {},
-                'Col5': {},
-                'List5': {},
-                'All5': {},
-                'None5': {},
-                'Both5': {},
-                //6 Choices
-                'Hex': {},
-                'Grid6': {},
-                'Col6': {},
-                'List6': {},
-                //7 Choices
-                'hep': {},
-                'oly7': {},
-                'Grid7': {},
-                'Col7': {},
-                'List7': {},
-                //8 Choices
-                'oct': {},
-                'Grid8': {},
-                'Col8': {},
-                'List8': {},
-                //9 Choices
-                'non': {},
-                'oly9': {},
-                'Grid9': {},
-                'List9': {},
-                //10 Choices
-                'dex': {},
-                'tri10': {},
-                'Grid6': {},
-                'Col10': {},
-                'List10': {},
-                //11 Choices
-                'und': {},
-                'oly11': {},
-                'Grid11': {},
-                'Col11': {},
-                'List11': {},
-                //12 Choices
-                'oly12': {},
-                'Grid12': {},
-                'Col12': {},
-                'List12': {},
-            }
-        </script>
 
         <script>
 
