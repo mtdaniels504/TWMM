@@ -83,8 +83,13 @@
             }
 
 
-            strong {
+            strong, .Bold2 {
                 font-weight: 600;
+            }
+
+            .Bold3 {
+                font-weight: 510; 
+
             }
 
 
@@ -97,7 +102,7 @@
             }
 
             .fineP {
-                font-size: clamp(0.375rem, 0.25rem + 0.6dvw, 0.45rem);
+                font-size: clamp(0.4rem, 0.28em + 0.61dvw, 0.45rem);
             }
 
             .fineLogIn {
@@ -384,11 +389,11 @@
             }
             
             .displayIcon {
-                font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
+                font-size: clamp(0.5rem, 0.35rem + 0.8dvw, 0.65rem);
             }
 
             .fineIcon {
-                font-size: clamp(0.3rem, 0.3rem + 0.6dvw, 0.45rem);
+                font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
             }
 
 
@@ -1419,99 +1424,6 @@
                 align-items: center;
             }
 
-            .SpollChoices, .SpollStyle {
-                background: rgba(222, 222, 222, 1);
-                border: 2px solid rgb(0, 0, 222);
-                border-radius: 3px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-            }
-
-            .pollChoice {
-                border: 1px solid rgb(0, 0, 222);
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                cursor: pointer;
-            }
-
-            .pollMidText {
-                position: absolute;
-                width: 100%;
-                height: 100%;
-            }
-
-
-            .pollMidText div {
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-                text-wrap: whitespace;
-                opacity: 0.97;
-            }
-
-            .SpollChoices .pollChoice, .SpollStyle .pollChoice {
-                border-radius: 2px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
-                transition: all 0.2s ease;
-            }
-            
-            .SpollChoices .pollChoice:hover, .SpollStyle .pollChoice:hover {
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
-                transform: translate(-.1px, .1px);
-            }
-
-            .pollChoice div {
-                position: absolute;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-                text-wrap: whitespace;
-                background: #eee;
-                opacity: 0.97;
-                border: 1.2px solid #bbb;
-                border-radius: 4px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
-                transition: all 0.16s ease;
-            }
-
-
-            .pollChoice div:hover {
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
-                transform: scale(1.005);
-            }
-
-            .pollChoice div:active {
-                transform: scale(.992);
-                border: 1px solid #cfac3b;
-                box-shadow: 0 0 1px rgba(212, 175, 55, 0.6);
-            }
-
-            .normPollChoice {top: 12.5%; left: 12.5%; width: 75%; height: 75%;}
-            .widePollChoice {top: 15%; left: 10%; width: 80%; height: 70%;}
-            .tallPollChoice {left: 15%; top: 5%; height: 90%; width: 70%;}
-
-            /*Mid6*/
-            .mid6-1Choice {background: #ff5f5f; clip-path: polygon(50% 0, 0 0, 0 13.33%, 50% 50%);}
-            .mid6-2Choice {background: #5f5fff; clip-path: polygon(50% 0, 50% 50%, 100% 13.33%, 100% 0);}
-            .mid6-3Choice {background: #ffff5f; clip-path: polygon(100% 13.33%, 50% 50%, 100% 86.66%);}
-            .mid6-4Choice {background: #bf5fff; clip-path: polygon(100% 86.66%, 50% 50%, 50% 100%, 100% 100%);}
-            .mid6-5Choice {background: #afff5f; clip-path: polygon(50% 100%, 50% 50%, 0 86.66%, 0 100%);}
-            .mid6-6Choice {background: #ff5fbf; clip-path: polygon(0 86.66%, 0 13.33%, 50% 50%);}
-            .mid6-mChoice {background: #c0c0c0; clip-path: polygon(50% 30%, 33.33% 37.75%, 33.33% 62.25%, 
-                                                                    50% 70%, 66.66% 62.25%, 66.66% 37.75%);}
-
-            .mid6-1Choice div {width: 24%; height: 18%; top: 5%; left: 22.66%;}
-            .mid6-2Choice div {width: 24%; height: 18%; top: 5%; left: 53.33%;}
-            .mid6-3Choice div {width: 24%; height: 18%; top: 41%; left: 71%;}
-            .mid6-4Choice div {width: 24%; height: 18%; top: 77%; left: 53.33%;}
-            .mid6-5Choice div {width: 24%; height: 18%; top: 77%; left: 22.66%;}
-            .mid6-6Choice div {width: 24%; height: 18%; top: 41%; left: 5%;}
-            
-            .mid6-mChoice div {width: 20%; height: 18%; top: 41%; left: 40%;}
-
 
             .displayTail {
                 display: flex;
@@ -1892,7 +1804,8 @@
         </style>
 
         <style id="PageSpecific">
-                        /* -- Header Ad Styles -- */
+                        
+            /* -- Header Ad Styles -- */
 
 
             .headerAd {
@@ -2940,7 +2853,7 @@
             }
 
             .nested-bodyTabs {
-                margin: 6px 8px 6px -2px;
+                margin: 5px 8px 5px -2px;
                 padding: 0 10px;
                 gap: 5px;
             }
@@ -3181,13 +3094,19 @@
             .sideBarTab {
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                padding: 5px 5px 0px 5px;
-                gap: 5px;
+                padding: 10px 5px 0px 5px;
+                height: 28px;
             } 
 
+            .sideBarTab:hover, .sideBarTab:focus {
+                background: #f9f9f9;
+            }
+
             .sideBarTabHr {
+                margin: 0;
+                margin-top: auto;
                 height: 1px;
             }
 
@@ -3234,10 +3153,12 @@
             .sideBodyHeadRight {
                 display: flex;
                 justify-content: flex-end;
-                gap: 10px;
+                margin-right: 2px;
+                gap: 12px;
             }
 
             .sideBarPage {
+                margin-top: 3px;
                 height: auto;
             }
             
@@ -3331,7 +3252,9 @@
 
             .subContent-cart,
             .cartHead, .cartBody1, .initialCartHead,
-            .cartBodyImg, .cartBodyList div {
+            .cartBodyImg, .cartBodyList div,
+            .cartQuantity, .cartBodyListItem2, .cartBody2,
+            .cartTotalsPlanes  {
                 background: transparent;
                 border: none;
                 box-shadow: none;
@@ -3364,8 +3287,9 @@
                 display: flex;
                 justify-content: space-evenly;
                 align-items: center;
-                gap: 2px;
-                margin-top: 1px;
+                gap: 2.5px;
+                margin-top: 2px;
+                margin-right: 2px;
             }
 
             .cartBody {
@@ -3416,10 +3340,17 @@
                 height: 100%;
             }
 
+            .cartQuantityMobile {
+                display:none;
+            }
+
             .cartBody2 {
                 flex-grow: 1;
                 width: 100%;
-                height: 100%;
+                height: 150%;
+                min-height: 150%;
+                padding: 0 0 0 4px;
+                gap: 5px;
             }
 
             .cartBodyList, .cartBodyList1, .cartBodyList2 {
@@ -3453,7 +3384,7 @@
             }
 
             .cartBodyList1, .cartBodyList2 {
-                gap: 2.5px;
+                gap: 5px;
             }
 
             .cartBodyListRow {
@@ -3473,7 +3404,7 @@
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                gap: 5px;
+                gap: 6px;
             }
 
             #cartBodyListRow-delivery {
@@ -3695,7 +3626,7 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #f7f7f7, #e0e0e0);
+                background: linear-gradient(135deg, #efefef, #e0e0e0);
                 border-radius: 10px;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 width: 100%;
@@ -4535,7 +4466,7 @@
                             
         </style>
 
-        <style id="Mobile">
+        <style id="PageMobile">
 
             /* Mobile styles */
             @media (max-width: 1100px) {
@@ -5048,276 +4979,311 @@
 
             }
 
-                        @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 1000px) {
 
-                            .verticalAd {
-                                display: none;
-                            }
+                .verticalAd {
+                    display: none;
+                }
 
-                        }
-
-                        @media screen and (max-width: 800px) {
-
-                            /* SubNav Styles */      
-                            
-                            .subNav {
-                                width: 57.5dvw;
-                            }
-
-                            .sideBar {
-                                width: 67.5dvw;
-                            }
-                            
-                            .subNavRow3 {
-                                gap: 3px;
-                            }
-
-                            /*--------------------SubNav Styles-----------------------*/
-
-                            
-                            #sideBarPageBody-cartHistory {
-                                max-height: calc(25dvh - 2.75dvw);
-                            }
-
-
-                            #cartTotals-cartHistory {
-                                padding-top: 2px;
-                            }
-
-                            .cartsTotalsContainerHistory {
-                                flex-direction: column;
-                                justify-content: flex-start;
-                                align-items: center;
-                                width: 100%;
-                                gap: 2px;
-                            }
-                            
-                            #cartTotalsColumn1-history {
-                                margin-top: 0;
-                            }
-
-                            .cartTotalsColumn1-history2 {
-                                display: flex;
-                                flex-direction: row;
-                                justify-content: space-between;
-                                align-items: center;
-                            }
-
-
-                            /* Header Styles */            
-                
-                            /*--------------------Header Styles-----------------------*/
-
-
-                            .headerContent {
-                                display: none;
-                            }
-
-                            
-                            /* Welcome Container Styles */            
-                
-                            /*--------------------Welcome Content Styles-----------------------*/
-
-                            .welcomeContentA { 
-                                background: transparent;
-                                border: none;
-                                box-shadow: none;
-                                margin: 0;
-                                padding: 0;
-                            }
-
-                            .welcomeContentA:hover {    
-                                box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-                            }
-
-                            .welcomeContent {
-                                justify-content: center;
-                                height: 100%;
-                                gap: 5px;
-                            }
-
-
-                            /*--------------------Pages Styles-----------------------*/
-
-                            .pageContainer {
-                                width: 100%;
-                                height: 150px;
-                            }
-
-                            .pageContainer:hover {
-                                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-                            }
-
-                            .welcomePage {
-                                flex-direction: column;
-                                height: 150px;
-                                padding: 0;
-                                margin: 0;
-                            }
-
-                            .welcomePage.active {
-                                opacity: 1; /* Show active page */
-                            }
-
-                            .welcomePage.inactive {
-                                opacity: 0; /* Hide inactive pages */
-                            }
-
-                            /*--------------------Welcome Content Styles-----------------------*/
-
-                            .leftContent,
-                            .rightContent {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: center;
-                                min-width: 100%;
-                                max-width: 100%;
-                            }
-
-                            .leftContent {
-                                height: 100%;
-                                width: 100%;
-                                margin-bottom: -8%;
-                            }
-
-                            .leftContent img {
-                                min-width: 100%;
-                                min-height: 400px;
-                                border-radius: 1px;
-                                object-fit: contain;
-                                justify-self: flex-start;
-                            }
-
-                            .rightContent {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: center;
-                                margin: -50px 0 0 0;
-                                padding: 0;
-                                border-radius: 1px;
-                            }
-
-                            .rightContentC {
-                                display: flex;
-                                flex-direction: column;
-                                text-align: center;
-                                justify-content: center;
-                                align-items: center;
-                                padding: 10px 6px 6px 6px;
-                                margin: 6px 8px;
-                                width: auto;
-                                height: auto;
-                                background-color: #fffffff0;
-                                border: 1px solid #f8f8f8;
-                                border-radius: 1px;
-                                box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-                            }
-
-                            .pageNav {
-                                margin-top: 5px;
-                            }
-
-                                            
-                            .bodyTabs-and-search {
-                                flex-direction: column-reverse;
-                                justify-content: center;
-                                align-items: center;
-                            }
-
-                            .nested-content-header {
-                                margin: 4px auto;
-                            }
-
-                            .nestedHead-h2Hr hr {
-                                margin-top: 4px;
-                            }
-
-
-                            #featuredSlider-desktop {
-                                display: none;
-                            }
-
-                            #featuredSlider-mobile {
-                                display: flex;
-                            }
-
-                            .nested-bodyTabs-ad {
-                                flex-direction: column;
-                                gap: 2px;
-                            }
-
-                            .nested-bodyTabs {
-                                margin: 6px 10px;
-                            }
-
-                            .nested-ad-container {
-                                box-shadow: none;
-                            }
-
-
-                            /* -- Nav Blur -- */
-                            .nav-content-display,
-                            .ad-content-display {
-                                width: 75dvw;
-                                max-width: 75dvw;
-                                height: 70dvh;
-                                max-height: 70dvh;
-                                left: 12.5%;
-                                top: 15%;
-                            }                 
-
-                            .nav-content-display-header {
-                                width: calc(75dvw - 4px);
-                            }     
-                            
-                            .nav-content-unit {
-                                width: calc(75dvw - 10px);
-                                max-height: calc(70dvh - 40px);
-                            }
-
-                            .nav-content-content {
-                                width: calc(75dvw - 10px);
-                                height: calc(70dvh - 74px);
-                                max-height: calc(70dvh - 74px);
-                                flex-direction: column;
-                                text-align: center;
-                            }
-
-                            .nav-cC-1 {
-                                flex-direction: row;
-                                max-width: 100%;
-                                min-height: 25%;
-                                height: 25%;
-                                max-height: 25%;
-                            }
-
-                            .nav-content-content hr {
-                                height: 1.2px;
-                                min-width: 100%;
-                                width: 100%;
-                                max-width: 100%;
-                                margin: auto;
-                                margin-top: -2px;
-                            }
-
-                            .ad-content-display .nav-content-unit hr {
-                                width: 96%;
-                            }
-
-                            .nav-cC-2 {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: center;
-                                text-align: left;
-                                margin: 0;
-                                padding: 0;
-                            }
-
-                        }
+            }
         </style>
+
+        <style id="Mobile">
+
+            @media screen and (max-width: 800px) {
+
+                /* SubNav Styles */      
+                
+                .subNav {
+                    width: 57.5dvw;
+                }
+
+                .sideBar {
+                    width: 67.5dvw;
+                }
+
+                .sideBarTab {
+                    padding: 5px 5px 0px 5px;
+                    height: 18px;
+                } 
+                                
+                .subNavRow3 {
+                    gap: 3px;
+                }
+
+                /*--------------------SubNav Styles-----------------------*/
+
+                
+                #sideBarPageBody-cartHistory {
+                    max-height: calc(25dvh - 2.75dvw);
+                }
+
+
+                #cartTotals-cartHistory {
+                    padding-top: 2px;
+                }
+
+                .cartsTotalsContainerHistory {
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 100%;
+                    gap: 2px;
+                }
+                
+                #cartTotalsColumn1-history {
+                    margin-top: 0;
+                }
+
+                .cartTotalsColumn1-history2 {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .cartQuantityDesktop {
+                    display: none;
+                }
+                
+                .cartQuantityMobile {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    margin-top: 5px;
+                    padding-right: 5px;
+                }
+
+                .cartBody2 {
+                    gap: 2px;
+                }
+
+                .cartBodyList1, .cartBodyList2 {
+                    gap: 2.5px;
+                }
+
+                .cartTotalsPlanes {
+                    display: none;
+                }
+
+
+                /* Header Styles */            
+    
+                /*--------------------Header Styles-----------------------*/
+
+
+                .headerContent {
+                    display: none;
+                }
+
+                
+                /* Welcome Container Styles */            
+    
+                /*--------------------Welcome Content Styles-----------------------*/
+
+                .welcomeContentA { 
+                    background: transparent;
+                    border: none;
+                    box-shadow: none;
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .welcomeContentA:hover {    
+                    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+                }
+
+                .welcomeContent {
+                    justify-content: center;
+                    height: 100%;
+                    gap: 5px;
+                }
+
+
+                /*--------------------Pages Styles-----------------------*/
+
+                .pageContainer {
+                    width: 100%;
+                    height: 150px;
+                }
+
+                .pageContainer:hover {
+                    box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+                }
+
+                .welcomePage {
+                    flex-direction: column;
+                    height: 150px;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .welcomePage.active {
+                    opacity: 1; /* Show active page */
+                }
+
+                .welcomePage.inactive {
+                    opacity: 0; /* Hide inactive pages */
+                }
+
+                /*--------------------Welcome Content Styles-----------------------*/
+
+                .leftContent,
+                .rightContent {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 100%;
+                    max-width: 100%;
+                }
+
+                .leftContent {
+                    height: 100%;
+                    width: 100%;
+                    margin-bottom: -8%;
+                }
+
+                .leftContent img {
+                    min-width: 100%;
+                    min-height: 400px;
+                    border-radius: 1px;
+                    object-fit: contain;
+                    justify-self: flex-start;
+                }
+
+                .rightContent {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin: -50px 0 0 0;
+                    padding: 0;
+                    border-radius: 1px;
+                }
+
+                .rightContentC {
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 6px 6px 6px;
+                    margin: 6px 8px;
+                    width: auto;
+                    height: auto;
+                    background-color: #fffffff0;
+                    border: 1px solid #f8f8f8;
+                    border-radius: 1px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+                }
+
+                .pageNav {
+                    margin-top: 5px;
+                }
+
+                                
+                .bodyTabs-and-search {
+                    flex-direction: column-reverse;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .nested-content-header {
+                    margin: 4px auto;
+                }
+
+                .nestedHead-h2Hr hr {
+                    margin-top: 4px;
+                }
+
+
+                #featuredSlider-desktop {
+                    display: none;
+                }
+
+                #featuredSlider-mobile {
+                    display: flex;
+                }
+
+                .nested-bodyTabs-ad {
+                    flex-direction: column;
+                    gap: 2px;
+                }
+
+                .nested-bodyTabs {
+                    margin: 6px 10px;
+                }
+
+                .nested-ad-container {
+                    box-shadow: none;
+                }
+
+
+                /* -- Nav Blur -- */
+                .nav-content-display,
+                .ad-content-display {
+                    width: 75dvw;
+                    max-width: 75dvw;
+                    height: 70dvh;
+                    max-height: 70dvh;
+                    left: 12.5%;
+                    top: 15%;
+                }                 
+
+                .nav-content-display-header {
+                    width: calc(75dvw - 4px);
+                }     
+                
+                .nav-content-unit {
+                    width: calc(75dvw - 10px);
+                    max-height: calc(70dvh - 40px);
+                }
+
+                .nav-content-content {
+                    width: calc(75dvw - 10px);
+                    height: calc(70dvh - 74px);
+                    max-height: calc(70dvh - 74px);
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .nav-cC-1 {
+                    flex-direction: row;
+                    max-width: 100%;
+                    min-height: 25%;
+                    height: 25%;
+                    max-height: 25%;
+                }
+
+                .nav-content-content hr {
+                    height: 1.2px;
+                    min-width: 100%;
+                    width: 100%;
+                    max-width: 100%;
+                    margin: auto;
+                    margin-top: -2px;
+                }
+
+                .ad-content-display .nav-content-unit hr {
+                    width: 96%;
+                }
+
+                .nav-cC-2 {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: left;
+                    margin: 0;
+                    padding: 0;
+                }
+
+            }
+
+        </style>
+
     </head>
     <body>
 
@@ -5946,26 +5912,26 @@
                     <div class="subNavGroup subNavGroup1 sideBarContent">
                         <div class="subNavGroup sideBarHeader">
                             <div class="navTab sideBarTab" id="sideBarTab-cartActive" 
-                                data-activeCheck="true" data-section="cart-dropdown" data-target="sideBarPage-cartActive"
-                                data-h="Active Cart" data-h2="sideBarH-cart" data-slug="sideBarTabHr-cartActive"
+                                data-activeCheck="true" data-section="cart-dropdown" 
+                                data-target="sideBarPage-cartActive" data-slug="sideBarTabHr-cartActive"
                             >
-                                <p class="lesserP">Active</p>
+                                <p class="lesserP Bold3">Active</p>
                                 <hr class="sideBarTabHr" id="sideBarTabHr-cartActive">
                             </div>    
                             <hr class="vertHr shadow">                        
                             <div class="navTab sideBarTab" id="sideBarTab-cartHistory" 
-                                data-activeCheck="true" data-section="cart-dropdown" data-target="sideBarPage-cartHistory"
-                                data-h="Cart History" data-h2="sideBarH-cart" data-slug="sideBarTabHr-cartHistory"
+                                data-activeCheck="true" data-section="cart-dropdown"
+                                data-target="sideBarPage-cartHistory" data-slug="sideBarTabHr-cartHistory"
                             >
-                                <p class="lesserP">History</p>
+                                <p class="lesserP Bold3">History</p>
                                 <hr class="sideBarTabHr" id="sideBarTabHr-cartHistory" style="display: none;">
                             </div>   
                             <hr class="vertHr shadow">                           
                             <div class="navTab sideBarTab" id="sideBarTab-cartCards" 
-                                data-activeCheck="true" data-section="cart-dropdown" data-target="sideBarPage-cartCards"
-                                data-h="Payment Options" data-h2="sideBarH-cart" data-slug="sideBarTabHr-cartCards"
+                                data-activeCheck="true" data-section="cart-dropdown" 
+                                data-target="sideBarPage-cartCards" data-slug="sideBarTabHr-cartCards"
                             >
-                                <p class="lesserP">Cards</p>
+                                <p class="lesserP Bold3">Cards</p>
                                 <hr class="sideBarTabHr" id="sideBarTabHr-cartCards" style="display: none;">
                             </div> 
                         </div>
@@ -5978,33 +5944,36 @@
                                     <p class="fineP fineLogIn">Sign Up</p>
                                 </div>
                             </div>
-                            <div class="sideBarBodyHead">
-                                <div class="sideBodyHeadLeft">
-                                    <label class="custom-checkbox">
-                                        <input type="checkbox" class="checkboxAll" id="checkboxAll-cart">
-                                        <div class="checkbox">
-                                            <i class="fineIcon fa-solid fa-check"></i>
-                                        </div>
-                                    </label>
-                                    <p class="fineP">Items:</p>
-                                    <p class="fineP" id="cartTotalsItem-itemsQuantity">0</p>
-                                </div>
-                                <div class="sideBodyHeadMain">
-                                <h5 id="sideBarH-cart">Active Cart</h5>
-                                </div>
-                                <div class="sideBodyHeadRight">
-                                    <i class="displayIcon fa-solid fa-floppy-disk"></i>
-                                    <i class="displayIcon fa-solid fa-trash-can"></i>
-                                    <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                </div>
-                            </div>
+
                             <div class="page sideBarPage active" id="sideBarPage-cartActive">
+
+                                <div class="sideBarBodyHead">
+                                    <div class="sideBodyHeadLeft">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" class="checkboxAll" id="checkboxAll-cart">
+                                            <div class="checkbox">
+                                                <i class="fineIcon fa-solid fa-check"></i>
+                                            </div>
+                                        </label>
+                                        <p class="fineP">Items:</p>
+                                        <p class="fineP" id="cartTotalsItem-itemsQuantity">0</p>
+                                    </div>
+                                    <div class="sideBodyHeadMain">
+                                    <h5 id="sideBarH-cart">Active Cart</h5>
+                                    </div>
+                                    <div class="sideBodyHeadRight">
+                                        <i class="displayIcon fa-solid fa-floppy-disk"></i>
+                                        <i class="displayIcon fa-solid fa-trash-can"></i>
+                                        <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                    </div>
+                                </div>
+
                                 <div class="sideBarPageBody">
-                                    <div class="initialSideBarPageBody">
+                                    <div class="initialSideBarPageBody" style="display: none;">
                                         <p class="lesserP">There are currently no items in your cart</p>
                                         <p class="lesserP">Please refresh the page or shop now!</p>
                                     </div>
-                                    <div class="subContent-cart" style="display: none;">
+                                    <div class="subContent-cart">
                                         <div class="cartBody">
                                             <div class="cartPart cartBody1">
                                                 <div class="cartBodyImg">
@@ -6022,6 +5991,14 @@
                                                 </div>
                                                 <div class="cartBodyAlt">
                                                     <p class="lesserP">This is an example text for what the alt of an image may be.</p>
+                                                </div>
+                                                <div class="cartQuantity cartQuantityMobile">
+                                                    <p class="lesserP cartBodyListItem">Quantity:</p>
+                                                    <div class="cartBodyListItem2">
+                                                        <i class="fineIcon fa-solid fa-minus"></i>
+                                                        <h5 class="lesserP cartBodyListItem" id="cartActive-quantity">1</h5>
+                                                        <i class="fineIcon fa-solid fa-plus"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="cartPart cartBody2">
@@ -6071,11 +6048,11 @@
                                                 </div>
                                                 <div class="cartBodyList cartBodyList1 cartBodyCheckOut">
                                                     <h6>Checkout</h6>
-                                                    <div class="cartBodyListRow">
+                                                    <div class="cartBodyListRow cartQuantityDesktop">
                                                         <p class="lesserP cartBodyListItem">Quantity:</p>
                                                         <div class="cartBodyListItem2">
                                                             <i class="displayIcon fa-solid fa-minus"></i>
-                                                            <p class="lesserP cartBodyListItem" id="cartActive-quantity">1</p>
+                                                            <h5 class="lesserP cartBodyListItem" id="cartActive-quantity">1</h5>
                                                             <i class="displayIcon fa-solid fa-plus"></i>
                                                         </div>
                                                     </div>
@@ -6114,6 +6091,14 @@
                                                 </div>
                                                 <div class="cartBodyAlt">
                                                     <p class="lesserP">This is an example text for what the alt of an image may be.</p>
+                                                </div>
+                                                <div class="cartQuantity cartQuantityMobile">
+                                                    <p class="lesserP cartBodyListItem">Quantity:</p>
+                                                    <div class="cartBodyListItem2">
+                                                        <i class="displayIcon fa-solid fa-minus"></i>
+                                                        <h5 class="lesserP cartBodyListItem" id="cartActive-quantity">1</h5>
+                                                        <i class="displayIcon fa-solid fa-plus"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="cartPart cartBody2">
@@ -6163,7 +6148,7 @@
                                                 </div>
                                                 <div class="cartBodyList cartBodyList1 cartBodyCheckOut">
                                                     <h6>Checkout</h6>
-                                                    <div class="cartBodyListRow">
+                                                    <div class="cartBodyListRow cartQuantityDesktop">
                                                         <p class="lesserP cartBodyListItem">Quantity:</p>
                                                         <div class="cartBodyListItem2">
                                                             <i class="displayIcon fa-solid fa-minus"></i>
@@ -6191,7 +6176,7 @@
                                         <hr class="shadow">
                                     </div>
                                 </div>
-                                <div class="cartTotals" style="display: none;">
+                                <div class="cartTotals">
                                     <h5>Cart Totals</h5>
                                     <div class="cartTotalsContainer">
                                         <div class="cartTotalsColumn1">
@@ -6243,13 +6228,34 @@
                                     <button class="lesserP smallButton" style="display: none;">Pay Now</button>
                                 </div>                                
                             </div>
+
                             <div class="page sideBarPage" id="sideBarPage-cartHistory" style="display: none;">
+                                <div class="sideBarBodyHead">
+                                    <div class="sideBodyHeadLeft">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" class="checkboxAll" id="checkboxAll-cart">
+                                            <div class="checkbox">
+                                                <i class="fineIcon fa-solid fa-check"></i>
+                                            </div>
+                                        </label>
+                                        <p class="fineP">Items:</p>
+                                        <p class="fineP" id="cartTotalsItem-itemsQuantity">0</p>
+                                    </div>
+                                    <div class="sideBodyHeadMain">
+                                    <h5 id="sideBarH-cart">Cart History</h5>
+                                    </div>
+                                    <div class="sideBodyHeadRight displayIcons">
+                                        <i class="displayIcon fa-solid fa-floppy-disk"></i>
+                                        <i class="displayIcon fa-solid fa-trash-can"></i>
+                                        <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                    </div>
+                                </div>
                                 <div class="sideBarPageBody" id="sideBarPageBody-cartHistory">
-                                    <div class="initialSideBarPageBody">
+                                    <div class="initialSideBarPageBody" style="display: none;">
                                         <p class="lesserP">No Cart History found</p>
                                         <p class="lesserP">Please refresh the page or start your journey now!</p>
                                     </div>
-                                    <div class="subContent-cart" style="display: none;">
+                                    <div class="subContent-cart">
                                         <div class="subContentContainer">
                                             <div class="subNavRow subNavRow3">
                                                 <label class="custom-checkbox">
@@ -6396,7 +6402,7 @@
                                     </div>
                                 </div>
                                 
-                                <div class="cartTotals" id="cartTotals-cartHistory" style="display: none;">
+                                <div class="cartTotals" id="cartTotals-cartHistory">
                                     <h5>Cart Insights</h5>
                                     <div class="cartTotalsContainer cartsTotalsContainerHistory">
                                         <div class="cartTotalsHistoryBox cartTotalsColumn1-history2">
@@ -6512,7 +6518,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="cartTotalsColumn1">
-                                                    <h6 class="lesserP">Planes:</h6>
+                                                    <div class="cartTotalsPlanes">
+                                                        <h6 class="lesserP">Planes:</h6>
+                                                    </div>
                                                     <div class="cartTotalsRowItem">
                                                         <p class="lesserP">Land:</p>
                                                         <p class="lesserP" id="cartTotalsItem-userName">22</p>
@@ -6542,6 +6550,26 @@
                                 </div>
                             </div>
                             <div class="page sideBarPage" id="sideBarPage-cartCards" style="display: none;">
+                            <div class="sideBarBodyHead">
+                                <div class="sideBodyHeadLeft">
+                                    <label class="custom-checkbox">
+                                        <input type="checkbox" class="checkboxAll" id="checkboxAll-cart">
+                                        <div class="checkbox">
+                                            <i class="fineIcon fa-solid fa-check"></i>
+                                        </div>
+                                    </label>
+                                    <p class="fineP">Cards:</p>
+                                    <p class="fineP" id="cartTotalsItem-itemsQuantity">0</p>
+                                </div>
+                                <div class="sideBodyHeadMain">
+                                <h5 id="sideBarH-cart">Payment Options</h5>
+                                </div>
+                                <div class="sideBodyHeadRight">
+                                    <i class="displayIcon fa-solid fa-floppy-disk"></i>
+                                    <i class="displayIcon fa-solid fa-trash-can"></i>
+                                    <i class="displayIcon fa-solid fa-ellipsis"></i>
+                                </div>
+                            </div>
                                 <div class="sideBarPageBody">
                                     <div class="initialSideBarPageBody">
                                         <p class="lesserP">No Payment History found</p>
@@ -8563,13 +8591,13 @@
                                             <div class="IconAs bodyNavIcons">
                                                 <!-- Icon -->
                                                 <i class="nav-trigger IconC fa-solid fa-earth-africa"
-                                                    data-sub="bodySubNav-world" data-section="Home"
+                                                    data-sub="bodySubNav-world" data-section="content-vehicles"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-circle-question"
-                                                    data-sub="bodySubNav-helpFull" data-section="Home"
+                                                    data-sub="bodySubNav-helpFull" data-section="content-vehicles"
                                                 ></i>
                                                 <i class="nav-trigger IconC fa-solid fa-list"
-                                                    data-sub="bodySubNav-list" data-section="Home"
+                                                    data-sub="bodySubNav-list" data-section="content-vehicles"
                                                 ></i>
                                             </div>
                                             
@@ -13352,8 +13380,10 @@
                     //Display Target Body and Add Actives
                     navTab.classList.add('active');
                     target.style.display = 'block';
-                    h2.textContent = `${h}`;
-
+                     
+                    if (h2) {
+                        h2.textContent = `${h}`;
+                    }
                     if (dataSlug) {
                         navTabHrAll.forEach(hr => {hr.style.display = 'none'});
                         dataSlug.style.display = 'block';
