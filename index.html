@@ -25,7 +25,7 @@
                 margin: 2px 4px;
                 padding: 2px;
                 width: 100%;
-                border-radius: 4px;
+                border-radius: 2px;
                 box-shadow: 0 0 10px rgba(242, 242, 246, 0.2);
             }            
             
@@ -723,10 +723,6 @@
                 align-items: center;
             }
 
-            .Nav {
-                background: transparent;
-            }
-
             .Head {
                 flex-direction: column;
             }
@@ -855,7 +851,9 @@
                 padding: 0 4px;
                 width: 100%;
                 max-width: 100%;
+                min-height: 100dvh;
                 height: 100%;
+                max-height: 100dvh;
                 flex: 1;
                 border: none;
             }
@@ -12079,7 +12077,7 @@
                     'section:hover': {background: `${white1}`, border: `1.5px solid ${white3}`},
                     div: {background: `linear-gradient(178deg, ${white1} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
                     '.backPlane': {background: `${white1}`, border: `${white1}`},
-                    '#Home': {background: `${white1}`, border: `${white1}`},
+                    '#Home, #plane3': {background: 'linear-gradient(135deg, #9BD0FF 0%, #F0F8FF 25%, #BFE2FF 50%, #E0F2FF 75%, #9BD0FF 100%)', border: `#D6EDFF`},
                     
                     //Text
                     h1: {color: `${cobalt1}`},
