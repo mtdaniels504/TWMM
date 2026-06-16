@@ -21,7 +21,6 @@
             }
 
             body {
-                border-top: 1.8px solid #76bfff;
                 max-width: 100dvw;
             }
 
@@ -4000,7 +3999,7 @@
                 width: 92%;
                 background: transparent;
                 border: none;
-                box-shadow: 0;
+                box-shadow: none;
             }
 
             /* Create a container for the input group */
@@ -4032,6 +4031,7 @@
                 padding: 10px;
                 width: 100%;
             }
+
 
 
             /* Style the search button */
@@ -5283,6 +5283,14 @@
                     padding: 0;
                 }
 
+
+                .custom-input-group {
+                    gap: 1px;
+                }
+
+                .custom-input {
+                    border-radius: 1px;
+                }
             }
 
         </style>
@@ -12218,6 +12226,8 @@
                     
                     setTimeout(() => {
                         p3.style.opacity = '1';
+
+                        document.body.style.borderTop = "1.8px solid #76bfff";
                     }, 150);
 
                 }, 650);
