@@ -1892,7 +1892,6 @@
             }
 
             .adSlideContent {
-                flex: 1;
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
@@ -1901,6 +1900,13 @@
                 gap: 2px;
                 border: none;
                 border-radius: 0;
+                width: 300px;
+                height: 50px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: scale(0.4); /* Scales 300px down to fit 120px width */
+                transform-origin: top left;
             }
 
             .adSlideHeader, .adSlideBody {
@@ -2872,7 +2878,7 @@
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                height: 50px;
+                height: 54px;
 
             }
 
@@ -2900,8 +2906,9 @@
                 flex-direction: column;
                 justify-content: space-evenly;
                 align-items: center;
-                width: 323.6px;
-                height: 40px;
+                width: 300px;
+                height: 50px;
+                object-fit: contain;
             }
 
             .content-ad-slideContentBody:hover,
