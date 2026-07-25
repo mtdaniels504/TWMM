@@ -19527,14 +19527,12 @@
                 const options = document.querySelectorAll('.nav-option');
                 const thAds = document.querySelectorAll('.adSlide');
                 const bhAds = document.querySelectorAll('.ad-slide');
-                const ctAd = document.querySelector('.nested-ad');
 
                 const navDisplay = document.querySelector('.nav-content-display');
                 const adDisplay = document.querySelector('.ad-content-display');
 
                 const headerTopAd = document.querySelector('.header-top-ad-blur');
                 const headerBottomAd = document.querySelector('.header-bottom-ad-blur');
-                const contentTopAd = document.querySelector('.content-ad-blur');
                 const units = document.querySelectorAll('.nav-content-unit');
 
                 // Initially hide all content units and the blur
@@ -19545,7 +19543,6 @@
 
                 headerTopAd.style.display = 'none';
                 headerBottomAd.style.display = 'none';
-                contentTopAd.style.display = 'none';
 
                 units.forEach(unit => {
                     unit.style.display = 'none';
@@ -19703,52 +19700,6 @@
                     });
                 });
 
-                // Function to adjust ad position based on screen width
-                function adjustctPosition() {
-                    const maxWidth1 = 950;
-                    const maxWidth2 = 850;
-
-                    if (window.innerWidth <= maxWidth2) {
-                        adDisplay.style.top = '44%';
-                    } else if (window.innerWidth <= maxWidth1) {
-                        adDisplay.style.top = '36%';
-                    } else {
-                        adDisplay.style.top = '32%'; // Default or other styles for larger screens
-                    }
-                }
-
-                ctAd.addEventListener('click', function () {
-
-                    const targetUnit = document.getElementById('nav-unit-content-header');
-
-                    // Hide all content units
-                    units.forEach(unit => {
-                        unit.style.display = 'none';
-                    });
-
-                    blur.style.display = 'flex';
-                    adDisplay.style.display = 'flex';
-                    contentTopAd.style.display = 'flex';
-                    targetUnit.style.display = 'flex';
-                    adjustctPosition()
-
-                            // Get the text content of the source elements
-                            const sourceAd1H3 = document.querySelector('#content-ad-slideContentBody1 h3')?.textContent || "Default Header Text";
-                            const sourceAd1p = document.querySelector('#content-ad-slideContentBody1 p')?.textContent || "Default Body Header";
-                            const sourceAd2H3 = document.querySelector('#content-ad-slideContentBody2 h3')?.textContent || "Default Header Text";
-                            const sourceAd2p = document.querySelector('#content-ad-slideContentBody2 p')?.textContent || "Default Body Header";
-
-                            // Set the text content of the target elements
-                            const targetAd1H3 = targetUnit.querySelector('#nav-cCc-ad1 h3');
-                            const targetAd1p = targetUnit.querySelector('#nav-cCc-ad1 p');
-                            const targetAd2H3 = targetUnit.querySelector('#nav-cCc-ad2 h3');
-                            const targetAd2p = targetUnit.querySelector('#nav-cCc-ad2 p');
-
-                            if (targetAd1H3) targetAd1H3.textContent = sourceAd1H3;
-                            if (targetAd1p) targetAd1p.textContent = sourceAd1p;
-                            if (targetAd2H3) targetAd2H3.textContent = sourceAd2H3;
-                            if (targetAd2p) targetAd2p.textContent = sourceAd2p;
-                });
 
                 // Close blur when clicked
                 blur.addEventListener('click', function (g) {
