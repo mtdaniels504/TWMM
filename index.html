@@ -5218,6 +5218,10 @@
                     width: 100%;
                 }
 
+                .map-and-ad {
+                    flex-direction: column-reverse;
+                }
+
                 .nested-bodyTabs {
                     margin: 2px 0;
                 }
@@ -8592,6 +8596,8 @@
                                     </div>
                                 </div>
 
+                                <div class="column map-and-ad">
+
                                     <div class="nested-ad" id="nested-ad2">
                                         <div class="content-ad-slideContentBody" id="content-ad-slideContentBody2">
                                             <!-- Horizontal Body -->
@@ -8606,33 +8612,34 @@
                                     </div>
 
 
-                                <div class="mcontainer">
-                                    <div id="map-container">
-                                        <div id="map-container-content">
-                                            <h3 lesserP>Search for Vehicles, Parts, and Services in your area.</h3>
-                                            <div class="custom-input-group">
-                                                <input type="text" id="addressInput" class="custom-input" placeholder="Enter an address or place name">
-                                                <input type="text" id="zipcodeInput" class="custom-input" placeholder="Enter a US zipcode" autocomplete="postal-code">
-                                                <button class="fullButton mapSearchButton" onclick="searchLocation()" class="custom-button">Search</button>
-                                            </div>           
-                                        </div>         
-                                        <!-- Create a div element to hold the map -->
+                                    <div class="mcontainer">
+                                        <div id="map-container">
+                                            <div id="map-container-content">
+                                                <h3 lesserP>Search for Vehicles, Parts, and Services in your area.</h3>
+                                                <div class="custom-input-group">
+                                                    <input type="text" id="addressInput" class="custom-input" placeholder="Enter an address or place name">
+                                                    <input type="text" id="zipcodeInput" class="custom-input" placeholder="Enter a US zipcode" autocomplete="postal-code">
+                                                    <button class="fullButton mapSearchButton" onclick="searchLocation()" class="custom-button">Search</button>
+                                                </div>           
+                                            </div>         
+                                            <!-- Create a div element to hold the map -->
 
-                                        <div id="map">
-                                            <!-- Map will be dynamically populated in script -->
-                                            <div class="map-button-column" style="display: none;">
-                                                <div class="map-button" id="full-screen">
-                                                    <p>[]</p>
+                                            <div id="map">
+                                                <!-- Map will be dynamically populated in script -->
+                                                <div class="map-button-column" style="display: none;">
+                                                    <div class="map-button" id="full-screen">
+                                                        <p>[]</p>
+                                                    </div>
+                                                    <div class="map-button" id="home-map-button">
+                                                        <p>[]</p>
+                                                    </div>
+                                                    <div class="map-button" id="sat-map-button">
+                                                        <p>[]</p>
+                                                    </div> 
                                                 </div>
-                                                <div class="map-button" id="home-map-button">
-                                                    <p>[]</p>
-                                                </div>
-                                                <div class="map-button" id="sat-map-button">
-                                                    <p>[]</p>
-                                                </div> 
                                             </div>
-                                        </div>
-                                    </div> 
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="Part" id="BodyTail" style="display: none;">
