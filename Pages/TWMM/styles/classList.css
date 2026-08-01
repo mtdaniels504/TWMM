@@ -1,0 +1,912 @@
+            /* ---- Specific ---- */
+
+            /* -- setionHead -- */
+
+            .sectionHead {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0 auto;
+                min-width: 120px;
+                width: 30dvw;
+                height: 30px;
+                margin-right: 2.5px;
+            }
+
+
+            .sectionHeadH2 {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+            
+            .headPopUp {
+                z-index: 420;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                text-align: center;
+                position: absolute;
+                opacity: .98;
+                min-width: 120px;
+                width: 30dvw;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .headPopUp:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+
+
+            .headPopUpH2 {
+                cursor: pointer;
+                padding: 8px 4.5px;
+                width: 100%;
+            }
+            
+
+            .search {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+
+            
+            .navTabs, .bodyTabs {     
+                width: 100%;           
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 5px;
+            }
+
+            .navTab, .bodyTab {
+                width: calc(33% - 5px);
+            }
+
+
+
+            /* -- Logo -- */
+
+            .logoTitleCont, .logo, .logoPic,
+            .logoTitle, .logoTitleBox,
+            .loadingScreen {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+                
+            .logoTitleCont, .logo, .logoPic, .logoTitleBox,
+            .logoTitle, .loadingScreen {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            /*Logo Container*/ 
+
+            .logoTitleCont {
+                gap: calc(0.6dvw + 2.4px);
+            }
+
+            .logoTitleContN {
+                margin: 0 4px;
+                height: 44px;
+                min-width: 116px;
+                width: calc(70px + 6dvw);
+                max-width: 180px;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+            }
+
+
+            /*Logos*/
+
+            .logo {
+                min-width: 20px;
+                width: calc(.6rem + 1dvw);
+                max-width: 24px;
+                min-height: 20px;
+                height: calc(.6rem + 1dvw);
+                max-height: 24px;
+                border-radius: 50%;
+            }
+
+            
+            /*Logoitle*/
+
+            .logoTitleBox {
+                flex-direction: column;
+            }
+
+            .logoTitle {
+                justify-content: flex-start;
+                width: auto;
+                min-height: 16px;
+                height: calc(.6rem + .8dvw);
+                max-height: 20px;
+            }
+
+            .logoTitleBox hr {
+                height: 1.2px;
+                width: 60%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+            }
+
+
+            /*Loading Logo*/
+
+            #loadScreen1 {
+                flex-direction: column;
+                width: 100%;
+                height: 100dvh;
+                margin-top: -5%;
+                font-size: 32px;
+                transition: display 1s ease;
+            }
+
+            .loadingLogo {
+                min-width: 32px;
+                width: 32px;
+                max-width: 32px;
+                min-height: 32px;
+                max-height: 32px;
+                height: 32px;
+            }
+
+
+            .loadLogoTitle {
+                min-height: 40px;
+                height: 40px;
+                max-height: 40px;
+            }
+            
+                        
+            /* The spinning wheel style */
+            .loader {
+                border: 4px solid #f3f3f3;
+                border-top: 4px solid #3498db;
+                border-radius: 50%;
+                width: 36px;
+                height: 36px;
+                animation: spin 1s linear infinite;
+                margin: 13px auto;
+            }
+
+            /* The rotation animation */
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+
+
+            /* -- Nav Links -- */
+
+            
+            /*navLinks*/
+
+            .navExitCont {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                justify-self: flex-end;
+                align-self: flex-end;
+                margin-left: auto;
+                padding: 4px 4px 2px 2px;
+                border-radius: 2.5px;
+                margin-bottom: 2.5px;
+                gap: clamp(2px, 0.1rem + 2dvw, 60px);
+            }
+
+            .navLinksBox, .navLinks {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+            }
+            
+            .navLinks {
+                flex-direction: row;
+                gap: calc(0.01rem + 0.12dvw);
+            }
+
+            .navLink {
+                border-radius: 3px 3px 1px 1px;
+                min-width: 42px;
+                width: 10dvw;
+                max-width: 200px;
+                margin: 0;
+                box-shadow: none;
+            }
+
+
+            /*NavLinks Hr's*/
+            .navLinksHr {
+                width: 1px;
+                height: 30px;
+                align-self: flex-end;
+                margin-bottom: 2px;
+            }
+
+            .navLinksBoxShadows {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 1px 0 0 0;
+                padding: 0.5px 0 0 0;
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 0 0 1px 1px;
+                border-left: none;
+                border-right: none;
+            }
+
+            .navLinksShadows {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: -6px;
+                padding: 0;
+                flex: 1;
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+                border-radius: 2px 2px 0.1px 0.1px;
+            }
+                        
+            .navLinksHr {
+                height: 16px;
+                width: 1px;
+                box-shadow: none;
+                margin: 0;
+            }
+
+
+            /* -- SubNav -- */
+
+            .headNav, .subNavMore, .subNavMoreBox {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .headNav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .subNav {
+                position: absolute;
+                width: calc(150px + 15dvw);
+                height: auto;
+            }
+
+            #mainSubNav, .bodySubNav {
+                z-index: 800;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                top: clamp(107.5px, 80px + 3.6dvw, 122px);
+                left: 3px;
+                height: calc(100dvh - 134px - 3dvw);
+                max-height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+            
+            .subNav a, .sideBar a, .subNavGroup {
+                width: 100%;
+            }
+            
+            .subNav a, .sideBar a, .subNavGroup {
+                width: 100%;
+            }
+
+            .subNavGroup1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .subNavRow, .subNavRow2 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                cursor: pointer;
+                padding: 4px;
+            }
+
+            .subNavRow3 {
+                gap: 5px;
+            }
+
+            .subNavRowImg {
+                min-width: unset;
+                width: auto;
+                max-width: unset;
+                min-height: unset;
+                height: auto;
+                max-height: 10px;
+            }         
+            
+            .subNavRowP2 {
+                margin-left: auto;
+                margin-right: 10px;
+            }
+
+
+
+            .applyFiltersButton {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+            }
+
+            .subNavRow2 {
+                margin-left: 8px;
+            }
+
+            .subNavMore {
+                display: flex;
+                justify-content: flex-end;
+                align-items: stretch;
+                gap: 1px;
+            }
+
+            .subNavHr {
+                width: 1.5px;
+                height: auto;
+                margin: 1px 0 3px 8px;
+            }
+
+            .subNavMoreBox {
+                flex: 1;
+                margin: 0 0 0 -3px;
+                padding-left: 0;
+            }
+
+            /*subNavButtons*/
+
+            .subNavButton {
+                line-height: 1;
+                cursor: pointer;
+            }
+
+            .subPlusButton {
+                font-weight: 600;
+                margin-right: 4px;
+            }
+
+            .subMoreToggle {
+                transform: rotate(-90deg);
+                margin-right: 1px;
+            }
+
+
+            /* -- DisplayBox -- */
+
+            .displayReports, #displayReportHelp, .displayBox {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .display-pollName, .displayedDirections {
+                margin: 0;
+            }
+
+            .displayHead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-left: 12px;
+            }
+
+            .display-pollName {
+                margin-left: 2px;
+            }
+
+            /*displayReport*/
+
+            .displayReports {
+                position: absolute;
+                align-self: flex-start;
+                justify-self: flex-end;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-start;
+            }
+
+            .displayReport {
+                flex-direction: column;
+                width: calc(5rem + 20dvw);
+            }
+
+            #flagReportReason {
+                border-radius: 2px 2px 0.5px 0.5px;
+            }
+
+            .flagReportInput {
+                min-height: 50px;
+                max-height: 100px;
+                border-radius: 0.5px 0.5px 0.5px 0.5px;
+            }
+
+            .displayReportSubmit {
+                border-radius: 0.5px 0.5px 2px 2px;
+            }
+
+            /*PollDisplay*/
+
+            .pollCreation, .displayBody, .pollDisplayBody,
+            .pollDisplayBox {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+
+            .pollDisplay {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: space-between;
+                height: calc(22.5dvh + 5rem + 44px);
+                width: 100%;
+            }
+
+            .pollTitle {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 2px 10px;
+                width: 100%;
+                height: 38px;
+            }
+
+            .displayedDirections {
+                width: 100%;
+            }
+
+            .pollCreation {
+                width: 30%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: flex-end;
+            }
+
+            .createdBy, .createdOn {
+                margin: 0;
+                padding: 1px 0;
+            }
+
+            /*PollChoices*/
+
+            .pollDisplayBody {
+                min-width: 100%;
+                height: calc(22.5dvh + 5rem);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pollDisplayBox {
+                width: 86%;
+                height: calc(22.5dvh + 5rem);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
+            }
+
+            .pollChoices {
+                position: relative;
+                width: 100%;
+                height: calc(22.5dvh + 5rem - 4px);
+                overflow: hidden;
+                border: 1px solid rgb(0, 0, 222);
+                border-radius: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+            .displayTail {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 2px;
+                width: 100%;
+                min-height: 11px;
+                height: 100%;
+                align-self: center;
+                align-items: center;
+            }
+
+            .displayTail, .displayIcon {
+                align-self: center;
+                justify-content: center;
+            }
+
+
+            /* -- ChatPages -- */
+            
+            
+            .chatPage, .chatPageHead h3, 
+            .chatBoards, .chatBoard {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+
+            /*chatContainer*/
+            .chatContainer {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            
+            .chatContainer::-webkit-scrollbar-track {width: 0;}
+
+            .chatHead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+            /*chatTabs*/
+            .chatTabs {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                gap: 1px;
+            }
+
+            /*chatIcons(Head)*/
+            .chatIcons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .extChatIcon {
+                margin-right: 5px;
+            }
+
+            /*ChatPageHeader*/  
+            .chatPageHead {
+                padding: 7px;
+                margin-left: auto;
+                width: 100px;
+                margin-right: 15px;
+                text-align: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .chatHeadPopUp {
+                z-index: 850;
+                opacity: .98;
+                top: 102.5px;
+                left: 61px;
+            }
+
+            .chatHeadH3PopUp {
+                min-width: 100px;
+                width: 100px;
+                padding: 8px 4.5px;
+                margin: 0;
+                color: #333;
+                width: 100%;
+                cursor: pointer;
+                transition: color 0.2s ease;
+            }
+
+            .chatHeadH3PopUp:hover {
+                color: #005daf;
+            }
+
+            .chatHeadH3PopUp.active {
+                color: #05509b;
+            }
+
+            .HeadPopUp hr {
+                min-width: 100%;
+            }
+
+            /*chatBody*/
+            .chatBody {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .chatPage {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: space-between;
+                height: calc(100dvh - 450px);
+                width: 100%;
+            }
+
+            /*chatSorts*/
+            .chatPage h4 {
+                padding: 0;
+                margin: 2px;
+            }
+
+            .chatSorts {
+                padding: 2px 8px;
+                margin: 0 2px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .chatSort {
+                width: 14.28%;
+                height: 22px;
+                text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, .02);
+                margin: 0;
+                border-radius: 2px;
+                border: 1.5px solid transparent;
+                outline: transparent;
+                padding: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .chatSort:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .08);
+            }
+
+            .chatSort:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .06);
+            }
+
+            .chatSort.active {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .06);
+            }
+
+            .chatSort.active:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, .08);
+            }
+
+            /*chatBoards*/
+            .chatBox h5 {
+                padding: 0 5px;
+                margin: auto;
+            }
+
+            .chatBox {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            .gridChatBoard {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding: 2px;
+            }
+
+            .exitFChat {
+                width: 10px;
+                height: 10px;
+                align-self: flex-start;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                outline: transparent;
+                border-radius: 1px;
+            }
+
+            .fchatBody {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            /*opinionDisplay*/
+            .opinionLikes, .opinionLikeCount, .opinionLikeCount,
+            .userChatInfo 
+            {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .opinionHead {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 4%;
+            }
+            
+            .opinionLikes,
+            .opinionLikesUp, .opinionLikesDown {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .opinionLikes {
+                gap: 4px;
+                margin-left: auto;
+                margin-right: 5px;
+            }
+
+            .opinionBox {
+                margin: 0;
+                padding: 0;
+            }
+
+            .opinionHead i {
+                margin-left: 5px;
+            }
+
+            .userChatInfo {
+                display: flex;
+                align-items: center;
+                gap: 3%;
+            }
+
+            .userChatProfPic {
+                width: 15px;
+                height: 15px;
+                margin-right: 0;
+                margin-bottom: 2px;
+            }
+
+            .opinionLikesUp, .opinionLikesDown {
+                gap: 2px;
+            }
+
+            .opinionLikesUp i,
+            .opinionLikeCount, .opinionLikeCount p {
+                margin: 0;
+                padding: 2px;
+            }
+
+            .smallChat {
+                min-height: 210px;
+                max-height: 210px;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            
+            .smallChat::-webkit-scrollbar {width: 2px;}
+            .smallChat::-webkit-scrollbar-track:hover {background: transparent}
+            .smallChat::-webkit-scrollbar-thumb {width: 1px;}
+            .smallChat::-webkit-scrollbar:hover {width: 2.5px;}
+            .smallChat::-webkit-scrollbar:hover .smallChat::-webkit-scrollbar-thumb {
+                width: 1.5px;
+            }
+
+            .opinionGTBox {
+                border: none;
+                border-radius: 0%;
+                background: transparent;
+                margin: 1.5px;
+                box-shadow: none;
+            }
+
+            .opinionGTBox:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+
+            .chatDisplayHr {
+                width: 96%;
+                height: 2px;
+                margin-top: 1px;
+                margin-bottom: 5px;
+                margin-left: auto;
+                margin-right: auto;
+                border: none;
+                border-radius: 1px;
+            }
+
+            .chatInput {
+                align-self: flex-end;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+
+
+            /* -- Extended -- */
+
+            .extNav, .extSearch, .extLinks,
+            .extPage, .extNavTabsToggle {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+
+            /*extNavSearch*/       
+
+            .extHeadPopUp {
+                z-index: 900;
+                top: clamp(102.5px, 5px + 9dvw, 170px);
+            }
+
+
+            /*--extBody--*/
+
+            #extSubNav {
+                z-index: 980;
+                top: clamp(104.5px, 78.75px + 3.7dvw, 122px);
+                left: clamp(4px, 1dvw - 2px, 7px);
+                gap: 1px;
+            }
+
+            .extDisplayReports {
+                z-index: 910;
+                top: clamp(146.5px, 122.5px + 3.7dvw, 165px);
+                right: clamp(8px, 1dvw - 4px, 12px);
+            }
+
+
+            /* ----- Nav Section ----- */
+
+            #navHead, #navBody {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .tm {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                width: 95%;
+            }
+
+            #extPageTail {
+                z-index: 840;
+                position: absolute;
+                bottom: 50px;
+                left: 8px;
+                width: calc(100% - 16px);
+            }

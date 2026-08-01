@@ -1,0 +1,644 @@
+
+            /* ----- General ----- */
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                height: auto;
+                font-family: 'Satoshi', sans-serif;
+                transition: all 0.3s ease;
+            }
+
+            section {
+                z-index: 200;
+                margin: 2px 4px;
+                padding: 2px;
+                width: 100%;
+                border-radius: 4px;
+                box-shadow: 0 0 10px rgba(242, 242, 246, 0.2);
+            }            
+            
+            section:hover {
+                box-shadow: 0 0 10px rgba(242, 242, 246, 0.3);
+            }
+
+            div {
+                margin: 1px;
+                padding: 2px;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+            }
+
+            /* For Specific Use-Case
+
+            div:hover {
+                background: linear-gradient(180deg, #ffffff 0%, #d1d1d1 100%);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+            }
+
+            */
+
+
+            /* -- Text -- */
+
+            h1 {
+                font-weight: 800;
+                font-size: clamp(1rem, 0.75rem + 1.5dvw, 1.5rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.09);
+            }
+
+            h2 {
+                font-weight: 750;
+                font-size: clamp(.75rem, 0.5rem + 1.28dvw, 1.25rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
+            }
+
+            h3, h4 {
+                font-weight: 625;
+                font-size: clamp(0.7rem, 0.375rem + 1.06dvw, .9rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+            }
+
+            button, .ButtonB  {
+                font-size: clamp(0.57rem, 0.5rem + .7dvw, 0.85rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.03);
+            }
+            
+            h5, p, 
+            span, details, a, strong, 
+            input, textarea, option, label  {
+                font-size: clamp(0.55rem, 0.3rem + .68dvw, 0.72rem);
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.03);
+            }
+
+
+            strong, .Bold2 {
+                font-weight: 600;
+            }
+
+            .Bold3 {
+                font-weight: 510; 
+
+            }
+
+
+            .lesserP, h6 {
+                font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
+            }
+            
+            select {
+                font-size: clamp(0.425rem, 0.3rem + 0.625dvw, 0.5rem);
+            }
+
+            .fineP {
+                font-size: clamp(0.4rem, 0.28em + 0.61dvw, 0.45rem);
+            }
+
+            .fineLogIn {
+                text-decoration: underline;
+            }
+
+
+            /* -- Special -- */
+
+            
+            /* WebKit browsers (Chrome, Safari) */
+            ::-webkit-scrollbar {
+                width: 5px; /* width for vertical scrollbar */
+            }
+
+            ::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.1); /* light semi-transparent track color */
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #ccc; /* semi-transparent thumb color *//* roundness */
+                transition: background-color 0.3s ease;
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: rgba(4, 86, 191, 0.9); /* darker on hover */
+            }
+
+            /*Inputs(Textrea)/Selects*/
+
+            input, select, textarea {
+                outline: none;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            input:hover, select:hover, textarea:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+
+            input:focus, select:focus, textarea:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            select {
+                border-radius: 1px;
+                text-overflow: ellipsis;
+                overflow: hidden
+            }
+
+
+            input {
+                cursor: auto;
+                padding-left: 2.5px;
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+            }
+
+            textarea {
+                cursor: auto;
+                padding: 2px;
+            }
+
+            ::placeholder {
+                color: #999;
+                font-style: italic;
+            }
+
+
+            .userInput {
+                width: 100%;
+                border-radius: 2px 0px 0px 2px;
+            }
+
+
+
+            /*Images*/
+
+            .imgContainer {
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+                object-fit: contain;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+
+            /*Hr*/
+
+            hr {
+                width: 96%;
+                height: 1.5px;
+                margin: 0 auto;
+                border: none;
+            }
+
+            .vertHr {
+                width: 1.5px;
+                height: 96%;
+            }
+
+
+            /* -- Buttons -- */
+
+            button, .ButtonB {
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                min-height: 22px;
+                height: 2.9dvw;
+                max-height: 32px;
+                perspective: 5px;
+                border-radius: 2.5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            button:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            button:focus, button.active {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+            
+
+            .fullButton {
+                width: 100%;
+            }
+
+            .widthButton {
+                min-width: 66px;
+                width: 12dvw;
+                max-width: 100px;
+            }
+
+            .smallButton {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+                width: auto;
+                padding: 0 5px;
+            }
+
+            .fullSmallButton {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+                width: 100%;
+                padding: 0 5px;
+            }
+
+            .sendButton {
+                border-radius: 0 2px 2px 0;
+            }
+
+
+            /*--Icons--*/
+            
+
+            i, .IconAs, .IconA, .IconB, 
+            .IconCs, .IconC, .IconD {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 2px;
+            }
+
+            /*A(Clear/Large)*/
+            .IconAs {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                gap: calc(.1rem + .2dvw);
+            }
+
+            .IconA {
+                min-width: 24px;
+                width: calc(20px + .6dvw);
+                max-width: 28px;
+                min-height: 24px;
+                height: calc(20px + .6dvw);
+                max-height: 28px;
+                font-size: clamp(0.8rem, 0.4rem + .5dvw, 1rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+            }
+
+            .IconA:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+            }
+
+            .IconA:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+            }
+
+
+            /*B(Color/Large)*/
+            .IconB {
+                min-width: 24px;
+                width: calc(20px + .6dvw);
+                max-width: 28px;
+                min-height: 24px;
+                height: calc(20px + .6dvw);
+                max-height: 28px;
+                font-size: clamp(0.7rem, 0.4rem + .5dvw, 1rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .IconB:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .IconB:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+
+            /*C(Clear/Small)*/
+
+            .IconCs {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding-right: 2px;
+            }
+
+            .IconC {
+                min-width: 16px;
+                width: calc(12px + .6dvw);
+                max-width: 20px;
+                min-height: 16px;
+                height: calc(12px + .6dvw);
+                max-height: 20px;
+                line-height: 16px;
+                font-size: clamp(0.62rem, 0.6rem + .55dvw, .8rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+            }
+                        
+            .IconC:hover, .IconC.active:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            }
+
+            .IconC.active {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.04);
+            }
+
+            
+            /*D(Color/Small)*/
+            .IconD {
+                min-width: 14px;
+                width: calc(12px + .6dvw);
+                max-width: 20px;
+                min-height: 14px;
+                height: calc(12px + .6dvw);
+                max-height: 20px;
+                line-height: 16px;
+                font-size: clamp(0.62rem, 0.6rem + .55dvw, .8rem);
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .IconD:hover {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+
+            .IconD:focus {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+            }
+
+            /*DisplayIcon(Transparent/Fine)*/
+
+            .displayIcons, .displayIcon, .fineIcon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .displayIcon {
+                font-size: clamp(0.5rem, 0.35rem + 0.8dvw, 0.65rem);
+            }
+
+            .fineIcon {
+                font-size: clamp(0.45rem, 0.3rem + 0.7dvw, 0.55rem);
+            }
+
+
+            /*Int Icons*/
+
+            .intIconsBottom {
+                justify-content: space-between;
+                width: 100%;
+                opacity: .45;
+            }
+
+            .intsBottom:hover {
+                opacity: .9;
+            }
+
+            .intIconsLeft {
+                margin-right: auto;
+            }
+
+            .intIconsRight {
+                margin-left: auto;
+            }
+
+
+            
+            /*FA Types*/
+
+
+            .bodyTabToggle, .cloudHelpSection {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+                        
+            .bodyTabToggle, .navArrow, .cloudHelpSection {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+  
+            .fa-grip-horizontal {
+                cursor: grab;
+            }
+
+            
+
+            /* Checkbox */
+
+            .checkbox {
+                min-width: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                width: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                max-width: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                min-height: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                height: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                max-height: clamp(0.3rem + 4px, 0.3rem + 0.6dvw + 4px, 0.45rem + 4px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                padding: 2px;
+                border-radius: 2px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+                margin: 0;
+                cursor: pointer;
+            }
+
+                /* Hide the actual HTML checkbox completely */
+            .custom-checkbox input {
+                display: none;
+            }
+
+                /* Hide the FontAwesome icon by default */
+            .custom-checkbox input + .checkbox i {
+                display: none;
+            }
+
+                /* AUTOMATICALLY show the icon when the checkbox is checked */
+            .custom-checkbox input:checked + .checkbox  i {
+                display: flex;
+            }
+
+            .fa-check {
+                margin: 0 0 -1px 0;
+            }
+
+            
+            /*searchIcon*/
+            
+            .searchIcon {
+                border-radius: 0 2px 2px 0;
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+            }
+
+
+            /*exitButton*/
+
+            .exitButton {
+                align-self: flex-start;
+            }
+
+
+            /* Page Numbers */
+
+            .pageNumbers {
+                margin: 5px;
+                gap: 5px;
+            }
+
+            /*bodyTab/contToggle*/
+            
+            .bodyTabToggle {
+                flex-direction: column;
+                margin: 0;
+                gap: .2px;
+            }
+
+            .bodyTabToggle i {
+                font-size: clamp(0.65rem, 0.15rem + 1vw, 0.8rem);
+            }
+
+            .bodyTabToggle > :first-child {
+                margin-bottom: -5px;
+            }
+
+            .bodyTabToggle > :nth-child(2) {
+                margin-bottom: -2px;
+            }
+
+
+            .contSizeToggle {
+                margin: auto;
+                gap: 0px;
+                padding: 2px 0;
+                position: absolute; /* or fixed */
+                touch-action: none; /* REQUIRED: stops browser from scrolling/panning */
+                user-select: none;  /* stops text highlighting while dragging */
+                -webkit-user-select: none;
+                overflow: hidden;   /* keeps content tidy during resize */
+            }
+
+
+            /*navArrows*/
+
+            .navArrow {
+                margin: auto 0;
+                height: 100%;
+                width: 6%;
+                opacity: .11;
+                cursor: pointer;
+            }
+
+            .navArrow:hover {
+                opacity: 0.22;
+            }
+
+            .prevArrow {
+                left: 0;
+                border: none;
+                border-radius: 0 10px 10px 0;
+            }
+
+            .nextArrow {
+                right: 0;
+                border: none;
+                border-radius: 10px 0 0 10px;
+            }
+
+            .navArrow i {
+                transform: scale(0.8, 2.5);
+            }
+
+
+            /* -- CloudHelp -- */
+
+            .cloud, .cloudHelpSection {
+                position: absolute;
+                text-shadow: none;
+            }
+
+            .cloudHelpSection {
+                flex-direction: column;
+                text-align: center;
+            }
+
+
+            .cloud {
+                z-index: 920;
+                opacity: 0;
+                transition: opacity .9s ease-in-out;
+            }
+            
+            .visible {
+                opacity: 1 !important;
+            }
+
+
+            #cloud1 {
+                width: calc(1rem + 1dvw);
+                height: calc(1rem + 1dvw);
+                font-size: calc(1rem + 1dvw);
+                top: calc(0.1rem + 1dvw);
+                right: calc(3rem + 3dvw);
+                transform: rotate(45deg);
+            }
+
+            #cloud2 {
+                width: calc(1.5rem + 1.5dvw);
+                height: calc(1.5rem + 1.5dvw);
+                font-size: calc(1.5rem + 1.5dvw);
+                top: calc(1rem + 2dvw);
+                right: calc(4rem + 4.5dvw);
+                transform: rotate(210deg);
+            }
+
+            #cloud3 {
+                font-size: calc(10rem + 10dvw);
+                width: calc(10rem + 10dvw);
+                height: calc(10rem + 10dvw);
+                top: -8px;
+                right: calc(7rem + 7dvw);
+                text-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+            }
+
+
+            .cloudHelpSection {
+                z-index: 925;
+                top: calc(1.5rem + 1.5dvw);
+                right: calc(6.75rem + 6.75dvw);
+            }
+
+            .cloudHelpSection h5 {
+                margin-top: calc(1rem + 1dvw);
+            }
+
+            .cloudHelpHShadow {
+                width: 90%;
+                margin: 2px 0 6px 0;
+            }
+
+
+            .cloudHelpNav {
+                width: calc(8rem + 8dvw);
+                height: calc(4.5rem + 4.5dvw);
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+
+            /* gearSpin div */
+
+            .gearSpin {
+                margin: 0;
+                padding: 0;
+            }
