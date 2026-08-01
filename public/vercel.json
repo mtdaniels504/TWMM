@@ -2,5 +2,8 @@
   "version": 2,
   "outputDirectory": "public",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/((?!images/).*)", "destination": "/$1.html" }
+  ]
 }
