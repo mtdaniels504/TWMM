@@ -11,12 +11,16 @@ const port = process.env.PORT || 3000;
 // ==========================================
 // MIDDLEWARE CONFIGURATION
 // ==========================================
-app.use(cors({
+const corsOptions = {
     origin: '*', 
-    methods: ['GET', 'POST', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'listing-id', 'listing-tag'],
     credentials: true
-}));
+};
+
+// Explicitly handle preflight OPTIONS requests for all routes
+app.options('*', cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
