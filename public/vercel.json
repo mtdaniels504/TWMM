@@ -1,13 +1,5 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/(.*\\.(png|jpg|jpeg|gif|svg|webp|ico))",
-      "destination": "/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "cleanUrls": true,
+  "trailingSlash": false
 }
