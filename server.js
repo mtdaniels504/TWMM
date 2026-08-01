@@ -13,7 +13,10 @@ const port = process.env.PORT || 3000;
 // ==========================================
 const allowedOrigins = [
     'https://www.worldmotormarket.com',
-    'https://worldmotormarket.com'
+    'https://worldmotormarket.com',
+    'https://www.theworldmotormarket.com',
+    'https://theworldmotormarket.com',
+    'https://twmm-seven.vercel.app'
 ];
 
 const corsOptions = {
