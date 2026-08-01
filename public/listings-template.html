@@ -160,6 +160,10 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             }
 
+            input, textarea {
+                border-radius: 2px;
+            }
+
             select {
                 min-height: 18px;
                 height: calc(17px + 0.35vw);
@@ -4230,7 +4234,6 @@
 
         .content-title hr {
             height: 1.8px;
-            width: 200px;
         }
 
 
@@ -4238,7 +4241,7 @@
 
     /* Style for the custom title section */
         
-        .title-display, .title-input, .title-edit-section,
+        .title-edit-section,
         .error-message {
             background: transparent;
             border: none;
@@ -4263,8 +4266,6 @@
 
         .custom-title-display-box {
             width: 100%;
-            margin: 2px 0 4px 0;
-            padding: 2px;
         }
         
         /* Display */
@@ -4693,6 +4694,7 @@
             justify-content: space-between;
             align-items: center;
             overflow: hidden;
+            padding: 0;
         }
 
         .listing-image-section {
@@ -4826,9 +4828,9 @@
             object-fit: contain;
             width: 100%;
             height: 100%;
-            max-height: 75%;
             margin: auto;
-            padding: 5px;
+            padding: 6px;
+            margin: 0;
         }
 
         .mainImgBox2 {
@@ -4912,8 +4914,8 @@
             justify-content: space-between;
             text-align: center;
             width: 100%;
-            margin-top: 10px;
-            padding: 5px;
+            padding: 4px;
+            margin: 0;
             background-color: #000;
         }
 
@@ -5153,7 +5155,7 @@
         .info-popup-header, .info-popup-h5 {
             background: transparent;
             border: none;
-            box-shadow: 0;
+            box-shadow: none;
             padding: 0;
             margin: 0;
         }
@@ -5183,7 +5185,7 @@
         .info-popup-h5 {
             margin: 0 0 5px 5px;
             width: 100%;
-            gap: 4px;
+            gap: 10px;
             padding: 0 5px 5px 5px;
         }
 
@@ -5242,6 +5244,10 @@
 
         .tabcontent-sellStyle {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             display: none;
         }
 
@@ -5275,6 +5281,38 @@
             gap: 10%;
         }
 
+        .sellStyle-display-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .sellStyleContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sellStyleBox {
+            flex-grow: 1;
+            min-width: 60%;
+            width: 100%;
+            min-height: 100%;
+            height: 100%;
+        }
+
+        .sellStyleContent {
+            width: 100%;
+        }
+
         .sellStyle-row hr {
             width: 2.4px;
         }
@@ -5285,6 +5323,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 10px;
+            margin-top: 1.2px;
         }
 
         .price-input-sellStyle {
@@ -5294,20 +5333,20 @@
             gap: 10px;
         }
 
-        .price-input-sellStyle label {
+        .price-input-sellStyle label, .price-input-sellStyle input {
             width: 100%;
         }
 
-        .price-input-sellStyleAP input, .price-input-sellStylePM input {
-            width: 15dvw;
+        .price-input-sellStyle input {
+            margin-top: 2px;
         }
 
         .fulfillment-section-sellStyle select {
-            width: 9dvw;
+            width: 10dvw;
         }
 
         .negotiate-section-sellStyle select {
-            width: 6dvw;
+            width: 5dvw;
         }
 
 
@@ -7690,7 +7729,6 @@
 
             .content-title hr {
                 height: 1.8px;
-                width: 140px;
             }
 
 
@@ -7720,6 +7758,14 @@
                 display: none;
             }
 
+            
+            .title-display {
+                text-align: center;
+                text-decoration: underline;
+                overflow-wrap: break-word;
+                margin: 6px 0;
+            }
+
 
 
         /* ------------------------------------------------------------------ */
@@ -7741,13 +7787,6 @@
             
             .image-container {
                 width: 100%;
-            }
-
-            .listing-small-image-container {
-                min-height: none;
-                min-width: 100%;
-                height: auto;
-                justify-content: flex-start;
             }
 
             /* Image Sections */
@@ -7777,10 +7816,6 @@
                 flex-direction: column-reverse;
                 align-items: center;
                 height: 75px;
-            }
-            
-            .listing-small-image-container {
-                border: 1px solid #0060b5;
             }
             
             .listing-small-image-spot {
@@ -7813,6 +7848,17 @@
                 margin: 0;
                 width: 100%;
             }
+
+            
+
+            .listing-small-image-container {
+                min-height: none;
+                min-width: 100%;
+                height: auto;
+                justify-content: flex-start;
+                border: 1px solid #0060b5;
+            }
+
 
             .selected-choices-row {
                 width: 100%;
@@ -7955,6 +8001,21 @@
                 padding: 5px 2.5%;
                 gap: 2.5%;
             }
+
+            .sellStyleContainer {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .sellStyleBox {
+                min-height: auto;
+            }
+
+            .sellStyle-item {
+                margin-top: 2px;
+                gap: 5px;
+            }
+
 
             .price-input-sellStyle {
                 display: flex;
@@ -11211,9 +11272,18 @@
                                             <div class="adSlideContent adSlideContent-AP">
                                             </div>
                                             <div class="tabs-sellStyle">
-                                                <button class="fullButton tab-sellStyle active" id="tab-asking-price">Asking Price</button>
-                                                <button class="fullButton tab-sellStyle" id="tab-bidding">Bidding</button>
-                                                <button class="fullButton tab-sellStyle" id="tab-auction">Auction</button>
+                                                <button class="fullButton navTab2 tab-sellStyle active" id="tab-asking-price"
+                                                        data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
+                                                        data-target="tab-asking-price-content" data-selfClass=".tab-sellStyle"
+                                                >Asking Price</button>
+                                                <button class="fullButton navTab2 tab-sellStyle" id="tab-bidding"
+                                                        data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
+                                                        data-target="tab-bidding-content" data-selfClass=".tab-sellStyle"
+                                                >Bidding</button>
+                                                <button class="fullButton navTab2 tab-sellStyle" id="tab-auction"
+                                                        data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
+                                                        data-target="tab-auction-content" data-selfClass=".tab-sellStyle"
+                                                >Auction</button>
                                             </div>
                                         </div>
 
@@ -11225,123 +11295,128 @@
                                 
                                     <div class="tabcontent-sellStyle active" id="tab-asking-price-content">
 
-                                        <div class="askingPrice-header" id="askingPrice-header">
-                                            <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
-                                                data-sub="info-popup-AP" data-section="askingPrice-header"
-                                            ></i>
-                                            <div class="info-popup" id="info-popup-AP" style="display: none;">
-                                                <div class="info-popup-header">
-                                                    <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup-AP"></i>
+                                        <div class="sellStyleContainer">
+
+                                            <div class="sellStyleBox">
+
+                                                <div class="askingPrice-header" id="askingPrice-header">
+                                                    <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
+                                                        data-sub="info-popup-AP" data-section="askingPrice-header"
+                                                    ></i>
+                                                    <div class="info-popup" id="info-popup-AP" style="display: none;">
+                                                        <div class="info-popup-header">
+                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup-AP"></i>
+                                                        </div>
+                                                        <div class="info-popup-h5 info-popup-h5-AP">
+                                                            <h5>Fill out your Asking Price, a Plus/Minus Value (if any), as well as your preferred method of exchange.</h5>
+                                                            <p>*The Plus/Minus should be a value you feel comfortable negotiating with the buyer</p>
+                                                            <p>*If you do NOT feel comfortable negotiating, select 'No' in the Negotiable Terminal</p>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Pricing Details</h3>
                                                 </div>
-                                                <div class="info-popup-h5 info-popup-h5-AP">
-                                                    <h5>Fill out your Asking Price, a Plus/Minus Value (if any), as well as your preferred method of exchange.</h5>
-                                                    <p>*The Plus/Minus should be a value you feel comfortable negotiating with the buyer</p>
-                                                    <p>*If you do NOT feel comfortable negotiating, select 'No' in the Negotiable Terminal</p>
-                                                </div>
-                                            </div>
-                                            <h3>Pricing Details</h3>
-                                        </div>
+
+                                                <div class="sellStyleContent">
+                                                    <div class="sellStyle-row">
+                                                        <!-- Asking Price section -->
+                                                        <div class="sellStyle-item">
+                                                            <div class="price-input-sellStyle price-input-sellStyleAP">
+                                                                <label for="quick-price-sellStyle">Asking Price:</label>
+                                                                <input class="lesserP tabcontent-sellStyle-input" id="quick-price-sellStyle" rows="1" maxlength="15"></input>
+                                                            </div>
+                                                            <!-- Placeholder for error messages -->
+                                                            <p id="error-message-asking-sellStyle" style="color: red; margin-top: -5px;"></p>
+                                                        </div>
+
+                                                        <hr class="shadow vertHr">
+                                                        
+                                                        <div class="price-input-sellStyle negotiate-section-sellStyle" id="negotiate">
+                                                            <label for="negotiate-sellStyle">Negotiable?</label>
+                                                            <select class="tabcontent-sellStyle-input" id="negotiate-sellStyle" name="negotiate-sellStyle">
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Negotiate section -->
+                                                    <div class="sellStyle-row negotiate-sections-sellStyle">
+                                                        <div class="sellStyle-item negotiate-section-sellStyle" id="plusMinus">
+                                                            <div class="price-input-sellStyle price-input-sellStylePM">
+                                                                <label for="plusMinus-sellStyle">+/-</label>
+                                                                <input class="lesserP tabcontent-sellStyle-input" id="plusMinus-sellStyle" name="plusMinus-sellStyle" row="1" maxlength="15">
+                                                            </div>
+                                                            <!-- Placeholder for error messages -->
+                                                            <p id="error-message-plusMinus-sellStyle" style="color: red;"></p>
+                                                        </div>
+
+                                                        <hr class="shadow vertHr">
+                                                                                                    
+                                                        <!-- Pick-Up/Delivery section -->
+                                                        <div class="price-input-sellStyle fulfillment-section-sellStyle">
+                                                            <label for="fulfillment-sellStyle">Pick-Up/Delivery</label>
+                                                            <select class="tabcontent-sellStyle-input" id="fulfillment-sellStyle" name="fulfillment-sellStyle">
+                                                                <option value="Both">Both</option>
+                                                                <option value="Pick-Up">Pick-Up</option>
+                                                                <option value="Delivery">Delivery</option>
+                                                                <option value="Self-Delivery">Self-Delivery</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>    
+                                                </div>  
+                                            </div>               
 
 
-                                        <div class="sellStyle-row">
-                                            <!-- Asking Price section -->
-                                            <div class="sellStyle-item asking-price-section-sellStyle">
-                                                <div class="price-input-sellStyle price-input-sellStyleAP">
-                                                    <label for="quick-price-sellStyle">Asking Price:</label>
-                                                    <input class="tabcontent-sellStyle-input" id="quick-price-sellStyle" rows="1" maxlength="15"></input>
+                                            <!-- Add the "Services Included" section here -->
+                                            <div class="services-included-section" id="services-included">
+                                                <div class="services-included-header">
+                                                    <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
+                                                        data-sub="info-popup" data-section="services-included"
+                                                    ></i>
+                                                    <div class="info-popup" id="info-popup" style="display: none;">
+                                                        <div class="info-popup-header">
+                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup"></i>
+                                                        </div>
+                                                        <div class="info-popup-h5">
+                                                            <h5>Sellers have the option to include services as they see fit, and the associated costs will be included in the final sales price.</h5>
+                                                            <h5>(if not already included in subscription package)</h5>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Services Included</h3>
                                                 </div>
-                                                <!-- Placeholder for error messages -->
-                                                <p id="error-message-asking-sellStyle" style="color: red; margin-top: -5px;"></p>
-                                            </div>
-
-                                            <hr class="shadow vertHr">
-                                            
-                                            <div class="price-input-sellStyle negotiate-section-sellStyle" id="negotiate">
-                                                <label for="negotiate-sellStyle">Negotiable?</label>
-                                                <select class="tabcontent-sellStyle-input" id="negotiate-sellStyle" name="negotiate-sellStyle">
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    
-                                    
-                                        <!-- Negotiate section -->
-                                        <div class="sellStyle-row negotiate-sections-sellStyle">
-                                            <div class="sellStyle-item negotiate-section-sellStyle" id="plusMinus">
-                                                <div class="price-input-sellStyle price-input-sellStylePM">
-                                                    <label for="plusMinus-sellStyle">+/-</label>
-                                                    <input class="tabcontent-sellStyle-input" id="plusMinus-sellStyle" name="plusMinus-sellStyle" row="1" maxlength="15">
+                                                
+                                                <div class="services-included-checkboxes">
+                                                    <div class="services-checkbox-row services-checkbox-row1">
+                                                        <div class="services-checkbox" id="shipping-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="shipping-service" name="services" value="shipping">
+                                                            <span for="shipping-service">Shipping/Delivery</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="inspection-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="inspection-service" name="services" value="inspection">
+                                                            <span for="inspection-service">Inspection</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="services-checkbox-row services-checkbox-row2">
+                                                        <div class="services-checkbox" id="detailing-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="detailing-service" name="services" value="detailing">
+                                                            <span for="detailing-service">Detailing</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="mechanic-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="mechanic-service" name="services" value="mechanic">
+                                                            <span for="mechanic-service">Mechanic Work (if necessary)</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="services-checkbox-row services-checkbox-row2">
+                                                        <div class="services-checkbox" id="title-verification-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="title-verification-service" name="services" value="title">
+                                                            <span for="title-verification-service">Title Verification</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="car-reports-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="car-reports-service" name="services" value="reports">
+                                                            <span for="car-reports-service">CarFax Report</span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more services checkboxes here -->
                                                 </div>
-                                                <!-- Placeholder for error messages -->
-                                                <p id="error-message-plusMinus-sellStyle" style="color: red;"></p>
-                                            </div>
-
-                                            <hr class="shadow vertHr">
-                                                                                        
-                                            <!-- Pick-Up/Delivery section -->
-                                            <div class="price-input-sellStyle fulfillment-section-sellStyle">
-                                                <label for="fulfillment-sellStyle">Pick-Up/Delivery</label>
-                                                <select class="tabcontent-sellStyle-input" id="fulfillment-sellStyle" name="fulfillment-sellStyle">
-                                                    <option value="Both">Both</option>
-                                                    <option value="Pick-Up">Pick-Up</option>
-                                                    <option value="Delivery">Delivery</option>
-                                                    <option value="Self-Delivery">Self-Delivery</option>
-                                                </select>
-                                            </div>
-                                        </div>                
-
-
-                                        <!-- Add the "Services Included" section here -->
-                                        <div class="services-included-section" id="services-included">
-                                            <div class="services-included-header">
-                                                <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
-                                                    data-sub="info-popup" data-section="services-included"
-                                                ></i>
-                                                <div class="info-popup" id="info-popup" style="display: none;">
-                                                    <div class="info-popup-header">
-                                                        <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup"></i>
-                                                    </div>
-                                                    <div class="info-popup-h5">
-                                                        <h5>Sellers have the option to include services as they see fit, and the associated costs will be included in the final sales price.</h5>
-                                                        <h5>(if not already included in subscription package)</h5>
-                                                    </div>
-                                                </div>
-                                                <h3>Services Included</h3>
-                                            </div>
-                                            
-                                            <div class="services-included-checkboxes">
-                                                <div class="services-checkbox-row services-checkbox-row1">
-                                                    <div class="services-checkbox" id="shipping-checkbox">
-                                                        <input type="checkbox" class="checkbox" id="shipping-service" name="services" value="shipping">
-                                                        <span for="shipping-service">Shipping/Delivery</span>
-                                                    </div>
-                                                    <div class="services-checkbox" id="inspection-checkbox">
-                                                        <input type="checkbox" class="checkbox" id="inspection-service" name="services" value="inspection">
-                                                        <span for="inspection-service">Inspection</span>
-                                                    </div>
-                                                </div>
-                                                <div class="services-checkbox-row services-checkbox-row2">
-                                                    <div class="services-checkbox" id="detailing-checkbox">
-                                                        <input type="checkbox" class="checkbox" id="detailing-service" name="services" value="detailing">
-                                                        <span for="detailing-service">Detailing</span>
-                                                    </div>
-                                                    <div class="services-checkbox" id="mechanic-checkbox">
-                                                        <input type="checkbox" class="checkbox" id="mechanic-service" name="services" value="mechanic">
-                                                        <span for="mechanic-service">Mechanic Work (if necessary)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="services-checkbox-row services-checkbox-row2">
-                                                    <div class="services-checkbox" id="title-verification-checkbox">
-                                                        <input type="checkbox" class="checkbox" id="title-verification-service" name="services" value="title">
-                                                        <span for="title-verification-service">Title Verification</span>
-                                                    </div>
-                                                    <div class="services-checkbox" id="car-reports-checkbox">
-                                                        <input type="checkbox" class="checkbox" id="car-reports-service" name="services" value="reports">
-                                                        <span for="car-reports-service">CarFax Report</span>
-                                                    </div>
-                                                </div>
-                                                <!-- Add more services checkboxes here -->
                                             </div>
                                         </div>
 
@@ -11372,99 +11447,415 @@
                                         </div>
                                     </div>
                                 
-                                    <div id="tab-bidding-content" class="tabcontent-sellStyle">
-                                        <!-- Bidding section -->
-                                        <div class="bidding-section-sellStyle">
-                                            <!-- Starting Price -->
-                                            <label for="starting-price-input-sellStyle">Starting Price:</label>
-                                            <div class="starting-price-section-sellStyle">
-                                                <div class="price-input-start-sellStyle">
-                                                    <input class="tabcontent-sellStyle-input" id="starting-price-input-sellStyle" rows="1" placeholder="Enter starting price" maxlength="15"></input>
-                                                </div>
-                                            </div>
-                                            <!-- Placeholder for error messages -->
-                                            <p class="error-message" id="error-message-sellStyle" style="color: red; margin-top: -5px;"></p>
-                                    
-                                            <!-- Bidding Dropdowns Section -->
-                                            <div class="bidding-dropdowns-sellStyle">
+                                    <!-- 2. Dynamic Input Engine Block -->
+                                    <div class="tabcontent-sellStyle" id="tab-bidding-content">
 
-                                                <label for="bidding-length-select-sellStyle">Bidding Length:</label>
-                                                <div class="bidding-length-section-sellStyle">
-                                                    <div class="length-input-sellStyle">
-                                                        <select class="tabcontent-sellStyle-input" id="bidding-length-select-sellStyle" name="bidding-length-sellStyle">
-                                                            <!-- Populate options from 1 to 30 -->
-                                                            <script>
-                                                                for (let i = 1; i <= 31; i++) {
-                                                                    document.write(`<option value="${i}">${i}</option>`);
-                                                                }
-                                                            </script>
-                                                        </select>
+                                        <div class="sellStyleContainer">
+                                            <div class="sellStyleBox">
+                                                <div class="askingPrice-header" id="bidding-header">
+                                                    <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
+                                                        data-sub="info-popup-AP" data-section="askingPrice-header"
+                                                    ></i>
+                                                    <div class="info-popup" id="info-popup-AP" style="display: none;">
+                                                        <div class="info-popup-header">
+                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup-AP"></i>
+                                                        </div>
+                                                        <div class="info-popup-h5 info-popup-h5-AP">
+                                                            <h5>Fill out your Asking Price, a Plus/Minus Value (if any), as well as your preferred method of exchange.</h5>
+                                                            <p>*The Plus/Minus should be a value you feel comfortable negotiating with the buyer</p>
+                                                            <p>*If you do NOT feel comfortable negotiating, select 'No' in the Negotiable Terminal</p>
+                                                        </div>
                                                     </div>
+                                                    <h3>Pricing Details</h3>
+                                                </div>
+
+                                                <div class="sellStyleContent">
+                                                    <!-- Price Configurations Row -->
+                                                    <div class="sellStyle-row" style="display: flex; gap: 15px; margin-bottom: 15px;">
+                                                        
+                                                        <!-- Starting Price / Asking Price Field -->
+                                                        <div class="sellStyle-item">
+                                                            <div class="price-input-sellStyle">
+                                                                <label id="price-label-parts" for="starting-price-input-sellStyle-parts">Starting Price:</label>
+                                                                <input class="tabcontent-sellStyle-input" id="starting-price-input-sellStyle-parts" placeholder="Enter amount" maxlength="15" style="width: 100%;">
+                                                            </div>
+                                                            <p class="error-message" id="error-message-sellStyle-parts" style="color: red; margin-top: 2px; height: 18px;"></p>
+                                                        </div>
+
+                                                        <!-- Buy Outright Price Field (Optional Premium Purchase) -->
+                                                        <div class="sellStyle-item" id="buy-outright-wrapper-parts">
+                                                            <div class="price-input-sellStyle">
+                                                                <label for="buy-outright-input-parts">Buy Outright Price:</label>
+                                                                <input class="tabcontent-sellStyle-input" id="buy-outright-input-parts" placeholder="Optional fixed price" maxlength="15" style="width: 100%;">
+                                                            </div>
+                                                            <p class="error-message" id="error-message-buy-outright-parts" style="color: red; margin-top: 2px; height: 18px;"></p>
+                                                        </div>
+
+                                                    </div>  
+
+                                                        
+                                                    <div class="sellStyle-row">
+                                                        <div class="sellStyle-display-block">
+                                                            <div class="sellStyle-row">
+                                                                <div class="sellStyle-item">
+                                                                    <label for="bidding-length-select-sellStyle-parts">Duration Length:</label>
+                                                                    <select class="tabcontent-sellStyle-input" id="bidding-length-select-sellStyle-parts">
+                                                                        <!-- Enforced 1-31 loop programmatically -->
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="sellStyle-item">
+                                                                    <label for="bidding-time-unit-sellStyle-parts">Time Unit:</label>
+                                                                    <select class="tabcontent-sellStyle-input" id="bidding-time-unit-sellStyle-parts">
+                                                                        <option value="days" selected>Days</option>
+                                                                        <option value="weeks">Weeks</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="sellStyle-row">
+                                                                <!-- Early Protection Window Dropdown (Updated: No Lock Completely Removed) -->
+                                                                <div class="sellStyle-item" id="lockout-wrapper-parts">
+                                                                    <label for="early-accept-lockout-parts">Seller Early-Accept Lock:</label>
+                                                                    <select class="tabcontent-sellStyle-input" id="early-accept-lockout-parts">
+                                                                        <option value="6" selected>Lock for first 6 Hours (Minimum)</option>
+                                                                        <option value="12">Lock for first 12 Hours</option>
+                                                                        <option value="24">Lock for first 24 Hours</option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <!-- Maximum Permitted Jump Window -->
+                                                                <div class="sellStyle-item">
+                                                                    <label for="max-bid-increase-parts">Max Bid Ceiling Jump:</label>
+                                                                    <select class="tabcontent-sellStyle-input" id="max-bid-increase-parts">
+                                                                        <option value="unlimited">Unlimited Increase</option>
+                                                                        <option value="10">Max 10% above current bid</option>
+                                                                        <option value="25">Max 25% above current bid</option>
+                                                                        <option value="50">Max 50% above current bid</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                                                                
+                                                        
+                                                        <div class="sellStyle-display-block" id="launch-timing-wrapper-parts" style="width: 100%;">
+                                                            <label for="bidding-start-type-parts">Listing Start Timing:</label>
+                                                            
+                                                            <!-- Dropdown starts on Launch Immediately -->
+                                                            <select class="tabcontent-sellStyle-input" id="bidding-start-type-parts" onchange="toggleLaunchTiming(this.value)">
+                                                                <option value="now" selected>Launch Immediately</option>
+                                                                <option value="schedule">Schedule a Launch Date & Time</option>
+                                                            </select>
+
+                                                            <!-- Hidden input field container that only unfolds if "Schedule" is selected -->
+                                                            <div id="scheduled-input-box-parts" style="display: none;">
+                                                                <label for="bidding-start-date-parts">Select Launch Date & Time:</label>
+                                                                <input type="datetime-local" class="tabcontent-sellStyle-input" id="bidding-start-date-parts">
+                                                                <div id="error-message-bidding-date-parts" style="color: red; font-size: 13px; margin-top: 3px;"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Optional Reserve Pricing Feature Box -->
+                                                    <div class="sellStyle-row hidden-fields" id="reserve-box-parts" style="display: none;">
+                                                        <div class="sellStyle-display-block" style="width: 100%;">
+                                                            <label for="reserve-price-parts">Hidden Reserve Target Price (Optional):</label>
+                                                            <input class="tabcontent-sellStyle-input" id="reserve-price-parts" placeholder="e.g. Winner must hit this amount to auto-win" maxlength="15">
+                                                        </div>
+                                                    </div>
+                                                </div>                              
+                                            </div>
+
+                                            <!-- Add the "Services Included" section here -->
+                                            <div class="services-included-section" id="services-included">
+                                                <div class="services-included-header">
+                                                    <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
+                                                        data-sub="info-popup" data-section="services-included"
+                                                    ></i>
+                                                    <div class="info-popup" id="info-popup" style="display: none;">
+                                                        <div class="info-popup-header">
+                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup"></i>
+                                                        </div>
+                                                        <div class="info-popup-h5">
+                                                            <h5>Sellers have the option to include services as they see fit, and the associated costs will be included in the final sales price.</h5>
+                                                            <h5>(if not already included in subscription package)</h5>
+                                                        </div>
+                                                    </div>
+                                                    <h3>Services Included</h3>
                                                 </div>
                                                 
-                                    
-                                                <label for="bidding-time-unit-sellStyle">Bidding Time Unit:</label>
-                                                <div class="bidding-time-unit-section-sellStyle">
-                                                    <div class="unit-input-sellStyle">
-                                                        <select class="tabcontent-sellStyle-input" id="bidding-time-unit-sellStyle" name="bidding-time-unit-sellStyle">
-                                                            <option value="days">Days</option>
-                                                            <option value="weeks" selected>Weeks</option>
-                                                        </select>
+                                                <div class="services-included-checkboxes">
+                                                    <div class="services-checkbox-row services-checkbox-row1">
+                                                        <div class="services-checkbox" id="shipping-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="shipping-service" name="services" value="shipping">
+                                                            <span for="shipping-service">Shipping/Delivery</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="inspection-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="inspection-service" name="services" value="inspection">
+                                                            <span for="inspection-service">Inspection</span>
+                                                        </div>
                                                     </div>
+                                                    <div class="services-checkbox-row services-checkbox-row2">
+                                                        <div class="services-checkbox" id="detailing-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="detailing-service" name="services" value="detailing">
+                                                            <span for="detailing-service">Detailing</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="mechanic-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="mechanic-service" name="services" value="mechanic">
+                                                            <span for="mechanic-service">Mechanic Work (if necessary)</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="services-checkbox-row services-checkbox-row2">
+                                                        <div class="services-checkbox" id="title-verification-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="title-verification-service" name="services" value="title">
+                                                            <span for="title-verification-service">Title Verification</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="car-reports-checkbox">
+                                                            <input type="checkbox" class="checkbox" id="car-reports-service" name="services" value="reports">
+                                                            <span for="car-reports-service">CarFax Report</span>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more services checkboxes here -->
                                                 </div>
-                                                <!-- Single Submit Button for All Inputs -->
-                                                <button id="submit-bidding-button-sellStyle">Submit</button>
-                                                <div id="bidding-display-sellStyle" style="display: none;">
-                                                    <span class="bidding-display-title-sellStyle">Starting Price:</span>
-                                                    <span class="bidding-display-input-sellStyle" id="display-starting-price-sellStyle"></span>
-                                                    <span class="bidding-display-title-sellStyle">Bidding Length:</span>
-                                                    <span class="bidding-display-input-sellStyle" id="display-bidding-length-sellStyle"></span>
-                                                    <span class="bidding-display-title-sellStyle">Bidding Time Unit:</span>
-                                                    <span class="bidding-display-input-sellStyle" id="display-bidding-time-unit-sellStyle"></span>
+                                            </div>
+                                        </div>
+                                                                                    
+                                        <!-- Submission Trigger -->
+                                        <button id="submit-bidding-button-sellStyle-parts" style="margin-top: 20px;">Submit Plan Layout</button>
+                                        
+                                        <!-- 3. Integrated Dynamic Display Panel Output -->
+                                        <div id="bidding-display-sellStyle-parts" style="display: none; margin-top: 25px; padding: 15px; background: #f9f9f9; border-radius: 6px;">
+                                            <h4 style="margin-top: 0;">Configured Sales Strategy</h4>
+                                            <div class="selected-choices-row">
+                                                <h6>Strategy Selected:</h6> <span id="out-strategy-parts">-</span>
+                                            </div>
+                                            <div class="selected-choices-row">
+                                                <h6>Base Target Price:</h6> <span id="out-price-parts">-</span>
+                                            </div>
+                                            <div id="out-meta-fields-parts">
+                                                <div class="selected-choices-row">
+                                                    <h6>Runtime Duration:</h6> <span id="out-duration-parts">-</span>
+                                                </div>
+                                                <div class="selected-choices-row">
+                                                    <h6>Early Pressure Lock:</h6> <span id="out-lock-parts">-</span>
+                                                </div>
+                                                <div class="selected-choices-row">
+                                                    <h6>Anti-Filibuster Cap:</h6> <span id="out-cap-parts">-</span>
+                                                </div>
+                                                <div class="selected-choices-row" id="out-reserve-row-parts" style="display: none;">
+                                                    <h6>Reserve Ceiling:</h6> <span id="out-reserve-parts">-</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                
+<script>
+    // 1. Safe Number Builder Loop (Runs after elements load)
+    document.addEventListener("DOMContentLoaded", () => {
+        const lengthSelect = document.getElementById("bidding-length-select-sellStyle-parts");
+        if(lengthSelect) {
+            lengthSelect.innerHTML = ""; // Clear any hardcoded content
+            for (let i = 1; i <= 31; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.innerHTML = i;
+                lengthSelect.appendChild(opt);
+            }
+        }
+    });
+
+    // 2. Dynamic Strategy Switcher (Standard vs Bidding vs Auction)
+    function toggleListingStrategy(strategy) {
+        const advancedPanel = document.getElementById("advanced-auction-fields-parts");
+        const priceLabel = document.getElementById("price-label-parts");
+        const lockoutWrapper = document.getElementById("lockout-wrapper-parts");
+        const reserveBox = document.getElementById("reserve-box-parts");
+
+        if (!advancedPanel || !priceLabel) return;
+
+        if (strategy === "standard") {
+            advancedPanel.style.display = "none";
+            priceLabel.textContent = "Asking Price:";
+        } else {
+            advancedPanel.style.display = "block";
+            priceLabel.textContent = "Starting Bid Price:";
+            
+            if (strategy === "auction") {
+                if (lockoutWrapper) lockoutWrapper.style.display = "none";
+                if (reserveBox) reserveBox.style.display = "block";
+            } else {
+                if (lockoutWrapper) lockoutWrapper.style.display = "block";
+                if (reserveBox) reserveBox.style.display = "none";
+            }
+        }
+    }
+
+    // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
+    function toggleLaunchTiming(selection) {
+        const targetBox = document.getElementById("scheduled-input-box-parts");
+        const dateInput = document.getElementById("bidding-start-date-parts");
+        
+        if (!targetBox) return;
+
+        if (selection === "schedule") {
+            targetBox.style.display = "block";
+            
+            // Lock out past dates/times instantly
+            if (dateInput) {
+                const now = new Date();
+                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                dateInput.min = now.toISOString().slice(0, 16);
+            }
+        } else {
+            targetBox.style.display = "none";
+            if (dateInput) dateInput.value = ""; // Clear date value if switched back
+        }
+    }
+</script>
+
+                                                                    
                                     <!-- Auction Section -->
-                                    <div id="tab-auction-content" class="tabcontent-sellStyle">
-                                        <!-- Display area for the Auction section -->
-                                        <div id="auction-display-sellStyle" class="display-container-sellStyle">
-                                            <span class="auction-display-title-sellStyle">Start Time:</span>
-                                            <span class="auction-display-input-sellStyle" id="auction-display-start-time-sellStyle"></span>
-                                            <span class="auction-display-title-sellStyle">Auction Length:</span>
-                                            <span class="auction-display-input-sellStyle" id="auction-display-length-sellStyle"></span>
-                                            <span class="auction-display-title-sellStyle">Auction Time Unit:</span>
-                                            <span class="auction-display-input-sellStyle" id="auction-display-time-unit-sellStyle"></span>
-                                            <span class="auction-display-title-sellStyle">Starting Price:</span>
-                                            <span class="auction-display-input-sellStyle" id="auction-display-starting-price-sellStyle"></span>
-                                            <!-- Add an edit button to allow editing -->
-                                            <button id="edit-auction-button-sellStyle" style="display: inline-block;" onclick="editAuction()">Edit</button>
-                                        </div>
+<div id="tab-auction-content" class="tabcontent-sellStyle">
+    
+    <!-- A. Clean Confirmation Panel View (Hidden until submission matches validation rules) -->
+    <div id="auction-display-sellStyle" class="display-container-sellStyle" style="display: none; padding: 15px; background: #f9f9f9; border-radius: 6px;">
+        <h4 style="margin-top: 0;">Configured Premium Sprint Auction</h4>
+        <div class="selected-choices-row">
+            <h6>Scheduled Start:</h6> <span id="auction-display-start-time-sellStyle">-</span>
+        </div>
+        <div class="selected-choices-row">
+            <h6>Auction Runtime:</h6> <span id="auction-display-length-sellStyle">-</span> <span id="auction-display-time-unit-sellStyle"></span>
+        </div>
+        <div class="selected-choices-row">
+            <h6>Starting Bid Window:</h6> <span id="auction-display-starting-price-sellStyle">-</span>
+        </div>
+        <!-- Action Trigger to jump back into input view -->
+        <button id="edit-auction-button-sellStyle" style="margin-top: 15px;" onclick="editAuction()">Modify Auction Plan</button>
+    </div>
 
-                                        <!-- Auction form section -->
-                                        <div id="auction-form-sellStyle" style="display: none;">
-                                            <label for="auction-start-time-sellStyle">Start Time:</label>
-                                            <input class="tabcontent-sellStyle-input" type="datetime-local" id="auction-start-time-sellStyle" name="auction-start-time-sellStyle" min="your-current-date" max="your-max-date">
-                                            <div id="error-message-datetime" style="color: red; font-size: 14px; margin-top: 4px;"></div>
+    <!-- B. Pro Sprint Entry Control Panel -->
+    <div id="auction-form-sellStyle">
+        
+        <!-- Target Start Timestamp Selector -->
+        <div class="sellStyle-item" style="margin-bottom: 15px;">
+            <label for="auction-start-time-sellStyle">Scheduled Launch Time:</label>
+            <input class="tabcontent-sellStyle-input" type="datetime-local" id="auction-start-time-sellStyle" name="auction-start-time-sellStyle" onchange="evaluateAuctionDayLimit()">
+            <div id="error-message-datetime" style="color: red; font-size: 13px; margin-top: 3px; height: 18px;"></div>
+        </div>
 
-                                            <label for="auction-length-sellStyle">Auction Length:</label>
-                                            <select class="tabcontent-sellStyle-input" id="auction-length-sellStyle" name="auction-length-sellStyle">
-                                                <!-- Options will be added dynamically through JavaScript -->
-                                            </select>
-                                            <select class="tabcontent-sellStyle-input" id="auction-time-unit-sellStyle" name="auction-time-unit-sellStyle">
-                                                <option value="minutes">Minutes</option>
-                                                <option value="hours">Hours</option>
-                                                <!-- Add more options as needed -->
-                                            </select>
-                                            <label for="auction-starting-price-sellStyle">Starting Price:</label>
-                                            <input class="tabcontent-sellStyle-input" type="text" id="auction-starting-price-sellStyle" name="auction-starting-price-sellStyle" maxlength="20" oninput="validateStartingPrice(this)">
-                                            <!-- Add a submit button -->
-                                            <button id="submit-auction-button-sellStyle" onclick="submitAuction()">Submit</button>
-                                            <!-- Error message placeholder -->
-                                            <p class="error-message" id="error-message-auction-sellStyle" style="color: red;"></p>
-                                        </div>
-                                    </div>
+        <!-- Custom Variable Duration Controllers -->
+        <div class="sellStyle-row" style="margin-bottom: 15px; display: flex; gap: 10px;">
+            <div style="flex: 1;">
+                <label for="auction-length-sellStyle">Auction Duration:</label>
+                <select class="tabcontent-sellStyle-input" id="auction-length-sellStyle" name="auction-length-sellStyle">
+                    <!-- Automatically restricted to 12 or 24 options by the Day Evaluation Engine -->
+                </select>
+            </div>
+            
+            <div style="flex: 1;">
+                <label for="auction-time-unit-sellStyle">Time Scale:</label>
+                <select class="tabcontent-sellStyle-input" id="auction-time-unit-sellStyle" name="auction-time-unit-sellStyle" onchange="evaluateAuctionDayLimit()">
+                    <option value="hours" selected>Hours</option>
+                    <option value="minutes">Minutes</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Price Input Field -->
+        <div class="sellStyle-item" style="margin-bottom: 15px;">
+            <label for="auction-starting-price-sellStyle">Starting Price Entry:</label>
+            <input class="tabcontent-sellStyle-input" type="text" id="auction-starting-price-sellStyle" name="auction-starting-price-sellStyle" maxlength="15" placeholder="$0.00">
+            <p class="error-message" id="error-message-auction-sellStyle" style="color: red; font-size: 13px; margin-top: 3px; height: 18px;"></p>
+        </div>
+
+        <!-- Process Submission Button -->
+        <button id="submit-auction-button-sellStyle" style="width: 100%; margin-top: 10px;" onclick="submitAuction()">Lock In & Schedule Auction</button>
+    </div>
+</div>
+
+<script>
+(() => {
+    // Establish standard system boot tracking targets
+    document.addEventListener("DOMContentLoaded", () => {
+        const timeInput = document.getElementById("auction-start-time-sellStyle");
+        if (timeInput) {
+            // Assign min calendar attribute to the exact local millisecond 
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            timeInput.min = now.toISOString().slice(0, 16);
+        }
+        // Run initial option array draw execution mapping
+        evaluateAuctionDayLimit();
+    });
+})();
+
+// Real-Time Calendar Evaluator & Dropdown Menu Builder
+function evaluateAuctionDayLimit() {
+    const timeInput = document.getElementById("auction-start-time-sellStyle");
+    const lengthSelect = document.getElementById("auction-length-sellStyle");
+    const unitSelect = document.getElementById("auction-time-unit-sellStyle");
+    const errDatetime = document.getElementById("error-message-datetime");
+
+    if (!timeInput || !lengthSelect || !unitSelect) return;
+
+    let maxLimit = 12; // Standard Cap (Mon-Sat)
+    let unitType = unitSelect.value;
+
+    if (timeInput.value) {
+        const chosenDate = new Date(timeInput.value);
+        
+        // 0 matches Sunday inside the standard ECMAScript Date matrix
+        if (chosenDate.getDay() === 0 && unitType === "hours") {
+            maxLimit = 24; // Expand option tree specifically for Sunday Funday
+            errDatetime.innerHTML = "<span style='color: #2b7a1d;'>✨ Sunday Funday Slot Confirmed! Expanded 24-Hour Limits Enabled.</span>";
+        } else {
+            errDatetime.textContent = "";
+        }
+    }
+
+    // Adjust ceiling parameters if user switches layout parameters to Minutes instead of Hours
+    if (unitType === "minutes") {
+        maxLimit = 60; // Limit short quick-sprints to a clean 60-minute cutoff maximum
+    }
+
+    // Repopulate options list dynamically to guarantee zero validation boundary leaks
+    const currentSelection = lengthSelect.value;
+    lengthSelect.innerHTML = "";
+    
+    for (let i = 1; i <= maxLimit; i++) {
+        let opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = `${i} ${unitType}`;
+        lengthSelect.appendChild(opt);
+    }
+
+    // Retain previous value if it falls within the newly generated bounds
+    if (parseInt(currentSelection) <= maxLimit) {
+        lengthSelect.value = currentSelection;
+    }
+}
+
+// Visual interface state controller toggles
+function submitAuction() {
+    const formPanel = document.getElementById("auction-form-sellStyle");
+    const displayPanel = document.getElementById("auction-display-sellStyle");
+    
+    // Perform standard visual state flip (Complete input sanitization rules compile next!)
+    if (formPanel && displayPanel) {
+        formPanel.style.display = "none";
+        displayPanel.style.display = "block";
+    }
+}
+
+function editAuction() {
+    const formPanel = document.getElementById("auction-form-sellStyle");
+    const displayPanel = document.getElementById("auction-display-sellStyle");
+    
+    if (formPanel && displayPanel) {
+        formPanel.style.display = "block";
+        displayPanel.style.display = "none";
+    }
+}
+</script>
 
 
                                     <div class="custom-description-section" data-listing="vehicle-listing">
@@ -13663,7 +14054,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="small-images-container listing-small-image-container">
+                                    <div class="small-images-container listing-small-image-container" style="display: none;">
                                         <!-- Smaller image spots on the Listing Page -->
                                         <div class="small-image-spot listing-small-image-spot" style="display: none;">
                                             <div class="mainImgBox listingMainImgBox">
@@ -20241,6 +20632,9 @@
                     if (selfClass && self) {
                         selfClass.forEach(s => {s.classList.remove('active')});
                         self.forEach(s => {s.classList.add('active')});
+                    } else if (selfClass) {
+                        selfClass.forEach(s => {s.classList.remove('active')});
+                        navTab.classList.add('active');
                     }
                 });
             });
@@ -20393,132 +20787,101 @@
         }
 
 
-        const customTitleInputs = document.querySelectorAll('.custom-quick-title');
+const customTitleInputs = document.querySelectorAll('.custom-quick-title');
 
-        customTitleInputs.forEach(customTitleInput => {
+customTitleInputs.forEach(customTitleInput => {
+    // 1. DOM Element Cache
+    const submitButton = document.getElementById(customTitleInput.getAttribute('data-button'));
+    const display = document.getElementById(customTitleInput.getAttribute('data-display'));
+    const h3 = document.getElementById(customTitleInput.getAttribute('data-h3'));
+    const listingh3 = document.getElementById(customTitleInput.getAttribute('data-listingH3'));
+    const error = document.getElementById(customTitleInput.getAttribute('data-error'));
 
-            // Custom Title Input Dataset:
-            // (Self, Button, Display, H3, Error, Listing Display)
-            const submitButton = document.getElementById(customTitleInput.getAttribute('data-button'));
-            const display = document.getElementById(customTitleInput.getAttribute('data-display'));
-            const h3 = document.getElementById(customTitleInput.getAttribute('data-h3'));
-            const listingh3 = document.getElementById(customTitleInput.getAttribute('data-listingH3'));
-            const error = document.getElementById(customTitleInput.getAttribute('data-error'));
+    // UX Improvement: Prevent typing past 46 characters directly in the UI
+    customTitleInput.setAttribute('maxlength', '46');
 
-            // Update Function --->
-            function UpdateCustomTitleLogic() {
-                // FIX #1: Read the LIVE input value every time the user types
-                let customTitleValue = customTitleInput.value.trim();
+    // 2. Centralized Validation Helper (Single Source of Truth)
+    function getValidationState(value) {
+        if (value === "") return "EMPTY";
+        if (containsUndesirableWords(value)) return "PROFANITY";
+        if (value.length <= 46) return "VALID";
+        return "INVALID_LENGTH";
+    }
 
-                if (customTitleValue === "") {
-                    // Non Value
-                    display.style.display = 'none';
-                    submitButton.textContent = 'Submit';
+    // 3. UI State Reset Utility
+    function resetToDefaultState() {
+        display.style.display = 'none';
+        submitButton.textContent = 'Submit';
+    }
 
-                    error.textContent = '';
-                    error.style.display = 'none';
+    // 4. Live Typing Input Logic
+    function updateCustomTitleLogic() {
+        const customTitleValue = customTitleInput.value.trim();
+        const state = getValidationState(customTitleValue);
 
-                } else if (containsUndesirableWords(customTitleValue)) {
-                    // Profanity
-                    display.style.display = 'none';
-                    submitButton.textContent = 'Submit';
+        if (state === "EMPTY") {
+            resetToDefaultState();
+            error.textContent = '';
+            error.style.display = 'none';
+        } else if (state === "PROFANITY") {
+            resetToDefaultState();
+            error.textContent = 'Please Avoid Using Profanity';
+            error.style.display = 'flex';
+        } else if (state === "VALID") {
+            h3.textContent = customTitleValue;
+            listingh3.textContent = customTitleValue;
 
-                    error.textContent = 'Please Avoid Using Profanity';
-                    error.style.display = 'flex';
-                    return;
-
-                } else if (customTitleValue !== "" && customTitleValue.length <= 46 
-                    && !containsUndesirableWords(customTitleValue)) {
-                        // Success
-                        h3.textContent = customTitleValue;
-                        listingh3.textContent = customTitleValue;
-
-                        // FIX #2: Changed assignment `=` to strict comparison `===`
-                        if (display.style.display === 'block') {
-                            error.textContent = '';
-                            error.style.display = 'none';
-                        }
-                        return;
-
-                } else {
-                    // Unknown Easter Egg
-                    display.style.display = 'none';
-                    submitButton.textContent = 'Submit';
-
-                    error.textContent = `Congratulations! You've found a Bug in our System! Please report this issue in the help tab so that we can get it all fixed up.`;
-                    error.style.display = 'flex';
-                }
+            if (display.style.display === 'block') {
+                error.textContent = '';
+                error.style.display = 'none';
             }
+        } else {
+            // Easter Egg catchall
+            resetToDefaultState();
+            error.textContent = `Congratulations! You've found a Bug in our System! Please report this issue in the help tab so that we can get it all fixed up.`;
+            error.style.display = 'flex';
+        }
+    }
 
-            // Custom Title Input Listener
-            customTitleInput.addEventListener("input", UpdateCustomTitleLogic);
+    // 5. Submit / Commit Logic (Re-used for Button, Enter Key, and Blur)
+    function customTitleSubmitLogic() {
+        const customTitleValue = customTitleInput.value.trim();
+        const state = getValidationState(customTitleValue);
+        
+        if (state === "EMPTY") {
+            resetToDefaultState();
+            error.textContent = 'Please Enter a Title';
+            error.style.display = 'flex';
+        } else if (state === "VALID") {
+            error.textContent = '';
+            error.style.display = 'none';
+            submitButton.textContent = 'Save';
+            display.style.display = 'block';
+        }
+    }
 
-            
-            // Submit/Enter Functions --->
-            function customTitleSubmitLogic() {
-                // FIX #1: Read the LIVE input value upon clicking submit
-                let customTitleValue = customTitleInput.value.trim();
-                
-                if (customTitleValue === "") {
-                    // Non Value
-                    display.style.display = 'none';
-                    submitButton.textContent = 'Submit';
+    // 6. Native Blur / Focusout Fix (Replaces the broken nested document click listener)
+    function customTitleBlurLogic(event) {
+        // relatedTarget checks where the focus is moving. 
+        // If focus moved to the submit button, let the submit click handler deal with it.
+        if (event.relatedTarget === submitButton) return;
+        
+        customTitleSubmitLogic();
+    }
 
-                    error.textContent = 'Please Enter a Title';
-                    error.style.display = 'flex';
-                    return;
+    // 7. Event Listeners Initialization
+    customTitleInput.addEventListener("input", updateCustomTitleLogic);
+    submitButton.addEventListener('click', customTitleSubmitLogic);
+    customTitleInput.addEventListener('blur', customTitleBlurLogic);
 
-                } else if (customTitleValue !== "" && customTitleValue.length <= 46 
-                    && !containsUndesirableWords(customTitleValue)) {
-                        // Success
-                        error.textContent = '';
-                        error.style.display = 'none';
-                        
-                        submitButton.textContent = 'Save';
-                        display.style.display = 'block';
-                }
-            }
+    customTitleInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            customTitleSubmitLogic();
+            customTitleInput.blur(); // Native blur pulls focus away nicely
+        }
+    });
+});
 
-            // Submit Button Listener
-            submitButton.addEventListener('click', customTitleSubmitLogic);
-
-            // If 'Enter', Run dataFunction (w/resp to dataSelf)
-            customTitleInput.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    customTitleSubmitLogic();
-                }
-            });
-
-
-            // Click to Blur Logic -->
-            customTitleInput.addEventListener('click', () => {      
-
-                // FIX #3: Added 'event' as a formal parameter so 'event.target' works flawlessly
-                function customTitleBlurLogic(event) {
-                    let customTitleValue = customTitleInput.value.trim(); // FIX #1 here too
-
-                    if (!customTitleInput.contains(event.target) && !submitButton.contains(event.target)) {
-
-                        // Success Check
-                        if (customTitleValue !== "" && customTitleValue.length <= 46 
-                            && !containsUndesirableWords(customTitleValue)) {
-                                // Success
-                                error.textContent = '';
-                                error.style.display = 'none';
-
-                                submitButton.textContent = 'Save';
-                                display.style.display = 'block';
-                        }
-                        
-                        // Clean up the global listener so it doesn't leak memory
-                        document.removeEventListener('click', customTitleBlurLogic);
-                    }
-                }
-                
-                document.addEventListener('click', customTitleBlurLogic);
-            });
-
-        });
 
 
 
@@ -20695,13 +21058,14 @@
             const smallImages = Array.from(customImageContainer.querySelectorAll('.small-image-preview'));
 
             // --- PRO MOVE: DATA-LISTING LINKER ---
-            // 1. Get the specific ID string (e.g., "vehicle-listing")
             const listingId = customImageContainer.getAttribute('data-listing');
-            // 2. Find that exact target listing section on the page
             const listingContainer = document.getElementById(listingId);
 
-            // 3. Drill down into that specific container for its elements
             const listingMainPreview = listingContainer ? listingContainer.querySelector('.listing-main-screen') : null;
+            
+            // NEW LOOKUP: Target the actual container wrapper for the small images on the listing side
+            const listingSmallImageContainer = listingContainer ? listingContainer.querySelector('.listing-small-image-container') : null;
+            
             const listingSpotElements = listingContainer ? listingContainer.querySelectorAll('.small-images-container .small-image-spot') : [];
             const listingSmallImages = listingContainer ? Array.from(listingContainer.querySelectorAll('.small-images-container .small-image-preview')) : [];
 
@@ -20736,6 +21100,15 @@
                             }
                         }
                     });
+
+                    // FIX: Toggle the entire small image wrapper container based on the array length
+                    if (listingSmallImageContainer) {
+                        if (uploadedImagesArray.length >= 1) {
+                            listingSmallImageContainer.style.display = 'block'; // Or 'flex', depending on your CSS layout
+                        } else {
+                            listingSmallImageContainer.style.display = 'none';
+                        }
+                    }
 
                     // Mirror the big screen state
                     if (listingMainPreview) {
@@ -20847,8 +21220,9 @@
                 mainPreview.src = uploadedImagesArray[activeIndex].src;
                 if (listingMainPreview) listingMainPreview.src = mainPreview.src;
             });
-
         });
+
+
 
 
 
@@ -21617,298 +21991,265 @@
         });
     </script>
 
-    <!-- sellStyle Tabs Script -->
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const sellStyleTabs = document.querySelectorAll('.tab-sellStyle');
-            const sellStyleContents = document.querySelectorAll('.tabcontent-sellStyle');
-            const listingContents = document.querySelectorAll('.tabcontent-listings');
-
-            function showTabContent(index) {
-                // Hide all tab contents and listing contents
-                sellStyleContents.forEach(content => {
-                    content.style.display = 'none';
-                });
-                listingContents.forEach(content => {
-                    content.style.display = 'none';
-                });
-
-                // Show the selected tab content and corresponding listing content
-                sellStyleContents[index].style.display = 'block';
-                listingContents[index].style.display = 'block';
-
-                // Remove 'active' class from all tabs
-                sellStyleTabs.forEach(t => {
-                    t.classList.remove('active');
-                });
-
-                // Add 'active' class to the clicked tab
-                sellStyleTabs[index].classList.add('active');
-            }
-
-            function lockTabs() {
-                sellStyleTabs[1].addEventListener('click', (event) => {
-                    event.preventDefault();
-                    alert('Stay tuned for more exciting tools and features');
-                    return false;
-                });
-                sellStyleTabs[2].addEventListener('click', (event) => {
-                    event.preventDefault();
-                    alert('Stay tuned for more exciting tools and features');
-                    return false;
-                });
-            }
-
-            sellStyleTabs.forEach((tab, index) => {
-                tab.addEventListener('click', (event) => {
-                    if (index !== 1 && index !== 2) {
-                        showTabContent(index);
-                    }
-                });
-            });
-
-            // Initialize with the first tab active
-            showTabContent(0);
-
-            // Lock the other tabs
-            lockTabs();
-        });
-    </script>
 
 
     <!-- Pricing Information Script -->
 
     <script>
+        (() => {
+            // 1. Definition Map for App Scopes (Easily extendable if you add a 3rd template later!)
+            const appsConfig = [
+                {
+                    name: "vehicle",
+                    ids: {
+                        negotiate:    "negotiate-sellStyle",
+                        plusMinus:    "plusMinus-sellStyle",
+                        askingPrice:  "quick-price-sellStyle",
+                        fulfillment:  "fulfillment-sellStyle",
+                        submitBtn:    "submit-price-button-sellStyle", // Keep or add to HTML if needed
+                        priceDisplay: "price-display-sellStyle",
+                        dispPrice:       "display-price-sellStyle",
+                        dispPlusMinus:   "display-plusMinus-sellStyle",
+                        dispNegotiate:   "display-negotiate-sellStyle",
+                        dispFulfillment: "display-fulfillment-sellStyle",
+                        listPrice:       "display-asking-price-listings",
+                        listPlusMinus:   "display-plusMinus-listings",
+                        listNegotiate:   "display-negotiate-listings",
+                        listFulfillment: "display-fulfillment-listings",
+                        errAsking:    "error-message-asking-sellStyle",
+                        errPlusMinus: "error-message-plusMinus-sellStyle"
+                    }
+                },
+                {
+                    name: "parts",
+                    ids: {
+                        negotiate:    "negotiate-sellStyle-parts",
+                        plusMinus:    "plusMinus-sellStyle-parts",
+                        askingPrice:  "quick-price-sellStyle-parts",
+                        fulfillment:  "fulfillment-sellStyle-parts",
+                        submitBtn:    "submit-price-button-sellStyle-parts", 
+                        priceDisplay: "price-display-sellStyle-parts",
+                        dispPrice:       "display-price-sellStyle-parts",
+                        dispPlusMinus:   "display-plusMinus-sellStyle-parts",
+                        dispNegotiate:   "display-negotiate-sellStyle-parts",
+                        dispFulfillment: "display-fulfillment-sellStyle-parts",
+                        listPrice:       "part-display-asking-price-listings",
+                        listPlusMinus:   "part-display-plusMinus-listings",
+                        listNegotiate:   "part-display-negotiate-listings",
+                        listFulfillment: "part-display-fulfillment-listings",
+                        errAsking:    "error-message-asking-sellStyle-parts",
+                        errPlusMinus: "error-message-plusMinus-sellStyle-parts"
+                    }
+                }
+            ];
 
-        (function () {
-            // Function to set the initial value for plusMinus
-            function setInitialPlusMinusValue() {
-                const negotiateSelect = document.getElementById("negotiate-sellStyle");
-                const plusMinusInput = document.getElementById("plusMinus-sellStyle");
-        
-                // Check if the negotiate select is set to "No"
-                if (negotiateSelect.value === "No") {
-                    plusMinusInput.value = "0";
-                    updatePlusMinusDisplay("0"); // Call this function to update the display
-                }
-            }
-        
-            // Function to update the plusMinus display
-            function updatePlusMinusDisplay(value) {
-                const plusMinusDisplay = document.getElementById("display-plusMinus-sellStyle");
-                const formattedValue = `$${formatNumberWithCommas(parseFloat(value))}`;
-                plusMinusDisplay.textContent = formattedValue;
-            }
-        
-            // Event listener for changing the negotiate select
-            document.getElementById("negotiate-sellStyle").addEventListener("change", setInitialPlusMinusValue);
-        
-            // Call the function to set the initial plusMinus value
-            setInitialPlusMinusValue();
-        
-            // Initialize variables to store the initial values
-            let initialAskingPrice = "";
-            let initialNegotiable = "";
-            let initialFulfillment = "";
-            let initialPlusMinus = "";
-            let hasInitialInputAsking = false;
-            let hasInitialInputPlusMinus = false; // Add a variable for the plus-minus input
-        
-            // Function to format a numeric value with commas
-            function formatNumberWithCommas(number) {
-                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            }
-        
-            // Function to handle submission of the form
-            function submitForm() {
-                const askingPriceInput = document.getElementById("quick-price-sellStyle");
-                const negotiateSelect = document.getElementById("negotiate-sellStyle");
-                const fulfillmentSelect = document.getElementById("fulfillment-sellStyle");
-                const plusMinusInput = document.getElementById("plusMinus-sellStyle");
-                const askingPriceDisplay = document.getElementById("display-price-sellStyle");
-                const negotiateDisplay = document.getElementById("display-negotiate-sellStyle");
-                const fulfillmentDisplay = document.getElementById("display-fulfillment-sellStyle");
-                const plusMinusDisplay = document.getElementById("display-plusMinus-sellStyle");
-                const errorMessageAsking = document.getElementById("error-message-asking-sellStyle");
-                const errorMessagePlusMinus = document.getElementById("error-message-plusMinus-sellStyle"); // Add an error message element for plus-minus
-                const submitButton = document.getElementById("submit-price-button-sellStyle");
-        
-                // Get the values from the inputs
-                const askingPrice = askingPriceInput.value.trim();
-                const negotiate = negotiateSelect.value;
-                const fulfillment = fulfillmentSelect.value;
-                const plusMinus = plusMinusInput.value.trim();
-        
+            // 2. Shared Engine Utilities
+            const sanitizeKeystroke = (input) => {
+                let val = input.value;
                 
-                // Check if the input is empty
-                if (!hasInitialInputAsking || !hasInitialInputPlusMinus) {
-                    if (askingPrice === "" || plusMinus === "") {
-                        // Display an error message for empty inputs
-                        errorMessageAsking.textContent = "Please fill out all the fields.";
-                        errorMessagePlusMinus.textContent = "Please fill out all the fields.";
+                // Step A: Strip out any character that isn't a digit, comma, period, or dollar sign
+                val = val.replace(/[^0-9.,$]/g, '');
+
+                // Step B: Ensure the dollar sign can ONLY appear at the very beginning
+                if (val.includes('$')) {
+                    val = '$' + val.replace(/\$/g, '');
+                }
+
+                // Step C: Prevent multiple decimals cleanly
+                if (val.includes('.')) {
+                    const parts = val.split('.');
+                    const mainPart = parts[0];
+                    const decimalPart = parts.slice(1).join('').replace(/\./g, '');
+                    val = mainPart + '.' + decimalPart;
+                }
+
+                // Step D: Enforce maximum of 2 decimal places after the period safely
+                if (val.includes('.')) {
+                    const splitVal = val.split('.');
+                    if (splitVal[1]) {
+                        val = splitVal[0] + '.' + splitVal[1].substring(0, 2);
+                    }
+                }
+
+                // Step E: Enforce maximum 3 consecutive numbers if commas are detected
+                if (val.includes(',')) {
+                    val = val.replace(/\d{4,}/g, (match) => match.substring(0, 3));
+                }
+
+                if (input.value !== val) {
+                    input.value = val;
+                }
+                return val;
+            };
+
+            const formatDisplay = (rawVal) => {
+                // Strip out commas along with everything else so parseFloat works on large values
+                const numericString = rawVal.replace(/[^0-9.]/g, '');
+                const num = parseFloat(numericString);
+                if (isNaN(num) || !isFinite(num)) return null;
+
+                const hasDecimal = rawVal.includes('.');
+                const splitVal = rawVal.split('.');
+                const decimalPlaces = (hasDecimal && splitVal[1]) ? splitVal[1].length : 0;
+
+                return {
+                    num: num,
+                    str: `$${num.toLocaleString('en-US', { 
+                        minimumFractionDigits: Math.min(decimalPlaces, 2), 
+                        maximumFractionDigits: 2 
+                    })}`
+                };
+            };
+
+            const enforceInputLimits = (input, max) => {
+                if (input.value.length > max) input.value = input.value.substring(0, max);
+            };
+            // 3. Main Instance Factory
+            const initializeAppInstance = (config) => {
+                const el = {};
+                // Cache existing elements dynamically
+                for (const [key, id] of Object.entries(config.ids)) {
+                    el[key] = document.getElementById(id);
+                }
+
+                function syncAskingPrice() {
+                    if (!el.askingPrice || !el.errAsking) return;
+                    el.errAsking.textContent = "";
+                    sanitizeKeystroke(el.askingPrice);
+                    enforceInputLimits(el.askingPrice, 15);
+                    
+                    const rawVal = el.askingPrice.value.trim();
+                    if (!rawVal) {
+                        el.errAsking.textContent = "Please enter a numeric asking price.";
                         return;
                     }
-        
-                    // Check if the asking price is not a valid numeric value
-                    const trimmedAskingPrice = askingPrice.replace(/\$/g, '').trim();
-                    if (isNaN(parseFloat(trimmedAskingPrice)) || !isFinite(trimmedAskingPrice) || parseFloat(trimmedAskingPrice) <= 0) {
-                        errorMessageAsking.textContent = "Please enter a valid numeric asking price greater than zero.";
-                        errorMessagePlusMinus.textContent = ""; // Clear the plus-minus error message
+                    
+                    const result = formatDisplay(rawVal);
+                    if (!result || result.num <= 0) {
+                        el.errAsking.textContent = "Please enter a valid numeric asking price greater than zero.";
                         return;
                     }
-        
-                    // Check if the plus-minus is not a valid numeric value
-                    const trimmedPlusMinus = plusMinus.trim();
-                    if (isNaN(parseFloat(trimmedPlusMinus)) || !isFinite(trimmedPlusMinus)) {
-                        errorMessageAsking.textContent = ""; // Clear the asking price error message
-                        errorMessagePlusMinus.textContent = "Please enter a valid numeric plus-minus value.";
+                    
+                    if (el.dispPrice) el.dispPrice.textContent = result.str;
+                    if (el.listPrice) el.listPrice.textContent = result.str;
+                }
+
+                function syncPlusMinus() {
+                    if (!el.plusMinus) return;
+                    if (el.negotiate && el.negotiate.value === "No") el.plusMinus.value = "0";
+                    
+                    if (el.errPlusMinus) el.errPlusMinus.textContent = "";
+                    sanitizeKeystroke(el.plusMinus);
+                    enforceInputLimits(el.plusMinus, 15);
+                    
+                    const rawVal = el.plusMinus.value || "0";
+                    const result = formatDisplay(rawVal);
+                    
+                    if (!result) {
+                        if (el.errPlusMinus) el.errPlusMinus.textContent = "Please enter a valid numeric plus-minus value.";
                         return;
                     }
-        
-                    // Format the values with commas
-                    initialAskingPrice = "$" + formatNumberWithCommas(parseFloat(trimmedAskingPrice));
-                    initialNegotiable = negotiate;
-                    initialFulfillment = fulfillment;
-                    initialPlusMinus = formatNumberWithCommas(parseFloat(trimmedPlusMinus)); // Store the formatted plus-minus value
-                    hasInitialInputAsking = true;
-                    hasInitialInputPlusMinus = true;
-        
-                    // Hide the submit button after it's clicked
-                    submitButton.style.display = "none";
+                    
+                    if (el.dispPlusMinus) el.dispPlusMinus.textContent = result.str;
+                    if (el.listPlusMinus) el.listPlusMinus.textContent = result.str;
                 }
-        
-                // Clear any previous error messages
-                errorMessageAsking.textContent = "";
-                errorMessagePlusMinus.textContent = "";
-        
-                // Update the display inputs
-                askingPriceDisplay.textContent = initialAskingPrice;
-                negotiateDisplay.textContent = initialNegotiable;
-                fulfillmentDisplay.textContent = initialFulfillment;
-                plusMinusDisplay.textContent = `$${initialPlusMinus}`; // Add the dollar sign
-                document.getElementById("price-display-sellStyle").style.display = "block";
-            }
-        
-            // Function to change negotiable
-            function changeNegotiable() {
-                const negotiateSelect = document.getElementById("negotiate-sellStyle");
-                const newNegotiable = negotiateSelect.value;
-                initialNegotiable = newNegotiable;
-                document.getElementById("display-negotiate-sellStyle").textContent = initialNegotiable;
-            }
-        
-            // Function to change fulfillment
-            function changeFulfillment() {
-                const fulfillmentSelect = document.getElementById("fulfillment-sellStyle");
-                const newFulfillment = fulfillmentSelect.value;
-                initialFulfillment = newFulfillment;
-                document.getElementById("display-fulfillment-sellStyle").textContent = initialFulfillment;
-            }
-        
-            // Event listener for changing +/-
-            document.getElementById("plusMinus-sellStyle").addEventListener("input", function () {
-                changePlusMinus();
-                updatePlusMinusDisplay(initialPlusMinus); // Update the display on input change
-            });
-        
-            // Function to change the +/-
-            function changePlusMinus() {
-                const plusMinusInput = document.getElementById("plusMinus-sellStyle");
-                const newPlusMinus = plusMinusInput.value.trim();
-        
-                // Update the initial +/-
-                initialPlusMinus = newPlusMinus;
-        
-                // Format the plus-minus with commas
-                const formattedPlusMinus = formatNumberWithCommas(parseFloat(initialPlusMinus));
-        
-                // Update the display input
-                document.getElementById("display-plusMinus-sellStyle").textContent = `$${formattedPlusMinus}`;
-            }
-        
-            // Function to change the asking price
-            function changeAskingPrice() {
-                const askingPriceInput = document.getElementById("quick-price-sellStyle");
-                const newAskingPrice = askingPriceInput.value.trim();
-                const errorMessageAsking = document.getElementById("error-message-asking-sellStyle");
-        
-                // Clear any previous error message
-                errorMessageAsking.textContent = "";
-        
-                // Check if the input is empty
-                if (newAskingPrice === "") {
-                    // Display an error message for empty input
-                    errorMessageAsking.textContent = "Please enter a numeric asking price.";
-                    return;
+
+                function syncNegotiate() {
+                    syncPlusMinus();
+                    const val = el.negotiate ? el.negotiate.value : "Yes";
+                    if (el.dispNegotiate) el.dispNegotiate.textContent = val;
+                    if (el.listNegotiate) el.listNegotiate.textContent = val;
                 }
-        
-                // Check if the input is not a valid numeric value
-                const trimmedAskingPrice = newAskingPrice.replace(/\$/g, '').trim();
-                if (isNaN(parseFloat(trimmedAskingPrice)) || !isFinite(trimmedAskingPrice) || parseFloat(trimmedAskingPrice) <= 0) {
-                    // Display an error message for an invalid or non-positive input
-                    errorMessageAsking.textContent = "Please enter a valid numeric asking price greater than zero.";
-                    return;
+
+                function syncFulfillment() {
+                    const val = el.fulfillment ? el.fulfillment.value : "Both";
+                    if (el.dispFulfillment) el.dispFulfillment.textContent = val;
+                    if (el.listFulfillment) el.listFulfillment.textContent = val;
                 }
-        
-                // Format the asking price with commas
-                initialAskingPrice = `$${formatNumberWithCommas(parseFloat(trimmedAskingPrice))}`;
-                document.getElementById("display-price-sellStyle").textContent = initialAskingPrice;
-            }
-        
-            // Event listener for the submit button
-            const submitButton = document.getElementById("submit-price-button-sellStyle");
-            submitButton.addEventListener("click", submitForm);
-        
-            // Event listener for changing negotiable
-            document.getElementById("negotiate-sellStyle").addEventListener("change", changeNegotiable);
-        
-            // Event listener for changing fulfillment
-            document.getElementById("fulfillment-sellStyle").addEventListener("change", changeFulfillment);
-        
-            // Event listener for changing +/-
-            document.getElementById("plusMinus-sellStyle").addEventListener("input", changePlusMinus);
-        
-            // Event listener for changing the asking price
-            document.getElementById("quick-price-sellStyle").addEventListener("input", changeAskingPrice);
-        
-            // Function to limit the character count in a textarea
-            function limitTextareaCharacters(textarea, maxLength) {
-                textarea.addEventListener("input", function () {
-                    if (textarea.value.length > maxLength) {
-                        textarea.value = textarea.value.substring(0, maxLength);
+
+                function submitForm() {
+                    if (!el.askingPrice || !el.plusMinus) return;
+                    const priceRaw = el.askingPrice.value.trim();
+                    const pmRaw = el.plusMinus.value.trim();
+
+                    const isNegotiableNo = el.negotiate && el.negotiate.value === "No";
+
+                    if (!priceRaw || (pmRaw === "" && !isNegotiableNo)) {
+                        if (el.errAsking) el.errAsking.textContent = "Please fill out all the fields.";
+                        if (el.errPlusMinus) el.errPlusMinus.textContent = "Please fill out all the fields.";
+                        return;
                     }
-                });
+
+                    const priceResult = formatDisplay(priceRaw);
+                    const pmResult = formatDisplay(pmRaw || "0");
+
+                    if (!priceResult || priceResult.num <= 0) {
+                        if (el.errAsking) el.errAsking.textContent = "Please enter a valid numeric asking price greater than zero.";
+                        return;
+                    }
+
+                    if (!pmResult) {
+                        if (el.errPlusMinus) el.errPlusMinus.textContent = "Please enter a valid numeric plus-minus value.";
+                        return;
+                    }
+
+        if (el.errAsking) el.errAsking.textContent = "";
+                    if (el.errPlusMinus) el.errPlusMinus.textContent = "";
+
+                    // Push final submitted strings into the UI layout views
+                    const finalPrice = priceResult.str;
+                    const finalPM = pmResult.str;
+                    const finalNeg = el.negotiate ? el.negotiate.value : "Yes";
+                    const finalFul = el.fulfillment ? el.fulfillment.value : "Both";
+
+                    if (el.dispPrice)       el.dispPrice.textContent       = finalPrice;
+                    if (el.listPrice)       el.listPrice.textContent       = finalPrice;
+                    if (el.dispPlusMinus)   el.dispPlusMinus.textContent   = finalPM;
+                    if (el.listPlusMinus)   el.listPlusMinus.textContent   = finalPM;
+                    if (el.dispNegotiate)   el.dispNegotiate.textContent   = finalNeg;
+                    if (el.listNegotiate)   el.listNegotiate.textContent   = finalNeg;
+                    if (el.dispFulfillment) el.dispFulfillment.textContent = finalFul;
+                    if (el.listFulfillment) el.listFulfillment.textContent = finalFul;
+
+                    if (el.submitBtn) el.submitBtn.style.display = "none";
+                    if (el.priceDisplay) el.priceDisplay.style.display = "block";
+                }
+
+                function updatePlaceholders() {
+                    if (!el.askingPrice || !el.plusMinus) return;
+                    const isMobile = window.innerWidth <= 768;
+                    el.askingPrice.placeholder = isMobile ? "Asking Price" : "Enter Your Asking Price";
+                    el.plusMinus.placeholder = isMobile ? "Plus-Minus Value" : "Enter Your Plus-Minus Value";
+                }
+
+                // Attach listeners if the inputs exist on the current page DOM
+                if (el.negotiate)   el.negotiate.addEventListener("change", syncNegotiate);
+                if (el.fulfillment) el.fulfillment.addEventListener("change", syncFulfillment);
+                if (el.plusMinus)   el.plusMinus.addEventListener("input", syncPlusMinus);
+                if (el.askingPrice) el.askingPrice.addEventListener("input", syncAskingPrice);
+                if (el.submitBtn)   el.submitBtn.addEventListener("click", submitForm);
+                
+                window.addEventListener("resize", updatePlaceholders);
+
+                // Boot-up Initialization
+                if (el.listNegotiate)   el.listNegotiate.textContent   = "Yes";
+                if (el.listPlusMinus)   el.listPlusMinus.textContent   = "$0";
+                if (el.listFulfillment) el.listFulfillment.textContent = "Both";
+                if (el.listPrice)       el.listPrice.textContent       = (el.dispPrice && el.dispPrice.textContent) || "$0";
+                
+                syncPlusMinus();
+                updatePlaceholders();
+            };
+
+            // 4. Fire the Factory initialization loop on document load
+            const runInitializer = () => appsConfig.forEach(initializeAppInstance);
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", runInitializer);
+            } else {
+                runInitializer();
             }
-        
-            // Set character limits for the textareas
-            const quickPriceTextarea = document.getElementById("quick-price-sellStyle");
-            const plusMinusTextarea = document.getElementById("plusMinus-sellStyle");
-            const quickPriceMaxLength = 15; // Set your desired character limit
-        
-            limitTextareaCharacters(quickPriceTextarea, quickPriceMaxLength);
-            limitTextareaCharacters(plusMinusTextarea, quickPriceMaxLength); // Set the same character limit for plus-minus
         })();
         
-        // Detect the screen width and update the placeholder based on screen size
-        function updatePlaceholder() {
-            const askingPriceInput = document.getElementById("quick-price-sellStyle");
-            const plusMinusInput = document.getElementById("plusMinus-sellStyle");
-            if (window.innerWidth <= 768) {
-                askingPriceInput.placeholder = "Asking Price";
-                plusMinusInput.placeholder = "Plus-Minus Value";
-            } else {
-                askingPriceInput.placeholder = "Enter Your Asking Price";
-                plusMinusInput.placeholder = "Enter Your Plus-Minus Value";
-            }
-        }
-        
-        // Add an event listener to update the placeholder when the window is resized
-        window.addEventListener("resize", updatePlaceholder);
-        
-        // Update the placeholder when the page loads
-        window.addEventListener("load", updatePlaceholder);
-    
     </script>
 
     
@@ -22195,13 +22536,11 @@
         }
 
 document.addEventListener("DOMContentLoaded", function() {
-    
-    // Loop through your description sections (vehicles, parts, services)
+    // 1. Scan for all description wrappers (vehicles, parts, services)
     const descriptionSections = document.querySelectorAll('.custom-description-section');
 
     descriptionSections.forEach(section => {
-        
-        // 1. Grab creation template elements inside this specific section wrapper
+        // 2. Cache Creator-Side Form Templates
         const textArea = section.querySelector('.custom-description');
         const submitBtn = section.querySelector('.custom-description-button');
         const errorMsg = section.querySelector('.error-message');
@@ -22210,104 +22549,97 @@ document.addEventListener("DOMContentLoaded", function() {
         const editSection = section.querySelector('.custom-description-edit-section');
         const editBtn = section.querySelector('.custom-description-edit-button');
 
-        // 2. The data-listing attribute holds the exact ID of your target listing section
+        // Defensive guard: Exit safely if core elements are missing in this section
+        if (!textArea || !submitBtn || !errorMsg) return;
+
+        // 3. Dynamic Listing Connection Engine
         const listingId = section.getAttribute('data-listing');
         const listingContainer = document.getElementById(listingId);
         
-        // Target your continuous listing text block (using its exact element ID)
-        const listingOutput = listingContainer ? listingContainer.querySelector('#listing-vehicles-custom-description') : null;
+        // FIX: Replaced hardcoded ID with class selector so it works across multiple sections
+        const listingOutput = listingContainer ? listingContainer.querySelector('.listing-custom-description-output') : null;
 
-
-        // --- PILLAR 1: CONTINUOUS LIVE LISTING REFRESH ENGINE ---
-        // Runs instantly on typing to mirror data to the static listing page layout
-        function updateCustomDescriptionLogic() {
-            let descriptionValue = textArea.value.trim();
-            const unwantedLanguage = containsUnwantedLanguageForVehicles(descriptionValue);
-
-            if (descriptionValue === "") {
-                errorMsg.textContent = '';
-                errorMsg.style.display = 'none';
-
-            } else if (unwantedLanguage) {
-                errorMsg.textContent = `Please avoid using: '${unwantedLanguage}'`;
-                errorMsg.style.display = 'block';
-
-            } else {
-                errorMsg.textContent = '';
-                errorMsg.style.display = 'none';
-
-                // Update the static listing display preview instantly in the background
-                if (listingOutput) {
-                    listingOutput.textContent = descriptionValue;
-                    listingOutput.style.whiteSpace = "pre-wrap"; 
-                }
-            }
+        // 4. Centralized Validation & State Machine
+        function getValidationState(value) {
+            if (value === "") return { isValid: false, type: "EMPTY", error: "Please Enter a Description" };
+            
+            // Reusable logic fallback for your language checker
+            const badWord = typeof containsUnwantedLanguageForVehicles === "function" 
+                ? containsUnwantedLanguageForVehicles(value) 
+                : null;
+                
+            if (badWord) return { isValid: false, type: "PROFANITY", error: `Please avoid using: '${badWord}'` };
+            
+            return { isValid: true, type: "VALID", error: "" };
         }
 
-        // Bind continuous background updater
-        textArea.addEventListener("input", updateCustomDescriptionLogic);
+        // 5. Shared Layout Toggler
+        function toggleUI(isEditing) {
+            // Arrays allow bulk style modifications instantly
+            const editingElements = [textArea, submitBtn];
+            const displayElements = [displayBox, textDisplay, editBtn, editSection].filter(Boolean);
 
-
-        // --- PILLAR 2: TEMPLATE-SIDE ACTION LAYOUT SWITCH ---
-        // Manages the text block locking layout *only* on the creator side
-        function customDescriptionSubmitLogic() {
-            let descriptionValue = textArea.value.trim();
-            const unwantedLanguage = containsUnwantedLanguageForVehicles(descriptionValue);
-
-            if (descriptionValue === "") {
-                errorMsg.textContent = 'Please Enter a Description';
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            // Stop layout switch if profanity block exists
-            if (unwantedLanguage) {
-                errorMsg.textContent = `Please avoid using: '${unwantedLanguage}'`;
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            // SUCCESS PIPELINE: Lock creator interface view into display cards
+            editingElements.forEach(el => el.style.display = isEditing ? 'block' : 'none');
+            displayElements.forEach(el => el.style.display = isEditing ? 'none' : 'block');
+            
             errorMsg.style.display = 'none';
-            
-            // Pop up template displays
-            textDisplay.textContent = descriptionValue;
-            displayBox.style.display = 'block';
-            textDisplay.style.display = 'block';
-            if (editSection) editSection.style.display = 'block';
-            
-            // Hide creator input blocks cleanly
-            textArea.style.display = 'none';
-            submitBtn.style.display = 'none';
-            editBtn.style.display = 'block';
         }
 
-        submitBtn.addEventListener('click', customDescriptionSubmitLogic);
+        // --- PILLAR 1: LIVE REFRESH ENGINE ---
+        function updateCustomDescriptionLogic() {
+            const descriptionValue = textArea.value.trim();
+            const state = getValidationState(descriptionValue);
 
+            // Don't show errors on live typing if the field is empty
+            if (state.type === "EMPTY") {
+                errorMsg.style.display = 'none';
+                return;
+            }
 
-        // --- PILLAR 3: TEMPLATE-SIDE REVERSAL ENGINE ---
-        // Restores input visibility panels strictly on the creator side
-        editBtn.addEventListener('click', function() {
-            // Restore creator editing input tags
-            textArea.style.display = "block";
-            submitBtn.style.display = "block";
-            
-            // Collapse display cards
-            editBtn.style.display = "none";
-            displayBox.style.display = "none";
-            textDisplay.style.display = "none";
-            if (editSection) editSection.style.display = "none";
-            errorMsg.style.display = "none";
-            
-            // Sync up values in case changes occurred
+            if (!state.isValid) {
+                errorMsg.textContent = state.error;
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            errorMsg.style.display = 'none';
+
+            // Background replication layout mirror
+            if (listingOutput) {
+                listingOutput.textContent = descriptionValue;
+                listingOutput.style.whiteSpace = "pre-wrap"; 
+            }
+        }
+
+        // --- PILLAR 2: ACTION LAYOUT COMMIT ---
+        function customDescriptionSubmitLogic() {
+            const descriptionValue = textArea.value.trim();
+            const state = getValidationState(descriptionValue);
+
+            if (!state.isValid) {
+                errorMsg.textContent = state.error;
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Lock values and swap layout cards
+            textDisplay.textContent = descriptionValue;
+            toggleUI(false); 
+        }
+
+        // --- PILLAR 3: REVERSAL ENGINE ---
+        function customDescriptionEditLogic() {
+            toggleUI(true);
             updateCustomDescriptionLogic();
-
             textArea.focus();
-        });
+        }
 
+        // 6. Bind Event Listeners Cleanly
+        textArea.addEventListener("input", updateCustomDescriptionLogic);
+        submitBtn.addEventListener('click', customDescriptionSubmitLogic);
+        if (editBtn) editBtn.addEventListener('click', customDescriptionEditLogic);
     });
 });
-
     </script>
 
 
@@ -26878,238 +27210,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     </script>
 
-<script>
-
-(function () {
-    // Function to set the initial value for plusMinus
-    function setInitialPlusMinusValue() {
-        const negotiateSelect = document.getElementById("negotiate-sellStyle-parts");
-        const plusMinusInput = document.getElementById("plusMinus-sellStyle-parts");
-
-        // Check if the negotiate select is set to "No"
-        if (negotiateSelect.value === "No") {
-            plusMinusInput.value = "0";
-            updatePlusMinusDisplay("0"); // Call this function to update the display
-        }
-    }
-
-    // Function to update the plusMinus display
-    function updatePlusMinusDisplay(value) {
-        const plusMinusDisplay = document.getElementById("display-plusMinus-sellStyle-parts");
-        const formattedValue = `$${formatNumberWithCommas(parseFloat(value))}`;
-        plusMinusDisplay.textContent = formattedValue;
-    }
-
-    // Event listener for changing the negotiate select
-    document.getElementById("negotiate-sellStyle-parts").addEventListener("change", setInitialPlusMinusValue);
-
-    // Call the function to set the initial plusMinus value
-    setInitialPlusMinusValue();
-
-    // Initialize variables to store the initial values
-    let initialAskingPrice = "";
-    let initialNegotiable = "";
-    let initialFulfillment = "";
-    let initialPlusMinus = "";
-    let hasInitialInputAsking = false;
-    let hasInitialInputPlusMinus = false; // Add a variable for the plus-minus input
-
-    // Function to format a numeric value with commas
-    function formatNumberWithCommas(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    // Function to handle submission of the form
-    function submitForm() {
-        const askingPriceInput = document.getElementById("quick-price-sellStyle-parts");
-        const negotiateSelect = document.getElementById("negotiate-sellStyle-parts");
-        const fulfillmentSelect = document.getElementById("fulfillment-sellStyle-parts");
-        const plusMinusInput = document.getElementById("plusMinus-sellStyle-parts");
-        const askingPriceDisplay = document.getElementById("display-price-sellStyle-parts");
-        const negotiateDisplay = document.getElementById("display-negotiate-sellStyle-parts");
-        const fulfillmentDisplay = document.getElementById("display-fulfillment-sellStyle-parts");
-        const plusMinusDisplay = document.getElementById("display-plusMinus-sellStyle-parts");
-        const errorMessageAsking = document.getElementById("error-message-asking-sellStyle-parts");
-        const errorMessagePlusMinus = document.getElementById("error-message-plusMinus-sellStyle-parts"); // Add an error message element for plus-minus
-        const submitButton = document.getElementById("submit-price-button-sellStyle-parts");
-
-        // Get the values from the inputs
-        const askingPrice = askingPriceInput.value.trim();
-        const negotiate = negotiateSelect.value;
-        const fulfillment = fulfillmentSelect.value;
-        const plusMinus = plusMinusInput.value.trim();
-
-        
-        // Check if the input is empty
-        if (!hasInitialInputAsking || !hasInitialInputPlusMinus) {
-            if (askingPrice === "" || plusMinus === "") {
-                // Display an error message for empty inputs
-                errorMessageAsking.textContent = "Please fill out all the fields.";
-                errorMessagePlusMinus.textContent = "Please fill out all the fields.";
-                return;
-            }
-
-            // Check if the asking price is not a valid numeric value
-            const trimmedAskingPrice = askingPrice.replace(/\$/g, '').trim();
-            if (isNaN(parseFloat(trimmedAskingPrice)) || !isFinite(trimmedAskingPrice) || parseFloat(trimmedAskingPrice) <= 0) {
-                errorMessageAsking.textContent = "Please enter a valid numeric asking price greater than zero.";
-                errorMessagePlusMinus.textContent = ""; // Clear the plus-minus error message
-                return;
-            }
-
-            // Check if the plus-minus is not a valid numeric value
-            const trimmedPlusMinus = plusMinus.trim();
-            if (isNaN(parseFloat(trimmedPlusMinus)) || !isFinite(trimmedPlusMinus)) {
-                errorMessageAsking.textContent = ""; // Clear the asking price error message
-                errorMessagePlusMinus.textContent = "Please enter a valid numeric plus-minus value.";
-                return;
-            }
-
-            // Format the values with commas
-            initialAskingPrice = "$" + formatNumberWithCommas(parseFloat(trimmedAskingPrice));
-            initialNegotiable = negotiate;
-            initialFulfillment = fulfillment;
-            initialPlusMinus = formatNumberWithCommas(parseFloat(trimmedPlusMinus)); // Store the formatted plus-minus value
-            hasInitialInputAsking = true;
-            hasInitialInputPlusMinus = true;
-
-            // Hide the submit button after it's clicked
-            submitButton.style.display = "none";
-        }
-
-        // Clear any previous error messages
-        errorMessageAsking.textContent = "";
-        errorMessagePlusMinus.textContent = "";
-
-        // Update the display inputs
-        askingPriceDisplay.textContent = initialAskingPrice;
-        negotiateDisplay.textContent = initialNegotiable;
-        fulfillmentDisplay.textContent = initialFulfillment;
-        plusMinusDisplay.textContent = `$${initialPlusMinus}`; // Add the dollar sign
-        document.getElementById("price-display-sellStyle-parts").style.display = "block";
-    }
-
-    // Function to change negotiable
-    function changeNegotiable() {
-        const negotiateSelect = document.getElementById("negotiate-sellStyle-parts");
-        const newNegotiable = negotiateSelect.value;
-        initialNegotiable = newNegotiable;
-        document.getElementById("display-negotiate-sellStyle-parts").textContent = initialNegotiable;
-    }
-
-    // Function to change fulfillment
-    function changeFulfillment() {
-        const fulfillmentSelect = document.getElementById("fulfillment-sellStyle-parts");
-        const newFulfillment = fulfillmentSelect.value;
-        initialFulfillment = newFulfillment;
-        document.getElementById("display-fulfillment-sellStyle-parts").textContent = initialFulfillment;
-    }
-
-    // Event listener for changing +/-
-    document.getElementById("plusMinus-sellStyle-parts").addEventListener("input", function () {
-        changePlusMinus();
-        updatePlusMinusDisplay(initialPlusMinus); // Update the display on input change
-    });
-
-    // Function to change the +/-
-    function changePlusMinus() {
-        const plusMinusInput = document.getElementById("plusMinus-sellStyle-parts");
-        const newPlusMinus = plusMinusInput.value.trim();
-
-        // Update the initial +/-
-        initialPlusMinus = newPlusMinus;
-
-        // Format the plus-minus with commas
-        const formattedPlusMinus = formatNumberWithCommas(parseFloat(initialPlusMinus));
-
-        // Update the display input
-        document.getElementById("display-plusMinus-sellStyle-parts").textContent = `$${formattedPlusMinus}`;
-    }
-
-    // Function to change the asking price
-    function changeAskingPrice() {
-        const askingPriceInput = document.getElementById("quick-price-sellStyle-parts");
-        const newAskingPrice = askingPriceInput.value.trim();
-        const errorMessageAsking = document.getElementById("error-message-asking-sellStyle-parts");
-
-        // Clear any previous error message
-        errorMessageAsking.textContent = "";
-
-        // Check if the input is empty
-        if (newAskingPrice === "") {
-            // Display an error message for empty input
-            errorMessageAsking.textContent = "Please enter a numeric asking price.";
-            return;
-        }
-
-        // Check if the input is not a valid numeric value
-        const trimmedAskingPrice = newAskingPrice.replace(/\$/g, '').trim();
-        if (isNaN(parseFloat(trimmedAskingPrice)) || !isFinite(trimmedAskingPrice) || parseFloat(trimmedAskingPrice) <= 0) {
-            // Display an error message for an invalid or non-positive input
-            errorMessageAsking.textContent = "Please enter a valid numeric asking price greater than zero.";
-            return;
-        }
-
-        // Format the asking price with commas
-        initialAskingPrice = `$${formatNumberWithCommas(parseFloat(trimmedAskingPrice))}`;
-        document.getElementById("display-price-sellStyle-parts").textContent = initialAskingPrice;
-    }
-
-    // Event listener for the submit button
-    const submitButton = document.getElementById("submit-price-button-sellStyle-parts");
-    submitButton.addEventListener("click", submitForm);
-
-    // Event listener for changing negotiable
-    document.getElementById("negotiate-sellStyle-parts").addEventListener("change", changeNegotiable);
-
-    // Event listener for changing fulfillment
-    document.getElementById("fulfillment-sellStyle-parts").addEventListener("change", changeFulfillment);
-
-    // Event listener for changing +/-
-    document.getElementById("plusMinus-sellStyle-parts").addEventListener("input", changePlusMinus);
-
-    // Event listener for changing the asking price
-    document.getElementById("quick-price-sellStyle-parts").addEventListener("input", changeAskingPrice);
-
-    // Function to limit the character count in a textarea
-    function limitTextareaCharacters(textarea, maxLength) {
-        textarea.addEventListener("input", function () {
-            if (textarea.value.length > maxLength) {
-                textarea.value = textarea.value.substring(0, maxLength);
-            }
-        });
-    }
-
-    // Set character limits for the textareas
-    const quickPriceTextarea = document.getElementById("quick-price-sellStyle-parts");
-    const plusMinusTextarea = document.getElementById("plusMinus-sellStyle-parts");
-    const quickPriceMaxLength = 15; // Set your desired character limit
-
-    limitTextareaCharacters(quickPriceTextarea, quickPriceMaxLength);
-    limitTextareaCharacters(plusMinusTextarea, quickPriceMaxLength); // Set the same character limit for plus-minus
-})();
-
-// Detect the screen width and update the placeholder based on screen size
-function updatePlaceholder() {
-    const quickPriceInput = document.getElementById("quick-price-sellStyle-parts");
-    const plusMinusInput = document.getElementById("plusMinus-sellStyle-parts");
-    if (window.innerWidth <= 768) {
-        quickPriceInput.placeholder = "Asking Price";
-        plusMinusInput.placeholder = "Plus-Minus Value";
-    } else {
-        quickPriceInput.placeholder = "Enter Your Asking Price";
-        plusMinusInput.placeholder = "Enter Your Plus-Minus Value";
-    }
-}
-
-// Add an event listener to update the placeholder when the window is resized
-window.addEventListener("resize", updatePlaceholder);
-
-// Update the placeholder when the page loads
-window.addEventListener("load", updatePlaceholder);
-
-</script>
-
     
 
     
@@ -28716,69 +28816,6 @@ customServiceTypeInput.addEventListener('input', function() {
     });
 </script>
 
-
-<script>
-
-    (function () {
-        // Store the initial values
-        const initialNegotiate = "Yes";
-        const initialPlusMinus = "$0";
-        const initialFulfillment = "Both";
-
-        // Initialize the initial display values
-        function initializeListingDisplay() {
-            const displayNegotiateListings = document.getElementById("display-negotiate-listings");
-            const displayPlusMinusListings = document.getElementById("display-plusMinus-listings");
-            const displayFulfillmentListings = document.getElementById("display-fulfillment-listings");
-            const displayAskingPriceListings = document.getElementById("display-asking-price-listings");
-
-            displayNegotiateListings.textContent = initialNegotiate;
-            displayPlusMinusListings.textContent = initialPlusMinus;
-            displayFulfillmentListings.textContent = initialFulfillment;
-            displayAskingPriceListings.textContent = document.getElementById("display-price-sellStyle").textContent;
-        }
-
-        // Function to update the listing display values based on the template display
-        function updateAskingPriceDisplay() {
-            const askingPriceDisplay = document.getElementById("display-price-sellStyle");
-            const displayAskingPriceListings = document.getElementById("display-asking-price-listings");
-            displayAskingPriceListings.textContent = askingPriceDisplay.textContent;
-        }
-
-        function updateNegotiateDisplay() {
-            const negotiateDisplay = document.getElementById("display-negotiate-sellStyle");
-            const displayNegotiateListings = document.getElementById("display-negotiate-listings");
-            displayNegotiateListings.textContent = negotiateDisplay.textContent;
-        }
-
-        function updatePlusMinusDisplay() {
-            const plusMinusDisplay = document.getElementById("display-plusMinus-sellStyle");
-            const displayPlusMinusListings = document.getElementById("display-plusMinus-listings");
-            displayPlusMinusListings.textContent = plusMinusDisplay.textContent;
-        }
-
-        function updateFulfillmentDisplay() {
-            const fulfillmentDisplay = document.getElementById("display-fulfillment-sellStyle");
-            const displayFulfillmentListings = document.getElementById("display-fulfillment-listings");
-            displayFulfillmentListings.textContent = fulfillmentDisplay.textContent;
-        }
-
-        // Event listeners for changes in the template display values
-        document.getElementById("quick-price-sellStyle").addEventListener("input", updateAskingPriceDisplay);
-        document.getElementById("negotiate-sellStyle").addEventListener("change", updateNegotiateDisplay);
-        document.getElementById("plusMinus-sellStyle").addEventListener("input", updatePlusMinusDisplay);
-        document.getElementById("fulfillment-sellStyle").addEventListener("change", updateFulfillmentDisplay);
-
-        // Initialize the listing display values
-        initializeListingDisplay();
-    })();
-
-</script>
-
-    
-    
-    
-
     
 <script>
 
@@ -29158,63 +29195,6 @@ customServiceTypeInput.addEventListener('input', function() {
 
 </script>
 
-<script>
-
-    (function () {
-        // Store the initial values for part listing
-        const initialNegotiateParts = "Yes";
-        const initialPlusMinusParts = "$0";
-        const initialFulfillmentParts = "Both";
-
-        // Initialize the initial display values for part listing
-        function initializePartListingDisplay() {
-            const displayNegotiateParts = document.getElementById("part-display-negotiate-listings");
-            const displayPlusMinusParts = document.getElementById("part-display-plusMinus-listings");
-            const displayFulfillmentParts = document.getElementById("part-display-fulfillment-listings");
-            const displayAskingPriceParts = document.getElementById("part-display-asking-price-listings");
-
-            displayNegotiateParts.textContent = initialNegotiateParts;
-            displayPlusMinusParts.textContent = initialPlusMinusParts;
-            displayFulfillmentParts.textContent = initialFulfillmentParts;
-            displayAskingPriceParts.textContent = document.getElementById("display-price-sellStyle-parts").textContent;
-        }
-
-        // Function to update the part listing display values based on the template display
-        function updateAskingPriceDisplayParts() {
-            const askingPriceDisplayParts = document.getElementById("display-price-sellStyle-parts");
-            const displayAskingPriceParts = document.getElementById("part-display-asking-price-listings");
-            displayAskingPriceParts.textContent = askingPriceDisplayParts.textContent;
-        }
-
-        function updateNegotiateDisplayParts() {
-            const negotiateDisplayParts = document.getElementById("display-negotiate-sellStyle-parts");
-            const displayNegotiateParts = document.getElementById("part-display-negotiate-listings");
-            displayNegotiateParts.textContent = negotiateDisplayParts.textContent;
-        }
-
-        function updatePlusMinusDisplayParts() {
-            const plusMinusDisplayParts = document.getElementById("display-plusMinus-sellStyle-parts");
-            const displayPlusMinusParts = document.getElementById("part-display-plusMinus-listings");
-            displayPlusMinusParts.textContent = plusMinusDisplayParts.textContent;
-        }
-
-        function updateFulfillmentDisplayParts() {
-            const fulfillmentDisplayParts = document.getElementById("display-fulfillment-sellStyle-parts");
-            const displayFulfillmentParts = document.getElementById("part-display-fulfillment-listings");
-            displayFulfillmentParts.textContent = fulfillmentDisplayParts.textContent;
-        }
-
-        // Event listeners for changes in the template display values for part listing
-        document.getElementById("quick-price-sellStyle-parts").addEventListener("input", updateAskingPriceDisplayParts);
-        document.getElementById("negotiate-sellStyle-parts").addEventListener("change", updateNegotiateDisplayParts);
-        document.getElementById("plusMinus-sellStyle-parts").addEventListener("input", updatePlusMinusDisplayParts);
-        document.getElementById("fulfillment-sellStyle-parts").addEventListener("change", updateFulfillmentDisplayParts);
-
-        // Initialize the part listing display values
-        initializePartListingDisplay();
-    })();
-
-</script>
 
 <script>
 
@@ -32487,13 +32467,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <!-- Listing template page (www.worldmotormarket.com/listings-template) -->
-<script>  
-
+<script>
     // Function to generate a unique ID
     function generateUniqueID() {
         const timestamp = new Date().getTime();
-        const randomPart = Math.floor(Math.random() * 9999); // Adjust the range as needed
-
+        const randomPart = Math.floor(Math.random() * 9999);
         return `V-${timestamp}-${randomPart}`;
     }
 
@@ -32504,8 +32482,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(uniqueListingID);
 
             const getInputValue = (elementId) => {
-                // Function to get input element values
                 const element = document.getElementById(elementId);
+                if (!element) return '';
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
                     return element.value.trim();
                 } else {
@@ -32513,30 +32491,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             };
 
+            // 1. Gather image files into FormData
             const formData = new FormData();
-
             for (let i = 1; i <= 5; i++) {
                 const input = document.getElementById(`small-image-${i}`);
-                const files = input.files;
-                if (files) { // Check if files exist before appending
-                    for (let j = 0; j < files.length; j++) {
-                        formData.append(`images`, files[j]);
+                if (input && input.files) {
+                    for (let j = 0; j < input.files.length; j++) {
+                        formData.append('images', input.files[j]);
                     }
                 }
             }
 
             const originalDescription = getInputValue('vehicles-custom-description');
 
-            // Function to replace line breaks with "(*5*5*)"
             function processDescription(description) {
                 return description.replace(/\r?\n|\r/g, '(*5*5*)');
             }
 
             const processedDescription = processDescription(originalDescription);
         
+            // Note: images will be populated with the S3 URLs after upload completes
             const dataToSend = {
                 title: getInputValue('listing-title'),
-                images: Array.from({ length: 5 }, (_, index) => getInputValue(`small-image-${index + 1}`)),
+                images: [], 
                 vehicle: {
                     category: getInputValue('selected-vehicle-type'),
                     make: getInputValue('selected-make'),
@@ -32577,27 +32554,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 auth: {
                     username: document.getElementById('username-value')?.textContent?.split(':')[1]?.trim() ?? '',
                     password: document.getElementById('password-value')?.textContent?.split(':')[1]?.trim() ?? '',
-                    legalListingChoice: document.getElementById('vehicle-legal-listing-choice').textContent
+                    legalListingChoice: document.getElementById('vehicle-legal-listing-choice')?.textContent ?? ''
                 },
                 id: {
-                    uniqueListingID, // Using the generated uniqueListingID
+                    uniqueListingID,
                 },
-
             };
         
-            console.log('Data to be sent:', dataToSend);
-            console.log('Data to be sent in image upload:', formData);
-
-            const userEmail = document.getElementById('listing-contact-email-display').value;
             try {
-                console.log('Headers before fetch:', {
-                    'user-email': userEmail,
-                    'listing-id': uniqueListingID,
-                    'listing-tag': 'incoming-vehicle'
-                });
-                
-                const imageUploadURL = 'https://twmm-database1-7df2173a3bdd.herokuapp.com/upload';
-                const imageResponse = await fetch(imageUploadURL, {
+                // Replace with your actual Vercel backend deployment URL (or a config variable)
+                const backendBaseURL = 'https://twmm-seven.vercel.app'; 
+
+                // Step 1: Upload images to AWS S3 via Vercel backend
+                const imageResponse = await fetch(`${backendBaseURL}/upload`, {
                     method: 'POST',
                     headers: {
                         'listing-id': uniqueListingID,  
@@ -32607,10 +32576,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: formData,
                 });
 
-                const imageData = await imageResponse.text();
-                console.log(`Image upload response from ${imageUploadURL}:`, imageData); // The response from the server for image upload
+                const imageResult = await imageResponse.json();
+                if (!imageResult.success) {
+                    throw new Error(imageResult.error || 'Image upload failed.');
+                }
 
-                const jsonResponse = await fetch('https://twmm-database1-7df2173a3bdd.herokuapp.com/listing', {
+                // Attach the returned AWS S3 URLs to our payload object
+                dataToSend.images = imageResult.urls;
+                console.log('Image URLs received from S3:', dataToSend.images);
+
+                // Step 2: Send unified JSON payload to Vercel backend for Supabase storage
+                const jsonResponse = await fetch(`${backendBaseURL}/api/listings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -32618,24 +32594,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(dataToSend),
                 });
 
-                const jsonData = await jsonResponse.text();
-                console.log('JSON Data response:', jsonData); // The response from the server for JSON data
+                const jsonResult = await jsonResponse.json();
+                if (!jsonResult.success) {
+                    throw new Error(jsonResult.error || 'Database storage failed.');
+                }
+
+                console.log('Database storage response:', jsonResult);
                 alert('Listing Submitted for Review');
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Submission Error:', error);
+                alert(`Error submitting listing: ${error.message}`);
             }
         });
     });
-
 </script>
 
 <script>
-
     // Function to generate a unique ID
     function generateUniquePartID() {
         const timestamp = new Date().getTime();
-        const randomPart = Math.floor(Math.random() * 9999); // Adjust the range as needed
-
+        const randomPart = Math.floor(Math.random() * 9999);
         return `P-${timestamp}-${randomPart}`;
     }
     
@@ -32652,18 +32630,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else if (element) {
                     return element.textContent.trim();
                 } else {
-                    return ''; // or handle the case when the element is not found
+                    return '';
                 }
             };
 
             const formData = new FormData();
-
             for (let i = 1; i <= 5; i++) {
                 const input = document.getElementById(`small-part-image-${i}`);
-                const files = input.files;
-                if (files) {
-                    for (let j = 0; j < files.length; j++) {
-                        formData.append(`images`, files[j]);
+                if (input && input.files) {
+                    for (let j = 0; j < input.files.length; j++) {
+                        formData.append('images', input.files[j]);
                     }
                 }
             }
@@ -32671,7 +32647,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const originalPartsDescription = getInputValue('parts-custom-description');
             const originalPartsCompatibility = getInputValue('addCompProfanityInput');
 
-            // Function to replace line breaks with "(*5*5*)"
             function processPartsDescription(description) {
                 return description.replace(/\r?\n|\r/g, '(*5*5*)');
             }
@@ -32681,7 +32656,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const dataToSend = {
                 title: getInputValue('parts-listing-title'),
-                images: Array.from({ length: 5 }, (_, index) => getInputValue(`small-part-image-${index + 1}`)),
+                images: [], // Will be populated with S3 URLs after upload
                 part: {
                     partName: getInputValue('selected-partName'),
                     category: getInputValue('selected-partCategory'),
@@ -32689,7 +32664,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     partBrand: getInputValue('selected-partBrand'),
                     partModel: getInputValue('selected-partModel'),
                     partYear: getInputValue('selected-partYear'),
-                    // Add additional part details here
                 },
                 compatibility: {
                     vehicleType: getInputValue('selected-partVehicleType'),
@@ -32698,14 +32672,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     trim: getInputValue('selected-partVehicleTrim'),
                     fromYear: getInputValue('selected-from-partVehicleYear'),
                     toYear: getInputValue('selected-to-partVehicleYear'),
-                    // Add additional vehicle compatibility details here
                 },
                 price: {
                     askingPrice: parseFloat(getInputValue('part-display-asking-price-listings').replace(/[$,]/g, '')),
                     negotiate: getInputValue('part-display-negotiate-listings'),
                     plusMinus: parseFloat(getInputValue('part-display-plusMinus-listings').replace(/[$,]/g, '')),
                     fulfillment: getInputValue('part-display-fulfillment-listings'),
-                    // Add additional pricing details here
                 },
                 description: encodeURIComponent(processedPartsDescription),
                 partInfo: {
@@ -32721,7 +32693,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     color: getInputValue('listing-part-color-display'),
                     finish: getInputValue('listing-part-finish-display'),
                     powerSource: getInputValue('listing-part-power-source-display'),
-                    // Add additional part information here
                 },
                 contact: {
                     name: getInputValue('part-listing-contact-name-display'),
@@ -32735,26 +32706,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 auth: {
                     username: document.getElementById('username-value')?.textContent?.split(':')[1]?.trim() ?? '',
                     password: document.getElementById('password-value')?.textContent?.split(':')[1]?.trim() ?? '',
-                    legalListingChoice: document.getElementById('part-legal-listing-choice').textContent
+                    legalListingChoice: document.getElementById('part-legal-listing-choice')?.textContent ?? ''
                 },
                 id: {
-                    uniquePartListingID, // Using the generated uniquePartListingID
+                    uniquePartListingID,
                 },
             };
 
-            console.log('Data to be sent for part listing:', dataToSend);
-            console.log('Data to be sent for part image upload:', formData);
-
             try {
-                
-                console.log('Headers before fetch:', {
-                    'listing-id': uniquePartListingID,
-                    'listing-tag': 'incoming-part',
-                    'user-email': getInputValue('part-listing-contact-email-display')
-                });
+                // Replace with your actual Vercel backend deployment URL
+                const backendBaseURL = 'https://twmm-seven.vercel.app'; 
 
-                const imageUploadURL = 'https://twmm-database1-7df2173a3bdd.herokuapp.com/upload';
-                const imageResponse = await fetch(imageUploadURL, {
+                // Step 1: Upload images to AWS S3 via Vercel backend
+                const imageResponse = await fetch(`${backendBaseURL}/upload`, {
                     method: 'POST',
                     headers: {
                         'listing-id': uniquePartListingID,
@@ -32764,10 +32728,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: formData,
                 });
 
-                const imageData = await imageResponse.text();
-                console.log(`Image upload response from ${imageUploadURL}:`, imageData);
+                const imageResult = await imageResponse.json();
+                if (!imageResult.success) {
+                    throw new Error(imageResult.error || 'Part image upload failed.');
+                }
 
-                const jsonResponse = await fetch('https://twmm-database1-7df2173a3bdd.herokuapp.com/partListing', {
+                // Attach the returned AWS S3 URLs to our payload object
+                dataToSend.images = imageResult.urls;
+                console.log('Image URLs received from S3 for part:', dataToSend.images);
+
+                // Step 2: Send unified JSON payload to Vercel backend for Supabase storage
+                const jsonResponse = await fetch(`${backendBaseURL}/api/listings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -32775,24 +32746,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(dataToSend),
                 });
 
-                const jsonData = await jsonResponse.text();
-                console.log('JSON Data response for part listing:', jsonData);
+                const jsonResult = await jsonResponse.json();
+                if (!jsonResult.success) {
+                    throw new Error(jsonResult.error || 'Database storage for part failed.');
+                }
+
+                console.log('Database storage response for part listing:', jsonResult);
                 alert('Listing Submitted for Review');
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Submission Error:', error);
+                alert(`Error submitting part listing: ${error.message}`);
             }
-
         });
     });
 </script>
-
 
 <script>
     // Function to generate a unique ID
     function generateUniqueServiceID() {
         const timestamp = new Date().getTime();
-        const randomPart = Math.floor(Math.random() * 9999); // Adjust the range as needed
-
+        const randomPart = Math.floor(Math.random() * 9999);
         return `S-${timestamp}-${randomPart}`;
     }
 
@@ -32804,6 +32777,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const getInputValue = (elementId) => {
                 const element = document.getElementById(elementId);
+                if (!element) return '';
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
                     return element.value.trim();
                 } else {
@@ -32812,21 +32786,18 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             const formData = new FormData();
-
             for (let i = 1; i <= 5; i++) {
                 const input = document.getElementById(`small-service-image-${i}`);
-                const files = input.files;
-                if (files) {
-                    for (let j = 0; j < files.length; j++) {
-                        formData.append(`images`, files[j]);
+                if (input && input.files) {
+                    for (let j = 0; j < input.files.length; j++) {
+                        formData.append('images', input.files[j]);
                     }
                 }
             }
 
-            // Define getInputValueInRow globally
             function getInputValueInRow(row, elementId) {
-                // Function to get input element values within a row
                 const element = row.querySelector(`#${elementId}`);
+                if (!element) return '';
                 if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
                     return element.value.trim();
                 } else {
@@ -32834,17 +32805,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            // Generic function to concatenate values for a specific field across all service rows
             function concatenateFieldValues(fieldName) {
                 const serviceRows = document.querySelectorAll('.service-row-template');
                 const values = [];
-
-                // Loop through each service row
                 serviceRows.forEach((row) => {
                     values.push(getInputValueInRow(row, fieldName));
                 });
-
-                // Concatenate the values
                 return values.map(value => encodeURIComponent(value)).join('(*1*1*)');
             }
 
@@ -32858,9 +32824,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const concatenatedServicesServicePrice = concatenateFieldValues('service-price');
             const concatenatedServicesServiceDuration = concatenateFieldValues('service-duration');
 
-            // Function to replace line breaks with "(*5*5*)"
             function processServicesDescription(description) {
-                return description.replace(/\r?\n|\r/g, '(*5*5*)');
+                return description ? description.replace(/\r?\n|\r/g, '(*5*5*)') : '';
             }
 
             const processedServicesType = processServicesDescription(originalServicesType);
@@ -32872,7 +32837,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const dataToSend = {
                 title: getInputValue('services-listing-title'),
-                images: Array.from({ length: 5 }, (_, index) => getInputValue(`small-service-image-${index + 1}`)),
+                images: [], // Will be populated with S3 URLs after upload
                 service: {
                     category: getInputValue('selected-serviceCategory'),
                     type: getInputValue('selected-serviceType'),
@@ -32882,7 +32847,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     city: getInputValue('selected-serviceCity'),
                     state: getInputValue('selected-serviceState'),
                     zipCode: getInputValue('selected-serviceZipCode'),
-                    // Add additional service details here
                 },
                 description: encodeURIComponent(processedServicesDescription),
                 openHours: {
@@ -32910,38 +32874,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 auth: {
                     username: document.getElementById('username-value')?.textContent?.split(':')[1]?.trim() ?? '',
                     password: document.getElementById('password-value')?.textContent?.split(':')[1]?.trim() ?? '',
-                    legalListingChoice: document.getElementById('service-legal-listing-choice').textContent
+                    legalListingChoice: document.getElementById('service-legal-listing-choice')?.textContent ?? ''
                 },
                 url: getInputValue('url-input'),
                 id: {
-                    uniqueServiceListingID, // Using the generated uniqueServiceListingID
+                    uniqueServiceListingID,
                 },
             };
 
             console.log('Data to be sent for service listing:', dataToSend);
-            console.log('Data to be sent for image upload:', formData);
 
             try {
-                console.log('Headers before fetch:', {
-                    'listing-id': uniqueServiceListingID,
-                    'listing-tag': 'incoming-service'
-                });
+                // Replace with your actual Vercel backend deployment URL
+                const backendBaseURL = 'https://twmm-seven.vercel.app'; 
 
-                const imageUploadURL = 'https://twmm-database1-7df2173a3bdd.herokuapp.com/upload';
-                const imageResponse = await fetch(imageUploadURL, {
+                // Step 1: Upload images to AWS S3 via Vercel backend
+                const imageResponse = await fetch(`${backendBaseURL}/upload`, {
                     method: 'POST',
                     headers: {
                         'listing-id': uniqueServiceListingID,
                         'listing-tag': 'incoming-service',
-                        'user-email': getInputValue('service-listing-contact-email-display')
+                        'user-email': getInputValue('service-contact-email')
                     },
                     body: formData,
                 });
 
-                const imageData = await imageResponse.text();
-                console.log(`Image upload response from ${imageUploadURL}:`, imageData);
+                const imageResult = await imageResponse.json();
+                if (!imageResult.success) {
+                    throw new Error(imageResult.error || 'Service image upload failed.');
+                }
 
-                const jsonResponse = await fetch('https://twmm-database1-7df2173a3bdd.herokuapp.com/serviceListing', {
+                // Attach the returned AWS S3 URLs to our payload object
+                dataToSend.images = imageResult.urls;
+                console.log('Image URLs received from S3 for service:', dataToSend.images);
+
+                // Step 2: Send unified JSON payload to Vercel backend for Supabase storage
+                const jsonResponse = await fetch(`${backendBaseURL}/api/listings`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -32949,11 +32917,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(dataToSend),
                 });
 
-                const jsonData = await jsonResponse.text();
-                console.log('JSON Data response for service listing:', jsonData);
+                const jsonResult = await jsonResponse.json();
+                if (!jsonResult.success) {
+                    throw new Error(jsonResult.error || 'Database storage for service failed.');
+                }
+
+                console.log('Database storage response for service listing:', jsonResult);
                 alert('Listing Submitted for Review');
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Submission Error:', error);
+                alert(`Error submitting service listing: ${error.message}`);
             }
         });
     });
