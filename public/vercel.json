@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    { "src": "/((?!api/).*)", "dest": "/public/$1" },
-    { "src": "/(.*)", "dest": "/server.js" }
+  "rewrites": [
+    { "source": "/((?!images/).*)", "destination": "/public/$1.html" },
+    { "source": "/images/(.*)", "destination": "/public/images/$1" }
   ]
 }
