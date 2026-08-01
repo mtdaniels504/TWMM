@@ -28,7 +28,8 @@ const corsOptions = {
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'listing-id', 'listing-tag'],
+    // Added 'user-email' to match your frontend headers
+    allowedHeaders: ['Content-Type', 'Authorization', 'listing-id', 'listing-tag', 'user-email'],
     credentials: true
 };
 
