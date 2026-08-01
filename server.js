@@ -11,7 +11,13 @@ const port = process.env.PORT || 3000;
 // ==========================================
 // MIDDLEWARE CONFIGURATION
 // ==========================================
-app.use(cors());
+app.use(cors({
+    origin: '*', 
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'listing-id', 'listing-tag'],
+    credentials: true
+}));
+
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
