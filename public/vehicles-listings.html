@@ -4700,6 +4700,18 @@
             padding: 0;
         }
 
+        /* Ensure video elements scale just like image previews */
+        .image-section video.image-preview,
+        .image-section video {
+            width: auto;
+            max-width: 96%;
+            height: 94%;
+            max-height: 94%;
+            object-fit: contain;
+            margin: auto;
+            display: block;
+        }
+
         .listing-image-section {
             border: 1.8px solid #0060b5;
         }
@@ -11044,7 +11056,7 @@
                                             <span class="browse-label">Welcome to Our Image Gallery! Add Images and Videos for Buyers to Scroll Through</span>
                                         </label>
                                         <div class="mainImgBox mainImgBox-Main">
-                                            <div class="mainImgBox2">
+                                            <div class="mainImgBox2" id="main-preview-wrapper">
                                                 <img src="TWMM_LogoTitle.png" alt="Listing Preview" class="image-preview listing-main-screen">
                                             </div>
                                         </div>
@@ -17147,7 +17159,7 @@
                 setField('#listing-contact-phone-display', listing.contact_phone);
                 setField('#listing-contact-email-display', listing.contact_email);
 
-                // Handle Images & Videos Array matching your new HTML structure
+                // Handle Images & Videos Array
                 const images = listing.image_urls || [];
                 const imagePreview = fullListingClone.querySelector('.listing-main-screen');
                 const smallImageSpots = fullListingClone.querySelectorAll('.listing-small-image-spot');
@@ -17167,33 +17179,43 @@
                         const cleanUrl = imageURL.split('?')[0];
                         const fileExtension = cleanUrl.toLowerCase().split('.').pop();
 
-                        if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension)) {
-                            smallImageSpot.src = imageURL;
-                            smallImageSpot.dataset.src = imageURL; // Store source reliably
-                            smallImageSpot.alt = `Image ${i + 1}`;
-                            
-                            if (i === 0 && imagePreview) {
-                                imagePreview.src = imageURL;
-                                imagePreview.dataset.src = imageURL; // Store source reliably
-                                imagePreview.alt = `Listing Image`;
-                            }
-                        } else if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
-                            // For small previews that are videos, we create a video tag and preserve dataset attributes
+                        if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
+                            // Replace element with a <video> tag for small thumbnail previews
                             const videoElement = document.createElement('video');
                             videoElement.src = imageURL;
                             videoElement.dataset.src = imageURL;
-                            videoElement.controls = false; // Usually keep thumbs without active controls for cleanliness
                             videoElement.className = smallImageSpot.className;
-
+                            videoElement.muted = true;
+                            videoElement.playsInline = true;
                             smallImageSpot.replaceWith(videoElement);
 
+                            // If it's the first item, populate the main screen as a video
                             if (i === 0 && imagePreview) {
                                 const mainVideoElement = document.createElement('video');
                                 mainVideoElement.src = imageURL;
                                 mainVideoElement.dataset.src = imageURL;
-                                mainVideoElement.controls = true;
                                 mainVideoElement.className = imagePreview.className;
+                                mainVideoElement.controls = true;
+                                mainVideoElement.autoplay = false;
                                 imagePreview.replaceWith(mainVideoElement);
+                            }
+                        } else {
+                            // Standard Image Handling
+                            smallImageSpot.src = imageURL;
+                            smallImageSpot.dataset.src = imageURL;
+                            smallImageSpot.alt = `Image ${i + 1}`;
+                            
+                            if (i === 0 && imagePreview) {
+                                // Ensure main screen is an <img> if the first item is an image
+                                if (imagePreview.tagName.toLowerCase() !== 'img') {
+                                    const newImg = document.createElement('img');
+                                    newImg.alt = `Listing Image`;
+                                    newImg.className = imagePreview.className;
+                                    imagePreview.replaceWith(newImg);
+                                    imagePreview = newImg; // Re-assign reference
+                                }
+                                imagePreview.src = imageURL;
+                                imagePreview.dataset.src = imageURL;
                             }
                         }
                     } else {
@@ -17293,12 +17315,13 @@
 <script>
     function scrollLogic(event) {
         const target = event.target;
-        const clone = target.closest('.full-listing'); // Find the closest ancestor element with the class 'full-listing'
+        const clone = target.closest('.full-listing'); 
         if (!clone) return;
 
+        // Finds the main screen element (can be <img> or <video>)
         const imagePreview = clone.querySelector('.listing-main-screen');
         
-        // Use the smart filtering logic with data-src fallback for robustness
+        // Gathers all valid small image/video previews
         const smallImagePreviews = Array.from(clone.querySelectorAll('.listing-small-image-container .listing-small-image-preview, .listing-small-image-container video')).filter(el => {
             const rawSrc = el.dataset.src || el.src || '';
             const filename = rawSrc.split('?')[0].split('/').pop();
@@ -17310,10 +17333,9 @@
         });
 
         if (imagePreview && smallImagePreviews.length > 0) {
-            // Get current active source safely using data-src or src property
             const currentActiveSrc = imagePreview.dataset.src || imagePreview.src;
 
-            // Function to handle Next button click
+            // Handle Next Button
             if (target.matches('.listing-next-button')) {
                 let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
@@ -17331,7 +17353,7 @@
                 if (newElement) replaceMainSpotContent(clone, newElement);
             }
 
-            // Function to handle Previous button click
+            // Handle Previous Button
             if (target.matches('.listing-previous-button')) {
                 let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
@@ -17349,7 +17371,7 @@
                 if (newElement) replaceMainSpotContent(clone, newElement);
             }
 
-            // Function to handle Expand button click
+            // Handle Expand Button
             if (target.matches('.expand-full-button')) {
                 const listingImageSection = clone.querySelector('.image-section');
                 if (listingImageSection) {
@@ -17357,10 +17379,10 @@
                 }
             }
 
-            // Add event listeners to each small image/video spot/preview
+            // Handle Thumbnail Clicks
             smallImagePreviews.forEach(smallImagePreview => {
-                const matchedEl = target.closest('.listing-small-image-preview') || target.closest('video');
-                if (target === smallImagePreview || matchedEl === smallImagePreview) {
+                const matchedEl = target.closest('.listing-small-image-preview') || target.closest('.listing-small-image-spot video');
+                if (target === smallImagePreview || matchedEl === smallImagePreview || target.closest('.listing-small-image-spot') === smallImagePreview.closest('.listing-small-image-spot')) {
                     const newImageSrc = smallImagePreview.dataset.src || smallImagePreview.src;
                     const newImageElement = createMediaElement(newImageSrc);
                     if (newImageElement) replaceMainSpotContent(clone, newImageElement);
@@ -17369,7 +17391,7 @@
         }
     }
 
-    // Function to create a new media element based on file extension
+    // Creates the correct HTML element type dynamically on switch
     function createMediaElement(src) {
         const cleanUrl = src.split('?')[0];
         const fileExtension = cleanUrl.toLowerCase().split('.').pop();
@@ -17378,14 +17400,14 @@
             const img = document.createElement('img');
             img.src = src;
             img.dataset.src = src;
-            img.className = 'listing-main-screen';
+            img.className = 'listing-main-screen image-preview';
             return img;
         } else if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
             const video = document.createElement('video');
             video.src = src;
             video.dataset.src = src;
             video.controls = true;
-            video.className = 'listing-main-screen';
+            video.className = 'listing-main-screen image-preview';
             return video;
         } else {
             console.error(`Unsupported file format: ${fileExtension}`);
@@ -17393,7 +17415,7 @@
         }
     }
 
-    // Function to replace the main spot content with a new element
+    // Swaps out whatever was currently in the main preview box safely
     function replaceMainSpotContent(clone, newElement) {
         const mainSpot = clone.querySelector('.listing-main-screen');
         if (mainSpot) {
@@ -17401,13 +17423,11 @@
         }
     }
 
-    // Add event listener to the container to handle clicks globally for cloned elements
     const cont = document.querySelector('.container');
     if (cont) {
         cont.addEventListener('click', scrollLogic);
     }
 
-    // Optional: Close expanded section if clicking outside of the image section globally
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.image-section') && !event.target.closest('.expand-full-button')) {
             document.querySelectorAll('.image-section.expanded-section').forEach(section => {
