@@ -114,13 +114,118 @@
                     imagesHtml = '<div class="thumbnails">' + item.image_urls.map(url => `<img src="${url}" />`).join('') + '</div>';
                 }
 
+                // Define human-readable labels for fields we want to show if they have data
+                const fieldLabels = {
+                    // General / Pricing
+                    asking_price: 'Asking Price',
+                    negotiate: 'Negotiate',
+                    plus_minus: 'Plus/Minus',
+                    fulfillment: 'Fulfillment',
+                    service_url: 'Service URL',
+
+                    // Vehicle Fields
+                    vehicle_type: 'Vehicle Type',
+                    make: 'Make',
+                    model: 'Model',
+                    trim: 'Trim',
+                    year: 'Year',
+                    theme: 'Theme',
+                    vin: 'VIN',
+                    condition: 'Condition',
+                    mileage: 'Mileage',
+                    fuel: 'Fuel',
+                    drive_type: 'Drive Type',
+                    transmission: 'Transmission',
+                    fuel_efficiency: 'Fuel Efficiency',
+                    exterior_color: 'Exterior Color',
+                    interior_color: 'Interior Color',
+                    performance_upgrades: 'Performance Upgrades',
+                    aesthetic_upgrades: 'Aesthetic Upgrades',
+                    engine_type: 'Engine Type',
+                    horsepower: 'Horsepower',
+                    suspension: 'Suspension',
+                    tires: 'Tires',
+
+                    // Part Fields
+                    part_name: 'Part Name',
+                    part_category: 'Part Category',
+                    part_type: 'Part Type',
+                    part_brand: 'Part Brand',
+                    part_model: 'Part Model',
+                    part_year: 'Part Year',
+                    compat_vehicle_type: 'Compatible Vehicle Type',
+                    compat_make: 'Compatible Make',
+                    compat_model: 'Compatible Model',
+                    compat_trim: 'Compatible Trim',
+                    compat_from_year: 'Compatible From Year',
+                    compat_to_year: 'Compatible To Year',
+                    part_availability: 'Availability',
+                    part_size: 'Size',
+                    part_compatibility: 'Compatibility Details',
+                    part_number: 'Part Number',
+                    warranty: 'Warranty',
+                    material: 'Material',
+                    dimensions: 'Dimensions',
+                    weight: 'Weight',
+                    color: 'Color',
+                    finish: 'Finish',
+                    power_source: 'Power Source',
+
+                    // Service Fields
+                    service_category: 'Service Category',
+                    service_type: 'Service Type',
+                    custom_service_type: 'Custom Service Type',
+                    company_name: 'Company Name',
+                    service_address: 'Address',
+                    service_city: 'City',
+                    service_state: 'State',
+                    service_zip: 'Zip Code',
+                    hours_monday: 'Mon Hours',
+                    hours_tuesday: 'Tue Hours',
+                    hours_wednesday: 'Wed Hours',
+                    hours_thursday: 'Thu Hours',
+                    hours_friday: 'Fri Hours',
+                    hours_saturday: 'Sat Hours',
+                    hours_sunday: 'Sun Hours',
+                    service_row_title: 'Service Item Title',
+                    service_row_description: 'Service Item Description',
+                    service_row_parts_included: 'Parts Included',
+                    service_row_labor_included: 'Labor Included',
+                    service_row_price: 'Service Item Price',
+                    service_row_duration: 'Service Duration',
+
+                    // Contact Fields
+                    contact_name: 'Contact Name',
+                    contact_address: 'Contact Address',
+                    contact_city: 'Contact City',
+                    contact_state: 'Contact State',
+                    contact_zip_code: 'Contact Zip',
+                    contact_phone: 'Phone',
+                    contact_email: 'Email',
+
+                    // Auth / Metadata
+                    auth_username: 'Username',
+                    legal_listing_choice: 'Legal Agreement'
+                };
+
+                // Dynamically build data attributes that are NOT null, undefined, or empty strings
+                let detailsHtml = '';
+                for (const [key, label] of Object.entries(fieldLabels)) {
+                    const val = item[key];
+                    if (val !== null && val !== undefined && val !== '' && val !== 'null') {
+                        detailsHtml += `<p><strong>${label}:</strong> ${val}</p>`;
+                    }
+                }
+
                 card.innerHTML = `
                     <div class="listing-details">
-                        <h3>${item.title || 'Untitled'} (${item.category.toUpperCase()})</h3>
-                        <p><strong>ID:</strong> ${item.unique_listing_id}</p>
-                        <p><strong>Price:</strong> $${item.asking_price || 'N/A'}</p>
-                        <p><strong>Contact:</strong> ${item.contact_name || 'N/A'} (${item.contact_email || 'N/A'})</p>
+                        <h3>${item.title || 'Untitled'} <span style="font-size: 12px; background: #e2e8f0; padding: 2px 6px; border-radius: 4px; text-transform: uppercase;">${item.category}</span></h3>
+                        <p><strong>Database ID / UUID:</strong> ${item.unique_listing_id}</p>
                         <p><strong>Description:</strong> ${item.description || 'No description provided.'}</p>
+                        <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 15px;">
+                            ${detailsHtml}
+                        </div>
                         ${imagesHtml}
                     </div>
                     <div class="actions">
