@@ -32494,7 +32494,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // 1. Gather image files into FormData
             const formData = new FormData();
             for (let i = 1; i <= 5; i++) {
-                const input = document.getElementById(`small-image-${i}`);
+                const input = document.getElementById(`vehicle-small-image-${i}`); // <-- Added 'vehicle-' prefix here
                 if (input && input.files) {
                     for (let j = 0; j < input.files.length; j++) {
                         formData.append('images', input.files[j]);
@@ -32636,7 +32636,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const formData = new FormData();
             for (let i = 1; i <= 5; i++) {
-                const input = document.getElementById(`small-part-image-${i}`);
+                const input = document.getElementById(`part-small-image-${i}`);
                 if (input && input.files) {
                     for (let j = 0; j < input.files.length; j++) {
                         formData.append('images', input.files[j]);
@@ -32787,7 +32787,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const formData = new FormData();
             for (let i = 1; i <= 5; i++) {
-                const input = document.getElementById(`small-service-image-${i}`);
+                const input = document.getElementById(`service-small-image-${i}`);
                 if (input && input.files) {
                     for (let j = 0; j < input.files.length; j++) {
                         formData.append('images', input.files[j]);
