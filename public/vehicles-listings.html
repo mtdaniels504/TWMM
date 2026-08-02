@@ -17284,12 +17284,20 @@
         if (!clone) return;
 
         const imagePreview = clone.querySelector('.listing-main-screen');
-        const smallImagePreviews = clone.querySelectorAll('.listing-small-image-preview');
+        // Use the same smart filtering logic to ignore hidden spots and placeholders
+        const smallImagePreviews = Array.from(clone.querySelectorAll('.listing-small-image-container .listing-small-image-preview')).filter(img => {
+            const filename = img.src.split('?')[0].split('/').pop();
+            const parentSpot = img.closest('.listing-small-image-spot');
+            const isSpotVisible = parentSpot && parentSpot.style.display !== 'none';
+            return filename !== 'listing-placeholder.png' && 
+                   filename !== 'placeholder.png' && 
+                   isSpotVisible;
+        });
 
         if (imagePreview && smallImagePreviews.length > 0) {
 
             // Function to handle Next button click
-            if (target.matches('#listing-next-button')) {
+            if (target.matches('.listing-next-button')) {
                 let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
                     if (smallImagePreview.src === imagePreview.src) {
@@ -17306,7 +17314,7 @@
             }
 
             // Function to handle Previous button click
-            if (target.matches('#listing-previous-button')) {
+            if (target.matches('.listing-previous-button')) {
                 let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
                     if (smallImagePreview.src === imagePreview.src) {
@@ -17323,14 +17331,14 @@
             }
 
             // Function to handle Expand button click
-            if (target.matches('#expandButton')) {
-                const listingImageSection = clone.querySelector('#listing-image-section');
+            if (target.matches('.expand-full-button')) {
+                const listingImageSection = clone.querySelector('.image-section');
                 if (listingImageSection) {
                     listingImageSection.classList.toggle('expanded-section');
                 }
             }
 
-            // Add event listeners to each small image spot
+            // Add event listeners to each small image spot/preview
             smallImagePreviews.forEach(smallImagePreview => {
                 if (target === smallImagePreview) {
                     const newImageSrc = target.src;
@@ -17371,11 +17379,20 @@
         }
     }
 
-    // Add event listener to the container to handle clicks
+    // Add event listener to the container to handle clicks globally for cloned elements
     const cont = document.querySelector('.container');
     if (cont) {
         cont.addEventListener('click', scrollLogic);
     }
+
+    // Optional: Close expanded section if clicking outside of the image section globally
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.image-section') && !event.target.closest('.expand-full-button')) {
+            document.querySelectorAll('.image-section.expanded-section').forEach(section => {
+                section.classList.remove('expanded-section');
+            });
+        }
+    });
 </script>
 
     
