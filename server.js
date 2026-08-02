@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 const multer = require('multer');
 const sanitizeHtml = require('sanitize-html');
+const { GetObjectCommand } = require('@aws-sdk/client-s3');
+const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const { createClient } = require('@supabase/supabase-js');
 const { S3Client, PutObjectCommand, CopyObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 
@@ -381,6 +383,51 @@ app.post('/api/listings', async (req, res) => {
     }
 });
 
+app.get('/api/listings/active', async (req, res) => {
+    try {
+        // 1. Fetch active listings from Supabase
+        const { data: listings, error } = await supabase
+            .from('listings')
+            .select('*')
+            .eq('status', 'active');
+
+        if (error) throw error;
+
+        // 2. Loop through listings and sign their images
+        const listingsWithSignedUrls = await Promise.all(listings.map(async (listing) => {
+            if (listing.image_urls && listing.image_urls.length > 0) {
+                const signedUrls = await Promise.all(listing.image_urls.map(async (url) => {
+                    try {
+                        const urlObj = new URL(url);
+                        const bucketName = urlObj.hostname.split('.')[0];
+                        const key = decodeURIComponent(urlObj.pathname.startsWith('/') ? urlObj.pathname.substring(1) : urlObj.pathname);
+
+                        const command = new GetObjectCommand({
+                            Bucket: bucketName,
+                            Key: key
+                        });
+
+                        // Generate a URL that expires in 1 hour (3600 seconds)
+                        return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+                    } catch (err) {
+                        console.error('Error signing URL:', err);
+                        return url; // Fallback to original if it fails
+                    }
+                }));
+                listing.image_urls = signedUrls; // Replace raw S3 URLs with signed ones
+            }
+            return listing;
+        }));
+
+        // 3. Send the updated listings to the frontend
+        return res.status(200).json({ success: true, listings: listingsWithSignedUrls });
+
+    } catch (err) {
+        console.error('Error fetching active listings:', err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 // ==========================================
 // ADMIN MIDDLEWARE & ROUTES
 // ==========================================
@@ -395,6 +442,31 @@ const verifyAdmin = (req, res, next) => {
     }
     next();
 };
+
+app.get('/api/admin/image-proxy', verifyAdmin, async (req, res) => {
+    const imageUrl = req.query.url;
+    if (!imageUrl) return res.status(400).send('Missing image URL');
+
+    try {
+        const urlObj = new URL(imageUrl);
+        const bucketName = urlObj.hostname.split('.')[0];
+        const key = decodeURIComponent(urlObj.pathname.startsWith('/') ? urlObj.pathname.substring(1) : urlObj.pathname);
+
+        const command = new GetObjectCommand({
+            Bucket: bucketName,
+            Key: key
+        });
+
+        const s3Response = await s3Client.send(command);
+
+        res.setHeader('Content-Type', s3Response.ContentType || 'image/jpeg');
+        // Pipe the S3 readable stream directly to the Express response
+        s3Response.Body.pipe(res);
+    } catch (err) {
+        console.error('Image Proxy Error:', err);
+        res.status(404).send('Image not found or inaccessible');
+    }
+});
 
 // 1. Fetch all incoming listings pending review
 app.get('/api/admin/incoming', verifyAdmin, async (req, res) => {
