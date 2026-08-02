@@ -444,17 +444,16 @@ app.get('/api/listings/category/:category', async (req, res) => {
 
         if (error) throw error;
 
-        // 2. Loop through listings and sign their S3 image/video URLs
+        // 2. Loop through listings and sign their S3 image/video URLs using the active bucket
         const listingsWithSignedUrls = await Promise.all(listings.map(async (listing) => {
             if (listing.image_urls && listing.image_urls.length > 0) {
                 const signedUrls = await Promise.all(listing.image_urls.map(async (url) => {
                     try {
                         const urlObj = new URL(url);
-                        const bucketName = urlObj.hostname.split('.')[0];
                         const key = decodeURIComponent(urlObj.pathname.startsWith('/') ? urlObj.pathname.substring(1) : urlObj.pathname);
 
                         const command = new GetObjectCommand({
-                            Bucket: bucketName,
+                            Bucket: S3_BUCKET_ACTIVE,
                             Key: key
                         });
 
