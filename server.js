@@ -45,7 +45,6 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Global request logger to track every single incoming request and headers
 app.use((req, res, next) => {
     console.log(`[Incoming Request] Method: ${req.method} | URL: ${req.url} | Origin: ${req.headers.origin || 'none'}`);
-    console.log(`[Incoming Headers]`, req.headers);
     next();
 });
 
@@ -95,21 +94,23 @@ app.post('/upload', upload.array('images', 5), async (req, res) => {
     }
 
     try {
+        // ALLOW NO IMAGES: If user didn't attach any files, return success with an empty array
         if (!req.files || req.files.length === 0) {
-            return res.status(400).json({ success: false, error: 'No images provided.' });
+            console.log(`[Upload] Listing ${listingId} submitted with 0 images. Continuing without upload.`);
+            return res.status(200).json({ success: true, urls: [] });
         }
 
         const uploadedImageUrls = [];
 
         for (const [index, file] of req.files.entries()) {
-            const fileExtension = file.originalname.split('.').pop();
+            const fileExtension = file.originalname ? file.originalname.split('.').pop() : 'jpg';
             const fileName = `listings/${listingId}/image_${index + 1}_${Date.now()}.${fileExtension}`;
             
             const uploadParams = {
                 Bucket: process.env.AWS_S3_BUCKET_NAME,
                 Key: fileName,
                 Body: file.buffer,
-                ContentType: file.mimetype
+                ContentType: file.mimetype || 'image/jpeg'
             };
 
             await s3Client.send(new PutObjectCommand(uploadParams));
@@ -141,48 +142,48 @@ app.post('/api/listings', async (req, res) => {
                 unique_listing_id: payload.id?.uniqueListingID,
                 category: 'vehicle',
                 status: 'incoming',
-                title: payload.title,
-                description: payload.vehicle.description,
-                image_urls: payload.images,
+                title: payload.title || 'Untitled Vehicle',
+                description: payload.vehicle.description || '',
+                image_urls: payload.images || [],
                 
-                asking_price: payload.vehicle.askingPrice,
-                negotiate: payload.vehicle.negotiate,
-                plus_minus: payload.vehicle.plusMinus,
-                fulfillment: payload.vehicle.fulfillment,
+                asking_price: isNaN(payload.vehicle.askingPrice) ? null : payload.vehicle.askingPrice,
+                negotiate: payload.vehicle.negotiate || '',
+                plus_minus: isNaN(payload.vehicle.plusMinus) ? null : payload.vehicle.plusMinus,
+                fulfillment: payload.vehicle.fulfillment || '',
                 
-                vehicle_type: payload.vehicle.category,
-                make: payload.vehicle.make,
-                model: payload.vehicle.model,
-                trim: payload.vehicle.trim,
+                vehicle_type: payload.vehicle.category || '',
+                make: payload.vehicle.make || '',
+                model: payload.vehicle.model || '',
+                trim: payload.vehicle.trim || '',
                 year: payload.vehicle.year ? parseInt(payload.vehicle.year) : null,
-                theme: payload.vehicle.theme,
-                vin: payload.vehicle.vin,
-                condition: payload.vehicle.condition,
-                mileage: payload.vehicle.mileage,
-                fuel: payload.vehicle.fuel,
-                drive_type: payload.vehicle.driveType,
-                transmission: payload.vehicle.transmission,
-                fuel_efficiency: payload.vehicle.fuelEfficiency,
-                exterior_color: payload.vehicle.exteriorColor,
-                interior_color: payload.vehicle.interiorColor,
-                performance_upgrades: payload.vehicle.performanceUpgrades,
-                aesthetic_upgrades: payload.vehicle.aestheticUpgrades,
-                engine_type: payload.vehicle.engineType,
-                horsepower: payload.vehicle.horsepower,
-                suspension: payload.vehicle.suspension,
-                tires: payload.vehicle.tires,
+                theme: payload.vehicle.theme || '',
+                vin: payload.vehicle.vin || '',
+                condition: payload.vehicle.condition || '',
+                mileage: payload.vehicle.mileage || '',
+                fuel: payload.vehicle.fuel || '',
+                drive_type: payload.vehicle.driveType || '',
+                transmission: payload.vehicle.transmission || '',
+                fuel_efficiency: payload.vehicle.fuelEfficiency || '',
+                exterior_color: payload.vehicle.exteriorColor || '',
+                interior_color: payload.vehicle.interiorColor || '',
+                performance_upgrades: payload.vehicle.performanceUpgrades || '',
+                aesthetic_upgrades: payload.vehicle.aestheticUpgrades || '',
+                engine_type: payload.vehicle.engineType || '',
+                horsepower: payload.vehicle.horsepower || '',
+                suspension: payload.vehicle.suspension || '',
+                tires: payload.vehicle.tires || '',
                 
-                contact_name: payload.contact?.name,
-                contact_address: payload.contact?.address,
-                contact_city: payload.contact?.city,
-                contact_state: payload.contact?.state,
-                contact_zip_code: payload.contact?.zipCode,
-                contact_phone: payload.contact?.phone,
-                contact_email: payload.contact?.email,
+                contact_name: payload.contact?.name || '',
+                contact_address: payload.contact?.address || '',
+                contact_city: payload.contact?.city || '',
+                contact_state: payload.contact?.state || '',
+                contact_zip_code: payload.contact?.zipCode || '',
+                contact_phone: payload.contact?.phone || '',
+                contact_email: payload.contact?.email || '',
                 
-                auth_username: payload.auth?.username,
-                auth_password: payload.auth?.password,
-                legal_listing_choice: payload.auth?.legalListingChoice
+                auth_username: payload.auth?.username || '',
+                auth_password: payload.auth?.password || '',
+                legal_listing_choice: payload.auth?.legalListingChoice || ''
             };
         } else if (payload.part) {
             // --- PART PAYLOAD MAPPING ---
@@ -190,52 +191,52 @@ app.post('/api/listings', async (req, res) => {
                 unique_listing_id: payload.id?.uniquePartListingID,
                 category: 'part',
                 status: 'incoming',
-                title: payload.title,
-                description: payload.description,
-                image_urls: payload.images,
+                title: payload.title || 'Untitled Part',
+                description: payload.description || '',
+                image_urls: payload.images || [],
                 
-                asking_price: payload.price?.askingPrice,
-                negotiate: payload.price?.negotiate,
-                plus_minus: payload.price?.plusMinus,
-                fulfillment: payload.price?.fulfillment,
+                asking_price: isNaN(payload.price?.askingPrice) ? null : payload.price?.askingPrice,
+                negotiate: payload.price?.negotiate || '',
+                plus_minus: isNaN(payload.price?.plusMinus) ? null : payload.price?.plusMinus,
+                fulfillment: payload.price?.fulfillment || '',
                 
-                part_name: payload.part.partName,
-                part_category: payload.part.category,
-                part_type: payload.part.partType,
-                part_brand: payload.part.partBrand,
-                part_model: payload.part.partModel,
-                part_year: payload.part.partYear,
+                part_name: payload.part.partName || '',
+                part_category: payload.part.category || '',
+                part_type: payload.part.partType || '',
+                part_brand: payload.part.partBrand || '',
+                part_model: payload.part.partModel || '',
+                part_year: payload.part.partYear || '',
                 
-                compat_vehicle_type: payload.compatibility?.vehicleType,
-                compat_make: payload.compatibility?.make,
-                compat_model: payload.compatibility?.model,
-                compat_trim: payload.compatibility?.trim,
-                compat_from_year: payload.compatibility?.fromYear,
-                compat_to_year: payload.compatibility?.toYear,
+                compat_vehicle_type: payload.compatibility?.vehicleType || '',
+                compat_make: payload.compatibility?.make || '',
+                compat_model: payload.compatibility?.model || '',
+                compat_trim: payload.compatibility?.trim || '',
+                compat_from_year: payload.compatibility?.fromYear || '',
+                compat_to_year: payload.compatibility?.toYear || '',
                 
-                part_availability: payload.partInfo?.availability,
-                part_size: payload.partInfo?.size,
-                part_compatibility: payload.partInfo?.partCompatibility,
-                part_number: payload.partInfo?.partNumber,
-                warranty: payload.partInfo?.warranty,
-                material: payload.partInfo?.material,
-                dimensions: payload.partInfo?.dimensions,
-                weight: payload.partInfo?.weight,
-                color: payload.partInfo?.color,
-                finish: payload.partInfo?.finish,
-                power_source: payload.partInfo?.powerSource,
+                part_availability: payload.partInfo?.availability || '',
+                part_size: payload.partInfo?.size || '',
+                part_compatibility: payload.partInfo?.partCompatibility || '',
+                part_number: payload.partInfo?.partNumber || '',
+                warranty: payload.partInfo?.warranty || '',
+                material: payload.partInfo?.material || '',
+                dimensions: payload.partInfo?.dimensions || '',
+                weight: payload.partInfo?.weight || '',
+                color: payload.partInfo?.color || '',
+                finish: payload.partInfo?.finish || '',
+                power_source: payload.partInfo?.powerSource || '',
                 
-                contact_name: payload.contact?.name,
-                contact_address: payload.contact?.address,
-                contact_city: payload.contact?.city,
-                contact_state: payload.contact?.state,
-                contact_zip_code: payload.contact?.zipCode,
-                contact_phone: payload.contact?.phone,
-                contact_email: payload.contact?.email,
+                contact_name: payload.contact?.name || '',
+                contact_address: payload.contact?.address || '',
+                contact_city: payload.contact?.city || '',
+                contact_state: payload.contact?.state || '',
+                contact_zip_code: payload.contact?.zipCode || '',
+                contact_phone: payload.contact?.phone || '',
+                contact_email: payload.contact?.email || '',
                 
-                auth_username: payload.auth?.username,
-                auth_password: payload.auth?.password,
-                legal_listing_choice: payload.auth?.legalListingChoice
+                auth_username: payload.auth?.username || '',
+                auth_password: payload.auth?.password || '',
+                legal_listing_choice: payload.auth?.legalListingChoice || ''
             };
         } else if (payload.service) {
             // --- SERVICE PAYLOAD MAPPING ---
@@ -243,42 +244,42 @@ app.post('/api/listings', async (req, res) => {
                 unique_listing_id: payload.id?.uniqueServiceListingID,
                 category: 'service',
                 status: 'incoming',
-                title: payload.title,
-                description: payload.description,
-                image_urls: payload.images,
-                service_url: payload.url,
+                title: payload.title || 'Untitled Service',
+                description: payload.description || '',
+                image_urls: payload.images || [],
+                service_url: payload.url || '',
                 
-                service_category: payload.service?.category,
-                service_type: payload.service?.type,
-                custom_service_type: payload.service?.customType,
-                company_name: payload.service?.companyName,
-                service_address: payload.service?.serviceAddress,
-                service_city: payload.service?.city,
-                service_state: payload.service?.state,
-                service_zip: payload.service?.zipCode,
+                service_category: payload.service?.category || '',
+                service_type: payload.service?.type || '',
+                custom_service_type: payload.service?.customType || '',
+                company_name: payload.service?.companyName || '',
+                service_address: payload.service?.serviceAddress || '',
+                service_city: payload.service?.city || '',
+                service_state: payload.service?.state || '',
+                service_zip: payload.service?.zipCode || '',
                 
-                hours_monday: payload.openHours?.monday,
-                hours_tuesday: payload.openHours?.tuesday,
-                hours_wednesday: payload.openHours?.wednesday,
-                hours_thursday: payload.openHours?.thursday,
-                hours_friday: payload.openHours?.friday,
-                hours_saturday: payload.openHours?.saturday,
-                hours_sunday: payload.openHours?.sunday,
+                hours_monday: payload.openHours?.monday || '',
+                hours_tuesday: payload.openHours?.tuesday || '',
+                hours_wednesday: payload.openHours?.wednesday || '',
+                hours_thursday: payload.openHours?.thursday || '',
+                hours_friday: payload.openHours?.friday || '',
+                hours_saturday: payload.openHours?.saturday || '',
+                hours_sunday: payload.openHours?.sunday || '',
                 
-                service_row_title: payload.service_row?.service_title,
-                service_row_description: payload.service_row?.service_description,
-                service_row_parts_included: payload.service_row?.service_parts_included,
-                service_row_labor_included: payload.service_row?.service_labor_included,
-                service_row_price: payload.service_row?.service_price,
-                service_row_duration: payload.service_row?.service_duration,
+                service_row_title: payload.service_row?.service_title || '',
+                service_row_description: payload.service_row?.service_description || '',
+                service_row_parts_included: payload.service_row?.service_parts_included || '',
+                service_row_labor_included: payload.service_row?.service_labor_included || '',
+                service_row_price: payload.service_row?.service_price || '',
+                service_row_duration: payload.service_row?.service_duration || '',
                 
-                contact_name: payload.contact?.name,
-                contact_phone: payload.contact?.phone,
-                contact_email: payload.contact?.email,
+                contact_name: payload.contact?.name || '',
+                contact_phone: payload.contact?.phone || '',
+                contact_email: payload.contact?.email || '',
                 
-                auth_username: payload.auth?.username,
-                auth_password: payload.auth?.password,
-                legal_listing_choice: payload.auth?.legalListingChoice
+                auth_username: payload.auth?.username || '',
+                auth_password: payload.auth?.password || '',
+                legal_listing_choice: payload.auth?.legalListingChoice || ''
             };
         } else {
             return res.status(400).json({ success: false, error: 'Unknown payload structure category.' });
