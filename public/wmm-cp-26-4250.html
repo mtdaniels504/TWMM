@@ -49,10 +49,12 @@
         </div>
     </div>
 
-    <script>
+<script>
         const STORAGE_KEY = 'twmm_admin_secret';
+        
+        // --- ADD YOUR RENDER BACKEND URL HERE ---
+        const BACKEND_URL = 'https://twmm-g972.onrender.com';
 
-        // Check if session already has key saved
         window.onload = () => {
             const savedKey = localStorage.getItem(STORAGE_KEY);
             if (savedKey) {
@@ -67,7 +69,8 @@
 
         async function verifyAndLoadDashboard(secretKey) {
             try {
-                const response = await fetch('/api/admin/incoming', {
+                // --- UPDATED TO USE BACKEND_URL ---
+                const response = await fetch(`${BACKEND_URL}/api/admin/incoming`, {
                     headers: { 'x-admin-secret': secretKey }
                 });
 
@@ -133,7 +136,8 @@
             if (!confirm('Are you sure you want to approve this listing?')) return;
             const secretKey = localStorage.getItem(STORAGE_KEY);
 
-            const res = await fetch(`/api/admin/listings/${id}/approve`, {
+            // --- UPDATED TO USE BACKEND_URL ---
+            const res = await fetch(`${BACKEND_URL}/api/admin/listings/${id}/approve`, {
                 method: 'PUT',
                 headers: { 'x-admin-secret': secretKey }
             });
@@ -141,7 +145,7 @@
             const data = await res.json();
             if (data.success) {
                 alert('Listing approved!');
-                verifyAndLoadDashboard(secretKey); // Refresh list
+                verifyAndLoadDashboard(secretKey);
             } else {
                 alert('Error: ' + data.error);
             }
@@ -151,7 +155,8 @@
             if (!confirm('Are you sure you want to permanently reject and delete this listing?')) return;
             const secretKey = localStorage.getItem(STORAGE_KEY);
 
-            const res = await fetch(`/api/admin/listings/${id}`, {
+            // --- UPDATED TO USE BACKEND_URL ---
+            const res = await fetch(`${BACKEND_URL}/api/admin/listings/${id}`, {
                 method: 'DELETE',
                 headers: { 'x-admin-secret': secretKey }
             });
@@ -159,7 +164,7 @@
             const data = await res.json();
             if (data.success) {
                 alert('Listing deleted!');
-                verifyAndLoadDashboard(secretKey); // Refresh list
+                verifyAndLoadDashboard(secretKey);
             } else {
                 alert('Error: ' + data.error);
             }
