@@ -361,6 +361,9 @@ app.post('/api/listings', async (req, res) => {
 // Middleware to verify the admin secret header
 const verifyAdmin = (req, res, next) => {
     const adminKey = req.headers['x-admin-secret'];
+
+    console.log(`[DEBUG] Incoming Header: "${adminKey}" | Render Env: "${process.env.ADMIN_SECRET_KEY}"`);
+    
     if (!adminKey || adminKey !== process.env.ADMIN_SECRET_KEY) {
         console.warn(`[Admin Security] Blocked unauthorized attempt with key: "${adminKey}"`);
         return res.status(403).json({ success: false, error: 'Access Denied: Invalid Admin Secret' });
