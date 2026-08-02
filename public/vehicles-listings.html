@@ -17061,7 +17061,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", async function() {
         try {
-            // CHANGED: Fetch active listings specific to the vehicle category from your backend
+            // Fetch active listings specific to the vehicle category from your backend
             const response = await fetch("https://twmm-g972.onrender.com/api/listings/category/vehicle", {
                 method: "GET",
                 headers: {
@@ -17074,9 +17074,6 @@
             }
 
             const data = await response.json();
-            console.log(data);
-
-            // Extract the listings array from the response format
             const vehiclesData = data.listings || [];
 
             // Get the uniqueListingID from the URL (?listing=V-...)
@@ -17086,24 +17083,19 @@
                 // Clone the full-listing template
                 const fullListingClone = fullListingTemplate.cloneNode(true);
                 
-                // Ensure the clone is visible (in case the original template was hidden)
+                // Ensure the clone is visible
                 fullListingClone.style.display = 'block';
 
-                // Update small image spot IDs
-                const listingID = listing.unique_listing_id;
-                console.log(`Unique Listing ID = ${listingID}`);
-                const smallImageSpots = fullListingClone.querySelectorAll('[id^="listing-small-image-preview-"]');
-                smallImageSpots.forEach((spot, index) => {
-                    spot.id = `listing-small-image-preview-${listingID}-${index + 1}`;
-                });
+                const listingID = listing.unique_listing_id || 'unknown';
 
                 // Check username login status
                 let hasUserLogin = false;
                 const incomingUsernameElement = fullListingClone.querySelector('#incoming-username');
-                incomingUsernameElement.textContent = listing.auth_username || 'n/a';
-
-                if (incomingUsernameElement.textContent !== 'n/a' && incomingUsernameElement.textContent !== '') {
-                    hasUserLogin = true;
+                if (incomingUsernameElement) {
+                    incomingUsernameElement.textContent = listing.auth_username || 'n/a';
+                    if (incomingUsernameElement.textContent !== 'n/a' && incomingUsernameElement.textContent !== '') {
+                        hasUserLogin = true;
+                    }
                 }
 
                 if (!hasUserLogin) {
@@ -17111,87 +17103,90 @@
                     if (authFormContainer) authFormContainer.style.display = 'none';
                 }
 
-                // Populate the clone with database record fields
-                fullListingClone.querySelector('#listing-title').textContent = listing.title || 'n/a';
-                fullListingClone.querySelector('#selected-vehicle-type').textContent = listing.vehicle_type || 'n/a';
-                fullListingClone.querySelector('#selected-year').textContent = listing.year || 'n/a';
-                fullListingClone.querySelector('#selected-make').textContent = listing.make || 'n/a';
-                fullListingClone.querySelector('#selected-model').textContent = listing.model || 'n/a';
-                fullListingClone.querySelector('#selected-trim').textContent = listing.trim || 'n/a';
-                fullListingClone.querySelector('#display-fulfillment-listings').textContent = listing.fulfillment || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-theme-display').textContent = listing.theme || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-vin-display').textContent = listing.vin || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-condition-display').textContent = listing.condition || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-fuel-type-display').textContent = listing.fuel || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-drive-type-display').textContent = listing.drive_type || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-transmission-display').textContent = listing.transmission || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-fuel-efficiency-display').textContent = listing.fuel_efficiency || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-exterior-color-display').textContent = listing.exterior_color || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-interior-color-display').textContent = listing.interior_color || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-performance-upgrades-display').textContent = listing.performance_upgrades || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-aesthetic-upgrades-display').textContent = listing.aesthetic_upgrades || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-engine-type-display').textContent = listing.engine_type || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-suspension-type-display').textContent = listing.suspension || 'n/a';
-                fullListingClone.querySelector('#listing-vehicle-tire-type-display').textContent = listing.tires || 'n/a';
-                
-                fullListingClone.querySelector('#listing-contact-name-display').textContent = listing.contact_name || 'n/a';
-                fullListingClone.querySelector('#listing-contact-address-display').textContent = listing.contact_address || 'n/a';
-                fullListingClone.querySelector('#listing-contact-city-display').textContent = listing.contact_city || 'n/a';
-                fullListingClone.querySelector('#listing-contact-state-display').textContent = listing.contact_state || 'n/a';
-                fullListingClone.querySelector('#listing-contact-zip-code-display').textContent = listing.contact_zip_code || 'n/a';
-                fullListingClone.querySelector('#listing-contact-phone-display').textContent = listing.contact_phone || 'n/a';
-                fullListingClone.querySelector('#listing-contact-email-display').textContent = listing.contact_email || 'n/a';
+                // Populate database record fields
+                const setField = (selector, value) => {
+                    const el = fullListingClone.querySelector(selector);
+                    if (el) el.textContent = value || 'n/a';
+                };
 
-                // Handle Images & Videos Array (Now automatically pre-signed by the backend!)
-                const images = listing.image_urls || [];
-                const imagePreview = fullListingClone.querySelector(`.listing-image-preview`);
+                setField('#listing-title', listing.title);
+                setField('#selected-vehicle-type', listing.vehicle_type);
+                setField('#selected-year', listing.year);
+                setField('#selected-make', listing.make);
+                setField('#selected-model', listing.model);
+                setField('#selected-trim', listing.trim);
+                setField('#display-fulfillment-listings', listing.fulfillment);
+                setField('#listing-vehicle-theme-display', listing.theme);
+                setField('#listing-vehicle-vin-display', listing.vin);
+                setField('#listing-vehicle-condition-display', listing.condition);
+                setField('#listing-vehicle-fuel-type-display', listing.fuel);
+                setField('#listing-vehicle-drive-type-display', listing.drive_type);
+                setField('#listing-vehicle-transmission-display', listing.transmission);
+                setField('#listing-vehicle-fuel-efficiency-display', listing.fuel_efficiency);
+                setField('#listing-vehicle-exterior-color-display', listing.exterior_color);
+                setField('#listing-vehicle-interior-color-display', listing.interior_color);
+                setField('#listing-vehicle-performance-upgrades-display', listing.performance_upgrades);
+                setField('#listing-vehicle-aesthetic-upgrades-display', listing.aesthetic_upgrades);
+                setField('#listing-vehicle-engine-type-display', listing.engine_type);
+                setField('#listing-vehicle-suspension-type-display', listing.suspension);
+                setField('#listing-vehicle-tire-type-display', listing.tires);
                 
-                for (let i = 0; i < 5; i++) {
-                    const smallImageSpotID = `listing-small-image-preview-${listingID}-${i + 1}`;
-                    let smallImageSpot = fullListingClone.querySelector(`#${smallImageSpotID}`);
-                    const smallImageContainer = fullListingClone.querySelector(`#small-image-spot-${i + 1}`);
-                    
-                    if (!smallImageSpot || !smallImageContainer) continue;
+                setField('#listing-contact-name-display', listing.contact_name);
+                setField('#listing-contact-address-display', listing.contact_address);
+                setField('#listing-contact-city-display', listing.contact_city);
+                setField('#listing-contact-state-display', listing.contact_state);
+                setField('#listing-contact-zip-code-display', listing.contact_zip_code);
+                setField('#listing-contact-phone-display', listing.contact_phone);
+                setField('#listing-contact-email-display', listing.contact_email);
+
+                // Handle Images & Videos Array matching your new HTML structure
+                const images = listing.image_urls || [];
+                const imagePreview = fullListingClone.querySelector('.listing-main-screen');
+                const smallImageSpots = fullListingClone.querySelectorAll('.listing-small-image-spot');
+                const smallImagesContainer = fullListingClone.querySelector('.listing-small-image-container');
+
+                if (images.length > 0 && smallImagesContainer) {
+                    smallImagesContainer.style.display = 'flex'; // Or your preferred display style
+                }
+
+                smallImageSpots.forEach((spotContainer, i) => {
+                    const smallImageSpot = spotContainer.querySelector('.listing-small-image-preview');
+                    if (!smallImageSpot) return;
 
                     if (i < images.length && images[i]) {
+                        spotContainer.style.display = 'block';
                         const imageURL = images[i];
-                        const cleanUrl = imageURL.split('?')[0]; // Strip query params for extension check
+                        const cleanUrl = imageURL.split('?')[0];
                         const fileExtension = cleanUrl.toLowerCase().split('.').pop();
 
                         if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension)) {
                             smallImageSpot.src = imageURL;
                             smallImageSpot.alt = `Image ${i + 1}`;
-                            smallImageSpot.classList.add('small-image-preview');
                             
                             if (i === 0 && imagePreview) {
                                 imagePreview.src = imageURL;
                                 imagePreview.alt = `Listing Image`;
-                                imagePreview.classList.add('listing-image-preview');
                             }
                         } else if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
                             const videoElement = document.createElement('video');
                             videoElement.src = imageURL;
                             videoElement.controls = true;
-                            videoElement.classList.add('small-image-preview');
-                            videoElement.id = smallImageSpotID;
+                            videoElement.className = smallImageSpot.className;
 
                             smallImageSpot.replaceWith(videoElement);
-                            smallImageSpot = videoElement;
 
                             if (i === 0 && imagePreview) {
                                 const mainVideoElement = document.createElement('video');
                                 mainVideoElement.src = imageURL;
                                 mainVideoElement.controls = true;
-                                mainVideoElement.classList.add('listing-image-preview');
+                                mainVideoElement.className = imagePreview.className;
                                 imagePreview.replaceWith(mainVideoElement);
                             }
                         }
                     } else {
-                        smallImageSpot.src = 'listing-placeholder.png';
-                        smallImageSpot.alt = `Placeholder Image ${i + 1}`;
-                        smallImageContainer.style.display = 'none';
+                        spotContainer.style.display = 'none';
                     }
-                }
+                });
 
                 // Currency formatting helper
                 function formatCurrency(number) {
@@ -17199,31 +17194,35 @@
                     return '$' + Number(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
 
-                fullListingClone.querySelector('#display-asking-price-listings').textContent = formatCurrency(listing.asking_price);
-                fullListingClone.querySelector('#display-plusMinus-listings').textContent = formatCurrency(listing.plus_minus);
+                setField('#display-asking-price-listings', formatCurrency(listing.asking_price));
+                setField('#display-plusMinus-listings', formatCurrency(listing.plus_minus));
 
                 // Negotiate check
                 const negotiateElement = fullListingClone.querySelector('#display-negotiate-listings');
-                negotiateElement.textContent = (listing.negotiate === 'true' || listing.negotiate === true) ? 'Yes' : 'No';
+                if (negotiateElement) {
+                    negotiateElement.textContent = (listing.negotiate === 'true' || listing.negotiate === true) ? 'Yes' : 'No';
+                }
 
                 // Description formatting
                 const customDescriptionElement = fullListingClone.querySelector('#listing-vehicles-custom-description');
-                let description = listing.description || ' ';
-                description = description
-                    .replace(/%20/g, ' ')
-                    .replace(/\(\*5\*5\*\)/g, '<br>')
-                    .replace(/%3F/g, '?')
-                    .replace(/%24/g, '$')
-                    .replace(/%2C/g, ',')
-                    .replace(/%2F/g, '/')
-                    .replace(/%3A/g, ':')
-                    .replace(/%3D/g, '=')
-                    .replace(/%26/g, '&')
-                    .replace(/%40/g, '@')
-                    .replace(/%23/g, '#')
-                    .replace(/%2B/g, '+')
-                    .replace(/%25/g, '%');
-                customDescriptionElement.innerHTML = description;
+                if (customDescriptionElement) {
+                    let description = listing.description || ' ';
+                    description = description
+                        .replace(/%20/g, ' ')
+                        .replace(/\(\*5\*5\*\)/g, '<br>')
+                        .replace(/%3F/g, '?')
+                        .replace(/%24/g, '$')
+                        .replace(/%2C/g, ',')
+                        .replace(/%2F/g, '/')
+                        .replace(/%3A/g, ':')
+                        .replace(/%3D/g, '=')
+                        .replace(/%26/g, '&')
+                        .replace(/%40/g, '@')
+                        .replace(/%23/g, '#')
+                        .replace(/%2B/g, '+')
+                        .replace(/%25/g, '%');
+                    customDescriptionElement.innerHTML = description;
+                }
 
                 // Number formatting helper (mileage, horsepower)
                 function formatNumber(number) {
@@ -17231,8 +17230,8 @@
                     return Number(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
 
-                fullListingClone.querySelector('#listing-vehicle-mileage-display').textContent = formatNumber(listing.mileage);
-                fullListingClone.querySelector('#listing-vehicle-horsepower-display').textContent = formatNumber(listing.horsepower);
+                setField('#listing-vehicle-mileage-display', formatNumber(listing.mileage));
+                setField('#listing-vehicle-horsepower-display', formatNumber(listing.horsepower));
 
                 // Clean up N/A empty metadata items
                 const infoSpans = fullListingClone.querySelectorAll('.listing-info-span');
@@ -17246,12 +17245,13 @@
                 fullListingClone.setAttribute('data-listing-id', listingID);
 
                 const container = document.querySelector('.container');
-                container.appendChild(fullListingClone);
+                if (container) container.appendChild(fullListingClone);
 
                 return fullListingClone;
             }
 
             const fullListingTemplate = document.querySelector('.full-listing');
+            if (!fullListingTemplate) return;
 
             // Render logic based on URL parameter
             if (uniqueListingID) {
