@@ -429,6 +429,57 @@ app.get('/api/listings/active', async (req, res) => {
 });
 
 // ==========================================
+// PUBLIC ENDPOINT: FETCH ACTIVE LISTINGS BY CATEGORY
+// ==========================================
+app.get('/api/listings/category/:category', async (req, res) => {
+    const categoryName = req.params.category.toLowerCase();
+
+    try {
+        // 1. Fetch active listings filtered by category from Supabase
+        const { data: listings, error } = await supabase
+            .from('listings')
+            .select('*')
+            .eq('status', 'active')
+            .eq('category', categoryName);
+
+        if (error) throw error;
+
+        // 2. Loop through listings and sign their S3 image/video URLs
+        const listingsWithSignedUrls = await Promise.all(listings.map(async (listing) => {
+            if (listing.image_urls && listing.image_urls.length > 0) {
+                const signedUrls = await Promise.all(listing.image_urls.map(async (url) => {
+                    try {
+                        const urlObj = new URL(url);
+                        const bucketName = urlObj.hostname.split('.')[0];
+                        const key = decodeURIComponent(urlObj.pathname.startsWith('/') ? urlObj.pathname.substring(1) : urlObj.pathname);
+
+                        const command = new GetObjectCommand({
+                            Bucket: bucketName,
+                            Key: key
+                        });
+
+                        // Generate a secure URL that expires in 1 hour (3600 seconds)
+                        return await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+                    } catch (err) {
+                        console.error('Error signing URL for category listing:', err);
+                        return url; // Fallback to raw URL if parsing fails
+                    }
+                }));
+                listing.image_urls = signedUrls; // Replace raw URLs with secure signed ones
+            }
+            return listing;
+        }));
+
+        // 3. Send response back to the frontend
+        return res.status(200).json({ success: true, listings: listingsWithSignedUrls });
+
+    } catch (err) {
+        console.error(`Error fetching active listings for category "${categoryName}":`, err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// ==========================================
 // ADMIN MIDDLEWARE & ROUTES
 // ==========================================
 const verifyAdmin = (req, res, next) => {
