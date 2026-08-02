@@ -17144,12 +17144,12 @@
 
                 // Handle Images & Videos Array (Now automatically pre-signed by the backend!)
                 const images = listing.image_urls || [];
+                const imagePreview = fullListingClone.querySelector(`.listing-image-preview`);
                 
                 for (let i = 0; i < 5; i++) {
                     const smallImageSpotID = `listing-small-image-preview-${listingID}-${i + 1}`;
                     let smallImageSpot = fullListingClone.querySelector(`#${smallImageSpotID}`);
                     const smallImageContainer = fullListingClone.querySelector(`#small-image-spot-${i + 1}`);
-                    const imagePreview = fullListingClone.querySelector(`.listing-image-preview`);
                     
                     if (!smallImageSpot || !smallImageContainer) continue;
 
