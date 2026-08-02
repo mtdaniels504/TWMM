@@ -17154,7 +17154,7 @@
                 const smallImagesContainer = fullListingClone.querySelector('.listing-small-image-container');
 
                 if (images.length > 0 && smallImagesContainer) {
-                    smallImagesContainer.style.display = 'flex'; // Or your preferred display style
+                    smallImagesContainer.style.display = 'flex'; 
                 }
 
                 smallImageSpots.forEach((spotContainer, i) => {
@@ -17169,16 +17169,20 @@
 
                         if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension)) {
                             smallImageSpot.src = imageURL;
+                            smallImageSpot.dataset.src = imageURL; // Store source reliably
                             smallImageSpot.alt = `Image ${i + 1}`;
                             
                             if (i === 0 && imagePreview) {
                                 imagePreview.src = imageURL;
+                                imagePreview.dataset.src = imageURL; // Store source reliably
                                 imagePreview.alt = `Listing Image`;
                             }
                         } else if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
+                            // For small previews that are videos, we create a video tag and preserve dataset attributes
                             const videoElement = document.createElement('video');
                             videoElement.src = imageURL;
-                            videoElement.controls = true;
+                            videoElement.dataset.src = imageURL;
+                            videoElement.controls = false; // Usually keep thumbs without active controls for cleanliness
                             videoElement.className = smallImageSpot.className;
 
                             smallImageSpot.replaceWith(videoElement);
@@ -17186,6 +17190,7 @@
                             if (i === 0 && imagePreview) {
                                 const mainVideoElement = document.createElement('video');
                                 mainVideoElement.src = imageURL;
+                                mainVideoElement.dataset.src = imageURL;
                                 mainVideoElement.controls = true;
                                 mainVideoElement.className = imagePreview.className;
                                 imagePreview.replaceWith(mainVideoElement);
@@ -17292,10 +17297,12 @@
         if (!clone) return;
 
         const imagePreview = clone.querySelector('.listing-main-screen');
-        // Use the same smart filtering logic to ignore hidden spots and placeholders
-        const smallImagePreviews = Array.from(clone.querySelectorAll('.listing-small-image-container .listing-small-image-preview')).filter(img => {
-            const filename = img.src.split('?')[0].split('/').pop();
-            const parentSpot = img.closest('.listing-small-image-spot');
+        
+        // Use the smart filtering logic with data-src fallback for robustness
+        const smallImagePreviews = Array.from(clone.querySelectorAll('.listing-small-image-container .listing-small-image-preview, .listing-small-image-container video')).filter(el => {
+            const rawSrc = el.dataset.src || el.src || '';
+            const filename = rawSrc.split('?')[0].split('/').pop();
+            const parentSpot = el.closest('.listing-small-image-spot');
             const isSpotVisible = parentSpot && parentSpot.style.display !== 'none';
             return filename !== 'listing-placeholder.png' && 
                    filename !== 'placeholder.png' && 
@@ -17303,19 +17310,22 @@
         });
 
         if (imagePreview && smallImagePreviews.length > 0) {
+            // Get current active source safely using data-src or src property
+            const currentActiveSrc = imagePreview.dataset.src || imagePreview.src;
 
             // Function to handle Next button click
             if (target.matches('.listing-next-button')) {
                 let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
-                    if (smallImagePreview.src === imagePreview.src) {
+                    const thumbSrc = smallImagePreview.dataset.src || smallImagePreview.src;
+                    if (thumbSrc === currentActiveSrc) {
                         currentIndex = index;
                     }
                 });
 
                 const totalImages = smallImagePreviews.length;
                 const nextIndex = (currentIndex + 1) % totalImages;
-                const nextImageSrc = smallImagePreviews[nextIndex].src;
+                const nextImageSrc = smallImagePreviews[nextIndex].dataset.src || smallImagePreviews[nextIndex].src;
                 
                 const newElement = createMediaElement(nextImageSrc);
                 if (newElement) replaceMainSpotContent(clone, newElement);
@@ -17325,14 +17335,15 @@
             if (target.matches('.listing-previous-button')) {
                 let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
-                    if (smallImagePreview.src === imagePreview.src) {
+                    const thumbSrc = smallImagePreview.dataset.src || smallImagePreview.src;
+                    if (thumbSrc === currentActiveSrc) {
                         currentIndex = index;
                     }
                 });
 
                 const totalImages = smallImagePreviews.length;
                 const previousIndex = (currentIndex - 1 + totalImages) % totalImages;
-                const previousImageSrc = smallImagePreviews[previousIndex].src;
+                const previousImageSrc = smallImagePreviews[previousIndex].dataset.src || smallImagePreviews[previousIndex].src;
 
                 const newElement = createMediaElement(previousImageSrc);
                 if (newElement) replaceMainSpotContent(clone, newElement);
@@ -17346,10 +17357,11 @@
                 }
             }
 
-            // Add event listeners to each small image spot/preview
+            // Add event listeners to each small image/video spot/preview
             smallImagePreviews.forEach(smallImagePreview => {
-                if (target === smallImagePreview) {
-                    const newImageSrc = target.src;
+                const matchedEl = target.closest('.listing-small-image-preview') || target.closest('video');
+                if (target === smallImagePreview || matchedEl === smallImagePreview) {
+                    const newImageSrc = smallImagePreview.dataset.src || smallImagePreview.src;
                     const newImageElement = createMediaElement(newImageSrc);
                     if (newImageElement) replaceMainSpotContent(clone, newImageElement);
                 }
@@ -17365,11 +17377,13 @@
         if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension)) {
             const img = document.createElement('img');
             img.src = src;
+            img.dataset.src = src;
             img.className = 'listing-main-screen';
             return img;
         } else if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
             const video = document.createElement('video');
             video.src = src;
+            video.dataset.src = src;
             video.controls = true;
             video.className = 'listing-main-screen';
             return video;
