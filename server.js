@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const path = require('path');
 const multer = require('multer');
+const sanitizeHtml = require('sanitize-html');
 const { createClient } = require('@supabase/supabase-js');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 
@@ -39,8 +41,9 @@ const corsOptions = {
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// Increase Express JSON and URL-encoded limits to 50mb
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Global request logger to track every single incoming request and headers
 app.use((req, res, next) => {
@@ -63,11 +66,31 @@ app.get('/:page', (req, res, next) => {
     });
 });
 
-// Keep uploads in memory temporarily to stream to S3
-const upload = multer({ storage: multer.memoryStorage() });
+// Configure Multer with a file size limit (50MB per file) and whitelist filtering
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { 
+        fileSize: 50 * 1024 * 1024 // 50MB limit per file
+    },
+    fileFilter: (req, file, cb) => {
+        const allowedTypes = [
+            'image/jpeg', 
+            'image/png', 
+            'image/webp', 
+            'video/mp4', 
+            'video/quicktime'
+        ];
+
+        if (allowedTypes.includes(file.mimetype)) {
+            cb(null, true); 
+        } else {
+            cb(new Error('Invalid file type. Only JPEG, PNG, WEBP images and MP4/MOV videos are allowed.'), false); 
+        }
+    }
+});
 
 // ==========================================
-// HELPER FUNCTIONS FOR TYPE SAFETY
+// HELPER FUNCTIONS FOR TYPE SAFETY & SANITIZATION
 // ==========================================
 const parseInteger = (val) => {
     if (val === '' || val === undefined || val === null || isNaN(val)) return null;
@@ -77,6 +100,14 @@ const parseInteger = (val) => {
 const parseNumeric = (val) => {
     if (val === '' || val === undefined || val === null || isNaN(val)) return null;
     return parseFloat(val);
+};
+
+const sanitizeText = (val) => {
+    if (!val || typeof val !== 'string') return '';
+    return sanitizeHtml(val, {
+        allowedTags: [], // Strips all HTML/script tags entirely to protect against XSS
+        allowedAttributes: {}
+    });
 };
 
 // ==========================================
@@ -107,7 +138,6 @@ app.post('/upload', upload.array('images', 5), async (req, res) => {
     }
 
     try {
-        // ALLOW NO IMAGES: If user didn't attach any files, return success with an empty array
         if (!req.files || req.files.length === 0) {
             console.log(`[Upload] Listing ${listingId} submitted with 0 images. Continuing without upload.`);
             return res.status(200).json({ success: true, urls: [] });
@@ -128,7 +158,6 @@ app.post('/upload', upload.array('images', 5), async (req, res) => {
 
             await s3Client.send(new PutObjectCommand(uploadParams));
 
-            // Generate the standard public S3 URL
             const fileUrl = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileName}`;
             uploadedImageUrls.push(fileUrl);
         }
@@ -150,149 +179,149 @@ app.post('/api/listings', async (req, res) => {
         let dbRecord = {};
 
         if (payload.vehicle) {
-            // --- VEHICLE PAYLOAD MAPPING ---
+            // --- VEHICLE PAYLOAD MAPPING & SANITIZATION ---
             dbRecord = {
                 unique_listing_id: payload.id?.uniqueListingID,
                 category: 'vehicle',
                 status: 'incoming',
-                title: payload.title || 'Untitled Vehicle',
-                description: payload.vehicle.description || '',
+                title: sanitizeText(payload.title) || 'Untitled Vehicle',
+                description: sanitizeText(payload.vehicle.description) || '',
                 image_urls: payload.images || [],
                 
                 asking_price: parseNumeric(payload.vehicle.askingPrice),
-                negotiate: payload.vehicle.negotiate || '',
+                negotiate: sanitizeText(payload.vehicle.negotiate) || '',
                 plus_minus: parseNumeric(payload.vehicle.plusMinus),
-                fulfillment: payload.vehicle.fulfillment || '',
+                fulfillment: sanitizeText(payload.vehicle.fulfillment) || '',
                 
-                vehicle_type: payload.vehicle.category || '',
-                make: payload.vehicle.make || '',
-                model: payload.vehicle.model || '',
-                trim: payload.vehicle.trim || '',
+                vehicle_type: sanitizeText(payload.vehicle.category) || '',
+                make: sanitizeText(payload.vehicle.make) || '',
+                model: sanitizeText(payload.vehicle.model) || '',
+                trim: sanitizeText(payload.vehicle.trim) || '',
                 year: parseInteger(payload.vehicle.year),
-                theme: payload.vehicle.theme || '',
-                vin: payload.vehicle.vin || '',
-                condition: payload.vehicle.condition || '',
+                theme: sanitizeText(payload.vehicle.theme) || '',
+                vin: sanitizeText(payload.vehicle.vin) || '',
+                condition: sanitizeText(payload.vehicle.condition) || '',
                 mileage: parseInteger(payload.vehicle.mileage),
-                fuel: payload.vehicle.fuel || '',
-                drive_type: payload.vehicle.driveType || '',
-                transmission: payload.vehicle.transmission || '',
-                fuel_efficiency: payload.vehicle.fuelEfficiency || '',
-                exterior_color: payload.vehicle.exteriorColor || '',
-                interior_color: payload.vehicle.interiorColor || '',
-                performance_upgrades: payload.vehicle.performanceUpgrades || '',
-                aesthetic_upgrades: payload.vehicle.aestheticUpgrades || '',
-                engine_type: payload.vehicle.engineType || '',
-                horsepower: payload.vehicle.horsepower || '',
-                suspension: payload.vehicle.suspension || '',
-                tires: payload.vehicle.tires || '',
+                fuel: sanitizeText(payload.vehicle.fuel) || '',
+                drive_type: sanitizeText(payload.vehicle.driveType) || '',
+                transmission: sanitizeText(payload.vehicle.transmission) || '',
+                fuel_efficiency: sanitizeText(payload.vehicle.fuelEfficiency) || '',
+                exterior_color: sanitizeText(payload.vehicle.exteriorColor) || '',
+                interior_color: sanitizeText(payload.vehicle.interiorColor) || '',
+                performance_upgrades: sanitizeText(payload.vehicle.performanceUpgrades) || '',
+                aesthetic_upgrades: sanitizeText(payload.vehicle.aestheticUpgrades) || '',
+                engine_type: sanitizeText(payload.vehicle.engineType) || '',
+                horsepower: sanitizeText(payload.vehicle.horsepower) || '',
+                suspension: sanitizeText(payload.vehicle.suspension) || '',
+                tires: sanitizeText(payload.vehicle.tires) || '',
                 
-                contact_name: payload.contact?.name || '',
-                contact_address: payload.contact?.address || '',
-                contact_city: payload.contact?.city || '',
-                contact_state: payload.contact?.state || '',
-                contact_zip_code: payload.contact?.zipCode || '',
-                contact_phone: payload.contact?.phone || '',
-                contact_email: payload.contact?.email || '',
+                contact_name: sanitizeText(payload.contact?.name) || '',
+                contact_address: sanitizeText(payload.contact?.address) || '',
+                contact_city: sanitizeText(payload.contact?.city) || '',
+                contact_state: sanitizeText(payload.contact?.state) || '',
+                contact_zip_code: sanitizeText(payload.contact?.zipCode) || '',
+                contact_phone: sanitizeText(payload.contact?.phone) || '',
+                contact_email: sanitizeText(payload.contact?.email) || '',
                 
-                auth_username: payload.auth?.username || '',
-                auth_password: payload.auth?.password || '',
-                legal_listing_choice: payload.auth?.legalListingChoice || ''
+                auth_username: sanitizeText(payload.auth?.username) || '',
+                auth_password: payload.auth?.password || '', 
+                legal_listing_choice: sanitizeText(payload.auth?.legalListingChoice) || ''
             };
         } else if (payload.part) {
-            // --- PART PAYLOAD MAPPING ---
+            // --- PART PAYLOAD MAPPING & SANITIZATION ---
             dbRecord = {
                 unique_listing_id: payload.id?.uniquePartListingID,
                 category: 'part',
                 status: 'incoming',
-                title: payload.title || 'Untitled Part',
-                description: payload.description || '',
+                title: sanitizeText(payload.title) || 'Untitled Part',
+                description: sanitizeText(payload.description) || '',
                 image_urls: payload.images || [],
                 
                 asking_price: parseNumeric(payload.price?.askingPrice),
-                negotiate: payload.price?.negotiate || '',
+                negotiate: sanitizeText(payload.price?.negotiate) || '',
                 plus_minus: parseNumeric(payload.price?.plusMinus),
-                fulfillment: payload.price?.fulfillment || '',
+                fulfillment: sanitizeText(payload.price?.fulfillment) || '',
                 
-                part_name: payload.part.partName || '',
-                part_category: payload.part.category || '',
-                part_type: payload.part.partType || '',
-                part_brand: payload.part.partBrand || '',
-                part_model: payload.part.partModel || '',
-                part_year: payload.part.partYear || '',
+                part_name: sanitizeText(payload.part.partName) || '',
+                part_category: sanitizeText(payload.part.category) || '',
+                part_type: sanitizeText(payload.part.partType) || '',
+                part_brand: sanitizeText(payload.part.partBrand) || '',
+                part_model: sanitizeText(payload.part.partModel) || '',
+                part_year: sanitizeText(payload.part.partYear) || '',
                 
-                compat_vehicle_type: payload.compatibility?.vehicleType || '',
-                compat_make: payload.compatibility?.make || '',
-                compat_model: payload.compatibility?.model || '',
-                compat_trim: payload.compatibility?.trim || '',
-                compat_from_year: payload.compatibility?.fromYear || '',
-                compat_to_year: payload.compatibility?.toYear || '',
+                compat_vehicle_type: sanitizeText(payload.compatibility?.vehicleType) || '',
+                compat_make: sanitizeText(payload.compatibility?.make) || '',
+                compat_model: sanitizeText(payload.compatibility?.model) || '',
+                compat_trim: sanitizeText(payload.compatibility?.trim) || '',
+                compat_from_year: sanitizeText(payload.compatibility?.fromYear) || '',
+                compat_to_year: sanitizeText(payload.compatibility?.toYear) || '',
                 
-                part_availability: payload.partInfo?.availability || '',
-                part_size: payload.partInfo?.size || '',
-                part_compatibility: payload.partInfo?.partCompatibility || '',
-                part_number: payload.partInfo?.partNumber || '',
-                warranty: payload.partInfo?.warranty || '',
-                material: payload.partInfo?.material || '',
-                dimensions: payload.partInfo?.dimensions || '',
-                weight: payload.partInfo?.weight || '',
-                color: payload.partInfo?.color || '',
-                finish: payload.partInfo?.finish || '',
-                power_source: payload.partInfo?.powerSource || '',
+                part_availability: sanitizeText(payload.partInfo?.availability) || '',
+                part_size: sanitizeText(payload.partInfo?.size) || '',
+                part_compatibility: sanitizeText(payload.partInfo?.partCompatibility) || '',
+                part_number: sanitizeText(payload.partInfo?.partNumber) || '',
+                warranty: sanitizeText(payload.partInfo?.warranty) || '',
+                material: sanitizeText(payload.partInfo?.material) || '',
+                dimensions: sanitizeText(payload.partInfo?.dimensions) || '',
+                weight: sanitizeText(payload.partInfo?.weight) || '',
+                color: sanitizeText(payload.partInfo?.color) || '',
+                finish: sanitizeText(payload.partInfo?.finish) || '',
+                power_source: sanitizeText(payload.partInfo?.powerSource) || '',
                 
-                contact_name: payload.contact?.name || '',
-                contact_address: payload.contact?.address || '',
-                contact_city: payload.contact?.city || '',
-                contact_state: payload.contact?.state || '',
-                contact_zip_code: payload.contact?.zipCode || '',
-                contact_phone: payload.contact?.phone || '',
-                contact_email: payload.contact?.email || '',
+                contact_name: sanitizeText(payload.contact?.name) || '',
+                contact_address: sanitizeText(payload.contact?.address) || '',
+                contact_city: sanitizeText(payload.contact?.city) || '',
+                contact_state: sanitizeText(payload.contact?.state) || '',
+                contact_zip_code: sanitizeText(payload.contact?.zipCode) || '',
+                contact_phone: sanitizeText(payload.contact?.phone) || '',
+                contact_email: sanitizeText(payload.contact?.email) || '',
                 
-                auth_username: payload.auth?.username || '',
+                auth_username: sanitizeText(payload.auth?.username) || '',
                 auth_password: payload.auth?.password || '',
-                legal_listing_choice: payload.auth?.legalListingChoice || ''
+                legal_listing_choice: sanitizeText(payload.auth?.legalListingChoice) || ''
             };
         } else if (payload.service) {
-            // --- SERVICE PAYLOAD MAPPING ---
+            // --- SERVICE PAYLOAD MAPPING & SANITIZATION ---
             dbRecord = {
                 unique_listing_id: payload.id?.uniqueServiceListingID,
                 category: 'service',
                 status: 'incoming',
-                title: payload.title || 'Untitled Service',
-                description: payload.description || '',
+                title: sanitizeText(payload.title) || 'Untitled Service',
+                description: sanitizeText(payload.description) || '',
                 image_urls: payload.images || [],
-                service_url: payload.url || '',
+                service_url: sanitizeText(payload.url) || '',
                 
-                service_category: payload.service?.category || '',
-                service_type: payload.service?.type || '',
-                custom_service_type: payload.service?.customType || '',
-                company_name: payload.service?.companyName || '',
-                service_address: payload.service?.serviceAddress || '',
-                service_city: payload.service?.city || '',
-                service_state: payload.service?.state || '',
-                service_zip: payload.service?.zipCode || '',
+                service_category: sanitizeText(payload.service?.category) || '',
+                service_type: sanitizeText(payload.service?.type) || '',
+                custom_service_type: sanitizeText(payload.service?.customType) || '',
+                company_name: sanitizeText(payload.service?.companyName) || '',
+                service_address: sanitizeText(payload.service?.serviceAddress) || '',
+                service_city: sanitizeText(payload.service?.city) || '',
+                service_state: sanitizeText(payload.service?.state) || '',
+                service_zip: sanitizeText(payload.service?.zipCode) || '',
                 
-                hours_monday: payload.openHours?.monday || '',
-                hours_tuesday: payload.openHours?.tuesday || '',
-                hours_wednesday: payload.openHours?.wednesday || '',
-                hours_thursday: payload.openHours?.thursday || '',
-                hours_friday: payload.openHours?.friday || '',
-                hours_saturday: payload.openHours?.saturday || '',
-                hours_sunday: payload.openHours?.sunday || '',
+                hours_monday: sanitizeText(payload.openHours?.monday) || '',
+                hours_tuesday: sanitizeText(payload.openHours?.tuesday) || '',
+                hours_wednesday: sanitizeText(payload.openHours?.wednesday) || '',
+                hours_thursday: sanitizeText(payload.openHours?.thursday) || '',
+                hours_friday: sanitizeText(payload.openHours?.friday) || '',
+                hours_saturday: sanitizeText(payload.openHours?.saturday) || '',
+                hours_sunday: sanitizeText(payload.openHours?.sunday) || '',
                 
-                service_row_title: payload.service_row?.service_title || '',
-                service_row_description: payload.service_row?.service_description || '',
-                service_row_parts_included: payload.service_row?.service_parts_included || '',
-                service_row_labor_included: payload.service_row?.service_labor_included || '',
-                service_row_price: payload.service_row?.service_price || '',
-                service_row_duration: payload.service_row?.service_duration || '',
+                service_row_title: sanitizeText(payload.service_row?.service_title) || '',
+                service_row_description: sanitizeText(payload.service_row?.service_description) || '',
+                service_row_parts_included: sanitizeText(payload.service_row?.service_parts_included) || '',
+                service_row_labor_included: sanitizeText(payload.service_row?.service_labor_included) || '',
+                service_row_price: sanitizeText(payload.service_row?.service_price) || '',
+                service_row_duration: sanitizeText(payload.service_row?.service_duration) || '',
                 
-                contact_name: payload.contact?.name || '',
-                contact_phone: payload.contact?.phone || '',
-                contact_email: payload.contact?.email || '',
+                contact_name: sanitizeText(payload.contact?.name) || '',
+                contact_phone: sanitizeText(payload.contact?.phone) || '',
+                contact_email: sanitizeText(payload.contact?.email) || '',
                 
-                auth_username: payload.auth?.username || '',
+                auth_username: sanitizeText(payload.auth?.username) || '',
                 auth_password: payload.auth?.password || '',
-                legal_listing_choice: payload.auth?.legalListingChoice || ''
+                legal_listing_choice: sanitizeText(payload.auth?.legalListingChoice) || ''
             };
         } else {
             return res.status(400).json({ success: false, error: 'Unknown payload structure category.' });
@@ -301,6 +330,14 @@ app.post('/api/listings', async (req, res) => {
         // Validate that a unique identifier was actually found
         if (!dbRecord.unique_listing_id) {
             return res.status(400).json({ success: false, error: 'Missing unique listing ID in payload.' });
+        }
+
+        // SECURE: Hash the password using bcrypt before saving to Supabase if provided
+        if (dbRecord.auth_password && dbRecord.auth_password.trim() !== '') {
+            const saltRounds = 10;
+            dbRecord.auth_password = await bcrypt.hash(dbRecord.auth_password, saltRounds);
+        } else {
+            dbRecord.auth_password = null;
         }
 
         // Upsert record into Supabase
@@ -313,6 +350,73 @@ app.post('/api/listings', async (req, res) => {
         return res.status(200).json({ success: true, message: 'Listing successfully received and stored as incoming.' });
     } catch (err) {
         console.error('Database Upsert Error:', err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// ==========================================
+// ADMIN MIDDLEWARE & ROUTES
+// ==========================================
+
+// Middleware to verify the admin secret header
+const verifyAdmin = (req, res, next) => {
+    const adminKey = req.headers['x-admin-secret'];
+    if (!adminKey || adminKey !== process.env.ADMIN_SECRET_KEY) {
+        console.warn(`[Admin Security] Blocked unauthorized attempt with key: "${adminKey}"`);
+        return res.status(403).json({ success: false, error: 'Access Denied: Invalid Admin Secret' });
+    }
+    next();
+};
+
+// 1. Fetch all incoming listings pending review
+app.get('/api/admin/incoming', verifyAdmin, async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('listings')
+            .select('*')
+            .eq('status', 'incoming')
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return res.status(200).json({ success: true, listings: data });
+    } catch (err) {
+        console.error('Error fetching incoming listings:', err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// 2. Approve a listing (changes status to 'active')
+app.put('/api/admin/listings/:id/approve', verifyAdmin, async (req, res) => {
+    const listingId = req.params.id;
+
+    try {
+        const { error } = await supabase
+            .from('listings')
+            .update({ status: 'active' })
+            .eq('unique_listing_id', listingId);
+
+        if (error) throw error;
+        return res.status(200).json({ success: true, message: 'Listing approved successfully.' });
+    } catch (err) {
+        console.error('Error approving listing:', err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// 3. Reject/Delete a listing from the database
+app.delete('/api/admin/listings/:id', verifyAdmin, async (req, res) => {
+    const listingId = req.params.id;
+
+    try {
+        const { error } = await supabase
+            .from('listings')
+            .delete()
+            .eq('unique_listing_id', listingId);
+
+        if (error) throw error;
+        return res.status(200).json({ success: true, message: 'Listing deleted successfully.' });
+    } catch (err) {
+        console.error('Error deleting listing:', err);
         return res.status(500).json({ success: false, error: err.message });
     }
 });
