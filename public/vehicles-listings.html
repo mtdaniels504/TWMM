@@ -17281,72 +17281,53 @@
     function scrollLogic(event) {
         const target = event.target;
         const clone = target.closest('.full-listing'); // Find the closest ancestor element with the class 'full-listing'
-        const uniqueListingID = clone.getAttribute('data-listing-id');
+        if (!clone) return;
 
-        if (clone) {
+        const imagePreview = clone.querySelector('.listing-main-screen');
+        const smallImagePreviews = clone.querySelectorAll('.listing-small-image-preview');
 
-            const imagePreview = clone.querySelector('.listing-image-preview');
-            const smallImagePreviews = clone.querySelectorAll(`[id^="listing-small-image-preview-${uniqueListingID}-"]`);
+        if (imagePreview && smallImagePreviews.length > 0) {
 
             // Function to handle Next button click
             if (target.matches('#listing-next-button')) {
-
-                // Get the current index
-                let currentIndex = 1;
+                let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
                     if (smallImagePreview.src === imagePreview.src) {
                         currentIndex = index;
                     }
                 });
 
-                // Calculate the total number of images
                 const totalImages = smallImagePreviews.length;
-
-                // Update the index (loop around if necessary)
                 const nextIndex = (currentIndex + 1) % totalImages;
-                
-                // Get the source URL of the next image
                 const nextImageSrc = smallImagePreviews[nextIndex].src;
-
-                // Create a new element based on file extension
+                
                 const newElement = createMediaElement(nextImageSrc);
-
-                // Replace the existing main spot content with the new element
-                replaceMainSpotContent(clone, newElement);
+                if (newElement) replaceMainSpotContent(clone, newElement);
             }
 
             // Function to handle Previous button click
             if (target.matches('#listing-previous-button')) {
-
-                // Get the current index
-                let currentIndex = -1;
+                let currentIndex = 0;
                 smallImagePreviews.forEach((smallImagePreview, index) => {
                     if (smallImagePreview.src === imagePreview.src) {
                         currentIndex = index;
                     }
                 });
 
-                // Calculate the total number of images
                 const totalImages = smallImagePreviews.length;
-
-                // Update the index (loop around if necessary)
                 const previousIndex = (currentIndex - 1 + totalImages) % totalImages;
-
-                // Get the source URL of the previous image
                 const previousImageSrc = smallImagePreviews[previousIndex].src;
 
-                // Create a new element based on file extension
                 const newElement = createMediaElement(previousImageSrc);
-
-                // Replace the existing main spot content with the new element
-                replaceMainSpotContent(clone, newElement);
+                if (newElement) replaceMainSpotContent(clone, newElement);
             }
 
             // Function to handle Expand button click
             if (target.matches('#expandButton')) {
-                // Toggle a class to expand the section width
                 const listingImageSection = clone.querySelector('#listing-image-section');
-                listingImageSection.classList.toggle('expanded-section');
+                if (listingImageSection) {
+                    listingImageSection.classList.toggle('expanded-section');
+                }
             }
 
             // Add event listeners to each small image spot
@@ -17354,27 +17335,27 @@
                 if (target === smallImagePreview) {
                     const newImageSrc = target.src;
                     const newImageElement = createMediaElement(newImageSrc);
-                    replaceMainSpotContent(clone, newImageElement);
+                    if (newImageElement) replaceMainSpotContent(clone, newImageElement);
                 }
             });
-
-
         }
     }
 
     // Function to create a new media element based on file extension
     function createMediaElement(src) {
-        const fileExtension = src.toLowerCase().split('.').pop();
-        if (['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension)) {
+        const cleanUrl = src.split('?')[0];
+        const fileExtension = cleanUrl.toLowerCase().split('.').pop();
+
+        if (['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(fileExtension)) {
             const img = document.createElement('img');
             img.src = src;
-            img.classList.add('listing-image-preview');
+            img.className = 'listing-main-screen';
             return img;
         } else if (['mp4', 'webm', 'mov'].includes(fileExtension)) {
             const video = document.createElement('video');
             video.src = src;
             video.controls = true;
-            video.classList.add('listing-image-preview');
+            video.className = 'listing-main-screen';
             return video;
         } else {
             console.error(`Unsupported file format: ${fileExtension}`);
@@ -17384,12 +17365,17 @@
 
     // Function to replace the main spot content with a new element
     function replaceMainSpotContent(clone, newElement) {
-        const mainSpot = clone.querySelector('.listing-image-preview');
-        mainSpot.replaceWith(newElement);
+        const mainSpot = clone.querySelector('.listing-main-screen');
+        if (mainSpot) {
+            mainSpot.replaceWith(newElement);
+        }
     }
 
-    // Add event listener to the container to handle clicks on yes and no buttons
-    document.querySelector('.container').addEventListener('click', scrollLogic);
+    // Add event listener to the container to handle clicks
+    const container = document.querySelector('.container');
+    if (container) {
+        container.addEventListener('click', scrollLogic);
+    }
 </script>
 
     
