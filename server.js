@@ -33,7 +33,7 @@ const corsOptions = {
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'listing-id', 'listing-tag', 'user-email'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'listing-id', 'listing-tag', 'user-email', 'x-admin-secret'],
     credentials: true
 };
 
