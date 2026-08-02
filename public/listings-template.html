@@ -32562,10 +32562,10 @@ document.addEventListener("DOMContentLoaded", function () {
             };
         
             try {
-                // Replace with your actual Vercel backend deployment URL (or a config variable)
-                const backendBaseURL = 'https://twmm-seven.vercel.app'; 
+                // Point to your Render backend deployment URL
+                const backendBaseURL = 'https://twmm-g972.onrender.com'; 
 
-                // Step 1: Upload images to AWS S3 via Vercel backend
+                // Step 1: Upload images to AWS S3 via Render backend
                 const imageResponse = await fetch(`${backendBaseURL}/upload`, {
                     method: 'POST',
                     headers: {
@@ -32585,7 +32585,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataToSend.images = imageResult.urls;
                 console.log('Image URLs received from S3:', dataToSend.images);
 
-                // Step 2: Send unified JSON payload to Vercel backend for Supabase storage
+                // Step 2: Send unified JSON payload to Render backend for Supabase storage
                 const jsonResponse = await fetch(`${backendBaseURL}/api/listings`, {
                     method: 'POST',
                     headers: {
@@ -32714,10 +32714,10 @@ document.addEventListener("DOMContentLoaded", function () {
             };
 
             try {
-                // Replace with your actual Vercel backend deployment URL
-                const backendBaseURL = 'https://twmm-seven.vercel.app'; 
+                // Point to your Render backend deployment URL
+                const backendBaseURL = 'https://twmm-g972.onrender.com'; 
 
-                // Step 1: Upload images to AWS S3 via Vercel backend
+                // Step 1: Upload images to AWS S3 via Render backend
                 const imageResponse = await fetch(`${backendBaseURL}/upload`, {
                     method: 'POST',
                     headers: {
@@ -32737,7 +32737,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataToSend.images = imageResult.urls;
                 console.log('Image URLs received from S3 for part:', dataToSend.images);
 
-                // Step 2: Send unified JSON payload to Vercel backend for Supabase storage
+                // Step 2: Send unified JSON payload to Render backend for Supabase storage
                 const jsonResponse = await fetch(`${backendBaseURL}/api/listings`, {
                     method: 'POST',
                     headers: {
@@ -32885,10 +32885,10 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log('Data to be sent for service listing:', dataToSend);
 
             try {
-                // Replace with your actual Vercel backend deployment URL
-                const backendBaseURL = 'https://twmm-seven.vercel.app'; 
+                // Point to your Render backend deployment URL
+                const backendBaseURL = 'https://twmm-g972.onrender.com'; 
 
-                // Step 1: Upload images to AWS S3 via Vercel backend
+                // Step 1: Upload images to AWS S3 via Render backend
                 const imageResponse = await fetch(`${backendBaseURL}/upload`, {
                     method: 'POST',
                     headers: {
@@ -32908,7 +32908,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 dataToSend.images = imageResult.urls;
                 console.log('Image URLs received from S3 for service:', dataToSend.images);
 
-                // Step 2: Send unified JSON payload to Vercel backend for Supabase storage
+                // Step 2: Send unified JSON payload to Render backend for Supabase storage
                 const jsonResponse = await fetch(`${backendBaseURL}/api/listings`, {
                     method: 'POST',
                     headers: {
