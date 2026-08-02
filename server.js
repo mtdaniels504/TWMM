@@ -5,7 +5,7 @@ const path = require('path');
 const multer = require('multer');
 const sanitizeHtml = require('sanitize-html');
 const { createClient } = require('@supabase/supabase-js');
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const { S3Client, PutObjectCommand, CopyObjectCommand, DeleteObjectCommand } = require('@aws-sdk/client-s3');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -111,7 +111,7 @@ const sanitizeText = (val) => {
 };
 
 // ==========================================
-// CLIENT INITIALIZATIONS
+// CLIENT INITIALIZATIONS & BUCKET CONFIGS
 // ==========================================
 const supabase = createClient(
     process.env.SUPABASE_URL,
@@ -126,8 +126,41 @@ const s3Client = new S3Client({
     }
 });
 
+const S3_BUCKET_INCOMING = process.env.AWS_S3_BUCKET_INCOMING;
+const S3_BUCKET_ACTIVE = process.env.AWS_S3_BUCKET_ACTIVE;
+const S3_BUCKET_DELETED = process.env.AWS_S3_BUCKET_DELETED;
+
 // ==========================================
-// 1. IMAGE UPLOAD ROUTE (AWS S3)
+// S3 UTILITY: MIGRATE ASSETS BETWEEN BUCKETS
+// ==========================================
+async function migrateListingImages(imageUrls, sourceBucket, targetBucket) {
+    if (!imageUrls || imageUrls.length === 0) return;
+
+    for (const url of imageUrls) {
+        try {
+            const urlObj = new URL(url);
+            const key = decodeURIComponent(urlObj.pathname.startsWith('/') ? urlObj.pathname.substring(1) : urlObj.pathname);
+
+            // 1. Copy object to target bucket
+            await s3Client.send(new CopyObjectCommand({
+                Bucket: targetBucket,
+                CopySource: `${sourceBucket}/${key}`,
+                Key: key
+            }));
+
+            // 2. Delete object from source bucket
+            await s3Client.send(new DeleteObjectCommand({
+                Bucket: sourceBucket,
+                Key: key
+            }));
+        } catch (err) {
+            console.error(`Failed to migrate image ${url} from ${sourceBucket} to ${targetBucket}:`, err);
+        }
+    }
+}
+
+// ==========================================
+// 1. IMAGE UPLOAD ROUTE (AWS S3 - Incoming Bucket)
 // ==========================================
 app.post('/upload', upload.array('images', 5), async (req, res) => {
     const listingId = req.headers['listing-id'];
@@ -150,7 +183,7 @@ app.post('/upload', upload.array('images', 5), async (req, res) => {
             const fileName = `listings/${listingId}/image_${index + 1}_${Date.now()}.${fileExtension}`;
             
             const uploadParams = {
-                Bucket: process.env.AWS_S3_BUCKET_NAME,
+                Bucket: S3_BUCKET_INCOMING,
                 Key: fileName,
                 Body: file.buffer,
                 ContentType: file.mimetype || 'image/jpeg'
@@ -158,7 +191,7 @@ app.post('/upload', upload.array('images', 5), async (req, res) => {
 
             await s3Client.send(new PutObjectCommand(uploadParams));
 
-            const fileUrl = `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileName}`;
+            const fileUrl = `https://${S3_BUCKET_INCOMING}.s3.${process.env.AWS_REGION}.amazonaws.com/${fileName}`;
             uploadedImageUrls.push(fileUrl);
         }
 
@@ -179,7 +212,6 @@ app.post('/api/listings', async (req, res) => {
         let dbRecord = {};
 
         if (payload.vehicle) {
-            // --- VEHICLE PAYLOAD MAPPING & SANITIZATION ---
             dbRecord = {
                 unique_listing_id: payload.id?.uniqueListingID,
                 category: 'vehicle',
@@ -228,7 +260,6 @@ app.post('/api/listings', async (req, res) => {
                 legal_listing_choice: sanitizeText(payload.auth?.legalListingChoice) || ''
             };
         } else if (payload.part) {
-            // --- PART PAYLOAD MAPPING & SANITIZATION ---
             dbRecord = {
                 unique_listing_id: payload.id?.uniquePartListingID,
                 category: 'part',
@@ -281,7 +312,6 @@ app.post('/api/listings', async (req, res) => {
                 legal_listing_choice: sanitizeText(payload.auth?.legalListingChoice) || ''
             };
         } else if (payload.service) {
-            // --- SERVICE PAYLOAD MAPPING & SANITIZATION ---
             dbRecord = {
                 unique_listing_id: payload.id?.uniqueServiceListingID,
                 category: 'service',
@@ -327,12 +357,10 @@ app.post('/api/listings', async (req, res) => {
             return res.status(400).json({ success: false, error: 'Unknown payload structure category.' });
         }
 
-        // Validate that a unique identifier was actually found
         if (!dbRecord.unique_listing_id) {
             return res.status(400).json({ success: false, error: 'Missing unique listing ID in payload.' });
         }
 
-        // SECURE: Hash the password using bcrypt before saving to Supabase if provided
         if (dbRecord.auth_password && dbRecord.auth_password.trim() !== '') {
             const saltRounds = 10;
             dbRecord.auth_password = await bcrypt.hash(dbRecord.auth_password, saltRounds);
@@ -340,7 +368,6 @@ app.post('/api/listings', async (req, res) => {
             dbRecord.auth_password = null;
         }
 
-        // Upsert record into Supabase
         const { error } = await supabase
             .from('listings')
             .upsert(dbRecord, { onConflict: 'unique_listing_id' });
@@ -357,8 +384,6 @@ app.post('/api/listings', async (req, res) => {
 // ==========================================
 // ADMIN MIDDLEWARE & ROUTES
 // ==========================================
-
-// Middleware to verify the admin secret header
 const verifyAdmin = (req, res, next) => {
     const adminKey = req.headers['x-admin-secret'];
 
@@ -388,36 +413,62 @@ app.get('/api/admin/incoming', verifyAdmin, async (req, res) => {
     }
 });
 
-// 2. Approve a listing (changes status to 'active')
+// 2. Approve listing: Moves S3 assets from Incoming -> Active & sets status to 'active'
 app.put('/api/admin/listings/:id/approve', verifyAdmin, async (req, res) => {
     const listingId = req.params.id;
 
     try {
-        const { error } = await supabase
+        const { data: listing, error: fetchError } = await supabase
+            .from('listings')
+            .select('image_urls')
+            .eq('unique_listing_id', listingId)
+            .single();
+
+        if (fetchError || !listing) {
+            return res.status(404).json({ success: false, error: 'Listing not found.' });
+        }
+
+        await migrateListingImages(listing.image_urls, S3_BUCKET_INCOMING, S3_BUCKET_ACTIVE);
+
+        const { error: updateError } = await supabase
             .from('listings')
             .update({ status: 'active' })
             .eq('unique_listing_id', listingId);
 
-        if (error) throw error;
-        return res.status(200).json({ success: true, message: 'Listing approved successfully.' });
+        if (updateError) throw updateError;
+
+        return res.status(200).json({ success: true, message: 'Listing approved and assets moved to active bucket.' });
     } catch (err) {
         console.error('Error approving listing:', err);
         return res.status(500).json({ success: false, error: err.message });
     }
 });
 
-// 3. Reject/Delete a listing from the database
+// 3. Reject/Delete listing: Moves S3 assets from Incoming -> Deleted & sets status to 'deleted'
 app.delete('/api/admin/listings/:id', verifyAdmin, async (req, res) => {
     const listingId = req.params.id;
 
     try {
-        const { error } = await supabase
+        const { data: listing, error: fetchError } = await supabase
             .from('listings')
-            .delete()
+            .select('image_urls')
+            .eq('unique_listing_id', listingId)
+            .single();
+
+        if (fetchError || !listing) {
+            return res.status(404).json({ success: false, error: 'Listing not found.' });
+        }
+
+        await migrateListingImages(listing.image_urls, S3_BUCKET_INCOMING, S3_BUCKET_DELETED);
+
+        const { error: updateError } = await supabase
+            .from('listings')
+            .update({ status: 'deleted' })
             .eq('unique_listing_id', listingId);
 
-        if (error) throw error;
-        return res.status(200).json({ success: true, message: 'Listing deleted successfully.' });
+        if (updateError) throw updateError;
+
+        return res.status(200).json({ success: true, message: 'Listing rejected and assets moved to deleted bucket.' });
     } catch (err) {
         console.error('Error deleting listing:', err);
         return res.status(500).json({ success: false, error: err.message });
