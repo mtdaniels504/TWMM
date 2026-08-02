@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Admin Control Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; }
+        button:hover { background: #0056b3; }
+        .danger-btn { background: #dc3545; }
+        .danger-btn:hover { background: #c82333; }
+        .success-btn { background: #28a745; }
+        .success-btn:hover { background: #218838; }
+        #login-screen, #dashboard { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .hidden { display: none !important; }
+        input[type="password"] { padding: 10px; width: 60%; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .listing-card { border: 1px solid #ddd; padding: 15px; border-radius: 6px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-start; background: #fff; }
+        .listing-details h3 { margin: 0 0 5px 0; }
+        .listing-details p { margin: 3px 0; font-size: 14px; color: #666; }
+        .thumbnails { display: flex; gap: 5px; margin-top: 10px; }
+        .thumbnails img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; border: 1px solid #ccc; }
+        .actions { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- LOGIN SCREEN -->
+        <div id="login-screen">
+            <h2>Admin Authentication Required</h2>
+            <p>Please enter your secure admin key to proceed.</p>
+            <input type="password" id="admin-password-input" placeholder="Enter Admin Secret Key">
+            <button onclick="authenticateAdmin()">Login</button>
+            <p id="login-error" style="color: red; display: none;">Invalid Admin Key.</p>
+        </div>
+
+        <!-- DASHBOARD SCREEN -->
+        <div id="dashboard" class="hidden">
+            <header>
+                <h2>Incoming Listings Review Queue</h2>
+                <button class="danger-btn" onclick="logout()">Logout</button>
+            </header>
+            <div id="listings-container">
+                <p>Loading incoming listings...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'twmm_admin_secret';
+
+        // Check if session already has key saved
+        window.onload = () => {
+            const savedKey = localStorage.getItem(STORAGE_KEY);
+            if (savedKey) {
+                verifyAndLoadDashboard(savedKey);
+            }
+        };
+
+        async function authenticateAdmin() {
+            const inputVal = document.getElementById('admin-password-input').value;
+            await verifyAndLoadDashboard(inputVal);
+        }
+
+        async function verifyAndLoadDashboard(secretKey) {
+            try {
+                const response = await fetch('/api/admin/incoming', {
+                    headers: { 'x-admin-secret': secretKey }
+                });
+
+                if (!response.ok) throw new Error('Unauthorized');
+
+                const data = await response.json();
+                if (data.success) {
+                    localStorage.setItem(STORAGE_KEY, secretKey);
+                    document.getElementById('login-screen').classList.add('hidden');
+                    document.getElementById('dashboard').classList.remove('hidden');
+                    renderListings(data.listings);
+                } else {
+                    throw new Error(data.error);
+                }
+            } catch (err) {
+                localStorage.removeItem(STORAGE_KEY);
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+        }
+
+        async function renderListings(listings) {
+            const container = document.getElementById('listings-container');
+            container.innerHTML = '';
+
+            if (listings.length === 0) {
+                container.innerHTML = '<p>No incoming listings pending review.</p>';
+                return;
+            }
+
+            listings.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'listing-card';
+
+                let imagesHtml = '';
+                if (item.image_urls && item.image_urls.length > 0) {
+                    imagesHtml = '<div class="thumbnails">' + item.image_urls.map(url => `<img src="${url}" />`).join('') + '</div>';
+                }
+
+                card.innerHTML = `
+                    <div class="listing-details">
+                        <h3>${item.title || 'Untitled'} (${item.category.toUpperCase()})</h3>
+                        <p><strong>ID:</strong> ${item.unique_listing_id}</p>
+                        <p><strong>Price:</strong> $${item.asking_price || 'N/A'}</p>
+                        <p><strong>Contact:</strong> ${item.contact_name || 'N/A'} (${item.contact_email || 'N/A'})</p>
+                        <p><strong>Description:</strong> ${item.description || 'No description provided.'}</p>
+                        ${imagesHtml}
+                    </div>
+                    <div class="actions">
+                        <button class="success-btn" onclick="approveListing('${item.unique_listing_id}')">Approve</button>
+                        <button class="danger-btn" onclick="deleteListing('${item.unique_listing_id}')">Reject</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        async function approveListing(id) {
+            if (!confirm('Are you sure you want to approve this listing?')) return;
+            const secretKey = localStorage.getItem(STORAGE_KEY);
+
+            const res = await fetch(`/api/admin/listings/${id}/approve`, {
+                method: 'PUT',
+                headers: { 'x-admin-secret': secretKey }
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                alert('Listing approved!');
+                verifyAndLoadDashboard(secretKey); // Refresh list
+            } else {
+                alert('Error: ' + data.error);
+            }
+        }
+
+        async function deleteListing(id) {
+            if (!confirm('Are you sure you want to permanently reject and delete this listing?')) return;
+            const secretKey = localStorage.getItem(STORAGE_KEY);
+
+            const res = await fetch(`/api/admin/listings/${id}`, {
+                method: 'DELETE',
+                headers: { 'x-admin-secret': secretKey }
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                alert('Listing deleted!');
+                verifyAndLoadDashboard(secretKey); // Refresh list
+            } else {
+                alert('Error: ' + data.error);
+            }
+        }
+    </script>
+</body>
+</html>
