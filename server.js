@@ -67,6 +67,19 @@ app.get('/:page', (req, res, next) => {
 const upload = multer({ storage: multer.memoryStorage() });
 
 // ==========================================
+// HELPER FUNCTIONS FOR TYPE SAFETY
+// ==========================================
+const parseInteger = (val) => {
+    if (val === '' || val === undefined || val === null || isNaN(val)) return null;
+    return parseInt(val, 10);
+};
+
+const parseNumeric = (val) => {
+    if (val === '' || val === undefined || val === null || isNaN(val)) return null;
+    return parseFloat(val);
+};
+
+// ==========================================
 // CLIENT INITIALIZATIONS
 // ==========================================
 const supabase = createClient(
@@ -146,20 +159,20 @@ app.post('/api/listings', async (req, res) => {
                 description: payload.vehicle.description || '',
                 image_urls: payload.images || [],
                 
-                asking_price: isNaN(payload.vehicle.askingPrice) ? null : payload.vehicle.askingPrice,
+                asking_price: parseNumeric(payload.vehicle.askingPrice),
                 negotiate: payload.vehicle.negotiate || '',
-                plus_minus: isNaN(payload.vehicle.plusMinus) ? null : payload.vehicle.plusMinus,
+                plus_minus: parseNumeric(payload.vehicle.plusMinus),
                 fulfillment: payload.vehicle.fulfillment || '',
                 
                 vehicle_type: payload.vehicle.category || '',
                 make: payload.vehicle.make || '',
                 model: payload.vehicle.model || '',
                 trim: payload.vehicle.trim || '',
-                year: payload.vehicle.year ? parseInt(payload.vehicle.year) : null,
+                year: parseInteger(payload.vehicle.year),
                 theme: payload.vehicle.theme || '',
                 vin: payload.vehicle.vin || '',
                 condition: payload.vehicle.condition || '',
-                mileage: payload.vehicle.mileage || '',
+                mileage: parseInteger(payload.vehicle.mileage),
                 fuel: payload.vehicle.fuel || '',
                 drive_type: payload.vehicle.driveType || '',
                 transmission: payload.vehicle.transmission || '',
@@ -195,9 +208,9 @@ app.post('/api/listings', async (req, res) => {
                 description: payload.description || '',
                 image_urls: payload.images || [],
                 
-                asking_price: isNaN(payload.price?.askingPrice) ? null : payload.price?.askingPrice,
+                asking_price: parseNumeric(payload.price?.askingPrice),
                 negotiate: payload.price?.negotiate || '',
-                plus_minus: isNaN(payload.price?.plusMinus) ? null : payload.price?.plusMinus,
+                plus_minus: parseNumeric(payload.price?.plusMinus),
                 fulfillment: payload.price?.fulfillment || '',
                 
                 part_name: payload.part.partName || '',
