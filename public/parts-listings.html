@@ -11315,600 +11315,303 @@
                                         </div>
                                     </div>
 
-                                    <div class="legal" id="part-legal" style="display: none;">
-                                        <div class="legal-exit-container">
-                                            <button id="part-legal-exit-button">x</button>
-                                        </div>
-                                        <h3>Listing Information</h3>
-
-                                        <div class="navDropdownRowContainer" id="part-listing-packages">
-                                            <div class="navDropdownRow" id="part-listing-dropdown">
-                                                <button id="part-listing-package-button">+</button>
-                                                <p>Listing Packages</p>
+                                    <div class="auth-form-container">
+                                        <div class="messenger">
+                                            <p>Contact Seller</p>
+                                            <div class="messenger-row" id="messenger-row1">
+                                                <label for="price-offer">Price Offer:</label>
+                                                <input type="text" class="price-offer" id="price-offer">
                                             </div>
-                                            <div class="navDropdownInfoContainer" id="part-listing-packages-info-container">
-                                                <p>Choose the Listing Package that best suits your preferences:</p>
-                                                <div class="navDropdownInfo" id="part-listing-packages-info">
-                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-general">
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-title">
-                                                            <h3>Package Name</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-price">
-                                                            <h3>Price</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-verification">
-                                                            <h3>Verification Process</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-featured">
-                                                            <h3>Featured Status</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-membership">
-                                                            <h3>Membership Status</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-other">
-                                                            <h3>Other Benefits</h3>
-                                                        </div>
-                                                    </div>
-                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-free">
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-title">
-                                                            <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-free-checkbox" name="listing-package-free-checkbox" value="listing-package-free-checkbox">
-                                                            <h3>Free</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-price">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-verification">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-featured">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-membership">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-other">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-basic">
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-title">
-                                                            <div class="title-and-check">
-                                                                <div class="checkmark">
-                                                                    <div class="grey-checkmark-circle">
-                                                                        <div class="grey-checkmark-symbol">&#10003;</div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-package-basic-checkbox" name="listing-package-basic-checkbox" value="listing-package-basic-checkbox">                                
-                                                            </div>
-                                                            <h3>Basic</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-price">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p class="NodePrice" id="part-basic-full-price">$4.99</p>
-                                                                <div class="price-Ps-row">
-                                                                    <p class="NodePrice" id="part-basic-sale-price">$1.99</p>
-                                                                    <p class="NodePDash">/</p>
-                                                                    <p class="NodePMonth">month</p>
-                                                                </div>
-                                                                <p>for the first 100 Listings</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-verification">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Picture Verification</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-featured">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-membership">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-other">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">First 100 listings get free Featured Status</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-verified">
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-title">
-                                                            <div class="title-and-check">
-                                                                <div class="checkmark">
-                                                                    <div class="whiteBlue-checkmark-circle">
-                                                                        <div class="whiteBlue-checkmark-symbol">&#10003;</div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-verified-checkbox" name="listing-package-verified-checkbox" value="listing-package-verified-checkbox">
-                                                            </div>
-                                                            <h3>Verified</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-price">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p class="NodePrice" id="part-verified-full-price">$12.99</p>
-                                                                <p class="NodePrice">$6.99</p>
-                                                                <p>for the first 100 Listings</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-verification">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Picture Verification</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Driver's License Verification</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-featured">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Featured Status for 1 week</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-membership">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p>n/a</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-other">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">First 100 Listings get Free Featured Status</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Re-Listing for up to 3 months</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-featured" style="display: none;">
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-title">
-                                                            <div class="title-and-check">
-                                                                <div class="checkmark">
-                                                                    <div class="blueWhite-checkmark-circle">
-                                                                        <div class="blueWhite-checkmark-symbol">&#10003;</div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-featured-checkbox" name="listing-package-featured-checkbox" value="listing-package-featured-checkbox">
-                                                            </div>
-                                                            <h3>Featured</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-price">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p class="NodePrice" id="part-featured-full-price">$32.99</p>
-                                                                <p class="NodePrice">$29.99</p>
-                                                                <p>for our first 3 months!</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-verification">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Picture Verification</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Driver's License Verification</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">CarFax Verification</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-featured">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Featured Lisitng Status on all listings for 3 Months</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-membership">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Oasis Club Membership for 3 months</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-other">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Re-Listing per month</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Allowed up to 3 Listings for no additional charge</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Buyers will have free access to Carfax reports when looking at your vehicle</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-exclusive" style="display: none;">
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-title">
-                                                            <div class="title-and-check">
-                                                                <div class="checkmark">
-                                                                    <div class="blackWhite-checkmark-circle">
-                                                                        <div class="blackWhite-checkmark-symbol">&#10003;</div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-exclusive-checkbox" name="listing-package-exclusive-checkbox" value="listing-package-exclusive-checkbox">
-                                                            </div>
-                                                            <h3>Exclusive</h3>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-price">
-                                                            <div class="GeneralNodePContainer">
-                                                                <p class="NodePrice" id="part-exclusive-full-price">$129.99</p>
-                                                                <p class="NodePrice">$109.99</p>
-                                                                <p>for our 3 months!</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-verification">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Picture Verification</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Driver's License Verification</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">CarFax Verification</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-featured">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Featured Status on up to 10 Listings in 1 year</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-membership">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Oasis Club Membership for 1 year</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-other">
-                                                            <div class="GeneralNodePContainer">
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Free Re-Listing per month</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Allowed up to 10 Listings in 1 year with no additional charge</p>
-                                                                </div>
-                                                                <div class="NodePRow">
-                                                                    <p class="NodeP-s">-</p>
-                                                                    <p class="NodePp">Buyers will have free access to Carfax reports when looking at your vehicle</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                            <div class="messenger-row" id="messenger-row2">
+                                                <label for="message">Message:</label>
+                                                <textarea class="message" id="message" rows="3"></textarea>
+                                            </div>
+                                            <div class="auth-form" id="messenger-log-in-form">                        
+                                                <div class="auth-form-row">
+                                                    <label for="messenger-username-log-in">User Name:</label>
+                                                    <input type="text" id="messenger-username-log-in" required>
+                                                </div>
+                                                <div class="auth-form-row">
+                                                    <label for="messenger-password-log-in">Password:</label>
+                                                    <input type="password" id="messenger-password-log-in" required>
+                                                </div>
+                                                
+                                                <p id="messenger-forgot-credentials-link">Forgot username or password?</p>
+                                                <p id="messenger-create-account-link">Create New Account</p>
+                                            </div>
+                        
+                                            <div id="messenger-forgot-login-form" style="display: none;">
+                                                <div class="auth-form" id="messenger-forgot-login-form-form">
+                                                    <div class="auth-form-row" id="messenger-forgot-login-auth-form-row">
+                                                        <label id="messenger-form-username-forgot-login-label" for="messenger-username-forgot-login">Enter Username or Email associated with your account:</label>
+                                                        <input type="text" id="messenger-username-forgot-login" required>
+                                                        <button  id="messenger-send-request-button">Send Request</button>
                                                     </div>
                                                 </div>
-                                                <ul>
-                                                    <li>Listing Checkmarks will be displayed in the top right corner of each listing to which it applies.</li>
-                                                    <li>Duplicate Search Results within our network will be sorted by higher package levels first.</li>
-                                                    <li>Membership updates triggered by our listing prices may take up to 24 hours to fully populated through our networks.</li>
-                                                </ul>
-                                            </div>
-                                            <span id="part-legal-listing-choice"></span>
-                                        </div>
-
-                                        <div class="navDropdownRowContainer" id="part-addOn-container">
-                                            <div class="navDropdownRow" id="part-addOn-dropdown">
-                                                <button>+</button>
-                                                <p>Add-On Packages and Services</p>
-                                            </div>
-                                            <div class="addOnPackagesContainer" id="part-addOn-package-container" style="display: none;">
-                                                <p>Browse our Add-On Packages and Services to best fit your needs as a Seller.</p>
-                                                <div class="addOnPackageContainer" id="part-addOn-delivery-container">
-                                                    <div class="addOnPackageDropdown" id="part-addOn-delivery-dropdown">
-                                                        <button>+</button>
-                                                        <p>Delivery and Shipping Services</p>
+                        
+                                                <div class="auth-form" id="messenger-forgot-login-form-form-form" style="display: none;">
+                                                    <div class="auth-form-row" id="messenger-forgot-question-auth-form-row">
+                                                        <label id="messenger-form-question-forgot-login-label" for="messenger-question-forgot-login">Question:</label>
+                                                        <span type="text" id="messenger-question-forgot-login"></span>
                                                     </div>
-                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-delivery-options">
-                                                        <li>Stay tuned for more exciting Features and Benefits</li>
+                                                    <div class="auth-form-row" id="messenger-forgot-answer-auth-form-row">
+                                                        <label id="messenger-form-answer-forgot-login-label" for="answer-forgot-login">Enter the answer to your custom question:</label>
+                                                        <input type="text" id="messenger-answer-forgot-login" required>
                                                     </div>
+                                                    <button  id="messenger-send-question-button">Retrieve Credentials</button>
                                                 </div>
-                                                <div class="addOnPackageContainer" id="part-addOn-inspection-container">
-                                                    <div class="addOnPackageDropdown" id="part-addOn-inspection-dropdown">
-                                                        <button>+</button>
-                                                        <p>Part Inpection Services</p>
-                                                    </div>
-                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-inspection-options">
-                                                        <li>Stay tuned for more exciting Features and Benefits</li>
-                                                    </div>
-                                                </div>
-                                                <div class="addOnPackageContainer" id="part-addOn-detailing-container">
-                                                    <div class="addOnPackageDropdown" id="part-addOn-detailing-dropdown">
-                                                        <button>+</button>
-                                                        <p>Cleaning and Detailing Services</p>
-                                                    </div>
-                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-detailing-options">
-                                                        <li>Stay tuned for more exciting Features and Benefits</li>
-                                                    </div>
-                                                </div>
-                                                <div class="addOnPackageContainer" id="part-addOn-other-container">
-                                                    <div class="addOnPackageDropdown" id="part-addOn-other-dropdown">
-                                                        <button>+</button>
-                                                        <p>Other Add On Services</p>
-                                                    </div>
-                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-other-options">
-                                                        <li>Stay tuned for more exciting Features and Benefits</li>
-                                                    </div>
-                                                </div>
-                                                <ul class="addOnPackagesContainer-li">
-                                                    <li>Add-On Packages and Services will be deducted out of the final price of the sale.</li>
-                                                    <li>All Add-On's will be offered to Buyers free of charge to them.</li>
-                                                    <li>Add-On Service Providers are all Trusted Providers within the World Motor Market's network. For questions and more information, please refer to our <a href="https://www.worldmotormarket.com/terms-of-services" target="_blank">Terms of Service</a>.</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="navDropdownRowContainer" id="part-subscription-packages">
-                                            <div class="navDropdownRow" id="part-subscription-dropdown">
-                                                <button>+</button>
-                                                <p>Subscription Packages</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="auth-tab-form-container" id="part-legal-auth-form">
-
-                                            <div class="auth-tab-container" id="part-legal-auth-tab-container-sign-in">
-                                                <div class="auth-tab" id="part-legal-auth-tab-sign-in" onclick="partShowForm('part-legal-sign-in-form')">Create Account</div>
-                                            </div>
-                                
-                                            <div class="auth-mobile-reverse-row">
-                                
-                                                <div class="auth-form" id="part-legal-sign-in-form" style="display: none;">
+                        
+                                                <div class="auth-form" id="messenger-forgot-login-form-form-form-form" style="display: none;">
                                                     <h3>Oasis Credentials</h3>
-                                                    <p>Create an account for free to access exclusive features and services. If you already have an account, log in to continue.</p>
-                                                    <div class="auth-form-row">
-                                                        <label id="part-legal-username-sign-in-label" for="part-legal-username-sign-in">User Name:</label>
-                                                        <input type="text" id="part-legal-username-sign-in" required>
-                                                    </div>
-                                                    <div class="auth-form-row" id="part-legal-auth-form-password-row-mobile">
-                                                        <label for="part-legal-password-sign-in">Enter Password:</label>
-                                                        <input type="password" id="part-legal-password-sign-in" required>
-                                                    </div>
-                                                    <div class="auth-form-row" id="part-legal-auth-form-password-row-mobile">
-                                                        <label for="part-legal-password-confirm">Confirm Password:</label>
-                                                        <input type="password" id="part-legal-password-confirm" required>
-                                                    </div>
-                                                    <ul>
-                                                        <li>Username and Password must be within 6-15 characters</li>
-                                                        <li>Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
-                                                        <li>Spaces are not allowed in the username nor password inputs.</li>
-                                                    </ul>
-
-                                                    <h3>Username/Password Recovery</h3>
-                                                    <p>For use in username/password recovery, enter an email to associate with the account and a question that only you would know the answer to:</p>
+                                                    <p>Please review your login credentials and make changes as necessary.</p>
+                        
                                                     
-                                                    <div class="auth-form-row">
-                                                        <label id="part-legal-recovery-phone-label" for="part-legal-recovery-phone">Phone:</label>
-                                                        <input type="text" id="part-legal-recovery-phone" required>
+                                                    <div class="span-auth-form-row">
+                                                        <label for="messenger-username-forgot-login-span">User Name:</label>
+                                                        <span id="messenger-username-forgot-login-span"></span>
+                                                        <button id="messenger-edit-credentials-username">🔧</button>
                                                     </div>
-                                                    <div class="auth-form-row">
-                                                        <label id="part-legal-recover-email-label" for="part-legal-recovery-email">Email:</label>
-                                                        <input type="text" id="part-legal-recovery-email" required>
+                                                    <div class="forgot-new-username" id="messenger-forgot-new-username" style="display: none;">
+                                                        <div class="auth-form-row">
+                                                            <label id="messenger-username-forgot-login-label" for="messenger-username-forgot-login">User Name:</label>
+                                                            <input type="text" id="messenger-edit-username-forgot-login" required>
+                                                        </div>
+                                                        <ul>
+                                                            <li>Username and Password must be within 6-15 characters</li>
+                                                        <ul>
                                                     </div>
-                                                    <div class="auth-form-row" id="part-legal-recovery-answer-row-mobile">
-                                                            <label id="part-legal-recovery-question-label" for="part-legal-recovery-question">Question:</label>
-                                                            <input type="text" id="part-legal-recovery-question" required>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="messenger-password-forgot-login-span">Password:</label>
+                                                        <span id="messenger-password-forgot-login-span"></span>
+                                                        <button id="messenger-edit-credentials-password">🔧</button>                                
                                                     </div>
-                                                    <div class="auth-form-row" id="part-legal-recovery-answer-row-mobile">
-                                                        <label id="part-legal-recovery-answer-label" for="part-legal-recovery-answer">Answer:</label>
-                                                        <input type="text" id="part-legal-recovery-answer" required>
+                                                    <div class="forgot-new-passwords" id="messenger-forgot-new-passwords" style="display: none;">
+                                                        <div class="auth-form-row" id="messenger-forgot-login-password-row-mobile">
+                                                            <label for="messenger-password-forgot-login">Enter Password:</label>
+                                                            <input type="password" id="messenger-edit-password-forgot-login" required>
+                                                        </div>
+                                                        <div class="auth-form-row" id="messenger-forgot-login-password-row-mobile">
+                                                            <label for="messenger-forgot-login-password-confirm">Confirm Password:</label>
+                                                            <input type="password" id="messenger-edit-forgot-login-password-confirm" required>
+                                                        </div>
+                                                        <ul>
+                                                            <li>Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
+                                                            <li>Spaces are not allowed in the username nor password inputs.</li>
+                                                        </ul>
                                                     </div>
-
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="messenger-email-forgot-login-span">Email:</label>
+                                                        <span id="messenger-email-forgot-login-span"></span>
+                                                        <button id="messenger-edit-credentials-email">🔧</button>
+                                                    </div>
+                                                    <div class="auth-form-row" id="messenger-forgot-new-email" style="display: none;">
+                                                        <label id="messenger-forgot-login-recover-email-label" for="messenger-forgot-login-recovery-email">Email:</label>
+                                                        <input type="text" id="messenger-edit-forgot-login-recovery-email" required>
+                                                    </div>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="messenger-question-forgot-login-span">Question:</label>
+                                                        <span id="messenger-question-forgot-login-span"></span>
+                                                        <button id="messenger-edit-credentials-question">🔧</button>
+                                                    </div>
+                                                    <div class="auth-form-row" id="messenger-forgot-login-recovery-question-row-mobile" style="display: none;">
+                                                            <label id="messenger-forgot-login-recovery-question-label" for="forgot-login-recovery-question">Question:</label>
+                                                            <input type="text" id="messenger-edit-forgot-login-recovery-question" required>
+                                                    </div>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="messenger-answer-forgot-login-span">Answer:</label>
+                                                        <span id="messenger-answer-forgot-login-span"></span>
+                                                        <button id="messenger-edit-credentials-answer">🔧</button>
+                                                    </div>
+                                                    <div class="auth-form-row" id="messenger-forgot-login-recovery-answer-row-mobile" style="display: none;">
+                                                        <label id="messenger-forgot-login-recovery-answer-label" for="messenger-forgot-login-recovery-answer">Answer:</label>
+                                                        <input type="text" id="messenger-edit-forgot-login-recovery-answer" required>
+                                                    </div>
+                        
                                                     <div class="auth-form-button-container">
-                                                        <button class="auth-form-button" id="part-legal-sign-in-button">Create Account</button>
+                                                        <button class="auth-form-button" id="messenger-auth-form-save-button">Save</button>
                                                     </div>
-                                                </div>
-                                
-                                                <div class="auth-form" id="part-legal-log-in-form">                        
-                                                    <h3>Oasis Credentials</h3>
-                                                    <p>Log into your Oasis Account to access exclusive features and services. If you don't yet have an account, create an account for free to continue.</p>
-                                                    <div class="auth-form-row">
-                                                        <label for="part-legal-username-log-in">User Name:</label>
-                                                        <input type="text" id="part-legal-username-log-in" required>
-                                                    </div>
-                                                    <div class="auth-form-row">
-                                                        <label for="part-legal-password-log-in">Password:</label>
-                                                        <input type="password" id="part-legal-password-log-in" required>
-                                                    </div>
-                                                    <div class="auth-form-button-container">
-                                                        <button class="auth-form-button" id="part-legal-log-in-button">Log In</button>
-                                                    </div>
-
-                                                    <p id="part-legal-forgot-credentials-link" style="color: #046df8; font-size: 11px; text-decoration: underline;">Forgot username or password?</p>
-                                                </div>
-
-                                                <div id="part-legal-forgot-login-form" style="display: none;">
-                                                    <div class="auth-form" id="part-legal-forgot-login-form-form">
-                                                        <div class="auth-form-row" id="part-legal-forgot-login-auth-form-row">
-                                                            <label id="part-legal-form-username-forgot-login-label" for="part-legal-username-forgot-login">Enter Username or Email associated with your account:</label>
-                                                            <input type="text" id="part-legal-username-forgot-login" required>
-                                                            <button  id="part-legal-send-request-button">Send Request</button>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="auth-form" id="part-legal-forgot-login-form-form-form" style="display: none;">
-                                                        <div class="auth-form-row" id="part-legal-forgot-question-auth-form-row">
-                                                            <label id="part-legal-form-question-forgot-login-label" for="part-legal-question-forgot-login">Question:</label>
-                                                            <span type="text" id="part-legal-question-forgot-login"></span>
-                                                        </div>
-                                                        <div class="auth-form-row" id="part-legal-forgot-answer-auth-form-row">
-                                                            <label id="part-legal-form-answer-forgot-login-label" for="part-legal-answer-forgot-login">Enter the answer to your custom question:</label>
-                                                            <input type="text" id="part-legal-answer-forgot-login" required>
-                                                        </div>
-                                                        <button  id="part-legal-send-question-button">Retrieve Credentials</button>
-                                                    </div>
-
-                                                    <div class="auth-form" id="part-legal-forgot-login-form-form-form-form" style="display: none;">
-                                                        <h3>Oasis Credentials</h3>
-                                                        <p>Please review your login credentials and make changes as necessary.</p>
-
-                                                        
-                                                        <div class="span-auth-form-row">
-                                                            <label for="part-legal-username-forgot-login-span">User Name:</label>
-                                                            <span id="part-legal-username-forgot-login-span"></span>
-                                                            <button id="part-legal-edit-credentials-username">🔧</button>
-                                                        </div>
-                                                        <div class="forgot-new-username" id="part-legal-forgot-new-username" style="display: none;">
-                                                            <div class="auth-form-row">
-                                                                <label id="part-legal-username-forgot-login-label" for="part-legal-username-forgot-login">User Name:</label>
-                                                                <input type="text" id="part-legal-edit-username-forgot-login" required>
-                                                            </div>
-                                                            <ul>
-                                                                <li>Username and Password must be within 6-15 characters</li>
-                                                            <ul>
-                                                        </div>
-
-                                                        <div class="span-auth-form-row">
-                                                            <label for="part-legal-password-forgot-login-span">Password:</label>
-                                                            <span id="part-legal-password-forgot-login-span"></span>
-                                                            <button id="part-legal-edit-credentials-password">🔧</button>                                
-                                                        </div>
-                                                        <div class="forgot-new-passwords" id="part-legal-forgot-new-passwords" style="display: none;">
-                                                            <div class="auth-form-row" id="part-legal-forgot-login-password-row-mobile">
-                                                                <label for="part-legal-password-forgot-login">Enter Password:</label>
-                                                                <input type="password" id="part-legal-edit-password-forgot-login" required>
-                                                            </div>
-                                                            <div class="auth-form-row" id="part-legal-forgot-login-password-row-mobile">
-                                                                <label for="part-legal-forgot-login-password-confirm">Confirm Password:</label>
-                                                                <input type="password" id="part-legal-edit-forgot-login-password-confirm" required>
-                                                            </div>
-                                                            <ul>
-                                                                <li>Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
-                                                                <li>Spaces are not allowed in the username nor password inputs.</li>
-                                                            </ul>
-                                                        </div>
-
-                                                        <div class="span-auth-form-row">
-                                                            <label for="part-legal-phone-forgot-login-span">Phone:</label>
-                                                            <span id="part-legal-phone-forgot-login-span"></span>
-                                                            <button id="part-legal-edit-credentials-phone">🔧</button>
-                                                        </div>
-                                                        <div class="auth-form-row" id="part-legal-forgot-new-phone" style="display: none;">
-                                                            <label id="part-legal-forgot-login-recover-phone-label" for="part-legal-forgot-login-recovery-phone">Phone:</label>
-                                                            <input type="text" id="part-legal-edit-forgot-login-recovery-phone" required>
-                                                        </div>
-
-                                                        <div class="span-auth-form-row">
-                                                            <label for="part-legal-email-forgot-login-span">Email:</label>
-                                                            <span id="part-legal-email-forgot-login-span"></span>
-                                                            <button id="part-legal-edit-credentials-email">🔧</button>
-                                                        </div>
-                                                        <div class="auth-form-row" id="part-legal-forgot-new-email" style="display: none;">
-                                                            <label id="part-legal-forgot-login-recover-email-label" for="part-legal-forgot-login-recovery-email">Email:</label>
-                                                            <input type="text" id="part-legal-edit-forgot-login-recovery-email" required>
-                                                        </div>
-
-                                                        <div class="span-auth-form-row">
-                                                            <label for="part-legal-question-forgot-login-span">Question:</label>
-                                                            <span id="part-legal-question-forgot-login-span"></span>
-                                                            <button id="part-legal-edit-credentials-question">🔧</button>
-                                                        </div>
-                                                        <div class="auth-form-row" id="part-legal-forgot-login-recovery-question-row-mobile" style="display: none;">
-                                                                <label id="part-legal-forgot-login-recovery-question-label" for="part-legal-forgot-login-recovery-question">Question:</label>
-                                                                <input type="text" id="part-legal-edit-forgot-login-recovery-question" required>
-                                                        </div>
-
-                                                        <div class="span-auth-form-row">
-                                                            <label for="part-legal-answer-forgot-login-span">Answer:</label>
-                                                            <span id="part-legal-answer-forgot-login-span"></span>
-                                                            <button id="part-legal-edit-credentials-answer">🔧</button>
-                                                        </div>
-                                                        <div class="auth-form-row" id="part-legal-forgot-login-recovery-answer-row-mobile" style="display: none;">
-                                                            <label id="part-legal-forgot-login-recovery-answer-label" for="part-legal-forgot-login-recovery-answer">Answer:</label>
-                                                            <input type="text" id="part-legal-edit-forgot-login-recovery-answer" required>
-                                                        </div>
-
-                                                        <div class="auth-form-button-container">
-                                                            <button class="auth-form-button" id="part-legal-auth-form-save-button">Save</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                
-                                                <div class="auth-tab-container" id="part-legal-auth-tab-container-log-in">
-                                                    <div class="auth-tab" id="part-legal-auth-tab-log-in" onclick="partShowForm('part-legal-log-in-form')">Log-In</div>
                                                 </div>
                                             </div>
+                                            <button class="send-message-button" id="messenger-send-button">Send Message</button>
+                                            <span id="messenger-username-password-error" style="display: none; font-size: 14px; color: red; margin-top: 10px;"></span>
                                         </div>
+                                        
+                                        <div class="user-login">
+                                            <div class="question-prompt">
+                                                <p>Is this your listing?</p>
+                                                <div class="yesno-buttons">
+                                                    <button class="yesno-button" id="yes-button">Yes</button>
+                                                    <button class="yesno-button" id="no-button">No</button>
+                                                </div>
+                                            </div>
 
-                                        <span id="part-username-password-error" style="display: none; font-size: 14px; color: red; margin-top: 10px;"></span>
+                                            <div class="auth-form" id="log-in-form" style="display: none;">
+                                                <h3>Oasis Credentials</h3>
+                                                <p>Log into your Oasis Account to access exclusive features and services. If you don't yet have an account, create an account for free to continue.</p>
+                                                <div class="auth-form-row">
+                                                    <label for="username-log-in">User Name:</label>
+                                                    <input type="text" id="username-log-in" required>
+                                                </div>
+                                                <div class="auth-form-row">
+                                                    <label for="password-log-in">Password:</label>
+                                                    <input type="password" id="password-log-in" required>
+                                                </div>
+                                                <div class="auth-tab-section">
+                                                    <button class="auth-tab" id="auth-tab-log-in">Log-In</button>
+                                                </div>
+                                                <p id="forgot-credentials-link" style="color: #046df8; font-size: 11px; text-decoration: underline;">Forgot username or password?</p>
+                                            </div>
+                        
+                                            <div id="forgot-login-form" style="display: none;">
+                                                <div class="auth-form" id="forgot-login-form-form">
+                                                    <div class="auth-form-row" id="forgot-login-auth-form-row">
+                                                        <label id="form-username-forgot-login-label" for="username-forgot-login">Enter Username or Email associated with your account:</label>
+                                                        <input type="text" id="username-forgot-login" required>
+                                                        <button  id="send-request-button">Send Request</button>
+                                                    </div>
+                                                </div>
+                        
+                                                <div class="auth-form" id="forgot-login-form-form-form" style="display: none;">
+                                                    <div class="auth-form-row" id="forgot-question-auth-form-row">
+                                                        <label id="form-question-forgot-login-label" for="question-forgot-login">Question:</label>
+                                                        <span type="text" id="question-forgot-login"></span>
+                                                    </div>
+                                                    <div class="auth-form-row" id="forgot-answer-auth-form-row">
+                                                        <label id="form-answer-forgot-login-label" for="answer-forgot-login">Enter the answer to your custom question:</label>
+                                                        <input type="text" id="answer-forgot-login" required>
+                                                    </div>
+                                                    <button  id="send-question-button">Retrieve Credentials</button>
+                                                </div>
+                        
+                                                <div class="auth-form" id="forgot-login-form-form-form-form" style="display: none;">
+                                                    <h3>Oasis Credentials</h3>
+                                                    <p>Please review your login credentials and make changes as necessary.</p>
+                        
+                                                    
+                                                    <div class="span-auth-form-row">
+                                                        <label for="username-forgot-login-span">User Name:</label>
+                                                        <span id="username-forgot-login-span"></span>
+                                                        <button id="edit-credentials-username">🔧</button>
+                                                    </div>
+                                                    <div class="forgot-new-username" id="forgot-new-username" style="display: none;">
+                                                        <div class="auth-form-row">
+                                                            <label id="username-forgot-login-label" for="username-forgot-login">User Name:</label>
+                                                            <input type="text" id="edit-username-forgot-login" required>
+                                                        </div>
+                                                        <ul>
+                                                            <li>Username and Password must be within 6-15 characters</li>
+                                                        <ul>
+                                                    </div>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="password-forgot-login-span">Password:</label>
+                                                        <span id="password-forgot-login-span"></span>
+                                                        <button id="edit-credentials-password">🔧</button>                                
+                                                    </div>
+                                                    <div class="forgot-new-passwords" id="forgot-new-passwords" style="display: none;">
+                                                        <div class="auth-form-row" id="forgot-login-password-row-mobile">
+                                                            <label for="password-forgot-login">Enter Password:</label>
+                                                            <input type="password" id="edit-password-forgot-login" required>
+                                                        </div>
+                                                        <div class="auth-form-row" id="forgot-login-password-row-mobile">
+                                                            <label for="forgot-login-password-confirm">Confirm Password:</label>
+                                                            <input type="password" id="edit-forgot-login-password-confirm" required>
+                                                        </div>
+                                                        <ul>
+                                                            <li>Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
+                                                            <li>Spaces are not allowed in the username nor password inputs.</li>
+                                                        </ul>
+                                                    </div>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="email-forgot-login-span">Email:</label>
+                                                        <span id="email-forgot-login-span"></span>
+                                                        <button id="edit-credentials-email">🔧</button>
+                                                    </div>
+                                                    <div class="auth-form-row" id="forgot-new-email" style="display: none;">
+                                                        <label id="forgot-login-recover-email-label" for="forgot-login-recovery-email">Email:</label>
+                                                        <input type="text" id="edit-forgot-login-recovery-email" required>
+                                                    </div>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="question-forgot-login-span">Question:</label>
+                                                        <span id="question-forgot-login-span"></span>
+                                                        <button id="edit-credentials-question">🔧</button>
+                                                    </div>
+                                                    <div class="auth-form-row" id="forgot-login-recovery-question-row-mobile" style="display: none;">
+                                                            <label id="forgot-login-recovery-question-label" for="forgot-login-recovery-question">Question:</label>
+                                                            <input type="text" id="edit-forgot-login-recovery-question" required>
+                                                    </div>
+                        
+                                                    <div class="span-auth-form-row">
+                                                        <label for="answer-forgot-login-span">Answer:</label>
+                                                        <span id="answer-forgot-login-span"></span>
+                                                        <button id="edit-credentials-answer">🔧</button>
+                                                    </div>
+                                                    <div class="auth-form-row" id="forgot-login-recovery-answer-row-mobile" style="display: none;">
+                                                        <label id="forgot-login-recovery-answer-label" for="forgot-login-recovery-answer">Answer:</label>
+                                                        <input type="text" id="edit-forgot-login-recovery-answer" required>
+                                                    </div>
+                        
+                                                    <div class="auth-form-button-container">
+                                                        <button class="auth-form-button" id="auth-form-save-button">Save</button>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                        <h3>Terms and Conditions</h3>
-                                        <ul>
-                                            <li>Part listings are circulated for 1 month before being deleted. Oasis Members have the option to relist after 1 month, along with the ability to edit or delete a listing after submission.</li>
-                                            <li>Verified listings will receive a checkmark according to the verification level.</li>
-                                            <li>Listings submitted for review may take 1-3 business days to be fully populated across our network.</li>
+                                            <span id="username-password-error" style="display: none; font-size: 14px; color: red; margin-top: 10px;"></span>
+                                            <span id="username-value" style="display: none;"></span>
+                                            <span id="password-value" style="display: none;"></span>
+                                            <span id="email-value" style="display: none;"></span>
+                                            <span id="question-value" style="display: none;"></span>
+                                            <span id="answer-value" style="display: none;"></span>  
+                                        </div>
+                                    </div> 
+                                    <div class="auth-form" id="sign-in-form" style="display: none;">
+                                        <h3>Oasis Credentials</h3>
+                                        <p>Please fill out the following information to create your free Oasis Account. If you already have an account, log in to continue.</p>
+                                        <div class="auth-form-row">
+                                            <label id="username-sign-in-label" for="username-sign-in">User Name:</label>
+                                            <input type="text" id="username-sign-in" required>
+                                        </div>
+                                        <div class="auth-form-row" id="auth-form-password-row-mobile">
+                                            <label for="password-sign-in">Enter Password:</label>
+                                            <input type="password" id="password-sign-in" required>
+                                        </div>
+                                        <div class="auth-form-row" id="auth-form-password-row-mobile">
+                                            <label for="password-confirm">Confirm Password:</label>
+                                            <input type="password" id="password-confirm" required>
+                                        </div>
+                                        <ul class="createAccount-directions">
+                                            <li class="lesserP">Username and Password must be within 6-15 characters</li>
+                                            <li class="lesserP">Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
+                                            <li class="lesserP">Spaces are not allowed in the username nor password inputs.</li>
                                         </ul>
-                                        <p>For more details, please refer to our <a href="https://www.worldmotormarket.com/terms-of-services" target="_blank">Terms of Service</a>.</p>
-                                    </div>
-                                    <div class="listing-button-row" style="width: 100%; display: flex; justify-content: center;">
-                                        <div class="listing-buttons" id="part-listing-buttons">
-                                            <button id="part-edit-listing-button" class="widthButton">Edit Listing</button>
-                                            <button class="widthButton" id="part-listing-info-tab-button" style="display: none;">i</button>
-                                            <button id="part-submit-listing-button" class="widthButton">Submit Listing</button>
+
+                                        <h3>Username/Password Recovery</h3>
+                                        <p>For use in username/password recovery, enter an email to associate with the account and a question that only you would know the answer to:</p>
+                                        <div class="auth-form-row">
+                                            <label id="recover-email-label" for="recovery-email">Email:</label>
+                                            <input type="text" id="recovery-email" required>
                                         </div>
-                                    </div>
+                                        <div class="auth-form-row" id="recovery-answer-row-mobile">
+                                                <label id="recovery-question-label" for="recovery-question">Question:</label>
+                                                <input type="text" id="recovery-question" required>
+                                        </div>
+                                        <div class="auth-form-row" id="recovery-answer-row-mobile">
+                                            <label id="recovery-answer-label" for="recovery-answer">Answer:</label>
+                                            <input type="text" id="recovery-answer" required>
+                                        </div>
+
+                                        <div class="auth-form-button-container">
+                                            <button class="auth-form-button" id="sign-in-button">Create Account</button>
+                                        </div>
+                                        <span id="sign-in-username-password-error" style="display: none; font-size: 14px; color: red; margin-top: 10px;"></span>
+                                    </div>   
                                 </div>
 
                                 <div class="content" id="content-parts" style="display: none;">
@@ -12798,6 +12501,601 @@
                                         
                                         <div class="submit-button" id="parts-submit-button">
                                             <button type="submit">Submit Listing</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="legal" id="part-legal" style="display: none;">
+                                        <div class="legal-exit-container">
+                                            <button id="part-legal-exit-button">x</button>
+                                        </div>
+                                        <h3>Listing Information</h3>
+
+                                        <div class="navDropdownRowContainer" id="part-listing-packages">
+                                            <div class="navDropdownRow" id="part-listing-dropdown">
+                                                <button id="part-listing-package-button">+</button>
+                                                <p>Listing Packages</p>
+                                            </div>
+                                            <div class="navDropdownInfoContainer" id="part-listing-packages-info-container">
+                                                <p>Choose the Listing Package that best suits your preferences:</p>
+                                                <div class="navDropdownInfo" id="part-listing-packages-info">
+                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-general">
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-title">
+                                                            <h3>Package Name</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-price">
+                                                            <h3>Price</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-verification">
+                                                            <h3>Verification Process</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-featured">
+                                                            <h3>Featured Status</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-membership">
+                                                            <h3>Membership Status</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-general-info-other">
+                                                            <h3>Other Benefits</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-free">
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-title">
+                                                            <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-free-checkbox" name="listing-package-free-checkbox" value="listing-package-free-checkbox">
+                                                            <h3>Free</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-price">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-verification">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-featured">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-membership">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-free-info-other">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-basic">
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-title">
+                                                            <div class="title-and-check">
+                                                                <div class="checkmark">
+                                                                    <div class="grey-checkmark-circle">
+                                                                        <div class="grey-checkmark-symbol">&#10003;</div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-package-basic-checkbox" name="listing-package-basic-checkbox" value="listing-package-basic-checkbox">                                
+                                                            </div>
+                                                            <h3>Basic</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-price">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p class="NodePrice" id="part-basic-full-price">$4.99</p>
+                                                                <div class="price-Ps-row">
+                                                                    <p class="NodePrice" id="part-basic-sale-price">$1.99</p>
+                                                                    <p class="NodePDash">/</p>
+                                                                    <p class="NodePMonth">month</p>
+                                                                </div>
+                                                                <p>for the first 100 Listings</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-verification">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Picture Verification</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-featured">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-membership">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-basic-info-other">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">First 100 listings get free Featured Status</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-verified">
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-title">
+                                                            <div class="title-and-check">
+                                                                <div class="checkmark">
+                                                                    <div class="whiteBlue-checkmark-circle">
+                                                                        <div class="whiteBlue-checkmark-symbol">&#10003;</div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-verified-checkbox" name="listing-package-verified-checkbox" value="listing-package-verified-checkbox">
+                                                            </div>
+                                                            <h3>Verified</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-price">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p class="NodePrice" id="part-verified-full-price">$12.99</p>
+                                                                <p class="NodePrice">$6.99</p>
+                                                                <p>for the first 100 Listings</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-verification">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Picture Verification</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Driver's License Verification</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-featured">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Featured Status for 1 week</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-membership">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p>n/a</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-verified-info-other">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">First 100 Listings get Free Featured Status</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Re-Listing for up to 3 months</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-featured" style="display: none;">
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-title">
+                                                            <div class="title-and-check">
+                                                                <div class="checkmark">
+                                                                    <div class="blueWhite-checkmark-circle">
+                                                                        <div class="blueWhite-checkmark-symbol">&#10003;</div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-featured-checkbox" name="listing-package-featured-checkbox" value="listing-package-featured-checkbox">
+                                                            </div>
+                                                            <h3>Featured</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-price">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p class="NodePrice" id="part-featured-full-price">$32.99</p>
+                                                                <p class="NodePrice">$29.99</p>
+                                                                <p>for our first 3 months!</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-verification">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Picture Verification</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Driver's License Verification</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">CarFax Verification</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-featured">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Featured Lisitng Status on all listings for 3 Months</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-membership">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Oasis Club Membership for 3 months</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-featured-info-other">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Re-Listing per month</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Allowed up to 3 Listings for no additional charge</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Buyers will have free access to Carfax reports when looking at your vehicle</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="navDropdownInfoGeneral" id="part-listing-packages-info-exclusive" style="display: none;">
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-title">
+                                                            <div class="title-and-check">
+                                                                <div class="checkmark">
+                                                                    <div class="blackWhite-checkmark-circle">
+                                                                        <div class="blackWhite-checkmark-symbol">&#10003;</div>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="checkbox" class="part-legal-listing-package-checkbox" id="part-listing-package-exclusive-checkbox" name="listing-package-exclusive-checkbox" value="listing-package-exclusive-checkbox">
+                                                            </div>
+                                                            <h3>Exclusive</h3>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-price">
+                                                            <div class="GeneralNodePContainer">
+                                                                <p class="NodePrice" id="part-exclusive-full-price">$129.99</p>
+                                                                <p class="NodePrice">$109.99</p>
+                                                                <p>for our 3 months!</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-verification">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Picture Verification</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Driver's License Verification</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">CarFax Verification</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-featured">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Featured Status on up to 10 Listings in 1 year</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-membership">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Oasis Club Membership for 1 year</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="navDropdownInfoGeneralNode" id="part-listing-packages-exclusive-info-other">
+                                                            <div class="GeneralNodePContainer">
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Free Re-Listing per month</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Option to display your listing on our "Near-You" Maps</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Allowed up to 10 Listings in 1 year with no additional charge</p>
+                                                                </div>
+                                                                <div class="NodePRow">
+                                                                    <p class="NodeP-s">-</p>
+                                                                    <p class="NodePp">Buyers will have free access to Carfax reports when looking at your vehicle</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <ul>
+                                                    <li>Listing Checkmarks will be displayed in the top right corner of each listing to which it applies.</li>
+                                                    <li>Duplicate Search Results within our network will be sorted by higher package levels first.</li>
+                                                    <li>Membership updates triggered by our listing prices may take up to 24 hours to fully populated through our networks.</li>
+                                                </ul>
+                                            </div>
+                                            <span id="part-legal-listing-choice"></span>
+                                        </div>
+
+                                        <div class="navDropdownRowContainer" id="part-addOn-container">
+                                            <div class="navDropdownRow" id="part-addOn-dropdown">
+                                                <button>+</button>
+                                                <p>Add-On Packages and Services</p>
+                                            </div>
+                                            <div class="addOnPackagesContainer" id="part-addOn-package-container" style="display: none;">
+                                                <p>Browse our Add-On Packages and Services to best fit your needs as a Seller.</p>
+                                                <div class="addOnPackageContainer" id="part-addOn-delivery-container">
+                                                    <div class="addOnPackageDropdown" id="part-addOn-delivery-dropdown">
+                                                        <button>+</button>
+                                                        <p>Delivery and Shipping Services</p>
+                                                    </div>
+                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-delivery-options">
+                                                        <li>Stay tuned for more exciting Features and Benefits</li>
+                                                    </div>
+                                                </div>
+                                                <div class="addOnPackageContainer" id="part-addOn-inspection-container">
+                                                    <div class="addOnPackageDropdown" id="part-addOn-inspection-dropdown">
+                                                        <button>+</button>
+                                                        <p>Part Inpection Services</p>
+                                                    </div>
+                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-inspection-options">
+                                                        <li>Stay tuned for more exciting Features and Benefits</li>
+                                                    </div>
+                                                </div>
+                                                <div class="addOnPackageContainer" id="part-addOn-detailing-container">
+                                                    <div class="addOnPackageDropdown" id="part-addOn-detailing-dropdown">
+                                                        <button>+</button>
+                                                        <p>Cleaning and Detailing Services</p>
+                                                    </div>
+                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-detailing-options">
+                                                        <li>Stay tuned for more exciting Features and Benefits</li>
+                                                    </div>
+                                                </div>
+                                                <div class="addOnPackageContainer" id="part-addOn-other-container">
+                                                    <div class="addOnPackageDropdown" id="part-addOn-other-dropdown">
+                                                        <button>+</button>
+                                                        <p>Other Add On Services</p>
+                                                    </div>
+                                                    <div class="addOnPackageDropdownOptions" id="part-addOn-other-options">
+                                                        <li>Stay tuned for more exciting Features and Benefits</li>
+                                                    </div>
+                                                </div>
+                                                <ul class="addOnPackagesContainer-li">
+                                                    <li>Add-On Packages and Services will be deducted out of the final price of the sale.</li>
+                                                    <li>All Add-On's will be offered to Buyers free of charge to them.</li>
+                                                    <li>Add-On Service Providers are all Trusted Providers within the World Motor Market's network. For questions and more information, please refer to our <a href="https://www.worldmotormarket.com/terms-of-services" target="_blank">Terms of Service</a>.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="navDropdownRowContainer" id="part-subscription-packages">
+                                            <div class="navDropdownRow" id="part-subscription-dropdown">
+                                                <button>+</button>
+                                                <p>Subscription Packages</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="auth-tab-form-container" id="part-legal-auth-form">
+
+                                            <div class="auth-tab-container" id="part-legal-auth-tab-container-sign-in">
+                                                <div class="auth-tab" id="part-legal-auth-tab-sign-in" onclick="partShowForm('part-legal-sign-in-form')">Create Account</div>
+                                            </div>
+                                
+                                            <div class="auth-mobile-reverse-row">
+                                
+                                                <div class="auth-form" id="part-legal-sign-in-form" style="display: none;">
+                                                    <h3>Oasis Credentials</h3>
+                                                    <p>Create an account for free to access exclusive features and services. If you already have an account, log in to continue.</p>
+                                                    <div class="auth-form-row">
+                                                        <label id="part-legal-username-sign-in-label" for="part-legal-username-sign-in">User Name:</label>
+                                                        <input type="text" id="part-legal-username-sign-in" required>
+                                                    </div>
+                                                    <div class="auth-form-row" id="part-legal-auth-form-password-row-mobile">
+                                                        <label for="part-legal-password-sign-in">Enter Password:</label>
+                                                        <input type="password" id="part-legal-password-sign-in" required>
+                                                    </div>
+                                                    <div class="auth-form-row" id="part-legal-auth-form-password-row-mobile">
+                                                        <label for="part-legal-password-confirm">Confirm Password:</label>
+                                                        <input type="password" id="part-legal-password-confirm" required>
+                                                    </div>
+                                                    <ul>
+                                                        <li>Username and Password must be within 6-15 characters</li>
+                                                        <li>Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
+                                                        <li>Spaces are not allowed in the username nor password inputs.</li>
+                                                    </ul>
+
+                                                    <h3>Username/Password Recovery</h3>
+                                                    <p>For use in username/password recovery, enter an email to associate with the account and a question that only you would know the answer to:</p>
+                                                    
+                                                    <div class="auth-form-row">
+                                                        <label id="part-legal-recovery-phone-label" for="part-legal-recovery-phone">Phone:</label>
+                                                        <input type="text" id="part-legal-recovery-phone" required>
+                                                    </div>
+                                                    <div class="auth-form-row">
+                                                        <label id="part-legal-recover-email-label" for="part-legal-recovery-email">Email:</label>
+                                                        <input type="text" id="part-legal-recovery-email" required>
+                                                    </div>
+                                                    <div class="auth-form-row" id="part-legal-recovery-answer-row-mobile">
+                                                            <label id="part-legal-recovery-question-label" for="part-legal-recovery-question">Question:</label>
+                                                            <input type="text" id="part-legal-recovery-question" required>
+                                                    </div>
+                                                    <div class="auth-form-row" id="part-legal-recovery-answer-row-mobile">
+                                                        <label id="part-legal-recovery-answer-label" for="part-legal-recovery-answer">Answer:</label>
+                                                        <input type="text" id="part-legal-recovery-answer" required>
+                                                    </div>
+
+                                                    <div class="auth-form-button-container">
+                                                        <button class="auth-form-button" id="part-legal-sign-in-button">Create Account</button>
+                                                    </div>
+                                                </div>
+                                
+                                                <div class="auth-form" id="part-legal-log-in-form">                        
+                                                    <h3>Oasis Credentials</h3>
+                                                    <p>Log into your Oasis Account to access exclusive features and services. If you don't yet have an account, create an account for free to continue.</p>
+                                                    <div class="auth-form-row">
+                                                        <label for="part-legal-username-log-in">User Name:</label>
+                                                        <input type="text" id="part-legal-username-log-in" required>
+                                                    </div>
+                                                    <div class="auth-form-row">
+                                                        <label for="part-legal-password-log-in">Password:</label>
+                                                        <input type="password" id="part-legal-password-log-in" required>
+                                                    </div>
+                                                    <div class="auth-form-button-container">
+                                                        <button class="auth-form-button" id="part-legal-log-in-button">Log In</button>
+                                                    </div>
+
+                                                    <p id="part-legal-forgot-credentials-link" style="color: #046df8; font-size: 11px; text-decoration: underline;">Forgot username or password?</p>
+                                                </div>
+
+                                                <div id="part-legal-forgot-login-form" style="display: none;">
+                                                    <div class="auth-form" id="part-legal-forgot-login-form-form">
+                                                        <div class="auth-form-row" id="part-legal-forgot-login-auth-form-row">
+                                                            <label id="part-legal-form-username-forgot-login-label" for="part-legal-username-forgot-login">Enter Username or Email associated with your account:</label>
+                                                            <input type="text" id="part-legal-username-forgot-login" required>
+                                                            <button  id="part-legal-send-request-button">Send Request</button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="auth-form" id="part-legal-forgot-login-form-form-form" style="display: none;">
+                                                        <div class="auth-form-row" id="part-legal-forgot-question-auth-form-row">
+                                                            <label id="part-legal-form-question-forgot-login-label" for="part-legal-question-forgot-login">Question:</label>
+                                                            <span type="text" id="part-legal-question-forgot-login"></span>
+                                                        </div>
+                                                        <div class="auth-form-row" id="part-legal-forgot-answer-auth-form-row">
+                                                            <label id="part-legal-form-answer-forgot-login-label" for="part-legal-answer-forgot-login">Enter the answer to your custom question:</label>
+                                                            <input type="text" id="part-legal-answer-forgot-login" required>
+                                                        </div>
+                                                        <button  id="part-legal-send-question-button">Retrieve Credentials</button>
+                                                    </div>
+
+                                                    <div class="auth-form" id="part-legal-forgot-login-form-form-form-form" style="display: none;">
+                                                        <h3>Oasis Credentials</h3>
+                                                        <p>Please review your login credentials and make changes as necessary.</p>
+
+                                                        
+                                                        <div class="span-auth-form-row">
+                                                            <label for="part-legal-username-forgot-login-span">User Name:</label>
+                                                            <span id="part-legal-username-forgot-login-span"></span>
+                                                            <button id="part-legal-edit-credentials-username">🔧</button>
+                                                        </div>
+                                                        <div class="forgot-new-username" id="part-legal-forgot-new-username" style="display: none;">
+                                                            <div class="auth-form-row">
+                                                                <label id="part-legal-username-forgot-login-label" for="part-legal-username-forgot-login">User Name:</label>
+                                                                <input type="text" id="part-legal-edit-username-forgot-login" required>
+                                                            </div>
+                                                            <ul>
+                                                                <li>Username and Password must be within 6-15 characters</li>
+                                                            <ul>
+                                                        </div>
+
+                                                        <div class="span-auth-form-row">
+                                                            <label for="part-legal-password-forgot-login-span">Password:</label>
+                                                            <span id="part-legal-password-forgot-login-span"></span>
+                                                            <button id="part-legal-edit-credentials-password">🔧</button>                                
+                                                        </div>
+                                                        <div class="forgot-new-passwords" id="part-legal-forgot-new-passwords" style="display: none;">
+                                                            <div class="auth-form-row" id="part-legal-forgot-login-password-row-mobile">
+                                                                <label for="part-legal-password-forgot-login">Enter Password:</label>
+                                                                <input type="password" id="part-legal-edit-password-forgot-login" required>
+                                                            </div>
+                                                            <div class="auth-form-row" id="part-legal-forgot-login-password-row-mobile">
+                                                                <label for="part-legal-forgot-login-password-confirm">Confirm Password:</label>
+                                                                <input type="password" id="part-legal-edit-forgot-login-password-confirm" required>
+                                                            </div>
+                                                            <ul>
+                                                                <li>Password must contain at least 1 number and 1 non-alphanumeric symbol.</li>
+                                                                <li>Spaces are not allowed in the username nor password inputs.</li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div class="span-auth-form-row">
+                                                            <label for="part-legal-phone-forgot-login-span">Phone:</label>
+                                                            <span id="part-legal-phone-forgot-login-span"></span>
+                                                            <button id="part-legal-edit-credentials-phone">🔧</button>
+                                                        </div>
+                                                        <div class="auth-form-row" id="part-legal-forgot-new-phone" style="display: none;">
+                                                            <label id="part-legal-forgot-login-recover-phone-label" for="part-legal-forgot-login-recovery-phone">Phone:</label>
+                                                            <input type="text" id="part-legal-edit-forgot-login-recovery-phone" required>
+                                                        </div>
+
+                                                        <div class="span-auth-form-row">
+                                                            <label for="part-legal-email-forgot-login-span">Email:</label>
+                                                            <span id="part-legal-email-forgot-login-span"></span>
+                                                            <button id="part-legal-edit-credentials-email">🔧</button>
+                                                        </div>
+                                                        <div class="auth-form-row" id="part-legal-forgot-new-email" style="display: none;">
+                                                            <label id="part-legal-forgot-login-recover-email-label" for="part-legal-forgot-login-recovery-email">Email:</label>
+                                                            <input type="text" id="part-legal-edit-forgot-login-recovery-email" required>
+                                                        </div>
+
+                                                        <div class="span-auth-form-row">
+                                                            <label for="part-legal-question-forgot-login-span">Question:</label>
+                                                            <span id="part-legal-question-forgot-login-span"></span>
+                                                            <button id="part-legal-edit-credentials-question">🔧</button>
+                                                        </div>
+                                                        <div class="auth-form-row" id="part-legal-forgot-login-recovery-question-row-mobile" style="display: none;">
+                                                                <label id="part-legal-forgot-login-recovery-question-label" for="part-legal-forgot-login-recovery-question">Question:</label>
+                                                                <input type="text" id="part-legal-edit-forgot-login-recovery-question" required>
+                                                        </div>
+
+                                                        <div class="span-auth-form-row">
+                                                            <label for="part-legal-answer-forgot-login-span">Answer:</label>
+                                                            <span id="part-legal-answer-forgot-login-span"></span>
+                                                            <button id="part-legal-edit-credentials-answer">🔧</button>
+                                                        </div>
+                                                        <div class="auth-form-row" id="part-legal-forgot-login-recovery-answer-row-mobile" style="display: none;">
+                                                            <label id="part-legal-forgot-login-recovery-answer-label" for="part-legal-forgot-login-recovery-answer">Answer:</label>
+                                                            <input type="text" id="part-legal-edit-forgot-login-recovery-answer" required>
+                                                        </div>
+
+                                                        <div class="auth-form-button-container">
+                                                            <button class="auth-form-button" id="part-legal-auth-form-save-button">Save</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                
+                                                <div class="auth-tab-container" id="part-legal-auth-tab-container-log-in">
+                                                    <div class="auth-tab" id="part-legal-auth-tab-log-in" onclick="partShowForm('part-legal-log-in-form')">Log-In</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <span id="part-username-password-error" style="display: none; font-size: 14px; color: red; margin-top: 10px;"></span>
+
+                                        <h3>Terms and Conditions</h3>
+                                        <ul>
+                                            <li>Part listings are circulated for 1 month before being deleted. Oasis Members have the option to relist after 1 month, along with the ability to edit or delete a listing after submission.</li>
+                                            <li>Verified listings will receive a checkmark according to the verification level.</li>
+                                            <li>Listings submitted for review may take 1-3 business days to be fully populated across our network.</li>
+                                        </ul>
+                                        <p>For more details, please refer to our <a href="https://www.worldmotormarket.com/terms-of-services" target="_blank">Terms of Service</a>.</p>
+                                    </div>
+                                    <div class="listing-button-row" style="width: 100%; display: flex; justify-content: center;">
+                                        <div class="listing-buttons" id="part-listing-buttons">
+                                            <button id="part-edit-listing-button" class="widthButton">Edit Listing</button>
+                                            <button class="widthButton" id="part-listing-info-tab-button" style="display: none;">i</button>
+                                            <button id="part-submit-listing-button" class="widthButton">Submit Listing</button>
                                         </div>
                                     </div>
                                 </div>
