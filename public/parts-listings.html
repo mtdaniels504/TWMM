@@ -16999,14 +16999,14 @@
 
             // Render logic based on URL parameter
             if (uniqueListingID) {
-                const matchingListing = vehiclesData.find(listing => listing.unique_listing_id === uniqueListingID);
+                const matchingListing = partsData.find(listing => listing.unique_listing_id === uniqueListingID);
                 if (matchingListing) {
                     createFullListingHTML(matchingListing, fullListingTemplate);
                 } else {
                     console.log(`No listing found for uniqueListingID: ${uniqueListingID}`);
                 }
             } else {
-                vehiclesData.forEach(listing => {
+                partsData.forEach(listing => {
                     createFullListingHTML(listing, fullListingTemplate);
                 });
             }
