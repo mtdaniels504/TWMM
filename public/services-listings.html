@@ -15779,10 +15779,7 @@
             }
     
             const data = await response.json();
-            console.log(data);
-
-            // Extract organized service data
-            const servicesData = data.data.services;
+            const servicesData = data.listings;
             
             // Get the uniqueServiceListingID from the URL
             const uniqueServiceListingID = new URLSearchParams(window.location.search).get('listing');
@@ -15837,8 +15834,7 @@
             // Main function to build and populate individual listing HTML elements
             function createFullListingHTML(listing) {
                 const fullListingClone = fullListingTemplate.cloneNode(true);
-                const listingID = listing.id.uniqueServiceListingID;
-                console.log(`Unique Listing ID = ${listingID}`);
+                const listingID = listing.uniqueServiceListingID;
 
                 // Update small image spot IDs
                 const smallImageSpots = fullListingClone.querySelectorAll('[id^="listing-small-service-image-preview-"]');
@@ -15846,21 +15842,21 @@
                     spot.id = `listing-small-service-image-preview-${listingID}-${index + 1}`;
                 });
 
-                // Hide auth container if user login isn't required
-                if (!listing.hasUserLogin) {
-                    const authFormContainer = fullListingClone.querySelector('.auth-form-container');
-                    if (authFormContainer) authFormContainer.style.display = 'none';
-                }
+                // // Hide auth container if user login isn't required
+                // if (!listing.hasUserLogin) {
+                //     const authFormContainer = fullListingClone.querySelector('.auth-form-container');
+                //     if (authFormContainer) authFormContainer.style.display = 'none';
+                // }
 
                 // Populate basic text fields
                 fullListingClone.querySelector('#services-listing-title').textContent = listing.title || 'n/a';
-                fullListingClone.querySelector('#selected-companyName').textContent = listing.service.companyName || 'n/a';
-                fullListingClone.querySelector('#selected-serviceAddress').textContent = listing.service.serviceAddress || 'n/a';
-                fullListingClone.querySelector('#selected-serviceCity').textContent = listing.service.city || 'n/a';
-                fullListingClone.querySelector('#selected-serviceState').textContent = listing.service.state || 'n/a';
-                fullListingClone.querySelector('#selected-serviceZipCode').textContent = listing.service.zipCode || 'n/a';
-                fullListingClone.querySelector('#selected-serviceCategory').textContent = listing.service.category || 'n/a';
-                fullListingClone.querySelector('#selected-serviceType').textContent = listing.service.type || 'n/a';
+                fullListingClone.querySelector('#selected-companyName').textContent = listing.company_name || 'n/a';
+                fullListingClone.querySelector('#selected-serviceAddress').textContent = listing.service_address || 'n/a';
+                fullListingClone.querySelector('#selected-serviceCity').textContent = listing.service_city || 'n/a';
+                fullListingClone.querySelector('#selected-serviceState').textContent = listing.service_state || 'n/a';
+                fullListingClone.querySelector('#selected-serviceZipCode').textContent = listing.service_zip || 'n/a';
+                fullListingClone.querySelector('#selected-serviceCategory').textContent = listing.service_category || 'n/a';
+                fullListingClone.querySelector('#selected-serviceType').textContent = listing.service_type || 'n/a';
                 
                 // Open hours
                 const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
@@ -15869,9 +15865,9 @@
                     if (el) el.textContent = listing.openHours?.[day] || 'n/a';
                 });
 
-                fullListingClone.querySelector('#service-listing-contact-name-display').textContent = listing.contact?.name || 'n/a';
-                fullListingClone.querySelector('#service-listing-contact-phone-display').textContent = listing.contact?.phone || 'n/a';
-                fullListingClone.querySelector('#service-listing-contact-email-display').textContent = listing.contact?.email || 'n/a';
+                fullListingClone.querySelector('#service-listing-contact-name-display').textContent = listing.contact_name || 'n/a';
+                fullListingClone.querySelector('#service-listing-contact-phone-display').textContent = listing.contact_phone || 'n/a';
+                fullListingClone.querySelector('#service-listing-contact-email-display').textContent = listing.contact_email || 'n/a';
                 fullListingClone.querySelector('#incoming-username').textContent = listing.auth?.username || 'n/a';
 
                 // Handle Images & Videos Grouping
@@ -15964,12 +15960,12 @@
                 // Handle Concatenated Service Rows matching the exact rendering pattern requested
                 const serviceRow = listing.service_row || {};
                 const concatenatedFields = [
-                    serviceRow.service_title || 'n/a',
-                    serviceRow.service_description || 'n/a',
-                    serviceRow.service_parts_included || 'n/a',
-                    serviceRow.service_labor_included || 'n/a',
-                    serviceRow.service_price || 'n/a',
-                    serviceRow.service_duration || 'n/a'
+                    serviceRow.service_row_title || 'n/a',
+                    serviceRow.service_row_description || 'n/a',
+                    serviceRow.service_row_parts_included || 'n/a',
+                    serviceRow.service_row_labor_included || 'n/a',
+                    serviceRow.service_row_price || 'n/a',
+                    serviceRow.service_row_duration || 'n/a'
                 ];
 
                 const displayServicesContainer = fullListingClone.querySelector('#display-services');
