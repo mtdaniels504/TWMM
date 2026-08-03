@@ -6276,6 +6276,9 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 5px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
         }
 
         /* "Show All" Button matching your button schema */
@@ -6318,9 +6321,10 @@
         /* Individual Service Display Cards matching your div schema */
         #display-services {
             display: flex;
-            flex-direction: column;
             gap: 4px;
             padding: 0 2px;
+            overflow-y: hidden;
+            overflow-x: auto;
         }
 
         .service-section {
@@ -6329,6 +6333,7 @@
             border-radius: 2px;
             padding: 6px 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
+            width: 40%;
         }
 
         .service-label {
