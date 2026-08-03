@@ -6220,93 +6220,162 @@
     /* Style for Listing Service Information */
 
 
+/* Main Container */
         #services-listing {
-            background-color: #000;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
             box-sizing: border-box;
             width: 99%;
-            padding: 10px 10px 10px 5px;
-            margin: 2px auto;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px 15px;
+            margin: 10px auto;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease-in-out;
         }
 
         #services-listing:hover {
-            background-color: #0160dbfe;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #014ab8, #0160db);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 30px rgba(1, 96, 219, 0.4);
         }
 
+        /* Section Heading */
         #services-listing h2 {
             width: 100%;
-            color: #007BFF;
-            font-size: 22px;
-            margin-left: 50px;
-            text-decoration: underline;
+            color: #3b82f6;
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 0;
+            text-align: center;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
         }
 
         #services-listing:hover h2 {
-            color: #ffffffe0;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        #services-listing:hover h2:hover {
-            color: #fff;
-        }
-
+        /* Navigation Bar Container (Scrollable Tabs) */
         #display-services-nav {
-            display:flex; 
+            display: flex; 
             flex-direction: row; 
-            gap: 5px; 
-            padding: 0px 15px; 
-            min-width: 90%; 
-            width: 90%;
-            max-width: 60vw; 
+            gap: 8px; 
+            padding: 5px 10px 12px 10px; 
+            width: 100%;
+            max-width: 100%; 
             overflow-x: auto; 
-            margin: auto;
+            margin: 0 auto 15px auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+        }
+
+        #display-services-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        #display-services-nav::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
         }
 
         .show-all-section {
-            min-width: 100%;
+            width: 100%;
             font-size: 14px;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            margin-bottom: 10px;
         }
 
+        /* "Show All" Button & Nav Entries */
         #show-all-button {
             display: none;
-            max-width: 120px;
+            max-width: 140px;
+            background-color: #2563eb;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
 
-        /* Style all even entries */
         .nav-entry {
             cursor: pointer;
-            font-size: 12px;
-            padding: 6px;
-            background-color: #046df8;
-            border-radius: 4px;
-            color: white;
-            margin: 5px 0px;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 8px 14px;
+            background-color: #1e293b;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: #f8fafc;
+            margin: 0;
             white-space: nowrap;
+            transition: all 0.25s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .nav-entry:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
-            background-color: #999;
+            transform: translateY(-2px);
+            background-color: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
         }
 
         #services-listing:hover .nav-entry {
-            background-color: #ffffffe0; /* Light gray background */
-            color: #046df8;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         #services-listing:hover .nav-entry:hover {
-            background-color: #fff;
+            background-color: #ffffff;
+            color: #0160db;
+            transform: translateY(-2px);
         }
 
-        
-        #services-listing .nav-entry {
-            transition: background-color 0.3s ease, color 0.3s ease;
+        /* Individual Service Display Cards */
+        #display-services {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 0 10px;
+        }
+
+        .service-section {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 15px 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #services-listing:hover .service-section {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .service-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #94a3b8;
+            margin: 8px 0 2px 0;
+        }
+
+        #services-listing:hover .service-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .service-input {
+            font-size: 14px;
+            color: #f1f5f9;
+            margin: 0 0 10px 0;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        #services-listing:hover .service-input {
+            color: #ffffff;
         }
 
     /*----------------------------------------*/
@@ -28283,16 +28352,28 @@ customServiceTypeInput.addEventListener('input', function() {
         addServiceButton.addEventListener("click", function () {
             // Clone the service row template
             const newServiceRow = serviceRowTemplate.cloneNode(true);
-    
+        
+            // Clear input and textarea values in the clone so it's a fresh, blank template
+            const inputs = newServiceRow.querySelectorAll('input, textarea');
+            inputs.forEach(input => {
+                input.value = '';
+            });
+
+            // Hide any leftover error message in the clone
+            const errorMessage = newServiceRow.querySelector('.profanity-error-message');
+            if (errorMessage) {
+                errorMessage.style.display = 'none';
+            }
+
             // Display the cloned row
             newServiceRow.style.display = "block";
-    
+        
             serviceRowsContainer.style.display = "flex";
             serviceRowsContainer2.style.display = "flex";
 
             // Add it to the container
             serviceRowsContainer2.appendChild(newServiceRow);
-    
+        
             // Monitor for profanity in the new service row
             monitorProfanityInRow(newServiceRow);
         });
@@ -29454,91 +29535,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const serviceRowsContainer = document.getElementById("service-rows-container2");
-      const displayServices = document.getElementById("display-services");
-      const servicesListing = document.getElementById("services-listing");
-      const hrBeforeServicesListing = document.getElementById("hr-before-services-listing");
-      const displayServicesNav = document.getElementById("display-services-nav");
-    
-      // Function to show/hide service sections based on the index
-      function toggleServiceSection(index) {
-        const serviceSections = document.querySelectorAll('.service-section');
-        serviceSections.forEach((section, i) => {
-          section.style.display = index === -1 || i === index ? 'block' : 'none';
-        });
-      }
-    
-      serviceRowsContainer.addEventListener("input", function () {
-        // Clear the display area
-        displayServices.innerHTML = "";
-        displayServicesNav.innerHTML = ""; // Clear the navigation bar
-    
-        // Find all service rows starting from the second service
-        const serviceRows = serviceRowsContainer.querySelectorAll('.service-row-template ~ .service-row-template');
-        serviceRows.forEach(function (row, index) {
-          const serviceDetails = row.querySelectorAll('input, textarea');
-          const serviceSection = document.createElement("div");
-          serviceSection.classList.add("service-section"); // Add a class for styling
-    
-          serviceDetails.forEach(function (input) {
-            const label = document.createElement("p");
-            label.textContent = input.previousElementSibling.textContent + ":";
-            label.classList.add("service-label"); // Add a class for styling
-            serviceSection.appendChild(label);
-    
-            const inputValue = document.createElement("p");
-            inputValue.classList.add("service-input"); // Add a class for styling
-    
-            // Replace line breaks with HTML line breaks
-            const inputValueText = input.value.replace(/\n/g, '<br>');
-            inputValue.innerHTML = inputValueText;
-    
-            serviceSection.appendChild(inputValue);
-          });
-    
-          // Append each service as a separate section
-          displayServices.appendChild(serviceSection);
-    
-          // Create navigation bar entry for each service title
-          const serviceTitle = row.querySelector('#service-title').value;
-          const navEntry = document.createElement("div");
-          navEntry.textContent = serviceTitle;
-          navEntry.classList.add("nav-entry"); // Add a class for styling
-    
-          // Add click event listener to toggle visibility of the corresponding service section
-          navEntry.addEventListener("click", function () {
-            // Toggle the visibility of the service section
-            toggleServiceSection(index);
-          });
-    
-          // Append the navigation entry
-          displayServicesNav.appendChild(navEntry);
-        });
-    
-        // Add click event listener to the "Show All" button
-        const showAllButton = document.getElementById("show-all-button");
-        showAllButton.addEventListener("click", function () {
-          // Toggle the visibility of all service sections
-          toggleServiceSection(-1);
-        });
-    
-        // Check if there's any content in displayServices
-        if (displayServices.innerHTML.trim() !== "") {
-          // If there is content, show the servicesListing
-          servicesListing.style.display = "block";
-          hrBeforeServicesListing.style.display = "block";
-        } else {
-          // If there is no content, hide the servicesListing
-          servicesListing.style.display = "none";
-          hrBeforeServicesListing.style.display = "none";
-        }
-      });
-    });
-    </script>
-
-<script>
-
 document.addEventListener("DOMContentLoaded", function () {
   const serviceRowsContainer = document.getElementById("service-rows-container2");
   const displayServices = document.getElementById("display-services");
@@ -29551,79 +29547,97 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleServiceSection(index) {
     const serviceSections = document.querySelectorAll('.service-section');
     serviceSections.forEach((section, i) => {
-      section.style.display = i === index ? 'block' : 'none';
+      section.style.display = index === -1 || i === index ? 'block' : 'none';
     });
   }
 
-  showAllButton.addEventListener("click", function () {
-    // Toggle the visibility of all service sections
-    toggleServiceSection(-1); // -1 means show all
-    // Hide the "Show All" button
-    showAllButton.style.display = "none";
-  });
-
-  serviceRowsContainer.addEventListener("input", function () {
-    // Clear the display area
-    displayServices.innerHTML = "";
-    displayServicesNav.innerHTML = ""; // Clear the navigation bar
-
-    // Find all service rows starting from the second service
-    const serviceRows = serviceRowsContainer.querySelectorAll('.service-row-template ~ .service-row-template');
-    serviceRows.forEach(function (row, index) {
-      const serviceDetails = row.querySelectorAll('input, textarea');
-      const serviceSection = document.createElement("div");
-      serviceSection.classList.add("service-section"); // Add a class for styling
-
-      serviceDetails.forEach(function (input) {
-        const label = document.createElement("p");
-        label.textContent = input.previousElementSibling.textContent + ":";
-        label.classList.add("service-label"); // Add a class for styling
-        serviceSection.appendChild(label);
-
-        const inputValue = document.createElement("p");
-        inputValue.classList.add("service-input"); // Add a class for styling
-
-        // Replace line breaks with HTML line breaks
-        const inputValueText = input.value.replace(/\n/g, '<br>');
-        inputValue.innerHTML = inputValueText;
-
-        serviceSection.appendChild(inputValue);
-      });
-
-      // Append each service as a separate section
-      displayServices.appendChild(serviceSection);
-
-      // Create navigation bar entry for each service title
-      const serviceTitle = row.querySelector('#service-title').value;
-      const navEntry = document.createElement("div");
-      navEntry.textContent = serviceTitle;
-      navEntry.classList.add("nav-entry"); // Add a class for styling
-
-      // Add click event listener to toggle visibility of the corresponding service section
-      navEntry.addEventListener("click", function () {
-        // Toggle the visibility of the service section
-        toggleServiceSection(index);
-        // Show the "Show All" button
-        showAllButton.style.display = "block";
-      });
-
-      // Append the navigation entry
-      displayServicesNav.appendChild(navEntry);
+  if (showAllButton) {
+    showAllButton.addEventListener("click", function () {
+      // Toggle the visibility of all service sections (-1 means show all)
+      toggleServiceSection(-1); 
+      // Hide the "Show All" button
+      showAllButton.style.display = "none";
     });
+  }
 
-    // Check if there's any content in displayServices
-    if (displayServices.innerHTML.trim() !== "") {
-      // If there is content, show the servicesListing
-      servicesListing.style.display = "block";
-      hrBeforeServicesListing.style.display = "block";
-    } else {
-      // If there is no content, hide the servicesListing
-      servicesListing.style.display = "none";
-      hrBeforeServicesListing.style.display = "none";
-    }
-  });
+  if (serviceRowsContainer) {
+    serviceRowsContainer.addEventListener("input", function () {
+      // Clear the display area and navigation bar
+      displayServices.innerHTML = "";
+      displayServicesNav.innerHTML = ""; 
+
+      // Find all service row elements
+      const serviceRows = serviceRowsContainer.querySelectorAll('.service-row-template');
+      
+      serviceRows.forEach(function (row, index) {
+        // Skip if this is the hidden blueprint template itself
+        if (row.style.display === "none") return;
+
+        const serviceDetails = row.querySelectorAll('input, textarea');
+
+        // Check if ALL inputs/textareas in this row are empty (skips blank clones)
+        const isBlank = Array.from(serviceDetails).every(input => input.value.trim() === "");
+        if (isBlank) return;
+
+        const serviceSection = document.createElement("div");
+        serviceSection.classList.add("service-section"); // Add a class for styling
+
+        serviceDetails.forEach(function (input) {
+          const label = document.createElement("p");
+          if (input.previousElementSibling) {
+            label.textContent = input.previousElementSibling.textContent + ":";
+          }
+          label.classList.add("service-label"); // Add a class for styling
+          serviceSection.appendChild(label);
+
+          const inputValue = document.createElement("p");
+          inputValue.classList.add("service-input"); // Add a class for styling
+
+          // Replace line breaks with HTML line breaks
+          const inputValueText = input.value.replace(/\n/g, '<br>');
+          inputValue.innerHTML = inputValueText;
+
+          serviceSection.appendChild(inputValue);
+        });
+
+        // Append each service as a separate section
+        displayServices.appendChild(serviceSection);
+
+        // Create navigation bar entry for each service title
+        const serviceTitleInput = row.querySelector('#service-title');
+        const serviceTitle = serviceTitleInput && serviceTitleInput.value.trim() !== "" ? serviceTitleInput.value : 'Service';
+        
+        const navEntry = document.createElement("div");
+        navEntry.textContent = serviceTitle;
+        navEntry.classList.add("nav-entry"); // Add a class for styling
+
+        // Add click event listener to toggle visibility of the corresponding service section
+        navEntry.addEventListener("click", function () {
+          // Toggle the visibility of the service section
+          toggleServiceSection(index);
+          // Show the "Show All" button if it exists
+          if (showAllButton) {
+            showAllButton.style.display = "block";
+          }
+        });
+
+        // Append the navigation entry
+        displayServicesNav.appendChild(navEntry);
+      });
+
+      // Check if there's any content in displayServices
+      if (displayServices.innerHTML.trim() !== "") {
+        // If there is content, show the servicesListing
+        if (servicesListing) servicesListing.style.display = "block";
+        if (hrBeforeServicesListing) hrBeforeServicesListing.style.display = "block";
+      } else {
+        // If there is no content, hide the servicesListing
+        if (servicesListing) servicesListing.style.display = "none";
+        if (hrBeforeServicesListing) hrBeforeServicesListing.style.display = "none";
+      }
+    });
+  }
 });
-
 </script>
 
 <script>
