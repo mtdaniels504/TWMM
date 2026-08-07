@@ -3695,7 +3695,7 @@
                 padding: 0 5px;
             }
 
-/* Style for the Featured Listings Section */
+            /* Style for the Featured Listings Section */
             .featured-listings-container {
                 flex-grow: 1;
                 display: flex;
@@ -4997,8 +4997,19 @@
                     gap: 10px;
                 }
 
-                .featured-listings-container {
+                .featured-listings-wrapper {
+                    flex-direction: column;
+                    overflow-x: hidden;
+                    overflow-y: visible;
+                    gap: 15px;
+                    padding: 5px 0;
+                }
+
+                .featured-listing {
+                    flex: none;
                     width: 100%;
+                    height: auto;
+                    min-height: 350px;
                 }
 
 
