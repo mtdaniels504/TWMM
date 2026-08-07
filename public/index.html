@@ -3695,7 +3695,7 @@
                 padding: 0 5px;
             }
 
-            /* Style for the Featured Listings Section */
+/* Style for the Featured Listings Section */
             .featured-listings-container {
                 flex-grow: 1;
                 display: flex;
@@ -3871,6 +3871,8 @@
                 background-color: #004aaa;
                 transform: scale(1.02);
             }
+
+
 
             .searchButton {
                 min-height: 18px;
@@ -7924,12 +7926,12 @@
                                                     <!-- Blueprint / Template Listing Card used by your JS loop -->
                                                     <div class="featured-listing" style="display: none;">
                                                         <h4 class="featured-title"></h4>
-                                                        <div class="vehicle-info"><p></p></div>
+                                                        <div class="vehicle-info transparent"><p></p></div>
                                                         <div class="featured-img-container">
                                                             <img src="" alt="Vehicle Image">
                                                         </div>
-                                                        <div class="vehicle-price"></div>
-                                                        <div class="vehicle-description"></div>
+                                                        <div class="vehicle-price transparent"></div>
+                                                        <div class="vehicle-description transparent"></div>
                                                         <button class="learn-more-button">Learn More</button>
                                                     </div>
                                                 </div>
@@ -8261,12 +8263,12 @@
                                                     <!-- Blueprint / Template Part Card used by your JS loop -->
                                                     <div class="featured-listing" style="display: none;">
                                                         <h4 class="featured-title"></h4>
-                                                        <div class="vehicle-info"><p></p></div>
+                                                        <div class="vehicle-info transparent"><p></p></div>
                                                         <div class="featured-img-container">
                                                             <img src="" alt="Part Image">
                                                         </div>
-                                                        <div class="vehicle-price"></div>
-                                                        <div class="vehicle-description"></div>
+                                                        <div class="vehicle-price transparent"></div>
+                                                        <div class="vehicle-description transparent"></div>
                                                         <button class="learn-more-button">Learn More</button>
                                                     </div>
                                                 </div>
@@ -15147,7 +15149,7 @@
                             }
 
                             const priceEl = clone.querySelector('.vehicle-price');
-                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(vehicle.askingPrice || vehicle.price)}`;
+                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(vehicle.asking_price || vehicle.askingPrice || vehicle.price)}`;
 
                             const descEl = clone.querySelector('.vehicle-description');
                             if (descEl) descEl.innerHTML = scrub(vehicle.description);
@@ -15176,7 +15178,7 @@
 
                             const infoEl = clone.querySelector('.vehicle-info p, .part-info p');
                             if (infoEl) {
-                                infoEl.innerHTML = `${part.partYear || ''} ${part.partBrand || ''} ${part.partModel || ''}`;
+                                infoEl.innerHTML = `${part.part_year || part.partYear || ''} ${part.part_brand || part.partBrand || ''} ${part.part_model || part.partModel || ''}<br>${part.part_name || part.partName || ''}`;
                             }
 
                             const imgEl = clone.querySelector('.featured-img-container img, img');
@@ -15186,7 +15188,7 @@
                             }
 
                             const priceEl = clone.querySelector('.vehicle-price');
-                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(part.askingPrice || part.price)}`;
+                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(part.asking_price || part.askingPrice || part.price)}`;
 
                             const descEl = clone.querySelector('.vehicle-description');
                             if (descEl) descEl.innerHTML = scrub(part.description);
@@ -15215,7 +15217,7 @@
 
                             const infoEl = clone.querySelector('.vehicle-info p, .service-info p');
                             if (infoEl) {
-                                infoEl.innerHTML = `${service.serviceType || ''} ${service.location || ''}`;
+                                infoEl.innerHTML = `${service.service_type || service.serviceType || ''}<br>${service.service_city || service.location || ''}, ${service.service_state || ''}`;
                             }
 
                             const imgEl = clone.querySelector('.featured-img-container img, img');
@@ -15225,7 +15227,7 @@
                             }
 
                             const priceEl = clone.querySelector('.vehicle-price');
-                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(service.askingPrice || service.price)}`;
+                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(service.asking_price || service.askingPrice || service.price)}`;
 
                             const descEl = clone.querySelector('.vehicle-description');
                             if (descEl) descEl.innerHTML = scrub(service.description);
