@@ -3700,169 +3700,173 @@
                 flex-grow: 1;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: space-evenly;
+                justify-content: flex-start;
+                align-items: stretch;
                 min-width: 30%;
-                width: auto;
-                height: calc(250px + 12.5dvw);
-                text-align: center;
-                padding: 10px;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
                 transition: background-color 0.3s ease;
                 background: #131313;
-            }
-    
-            .featured-listings-container:hover {
-                /* Correct usage with a color value (black with 0.4 opacity) */
-                background-color: #046df8; /* Subtle hover background color */
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            }
-    
-            /* Style for the h3 within .featured-listings-container on hover */
-            .featured-listings-container:hover h3 {
-                color: #fff; /* Change the h3 color on hover */
+                box-sizing: border-box;
             }
 
-            .featured-listing:hover .featured-listings-container {
-                /* Correct usage with a color value (black with 0.4 opacity) */
-                background-color: #046df8; /* Subtle hover background color */
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            .featured-listings-container:hover {
+                background-color: #046df8;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
             }
-    
-            /* Style for the h3 within .featured-listings-container on hover */
-            .featured-listing:hover .featured-listings-container h3 {
-                color: #fff; /* Change the h3 color on hover */
+
+            .featured-listings-container:hover h3,
+            .featured-listings-container:hover p {
+                color: #fff;
             }
-    
+
+            .featured-listings-container h3 {
+                color: #fff;
+                margin: 0 0 5px 0;
+            }
+
+            .featured-listings-container p {
+                color: #aaa;
+                font-size: 14px;
+                margin: 0 0 10px 0;
+            }
+
             /* Style for the Featured Listings Wrapper */
             .featured-listings-wrapper {
-                flex-grow: 1;
                 display: flex;
                 overflow-x: auto;
                 overflow-y: hidden;
-                white-space: nowrap;
+                gap: 15px;
+                padding: 10px 5px;
                 box-sizing: border-box;
                 max-width: 100%;
-                height: calc(190px + 10dvw);
-                margin-top: 5px;
+                scrollbar-width: thin;
+                scrollbar-color: #046df8 #222;
             }
-    
-            /* Style for each Featured Listing */
+
+            .featured-listings-wrapper::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .featured-listings-wrapper::-webkit-scrollbar-thumb {
+                background: #046df8;
+                border-radius: 3px;
+            }
+
+            /* Style for each Featured Listing Card */
             .featured-listing {
-                flex-grow: 1;
-                width: 100%;
-                height: 100%;
-                display: inline-block;
-                margin-right: 10px;
-                background-color: #fff;
+                flex: 0 0 240px; /* Fixed card width for clean horizontal scrolling items */
+                height: 380px;    /* Uniform height */
+                background: linear-gradient(155deg, #fff, #c3dbff, #fff);
                 border: 1px solid #ccc;
-                border-radius: 5px;
-                padding: 5px 5px 10px 5px;
-                margin-top: 30px;
-                background: linear-gradient(155deg, #fff, #c3dbff, #fff, #c3dbff, #fff, #c3dbff, #fff, #c3dbff, #fff, #c3dbff);
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 6px;
+                padding: 12px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
                 display: flex;
                 flex-direction: column;
                 text-align: center;
                 align-items: center;
                 justify-content: space-between;
-                white-space: break-word;
-                word-break: break-word; /* Allow breaking long words */
-                overflow-wrap: break-word;
-                overflow: hidden;
-            }
-    
-            .featured-listing:hover {
-                transform: translateY(-1px);
-                box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+                box-sizing: border-box;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
             }
 
-    
-            /* Year, Make, Model, Trim */
-            .vehicle-info {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 0;
-                color: #444;
-                padding: 0;
-                min-height: none;
-                height: auto;
+            .featured-listing:hover {
+                transform: translateY(-3px);
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
             }
-    
+
+            /* Title Styling inside cards */
+            .featured-listing h4 {
+                margin: 0 0 4px 0;
+                font-size: 16px;
+                color: #111;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+
+            /* Year, Make, Model, Trim info */
+            .vehicle-info {
+                color: #444;
+                font-size: 13px;
+                margin-bottom: 4px;
+                line-height: 1.2;
+                width: 100%;
+            }
+
             .vehicle-info p {
                 margin: 0;
                 padding: 0;
-                min-height: none;
-                height: auto;
             }
-    
+
             /* Image container to constrain images */
             .featured-img-container {
-                width: 200px;
-                height: 200px; /* Fixed height for uniformity */
+                width: 100%;
+                height: 140px;
                 overflow: hidden;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 background: #f9f9f9;
-                margin-top: -5px;
-                margin-bottom: 5px;
                 padding: 2px;
-                border: 2px solid #ccc; /* Gray border */
-                border-radius: 5px; /* Rounded corners */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
-                transition: border-color 0.3s, transform 0.3s; /* Smooth transition */
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+                transition: border-color 0.3s, transform 0.3s;
             }
-    
+
             .featured-img-container:hover {
-                border-color: #004aaa; /* Change border color on hover */
-                transform: scale(1.05);
-                z-index: 600;
+                border-color: #004aaa;
             }
-    
+
             /* Image inside container */
             .featured-img-container img {
                 max-width: 100%;
                 max-height: 100%;
-                object-fit: contain; /* Ensures full image visibility */
+                object-fit: contain;
             }
-    
+
+            /* Price styling */
+            .vehicle-price {
+                font-weight: bold;
+                color: #004aaa;
+                font-size: 14px;
+                margin: 4px 0;
+            }
+
             /* Description styling */
             .vehicle-description {
                 text-align: left;
-                color: #666;
-                margin-top: 8px;
-                margin-bottom: 5px;
-                max-height: 100%;
-                overflow-x: hidden;
+                color: #555;
+                font-size: 12px;
+                max-height: 50px;
                 overflow-y: auto;
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-                scrollbar-width: thin;
+                width: 100%;
+                scrollbar-width: none;
             }
 
-            /* Hide scrollbar */
             .vehicle-description::-webkit-scrollbar {
-                display: none; /* Hides the scrollbar for WebKit browsers */
+                display: none;
             }
-    
+
             /* Style for the "Learn More" Button */
             .featured-listing .learn-more-button {
-                margin-top: 12px; /* Push the button to the bottom */
-                margin-bottom: 0px;
-                bottom: 0;
+                width: 100%;
                 background-color: #0052bd;
                 color: white;
                 border: none;
                 border-radius: 4px;
                 cursor: pointer;
                 transition: background-color 0.3s ease, transform 0.2s ease;
-                font-size: 16px;
-                padding: 8px 16px;
+                font-size: 14px;
+                padding: 6px 12px;
+                margin-top: auto;
             }
-    
+
             .featured-listing .learn-more-button:hover {
                 background-color: #004aaa;
                 transform: scale(1.02);
@@ -7915,8 +7919,19 @@
                                             <div class="featured-listings-container" id="featured-vehicles-listings-container">
                                                 <h3>Featured Listings</h3>
                                                 <p>Explore our featured vehicle listings for premium products.</p>
+                                                
                                                 <div class="featured-listings-wrapper" id="featured-vehicles-wrapper">
-                                                    <!-- Vehicle listings will be dynamically inserted here -->
+                                                    <!-- Blueprint / Template Listing Card used by your JS loop -->
+                                                    <div class="featured-listing" style="display: none;">
+                                                        <h4 class="featured-title"></h4>
+                                                        <div class="vehicle-info"><p></p></div>
+                                                        <div class="featured-img-container">
+                                                            <img src="" alt="Vehicle Image">
+                                                        </div>
+                                                        <div class="vehicle-price"></div>
+                                                        <div class="vehicle-description"></div>
+                                                        <button class="learn-more-button">Learn More</button>
+                                                    </div>
                                                 </div>
                                             </div>
                         
@@ -8237,12 +8252,23 @@
                                                 </div>
                                             </div>
 
-                                            <!-- Featured Listings Section -->
+                                            <!-- Featured Parts Section -->
                                             <div class="featured-listings-container" id="featured-parts-listings-container">
-                                                <h3>Featured Listings</h3>
-                                                <p>Explore our featured vehicle listings for premium products.</p>
+                                                <h3>Featured Parts</h3>
+                                                <p>Explore our featured part listings for premium products.</p>
+                                                
                                                 <div class="featured-listings-wrapper" id="featured-parts-wrapper">
-                                                    <!-- Vehicle listings will be dynamically inserted here -->
+                                                    <!-- Blueprint / Template Part Card used by your JS loop -->
+                                                    <div class="featured-listing" style="display: none;">
+                                                        <h4 class="featured-title"></h4>
+                                                        <div class="vehicle-info"><p></p></div>
+                                                        <div class="featured-img-container">
+                                                            <img src="" alt="Part Image">
+                                                        </div>
+                                                        <div class="vehicle-price"></div>
+                                                        <div class="vehicle-description"></div>
+                                                        <button class="learn-more-button">Learn More</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -15054,129 +15080,194 @@
         <script>
             document.addEventListener("DOMContentLoaded", async function () {
                 try {
-                    // Fetch data from API
-                    const response = await fetch("https://twmm-database1-7df2173a3bdd.herokuapp.com/featured", {
-                        method: "POST",
+                    // Fetch featured data using GET from the Render backend endpoint
+                    const response = await fetch("https://twmm-g972.onrender.com/featured", {
+                        method: "GET",
                         headers: {
                             "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ message: "Requesting listing information" }),
+                        }
                     });
 
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
-                    const data = await response.json(); // Assuming response contains 'vehicles' array
+                    const data = await response.json();
+                    console.log("Featured Data Received:", data);
 
-                    if (!data.vehicles || !Array.isArray(data.vehicles)) {
-                        console.warn("No vehicle data found.");
-                        return;
-                    }
+                    // Extract arrays from the response data structure
+                    const vehicles = data.vehicles || data.data?.vehicles || [];
+                    const parts = data.parts || data.data?.parts || [];
+                    const services = data.services || data.data?.services || [];
 
-                    if (!data.parts || !Array.isArray(data.parts)) {
-                        console.warn("No part data found.");
-                        return;
-                    }
-
-                    if (!data.services || !Array.isArray(data.services)) {
-                        console.warn("No service data found.");
-                        return;
-                    }
-
-                    // Scrubbing function to decode special characters and insert line breaks
+                    // Scrubbing function to decode special characters and clean null/na values
                     function scrub(value) {
                         if (typeof value === 'string') {
-                            // Replace "n/a", "N/A", and "null" with an empty string
-                            value = value.trim().toLowerCase() === "n/a" || value.trim().toLowerCase() === "null" ? "" : value;
-                            
-                            return decodeURIComponent(value.replace(/\(\*5\*5\*\)/g, '<br>'));
+                            const trimmed = value.trim().toLowerCase();
+                            if (trimmed === "n/a" || trimmed === "null" || trimmed === "") return "";
+                            return decodeURIComponent(trimmed.replace(/\(\*5\*5\*\)/g, '<br>'));
                         }
-                        return ''; // Default empty string if value is not a valid string
+                        return value != null ? String(value) : '';
                     }
 
                     function formatPrice(value) {
                         if (!value || isNaN(Number(value))) {
-                            return "Contact for price"; // Fallback if no price is provided or invalid
+                            return "Contact for price";
                         }
-                        const cleanedPrice = scrub(String(value)).replace(/\$/g, ""); // Ensure it's a string & remove existing '$'
-                        return `$${parseFloat(cleanedPrice).toLocaleString()}`; // Format as currency
+                        const cleanedPrice = String(value).replace(/[\$,]/g, "");
+                        return `$${parseFloat(cleanedPrice).toLocaleString()}`;
                     }
 
-                    // Select the correct container
-                    const featuredWrapper = document.getElementById("featured-vehicles-wrapper");
+                    // Templates selection from the DOM
+                    const vehicleTemplate = document.querySelector('.featured-vehicle-template') || document.querySelector('.featured-listing');
+                    const partTemplate = document.querySelector('.featured-part-template') || document.querySelector('.featured-listing');
+                    const serviceTemplate = document.querySelector('.featured-service-template') || document.querySelector('.featured-listing');
+
+                    // --- RENDER VEHICLES ---
+                    const featuredVehiclesWrapper = document.getElementById("featured-vehicles-wrapper");
+                    if (featuredVehiclesWrapper && vehicleTemplate) {
+                        featuredVehiclesWrapper.innerHTML = "";
+                        
+                        vehicles.forEach(vehicle => {
+                            const clone = vehicleTemplate.cloneNode(true);
+                            clone.style.display = "block";
+
+                            const titleEl = clone.querySelector('.featured-title, h4');
+                            if (titleEl) titleEl.textContent = vehicle.title || '';
+
+                            const infoEl = clone.querySelector('.vehicle-info p');
+                            if (infoEl) {
+                                infoEl.innerHTML = `${vehicle.year || ''} ${vehicle.make || ''} ${vehicle.model || ''}<br>${vehicle.trim || ''}`;
+                            }
+
+                            const imgEl = clone.querySelector('.featured-img-container img, img');
+                            if (imgEl && vehicle.image) {
+                                imgEl.src = vehicle.image;
+                                imgEl.alt = vehicle.title || 'Vehicle Image';
+                            }
+
+                            const priceEl = clone.querySelector('.vehicle-price');
+                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(vehicle.askingPrice || vehicle.price)}`;
+
+                            const descEl = clone.querySelector('.vehicle-description');
+                            if (descEl) descEl.innerHTML = scrub(vehicle.description);
+
+                            const btnEl = clone.querySelector('.learn-more-button');
+                            if (btnEl) {
+                                btnEl.setAttribute("data-type", "vehicle");
+                                btnEl.setAttribute("data-id", vehicle.id?.uniqueListingID || vehicle.uniqueListingID || '');
+                            }
+
+                            featuredVehiclesWrapper.appendChild(clone);
+                        });
+                    }
+
+                    // --- RENDER PARTS ---
                     const featuredPartsWrapper = document.getElementById("featured-parts-wrapper");
+                    if (featuredPartsWrapper && partTemplate) {
+                        featuredPartsWrapper.innerHTML = "";
 
-                    // Clear existing content
-                    featuredWrapper.innerHTML = "";
+                        parts.forEach(part => {
+                            const clone = partTemplate.cloneNode(true);
+                            clone.style.display = "block";
 
-                    // Populate listings dynamically
-                    data.vehicles.forEach(vehicle => {
-                        const listingHTML = `
-                            <div class="featured-listing">
-                                <h4>${scrub(vehicle.title)}</h4>
-                                <div class="vehicle-info">
-                                    <p>${scrub(vehicle.year)} ${scrub(vehicle.make)} ${scrub(vehicle.model)}<br>${scrub(vehicle.trim)}</p>
-                                </div>
-                                <div class="featured-img-container">
-                                    <img src="${vehicle.image}" alt="${scrub(vehicle.title)}">
-                                </div>
-                                <p class="vehicle-price">Price: ${formatPrice(vehicle.askingPrice)}</p>
-                                <hr>
-                                <p class="vehicle-description">${scrub(vehicle.description)}</p>
-                                <button class="learn-more-button" data-type="vehicle" data-id="${vehicle.uniqueListingID}">Learn More</button>
-                            </div>
-                        `;
-                        featuredWrapper.innerHTML += listingHTML;
-                    });
+                            const titleEl = clone.querySelector('.featured-title, h4');
+                            if (titleEl) titleEl.textContent = part.title || '';
 
-                    // Clear existing content
-                    featuredPartsWrapper.innerHTML = "";
+                            const infoEl = clone.querySelector('.vehicle-info p, .part-info p');
+                            if (infoEl) {
+                                infoEl.innerHTML = `${part.partYear || ''} ${part.partBrand || ''} ${part.partModel || ''}`;
+                            }
 
-                    // Populate listings dynamically
-                    data.parts.forEach(part => {
-                        const listingHTML = `
-                            <div class="featured-listing" id="featured-parts-listing">
-                                <h4>${scrub(part.title)}</h4>
-                                <div class="vehicle-info">
-                                    <p>${scrub(part.partYear)} ${scrub(part.partBrand)} ${scrub(part.partModel)}</p>
-                                </div>
-                                <div class="featured-img-container">
-                                    <img src="${part.image}" alt="${scrub(part.title)}">
-                                </div>
-                                <p class="vehicle-price">Price: ${formatPrice(part.askingPrice)}</p>
-                                <hr>
-                                <p class="vehicle-description">${scrub(part.description)}</p>
-                                <button class="learn-more-button" data-type="part" data-id="${part.uniqueListingID}">Learn More</button>
-                            </div>
-                        `;
-                        featuredPartsWrapper.innerHTML += listingHTML;
-                    });
+                            const imgEl = clone.querySelector('.featured-img-container img, img');
+                            if (imgEl && part.image) {
+                                imgEl.src = part.image;
+                                imgEl.alt = part.title || 'Part Image';
+                            }
 
+                            const priceEl = clone.querySelector('.vehicle-price');
+                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(part.askingPrice || part.price)}`;
+
+                            const descEl = clone.querySelector('.vehicle-description');
+                            if (descEl) descEl.innerHTML = scrub(part.description);
+
+                            const btnEl = clone.querySelector('.learn-more-button');
+                            if (btnEl) {
+                                btnEl.setAttribute("data-type", "part");
+                                btnEl.setAttribute("data-id", part.id?.uniqueListingID || part.uniqueListingID || '');
+                            }
+
+                            featuredPartsWrapper.appendChild(clone);
+                        });
+                    }
+
+                    // --- RENDER SERVICES ---
+                    const featuredServicesWrapper = document.getElementById("featured-services-wrapper");
+                    if (featuredServicesWrapper && serviceTemplate) {
+                        featuredServicesWrapper.innerHTML = "";
+
+                        services.forEach(service => {
+                            const clone = serviceTemplate.cloneNode(true);
+                            clone.style.display = "block";
+
+                            const titleEl = clone.querySelector('.featured-title, h4');
+                            if (titleEl) titleEl.textContent = service.title || '';
+
+                            const infoEl = clone.querySelector('.vehicle-info p, .service-info p');
+                            if (infoEl) {
+                                infoEl.innerHTML = `${service.serviceType || ''} ${service.location || ''}`;
+                            }
+
+                            const imgEl = clone.querySelector('.featured-img-container img, img');
+                            if (imgEl && service.image) {
+                                imgEl.src = service.image;
+                                imgEl.alt = service.title || 'Service Image';
+                            }
+
+                            const priceEl = clone.querySelector('.vehicle-price');
+                            if (priceEl) priceEl.textContent = `Price: ${formatPrice(service.askingPrice || service.price)}`;
+
+                            const descEl = clone.querySelector('.vehicle-description');
+                            if (descEl) descEl.innerHTML = scrub(service.description);
+
+                            const btnEl = clone.querySelector('.learn-more-button');
+                            if (btnEl) {
+                                btnEl.setAttribute("data-type", "service");
+                                btnEl.setAttribute("data-id", service.id?.uniqueListingID || service.uniqueListingID || '');
+                            }
+
+                            featuredServicesWrapper.appendChild(clone);
+                        });
+                    }
+
+                    // --- GLOBAL CLICK LISTENER FOR LEARN MORE BUTTONS ---
                     document.addEventListener("click", function (event) {
                         if (event.target.classList.contains("learn-more-button")) {
                             const type = event.target.getAttribute("data-type");
                             const id = event.target.getAttribute("data-id");
                             console.log("Button clicked:", { type, id });
 
-                            if (id && id !== "Unknown") {
-                                const url = type === "vehicle" 
-                                    ? `https://www.worldmotormarket.com/listing-vehicle?listing=${id}`
-                                    : `https://www.worldmotormarket.com/listing-part?listing=${id}`;
-                                window.open(url, "_blank");
+                            if (id && id !== "Unknown" && id !== "null") {
+                                let url = "";
+                                if (type === "vehicle") {
+                                    url = `https://www.worldmotormarket.com/listing-vehicle?listing=${id}`;
+                                } else if (type === "part") {
+                                    url = `https://www.worldmotormarket.com/listing-part?listing=${id}`;
+                                } else if (type === "service") {
+                                    url = `https://www.worldmotormarket.com/listing-service?listing=${id}`;
+                                }
+                                if (url) window.open(url, "_blank");
                             } else {
-                                console.error("Invalid listing ID.");
+                                console.error("Invalid or missing listing ID.");
                             }
                         }
                     });
 
                 } catch (error) {
-                    console.error("Error during fetch request:", error);
+                    console.error("Error during featured fetch request:", error);
                 }
             });
         </script>
-
-
 
         <script>
             
