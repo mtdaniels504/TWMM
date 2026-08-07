@@ -478,6 +478,83 @@ app.get('/api/listings/category/:category', async (req, res) => {
     }
 });
 
+
+// ==========================================
+// PUBLIC ENDPOINT: FETCH FEATURED LISTINGS
+// ==========================================
+app.get('/featured', async (req, res) => {
+    try {
+        // 1. Fetch active listings from Supabase
+        const { data: listings, error } = await supabase
+            .from('listings')
+            .select('*')
+            .eq('status', 'active');
+
+        if (error) throw error;
+
+        // 2. Separate listings into categories (vehicles, parts, services)
+        const vehicles = [];
+        const parts = [];
+        const services = [];
+
+        listings.forEach(listing => {
+            if (listing.category === 'vehicle') vehicles.push(listing);
+            else if (listing.category === 'part') parts.push(listing);
+            else if (listing.category === 'service') services.push(listing);
+        });
+
+        // Optional: Limit or slice to display a specific number of featured items (e.g., top 4 each)
+        const featuredVehicles = vehicles.slice(0, 4);
+        const featuredParts = parts.slice(0, 4);
+        const featuredServices = services.slice(0, 4);
+
+        const allFeatured = [...featuredVehicles, ...featuredParts, ...featuredServices];
+
+        // 3. Sign the S3 image URLs for the featured subset using the active bucket
+        const processedListings = await Promise.all(allFeatured.map(async (listing) => {
+            if (listing.image_urls && listing.image_urls.length > 0) {
+                // Grab the first image as the primary featured thumbnail
+                const primaryImage = listing.image_urls[0];
+                try {
+                    const urlObj = new URL(primaryImage);
+                    const key = decodeURIComponent(urlObj.pathname.startsWith('/') ? urlObj.pathname.substring(1) : urlObj.pathname);
+
+                    const command = new GetObjectCommand({
+                        Bucket: S3_BUCKET_ACTIVE,
+                        Key: key
+                    });
+
+                    // Generate a secure signed URL that expires in 1 hour
+                    const signedUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
+                    listing.image = signedUrl; // Assign to single .image property expected by your frontend
+                } catch (err) {
+                    console.error('Error signing featured listing image URL:', err);
+                    listing.image = primaryImage; // Fallback
+                }
+            } else {
+                listing.image = '';
+            }
+
+            // Map unique database ID back to the structure your frontend script checks
+            listing.id = { uniqueListingID: listing.unique_listing_id };
+            return listing;
+        }));
+
+        // Group them back neatly to match your frontend extraction logic
+        const responseData = {
+            vehicles: processedListings.filter(l => l.category === 'vehicle'),
+            parts: processedListings.filter(l => l.category === 'part'),
+            services: processedListings.filter(l => l.category === 'service')
+        };
+
+        return res.status(200).json({ success: true, ...responseData });
+
+    } catch (err) {
+        console.error('Error fetching featured listings:', err);
+        return res.status(500).json({ success: false, error: err.message });
+    }
+});
+
 // ==========================================
 // ADMIN MIDDLEWARE & ROUTES
 // ==========================================
