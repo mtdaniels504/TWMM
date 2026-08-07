@@ -3854,7 +3854,6 @@
                 font-size: 14px;
                 padding: 6px 12px;
                 margin-top: auto;
-                bottom: 0;
             }
 
             .featured-listing .learn-more-button:hover {
@@ -15134,7 +15133,7 @@
                         
                         vehicles.forEach(vehicle => {
                             const clone = vehicleTemplate.cloneNode(true);
-                            clone.style.display = "block";
+                            clone.style.display = "flex";
 
                             const titleEl = clone.querySelector('.featured-title, h4');
                             if (titleEl) titleEl.textContent = vehicle.title || '';
@@ -15173,7 +15172,7 @@
 
                         parts.forEach(part => {
                             const clone = partTemplate.cloneNode(true);
-                            clone.style.display = "block";
+                            clone.style.display = "flex";
 
                             const titleEl = clone.querySelector('.featured-title, h4');
                             if (titleEl) titleEl.textContent = part.title || '';
@@ -15212,7 +15211,7 @@
 
                         services.forEach(service => {
                             const clone = serviceTemplate.cloneNode(true);
-                            clone.style.display = "block";
+                            clone.style.display = "flex";
 
                             const titleEl = clone.querySelector('.featured-title, h4');
                             if (titleEl) titleEl.textContent = service.title || '';
