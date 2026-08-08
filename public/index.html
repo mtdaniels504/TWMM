@@ -5033,22 +5033,54 @@
                     justify-content: center;
                     gap: 10px;
                 }
-
-                .featured-listings-wrapper {
-                    flex-direction: column;
+.featured-listings-wrapper {
+                    flex-direction: row;
+                    flex-wrap: wrap;
                     overflow-x: hidden;
                     overflow-y: auto;
-                    max-height: 370px;
-                    gap: 15px;
-                    padding: 5px;
+                    max-height: 440px;
+                    gap: 8px;
+                    padding: 6px;
+                    justify-content: space-between;
                 }
 
                 .featured-listing {
-                    flex: none;
-                    width: 100%;
-                    height: auto;
-                    min-height: 350px;
+                    flex: 0 0 calc(50% - 4px);
+                    width: calc(50% - 4px);
+                    height: 270px;
+                    min-height: unset;
+                    padding: 8px;
                     margin: 0;
+                    justify-content: space-between;
+                }
+
+                .featured-listing h4 {
+                    font-size: clamp(0.6rem, 0.35rem + 0.9dvw, 0.78rem);
+                    margin: 0 0 2px 0;
+                }
+
+                .vehicle-info p,
+                .vehicle-price {
+                    font-size: clamp(0.48rem, 0.28rem + 0.6dvw, 0.62rem);
+                }
+
+                .featured-img-container {
+                    height: 80px;
+                    padding: 2px;
+                    border-radius: 4px;
+                }
+
+                .vehicle-description {
+                    font-size: clamp(0.4rem, 0.25rem + 0.5dvw, 0.48rem);
+                    max-height: 28px;
+                    line-height: 1.15;
+                }
+
+                .featured-listing .learn-more-button {
+                    padding: 4px 6px;
+                    font-size: clamp(0.48rem, 0.4rem + 0.5dvw, 0.65rem);
+                    border-radius: 4px;
+                    box-shadow: 0 1px 3px rgba(7, 91, 175, 0.25);
                 }
 
 
