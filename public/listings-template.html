@@ -40,6 +40,15 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
             }
 
+            .transparent {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+
             .row {
                 display: flex;
                 justify-content: center;
@@ -5263,7 +5272,7 @@
             width: 100%;
         }
          
-        .sellStyle-row, .sellStyle-item, .price-input-sellStyle {
+        .sellStyle-row, .sellStyle-item, .price-input-sellStyle, .sellStyle-display-block {
             width: 100%;
             
             background: transparent;
@@ -5279,6 +5288,10 @@
             align-items: center;
             padding: 5px 2.5%;
             gap: 10%;
+        }
+
+        .biddingRow1 {
+            margin-bottom: -10px;
         }
 
         .sellStyle-display-block {
@@ -5355,134 +5368,36 @@
             margin-right: 2.5px;
         }
 
-        /* ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------ */
+        /* Style for the Auction Display matching global theme */
 
-        /* Style for the sellStyle Display */
-
-        /* Style for the title display in Asking Price */
-        .price-display-sellStyle {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            width: 100%;
-            gap: 5px;
-        }
-
-        .sellStyle-display-row, .sellStyle-display-block {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .sellStyle-display-row {
-            display: flex;
-            justify-content: space-evenly;
-            width: 100%;
-        }
-
-        .sellStyle-display-block {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        /* Style for display titles in Asking Price */
-        .display-title-sellStyle {
-            display: flex;
-            text-align: right;
-            align-items: center;
-            justify-content: flex-end;
-        }
-
-        /* Style for display inputs in Asking Price */
-        .display-input-sellStyle {
-            display: flex;
-            text-align: left;
-            align-items: center;
-            justify-content: flex-start;
-            white-space: nowrap;
-        }
-
-        /* Add a rule to create line breaks after each title and input pair in Asking Price */
-        .display-input-sellStyle::after,
-        .display-input-sellStyle-parts::after {
-            content: "\A";
-            white-space: pre;
-        }
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Style for the Bidding Section */
-
-        /* Styles for the Bidding Display */
-        #bidding-display-sellStyle {
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            margin: 10px auto;
-            max-width: 600px;
-            text-align: left;
-            display: none;
-        }
-
-        /* Style for display titles in Bidding Display */
-        #bidding-display-sellStyle .bidding-display-title-sellStyle {
-            color: black;
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        /* Style for display inputs in Bidding Display */
-        #bidding-display-sellStyle .bidding-display-input-sellStyle {
-            color: #007bff;
-            margin-bottom: 10px;
-            white-space: nowrap;
-        }
-
-        /* Add a rule to create line breaks after each title and input pair in Bidding Display */
-        #bidding-display-sellStyle .bidding-display-input-sellStyle::after {
-            content: "\A";
-            white-space: pre;
-        }
-
-        /* ------------------------------------------------------------------ */
-
-        /* Style for the Auction Section */
-
-        /* Style for the Auction Display */
         #auction-display-sellStyle {
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            margin: 10px auto;
-            max-width: 600px;
-            text-align: left;
+            width: 100%;
+            margin: 1px auto;
+            padding: 2px;
+            text-align: center;
             display: none;
+        }
+
+        #auction-display-sellStyle h4 {
+            margin: 5px;
         }
 
         #auction-display-sellStyle:hover {
-            transform: translate(-1px);
+            transform: none;
+        }
+
+        .selected-choices-row {
+            justify-content: space-around;
         }
 
         /* Style for display titles in Auction Display */
         #auction-display-sellStyle .auction-display-title-sellStyle {
-            color: black;
-            font-weight: bold;
-            font-size: 18px;
             margin-bottom: 10px;
         }
 
         /* Style for display inputs in Auction Display */
         #auction-display-sellStyle .auction-display-input-sellStyle {
-            color: #007bff;
             margin-bottom: 10px;
             white-space: nowrap;
         }
@@ -5493,6 +5408,13 @@
             white-space: pre;
         }
 
+        #auction-form-sellStyle {
+            padding-top: 10px;
+        }
+
+        .sellStyle-btn-primary {
+            margin: 5px auto;
+        }
 
         /* ------------------------------------------------------------------ */
 
@@ -8045,6 +7967,17 @@
                 gap: 2.5%;
             }
 
+            .biddingRow1 {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 0;
+                padding-bottom: 0;
+                margin: 0;
+                margin-top: 5px;
+                margin-bottom: -5px;
+            }
+
             .sellStyleContainer {
                 flex-direction: column;
                 justify-content: center;
@@ -8057,6 +7990,12 @@
             .sellStyle-item {
                 margin-top: 2px;
                 gap: 5px;
+            }
+
+            .biddingRow1 .sellStyle-item {
+                margin-top: 0;
+                margin-bottom: 0;
+                padding: 0;
             }
 
 
@@ -8072,6 +8011,9 @@
                 width: 100%;
             }
 
+            .sellStyle-btn-primary {
+                width: 40%;
+            }
 
         /* ------------------------------------------------------------------ */
 
@@ -11462,61 +11404,33 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <button class="widthButton submit-price-button-sellStyle" id="submit-price-button-sellStyle">Submit</button>
-
-                                        <div class="price-display-sellStyle" id="price-display-sellStyle" style="display: none;">
-                                            <h3>Pricing and Information</h3>
-                                            <div class="sellStyle-display-row">
-                                                <div class="sellStyle-display-block">
-                                                    <span class="display-title-sellStyle">Asking Price:</span>
-                                                    <h4 class="display-input-sellStyle" id="display-price-sellStyle"></h4>
-                                                </div>
-                                                <div class="sellStyle-display-block">
-                                                    <span class="display-title-sellStyle">Pick-Up/Delivery:</span>
-                                                    <h4 class="display-input-sellStyle" id="display-fulfillment-sellStyle"></h4>
-                                                </div>
-                                            </div>
-                                            <div class="sellStyle-display-row">
-                                                <div class="sellStyle-display-block">
-                                                    <span class="display-title-sellStyle">Negotiable?</span>
-                                                    <h4 class="display-input-sellStyle" id="display-negotiate-sellStyle"></h4>
-                                                </div>
-                                                <div class="sellStyle-display-block">
-                                                    <span class="display-title-sellStyle">Plus/Minus:</span>
-                                                    <h4 class="display-input-sellStyle" id="display-plusMinus-sellStyle"></h4>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 
-                                    <!-- 2. Dynamic Input Engine Block -->
                                     <div class="tabcontent-sellStyle" id="tab-bidding-content">
-
                                         <div class="sellStyleContainer">
                                             <div class="sellStyleBox">
+                                                
+                                                <!-- Section Header (Matched to Asking Price style) -->
                                                 <div class="askingPrice-header" id="bidding-header">
                                                     <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
-                                                        data-sub="info-popup-AP" data-section="askingPrice-header"
+                                                        data-sub="info-popup-bidding" data-section="bidding-header"
                                                     ></i>
-                                                    <div class="info-popup" id="info-popup-AP" style="display: none;">
+                                                    <div class="info-popup" id="info-popup-bidding" style="display: none;">
                                                         <div class="info-popup-header">
-                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup-AP"></i>
+                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup-bidding"></i>
                                                         </div>
                                                         <div class="info-popup-h5 info-popup-h5-AP">
-                                                            <h5>Fill out your Asking Price, a Plus/Minus Value (if any), as well as your preferred method of exchange.</h5>
-                                                            <p>*The Plus/Minus should be a value you feel comfortable negotiating with the buyer</p>
-                                                            <p>*If you do NOT feel comfortable negotiating, select 'No' in the Negotiable Terminal</p>
+                                                            <h5>Configure your starting auction price, buy-out option, duration, and bidding parameters.</h5>
+                                                            <p>*Set a clear duration and protection locks to manage bidder activity effectively.</p>
                                                         </div>
                                                     </div>
-                                                    <h3>Pricing Details</h3>
+                                                    <h3>Bidding Details</h3>
                                                 </div>
 
                                                 <div class="sellStyleContent">
-                                                    <!-- Price Configurations Row -->
-                                                    <div class="sellStyle-row" style="display: flex; gap: 15px; margin-bottom: 15px;">
-                                                        
-                                                        <!-- Starting Price / Asking Price Field -->
+                                                    
+                                                    <!-- Row 1: Starting Price & Buy Outright Price -->
+                                                    <div class="sellStyle-row biddingRow1">
                                                         <div class="sellStyle-item">
                                                             <div class="price-input-sellStyle">
                                                                 <label id="price-label-parts" for="starting-price-input-sellStyle-parts">Starting Price:</label>
@@ -11525,7 +11439,6 @@
                                                             <p class="error-message" id="error-message-sellStyle-parts" style="color: red; margin-top: 2px; height: 18px;"></p>
                                                         </div>
 
-                                                        <!-- Buy Outright Price Field (Optional Premium Purchase) -->
                                                         <div class="sellStyle-item" id="buy-outright-wrapper-parts">
                                                             <div class="price-input-sellStyle">
                                                                 <label for="buy-outright-input-parts">Buy Outright Price:</label>
@@ -11533,83 +11446,79 @@
                                                             </div>
                                                             <p class="error-message" id="error-message-buy-outright-parts" style="color: red; margin-top: 2px; height: 18px;"></p>
                                                         </div>
-
                                                     </div>  
 
-                                                        
-                                                    <div class="sellStyle-row">
-                                                        <div class="sellStyle-display-block">
-                                                            <div class="sellStyle-row">
-                                                                <div class="sellStyle-item">
-                                                                    <label for="bidding-length-select-sellStyle-parts">Duration Length:</label>
-                                                                    <select class="tabcontent-sellStyle-input" id="bidding-length-select-sellStyle-parts">
-                                                                        <!-- Enforced 1-31 loop programmatically -->
-                                                                    </select>
-                                                                </div>
-
-                                                                <div class="sellStyle-item">
-                                                                    <label for="bidding-time-unit-sellStyle-parts">Time Unit:</label>
-                                                                    <select class="tabcontent-sellStyle-input" id="bidding-time-unit-sellStyle-parts">
-                                                                        <option value="days" selected>Days</option>
-                                                                        <option value="weeks">Weeks</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="sellStyle-row">
-                                                                <!-- Early Protection Window Dropdown (Updated: No Lock Completely Removed) -->
-                                                                <div class="sellStyle-item" id="lockout-wrapper-parts">
-                                                                    <label for="early-accept-lockout-parts">Seller Early-Accept Lock:</label>
-                                                                    <select class="tabcontent-sellStyle-input" id="early-accept-lockout-parts">
-                                                                        <option value="6" selected>Lock for first 6 Hours (Minimum)</option>
-                                                                        <option value="12">Lock for first 12 Hours</option>
-                                                                        <option value="24">Lock for first 24 Hours</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <!-- Maximum Permitted Jump Window -->
-                                                                <div class="sellStyle-item">
-                                                                    <label for="max-bid-increase-parts">Max Bid Ceiling Jump:</label>
-                                                                    <select class="tabcontent-sellStyle-input" id="max-bid-increase-parts">
-                                                                        <option value="unlimited">Unlimited Increase</option>
-                                                                        <option value="10">Max 10% above current bid</option>
-                                                                        <option value="25">Max 25% above current bid</option>
-                                                                        <option value="50">Max 50% above current bid</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                                                                                
-                                                        
-                                                        <div class="sellStyle-display-block" id="launch-timing-wrapper-parts" style="width: 100%;">
-                                                            <label for="bidding-start-type-parts">Listing Start Timing:</label>
-                                                            
-                                                            <!-- Dropdown starts on Launch Immediately -->
-                                                            <select class="tabcontent-sellStyle-input" id="bidding-start-type-parts" onchange="toggleLaunchTiming(this.value)">
-                                                                <option value="now" selected>Launch Immediately</option>
-                                                                <option value="schedule">Schedule a Launch Date & Time</option>
+                                                    <!-- Row 2: Duration Length & Time Unit (Paired nicely) -->
+                                                    <div class="sellStyle-row" style="display: flex; gap: 10px; margin-bottom: 5px;">
+                                                        <div class="sellStyle-item">
+                                                            <label for="bidding-length-select-sellStyle-parts">Duration Length:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="bidding-length-select-sellStyle-parts" style="width: 100%;">
+                                                                <!-- Enforced 1-31 loop programmatically -->
                                                             </select>
+                                                        </div>
 
-                                                            <!-- Hidden input field container that only unfolds if "Schedule" is selected -->
-                                                            <div id="scheduled-input-box-parts" style="display: none;">
+                                                        <div class="sellStyle-item">
+                                                            <label for="bidding-time-unit-sellStyle-parts">Time Unit:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="bidding-time-unit-sellStyle-parts" style="width: 100%;">
+                                                                <option value="days" selected>Days</option>
+                                                                <option value="weeks">Weeks</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Row 3: Early-Accept Lock & Max Bid Ceiling Jump -->
+                                                    <div class="sellStyle-row" style="display: flex; gap: 10px; margin-bottom: 5px;">
+                                                        <div class="sellStyle-item" id="lockout-wrapper-parts">
+                                                            <label for="early-accept-lockout-parts">Seller Early-Accept Lock:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="early-accept-lockout-parts" style="width: 100%;">
+                                                                <option value="6" selected>Lock for first 6 Hours (Minimum)</option>
+                                                                <option value="12">Lock for first 12 Hours</option>
+                                                                <option value="24">Lock for first 24 Hours</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="sellStyle-item">
+                                                            <label for="max-bid-increase-parts">Max Bid Ceiling Jump:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="max-bid-increase-parts" style="width: 100%;">
+                                                                <option value="unlimited">Unlimited Increase</option>
+                                                                <option value="10">Max 10% above current bid</option>
+                                                                <option value="25">Max 25% above current bid</option>
+                                                                <option value="50">Max 50% above current bid</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Row 4: Listing Start Timing -->
+                                                    <div class="sellStyle-row" style="margin-bottom: 10px;">
+                                                        <div class="sellStyle-display-block" id="launch-timing-wrapper-parts" style="width: 100%;">
+                                                            <div class="sellStyle-item">
+                                                                <label for="bidding-start-type-parts">Listing Start Timing:</label>
+                                                                <select class="tabcontent-sellStyle-input" id="bidding-start-type-parts" onchange="toggleLaunchTiming(this.value)" style="width: 100%;">
+                                                                    <option value="now" selected>Launch Immediately</option>
+                                                                    <option value="schedule">Schedule a Launch Date & Time</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="sellStyle-item" id="scheduled-input-box-parts" style="display: none; margin-top: 10px;">
                                                                 <label for="bidding-start-date-parts">Select Launch Date & Time:</label>
-                                                                <input type="datetime-local" class="tabcontent-sellStyle-input" id="bidding-start-date-parts">
-                                                                <div id="error-message-bidding-date-parts" style="color: red; font-size: 13px; margin-top: 3px;"></div>
+                                                                <input type="datetime-local" class="tabcontent-sellStyle-input" id="bidding-start-date-parts" style="width: 100%;">
+                                                                <p id="error-message-bidding-date-parts" style="color: red; font-size: 13px; margin-top: 3px;"></p>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <!-- Optional Reserve Pricing Feature Box -->
-                                                    <div class="sellStyle-row hidden-fields" id="reserve-box-parts" style="display: none;">
+                                                    <!-- Row 5: Optional Reserve Pricing Feature Box -->
+                                                    <div class="sellStyle-row hidden-fields" id="reserve-box-parts" style="display: none; margin-bottom: 10px;">
                                                         <div class="sellStyle-display-block" style="width: 100%;">
                                                             <label for="reserve-price-parts">Hidden Reserve Target Price (Optional):</label>
-                                                            <input class="tabcontent-sellStyle-input" id="reserve-price-parts" placeholder="e.g. Winner must hit this amount to auto-win" maxlength="15">
+                                                            <input class="tabcontent-sellStyle-input" id="reserve-price-parts" placeholder="e.g. Winner must hit this amount to auto-win" maxlength="15" style="width: 100%;">
                                                         </div>
                                                     </div>
-                                                </div>                              
+
+                                                </div>   
                                             </div>
 
-                                            <!-- Add the "Services Included" section here -->
+                                            <!-- Services Included Section (Kept intact below) -->
                                             <div class="services-included-section" id="services-included">
                                                 <div class="services-included-header">
                                                     <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
@@ -11658,143 +11567,128 @@
                                                             <span for="car-reports-service">CarFax Report</span>
                                                         </div>
                                                     </div>
-                                                    <!-- Add more services checkboxes here -->
                                                 </div>
                                             </div>
                                         </div>
-                                                                                    
-                                        <!-- Submission Trigger -->
-                                        <button id="submit-bidding-button-sellStyle-parts" style="margin-top: 20px;">Submit Plan Layout</button>
-                                        
-                                        <!-- 3. Integrated Dynamic Display Panel Output -->
-                                        <div id="bidding-display-sellStyle-parts" style="display: none; margin-top: 25px; padding: 15px; background: #f9f9f9; border-radius: 6px;">
-                                            <h4 style="margin-top: 0;">Configured Sales Strategy</h4>
-                                            <div class="selected-choices-row">
-                                                <h6>Strategy Selected:</h6> <span id="out-strategy-parts">-</span>
-                                            </div>
-                                            <div class="selected-choices-row">
-                                                <h6>Base Target Price:</h6> <span id="out-price-parts">-</span>
-                                            </div>
-                                            <div id="out-meta-fields-parts">
-                                                <div class="selected-choices-row">
-                                                    <h6>Runtime Duration:</h6> <span id="out-duration-parts">-</span>
-                                                </div>
-                                                <div class="selected-choices-row">
-                                                    <h6>Early Pressure Lock:</h6> <span id="out-lock-parts">-</span>
-                                                </div>
-                                                <div class="selected-choices-row">
-                                                    <h6>Anti-Filibuster Cap:</h6> <span id="out-cap-parts">-</span>
-                                                </div>
-                                                <div class="selected-choices-row" id="out-reserve-row-parts" style="display: none;">
-                                                    <h6>Reserve Ceiling:</h6> <span id="out-reserve-parts">-</span>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
-<script>
-    // 1. Safe Number Builder Loop (Runs after elements load)
-    document.addEventListener("DOMContentLoaded", () => {
-        const lengthSelect = document.getElementById("bidding-length-select-sellStyle-parts");
-        if(lengthSelect) {
-            lengthSelect.innerHTML = ""; // Clear any hardcoded content
-            for (let i = 1; i <= 31; i++) {
-                let opt = document.createElement('option');
-                opt.value = i;
-                opt.innerHTML = i;
-                lengthSelect.appendChild(opt);
-            }
-        }
-    });
+                                    <script>
+                                        // 1. Safe Number Builder Loop (Runs after elements load)
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            const lengthSelect = document.getElementById("bidding-length-select-sellStyle-parts");
+                                            if(lengthSelect) {
+                                                lengthSelect.innerHTML = ""; // Clear any hardcoded content
+                                                for (let i = 1; i <= 31; i++) {
+                                                    let opt = document.createElement('option');
+                                                    opt.value = i;
+                                                    opt.innerHTML = i;
+                                                    lengthSelect.appendChild(opt);
+                                                }
+                                            }
+                                        });
 
-    // 2. Dynamic Strategy Switcher (Standard vs Bidding vs Auction)
-    function toggleListingStrategy(strategy) {
-        const advancedPanel = document.getElementById("advanced-auction-fields-parts");
-        const priceLabel = document.getElementById("price-label-parts");
-        const lockoutWrapper = document.getElementById("lockout-wrapper-parts");
-        const reserveBox = document.getElementById("reserve-box-parts");
+                                        // 2. Dynamic Strategy Switcher (Standard vs Bidding vs Auction)
+                                        function toggleListingStrategy(strategy) {
+                                            const advancedPanel = document.getElementById("advanced-auction-fields-parts");
+                                            const priceLabel = document.getElementById("price-label-parts");
+                                            const lockoutWrapper = document.getElementById("lockout-wrapper-parts");
+                                            const reserveBox = document.getElementById("reserve-box-parts");
 
-        if (!advancedPanel || !priceLabel) return;
+                                            if (!advancedPanel || !priceLabel) return;
 
-        if (strategy === "standard") {
-            advancedPanel.style.display = "none";
-            priceLabel.textContent = "Asking Price:";
-        } else {
-            advancedPanel.style.display = "block";
-            priceLabel.textContent = "Starting Bid Price:";
-            
-            if (strategy === "auction") {
-                if (lockoutWrapper) lockoutWrapper.style.display = "none";
-                if (reserveBox) reserveBox.style.display = "block";
-            } else {
-                if (lockoutWrapper) lockoutWrapper.style.display = "block";
-                if (reserveBox) reserveBox.style.display = "none";
-            }
-        }
-    }
+                                            if (strategy === "standard") {
+                                                advancedPanel.style.display = "none";
+                                                priceLabel.textContent = "Asking Price:";
+                                            } else {
+                                                advancedPanel.style.display = "block";
+                                                priceLabel.textContent = "Starting Bid Price:";
+                                                
+                                                if (strategy === "auction") {
+                                                    if (lockoutWrapper) lockoutWrapper.style.display = "none";
+                                                    if (reserveBox) reserveBox.style.display = "block";
+                                                } else {
+                                                    if (lockoutWrapper) lockoutWrapper.style.display = "block";
+                                                    if (reserveBox) reserveBox.style.display = "none";
+                                                }
+                                            }
+                                        }
 
-    // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
-    function toggleLaunchTiming(selection) {
-        const targetBox = document.getElementById("scheduled-input-box-parts");
-        const dateInput = document.getElementById("bidding-start-date-parts");
-        
-        if (!targetBox) return;
+                                        // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
+                                        function toggleLaunchTiming(selection) {
+                                            const targetBox = document.getElementById("scheduled-input-box-parts");
+                                            const dateInput = document.getElementById("bidding-start-date-parts");
+                                            
+                                            if (!targetBox) return;
 
-        if (selection === "schedule") {
-            targetBox.style.display = "block";
-            
-            // Lock out past dates/times instantly
-            if (dateInput) {
-                const now = new Date();
-                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-                dateInput.min = now.toISOString().slice(0, 16);
-            }
-        } else {
-            targetBox.style.display = "none";
-            if (dateInput) dateInput.value = ""; // Clear date value if switched back
-        }
-    }
-</script>
+                                            if (selection === "schedule") {
+                                                targetBox.style.display = "block";
+                                                
+                                                // Lock out past dates/times instantly
+                                                if (dateInput) {
+                                                    const now = new Date();
+                                                    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                                    dateInput.min = now.toISOString().slice(0, 16);
+                                                }
+                                            } else {
+                                                targetBox.style.display = "none";
+                                                if (dateInput) dateInput.value = ""; // Clear date value if switched back
+                                            }
+                                        }
+                                    </script>
 
                                                                     
-                                    <!-- Auction Section -->
-<div id="tab-auction-content" class="tabcontent-sellStyle">
+<div id="tab-auction-content" class="tabcontent-sellStyle transparent">
     
     <!-- A. Clean Confirmation Panel View (Hidden until submission matches validation rules) -->
-    <div id="auction-display-sellStyle" class="display-container-sellStyle" style="display: none; padding: 15px; background: #f9f9f9; border-radius: 6px;">
-        <h4 style="margin-top: 0;">Configured Premium Sprint Auction</h4>
-        <div class="selected-choices-row">
-            <h6>Scheduled Start:</h6> <span id="auction-display-start-time-sellStyle">-</span>
+    <div id="auction-display-sellStyle" class="display-container-sellStyle" style="display: none;">
+        <h4 class="display-title-sellStyle">Configured Premium Sprint Auction</h4>
+        
+        <div class="display-content-sellStyle">
+            <div class="selected-choices-row">
+                <span class="display-label-sellStyle">Scheduled Start:</span> 
+                <span id="auction-display-start-time-sellStyle" class="display-value-sellStyle">-</span>
+            </div>
+            
+            <div class="selected-choices-row">
+                <span class="display-label-sellStyle">Auction Runtime:</span> 
+                <div class="display-value-sellStyle" style="background: none; border: none; box-shadow: none;">
+                    <span id="auction-display-length-sellStyle">-</span> 
+                    <span id="auction-display-time-unit-sellStyle"></span>
+                </div>
+            </div>
+            
+            <div class="selected-choices-row">
+                <span class="display-label-sellStyle">Starting Bid Window:</span> 
+                <span id="auction-display-starting-price-sellStyle" class="display-value-sellStyle">-</span>
+            </div>
         </div>
-        <div class="selected-choices-row">
-            <h6>Auction Runtime:</h6> <span id="auction-display-length-sellStyle">-</span> <span id="auction-display-time-unit-sellStyle"></span>
-        </div>
-        <div class="selected-choices-row">
-            <h6>Starting Bid Window:</h6> <span id="auction-display-starting-price-sellStyle">-</span>
-        </div>
+
         <!-- Action Trigger to jump back into input view -->
-        <button id="edit-auction-button-sellStyle" style="margin-top: 15px;" onclick="editAuction()">Modify Auction Plan</button>
+        <div class="display-actions-sellStyle">
+            <button type="button" id="edit-auction-button-sellStyle" class="lesserP widthButton sellStyle-btn-primary" onclick="editAuction()">Modify Auction Plan</button>
+        </div>
     </div>
 
     <!-- B. Pro Sprint Entry Control Panel -->
-    <div id="auction-form-sellStyle">
+    <div id="auction-form-sellStyle" class="form-container-sellStyle transparent">
         
         <!-- Target Start Timestamp Selector -->
-        <div class="sellStyle-item" style="margin-bottom: 15px;">
+        <div class="sellStyle-item transparent">
             <label for="auction-start-time-sellStyle">Scheduled Launch Time:</label>
             <input class="tabcontent-sellStyle-input" type="datetime-local" id="auction-start-time-sellStyle" name="auction-start-time-sellStyle" onchange="evaluateAuctionDayLimit()">
-            <div id="error-message-datetime" style="color: red; font-size: 13px; margin-top: 3px; height: 18px;"></div>
+            <p class="error-message error-message-text" id="error-message-datetime"></p>
         </div>
 
         <!-- Custom Variable Duration Controllers -->
-        <div class="sellStyle-row" style="margin-bottom: 15px; display: flex; gap: 10px;">
-            <div style="flex: 1;">
+        <div class="sellStyle-row transparent">
+            <div class="sellStyle-item transparent">
                 <label for="auction-length-sellStyle">Auction Duration:</label>
                 <select class="tabcontent-sellStyle-input" id="auction-length-sellStyle" name="auction-length-sellStyle">
                     <!-- Automatically restricted to 12 or 24 options by the Day Evaluation Engine -->
                 </select>
             </div>
             
-            <div style="flex: 1;">
+            <div class="sellStyle-item transparent">
                 <label for="auction-time-unit-sellStyle">Time Scale:</label>
                 <select class="tabcontent-sellStyle-input" id="auction-time-unit-sellStyle" name="auction-time-unit-sellStyle" onchange="evaluateAuctionDayLimit()">
                     <option value="hours" selected>Hours</option>
@@ -11804,101 +11698,101 @@
         </div>
 
         <!-- Price Input Field -->
-        <div class="sellStyle-item" style="margin-bottom: 15px;">
+        <div class="sellStyle-item transparent">
             <label for="auction-starting-price-sellStyle">Starting Price Entry:</label>
             <input class="tabcontent-sellStyle-input" type="text" id="auction-starting-price-sellStyle" name="auction-starting-price-sellStyle" maxlength="15" placeholder="$0.00">
-            <p class="error-message" id="error-message-auction-sellStyle" style="color: red; font-size: 13px; margin-top: 3px; height: 18px;"></p>
+            <p class="error-message error-message-text" id="error-message-auction-sellStyle"></p>
         </div>
 
         <!-- Process Submission Button -->
-        <button id="submit-auction-button-sellStyle" style="width: 100%; margin-top: 10px;" onclick="submitAuction()">Lock In & Schedule Auction</button>
+        <button type="button" id="submit-auction-button-sellStyle" class="lesserP widthButton sellStyle-btn-primary" onclick="submitAuction()">Lock In & Schedule Auction</button>
     </div>
 </div>
 
-<script>
-(() => {
-    // Establish standard system boot tracking targets
-    document.addEventListener("DOMContentLoaded", () => {
-        const timeInput = document.getElementById("auction-start-time-sellStyle");
-        if (timeInput) {
-            // Assign min calendar attribute to the exact local millisecond 
-            const now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-            timeInput.min = now.toISOString().slice(0, 16);
-        }
-        // Run initial option array draw execution mapping
-        evaluateAuctionDayLimit();
-    });
-})();
+                                    <script>
+                                    (() => {
+                                        // Establish standard system boot tracking targets
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            const timeInput = document.getElementById("auction-start-time-sellStyle");
+                                            if (timeInput) {
+                                                // Assign min calendar attribute to the exact local millisecond 
+                                                const now = new Date();
+                                                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                                timeInput.min = now.toISOString().slice(0, 16);
+                                            }
+                                            // Run initial option array draw execution mapping
+                                            evaluateAuctionDayLimit();
+                                        });
+                                    })();
 
-// Real-Time Calendar Evaluator & Dropdown Menu Builder
-function evaluateAuctionDayLimit() {
-    const timeInput = document.getElementById("auction-start-time-sellStyle");
-    const lengthSelect = document.getElementById("auction-length-sellStyle");
-    const unitSelect = document.getElementById("auction-time-unit-sellStyle");
-    const errDatetime = document.getElementById("error-message-datetime");
+                                    // Real-Time Calendar Evaluator & Dropdown Menu Builder
+                                    function evaluateAuctionDayLimit() {
+                                        const timeInput = document.getElementById("auction-start-time-sellStyle");
+                                        const lengthSelect = document.getElementById("auction-length-sellStyle");
+                                        const unitSelect = document.getElementById("auction-time-unit-sellStyle");
+                                        const errDatetime = document.getElementById("error-message-datetime");
 
-    if (!timeInput || !lengthSelect || !unitSelect) return;
+                                        if (!timeInput || !lengthSelect || !unitSelect) return;
 
-    let maxLimit = 12; // Standard Cap (Mon-Sat)
-    let unitType = unitSelect.value;
+                                        let maxLimit = 12; // Standard Cap (Mon-Sat)
+                                        let unitType = unitSelect.value;
 
-    if (timeInput.value) {
-        const chosenDate = new Date(timeInput.value);
-        
-        // 0 matches Sunday inside the standard ECMAScript Date matrix
-        if (chosenDate.getDay() === 0 && unitType === "hours") {
-            maxLimit = 24; // Expand option tree specifically for Sunday Funday
-            errDatetime.innerHTML = "<span style='color: #2b7a1d;'>✨ Sunday Funday Slot Confirmed! Expanded 24-Hour Limits Enabled.</span>";
-        } else {
-            errDatetime.textContent = "";
-        }
-    }
+                                        if (timeInput.value) {
+                                            const chosenDate = new Date(timeInput.value);
+                                            
+                                            // 0 matches Sunday inside the standard ECMAScript Date matrix
+                                            if (chosenDate.getDay() === 0 && unitType === "hours") {
+                                                maxLimit = 24; // Expand option tree specifically for Sunday Funday
+                                                errDatetime.innerHTML = "<span style='color: #2b7a1d;'>✨ Sunday Funday Slot Confirmed! Expanded 24-Hour Limits Enabled.</span>";
+                                            } else {
+                                                errDatetime.textContent = "";
+                                            }
+                                        }
 
-    // Adjust ceiling parameters if user switches layout parameters to Minutes instead of Hours
-    if (unitType === "minutes") {
-        maxLimit = 60; // Limit short quick-sprints to a clean 60-minute cutoff maximum
-    }
+                                        // Adjust ceiling parameters if user switches layout parameters to Minutes instead of Hours
+                                        if (unitType === "minutes") {
+                                            maxLimit = 60; // Limit short quick-sprints to a clean 60-minute cutoff maximum
+                                        }
 
-    // Repopulate options list dynamically to guarantee zero validation boundary leaks
-    const currentSelection = lengthSelect.value;
-    lengthSelect.innerHTML = "";
-    
-    for (let i = 1; i <= maxLimit; i++) {
-        let opt = document.createElement("option");
-        opt.value = i;
-        opt.textContent = `${i} ${unitType}`;
-        lengthSelect.appendChild(opt);
-    }
+                                        // Repopulate options list dynamically to guarantee zero validation boundary leaks
+                                        const currentSelection = lengthSelect.value;
+                                        lengthSelect.innerHTML = "";
+                                        
+                                        for (let i = 1; i <= maxLimit; i++) {
+                                            let opt = document.createElement("option");
+                                            opt.value = i;
+                                            opt.textContent = `${i} ${unitType}`;
+                                            lengthSelect.appendChild(opt);
+                                        }
 
-    // Retain previous value if it falls within the newly generated bounds
-    if (parseInt(currentSelection) <= maxLimit) {
-        lengthSelect.value = currentSelection;
-    }
-}
+                                        // Retain previous value if it falls within the newly generated bounds
+                                        if (parseInt(currentSelection) <= maxLimit) {
+                                            lengthSelect.value = currentSelection;
+                                        }
+                                    }
 
-// Visual interface state controller toggles
-function submitAuction() {
-    const formPanel = document.getElementById("auction-form-sellStyle");
-    const displayPanel = document.getElementById("auction-display-sellStyle");
-    
-    // Perform standard visual state flip (Complete input sanitization rules compile next!)
-    if (formPanel && displayPanel) {
-        formPanel.style.display = "none";
-        displayPanel.style.display = "block";
-    }
-}
+                                    // Visual interface state controller toggles
+                                    function submitAuction() {
+                                        const formPanel = document.getElementById("auction-form-sellStyle");
+                                        const displayPanel = document.getElementById("auction-display-sellStyle");
+                                        
+                                        // Perform standard visual state flip (Complete input sanitization rules compile next!)
+                                        if (formPanel && displayPanel) {
+                                            formPanel.style.display = "none";
+                                            displayPanel.style.display = "block";
+                                        }
+                                    }
 
-function editAuction() {
-    const formPanel = document.getElementById("auction-form-sellStyle");
-    const displayPanel = document.getElementById("auction-display-sellStyle");
-    
-    if (formPanel && displayPanel) {
-        formPanel.style.display = "block";
-        displayPanel.style.display = "none";
-    }
-}
-</script>
+                                    function editAuction() {
+                                        const formPanel = document.getElementById("auction-form-sellStyle");
+                                        const displayPanel = document.getElementById("auction-display-sellStyle");
+                                        
+                                        if (formPanel && displayPanel) {
+                                            formPanel.style.display = "block";
+                                            displayPanel.style.display = "none";
+                                        }
+                                    }
+                                    </script>
 
 
                                     <div class="custom-description-section" data-listing="vehicle-listing">
