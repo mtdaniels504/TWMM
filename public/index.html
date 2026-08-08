@@ -3695,7 +3695,7 @@
                 padding: 0 5px;
             }
 
-            /* Style for the Featured Listings Section */
+/* Style for the Featured Listings Section */
             .featured-listings-container {
                 flex-grow: 1;
                 display: flex;
@@ -3707,19 +3707,22 @@
                 padding: 15px;
                 border-radius: 8px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                transition: background-color 0.3s ease;
-                background: #131313;
+                transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+                background: #121418;
+                border: 1.5px solid #333;
                 box-sizing: border-box;
             }
 
             .featured-listings-container:hover {
-                background-color: #046df8;
-                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+                background: linear-gradient(178deg, #121418 0%, #05509b 100%);
+                border: 1.5px solid #0060b5;
+                box-shadow: 0 6px 16px rgba(0, 96, 181, 0.25);
             }
 
             .featured-listings-container p {
                 font-size: 14px;
                 margin: 0 0 10px 0;
+                color: #eceef2;
             }
 
             /* Style for the Featured Listings Wrapper */
@@ -3732,25 +3735,32 @@
                 box-sizing: border-box;
                 max-width: 100%;
                 scrollbar-width: thin;
-                scrollbar-color: #046df8 #222;
+                scrollbar-color: #075baf #121418;
             }
 
             .featured-listings-wrapper::-webkit-scrollbar {
                 height: 6px;
             }
 
+            .featured-listings-wrapper::-webkit-scrollbar-track {
+                background: #333;
+            }
+
             .featured-listings-wrapper::-webkit-scrollbar-thumb {
-                background: #046df8;
+                background: #121418;
                 border-radius: 3px;
+            }
+
+            .featured-listings-wrapper::-webkit-scrollbar-thumb:hover {
+                background: #000;
             }
 
             /* Style for each Featured Listing Card */
             .featured-listing {
-                flex: 0 0 240px; /* Fixed card width for clean horizontal scrolling items */
-                height: 380px;    /* Uniform height */
-                max-height: 380px;
-                background: linear-gradient(155deg, #fff, #c3dbff, #fff);
-                border: 1px solid #ccc;
+                flex: 0 0 240px;
+                height: 380px;
+                background: linear-gradient(178deg, #fff 0%, #eceef2 100%);
+                border: 1px solid #e5e6e7;
                 border-radius: 6px;
                 padding: 12px;
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -3760,19 +3770,20 @@
                 align-items: center;
                 justify-content: space-between;
                 box-sizing: border-box;
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
             }
 
             .featured-listing:hover {
                 transform: translateY(-3px);
-                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+                border: 1px solid #e8efff;
+                box-shadow: 0px 8px 16px rgba(0, 96, 181, 0.15);
             }
 
             /* Title Styling inside cards */
             .featured-listing h4 {
                 margin: 0 0 4px 0;
                 font-size: 16px;
-                color: #004aaa;
+                color: #0060b5;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -3781,7 +3792,7 @@
 
             /* Year, Make, Model, Trim info */
             .vehicle-info {
-                color: #000;
+                color: #121418;
                 font-size: 13px;
                 margin-bottom: 4px;
                 line-height: 1.2;
@@ -3801,16 +3812,16 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: #f9f9f9;
+                background: #f5f8ff;
                 padding: 2px;
-                border: 1px solid #ccc;
+                border: 1px solid #dee0e3;
                 border-radius: 4px;
                 box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
                 transition: border-color 0.3s, transform 0.3s;
             }
 
             .featured-img-container:hover {
-                border-color: #004aaa;
+                border-color: #0060b5;
             }
 
             /* Image inside container */
@@ -3823,7 +3834,7 @@
             /* Price styling */
             .vehicle-price {
                 font-weight: bold;
-                color: #004aaa;
+                color: #0060b5;
                 font-size: 14px;
                 margin: 4px 0;
             }
@@ -3831,7 +3842,7 @@
             /* Description styling */
             .vehicle-description {
                 text-align: center;
-                color: #555;
+                color: #666;
                 font-size: 12px;
                 max-height: 50px;
                 overflow-y: auto;
@@ -3846,19 +3857,19 @@
             /* Style for the "Learn More" Button */
             .featured-listing .learn-more-button {
                 width: 100%;
-                background-color: #0052bd;
-                color: white;
-                border: none;
+                background: linear-gradient(178deg, #2274c7 0%, #075baf 100%);
+                color: #fff;
+                border: 1px solid #0060b5;
                 border-radius: 4px;
                 cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.2s ease;
+                transition: background 0.3s ease, transform 0.2s ease;
                 font-size: 14px;
                 padding: 6px 12px;
                 margin-top: auto;
             }
 
             .featured-listing .learn-more-button:hover {
-                background-color: #004aaa;
+                background: linear-gradient(178deg, #0060b5 0%, #05509b 100%);
                 transform: scale(1.02);
             }
 
@@ -5002,6 +5013,7 @@
                     flex-direction: column;
                     overflow-x: hidden;
                     overflow-y: auto;
+                    max-height: 370px;
                     gap: 15px;
                     padding: 5px;
                 }
