@@ -3707,19 +3707,23 @@
                 padding: 15px;
                 border-radius: 8px;
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-                transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-                background: #121418;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                background: linear-gradient(178deg, #121418 0%, #05509b 100%);
                 border: 1.5px solid #333;
                 box-sizing: border-box;
             }
 
             .featured-listings-container:hover {
-                background: linear-gradient(178deg, #121418 0%, #05509b 100%);
                 border: 1.5px solid #0060b5;
                 box-shadow: 0 6px 16px rgba(0, 96, 181, 0.25);
             }
 
-            .featured-listings-container p {
+            .featured-listing-h3 {
+                color: #0060b5;
+            }
+
+            .featured-listing-p {
+                color: #eceef2;
                 font-size: 14px;
                 margin: 0 0 10px 0;
             }
@@ -8284,8 +8288,8 @@
 
                                             <!-- Featured Parts Section -->
                                             <div class="featured-listings-container" id="featured-parts-listings-container">
-                                                <h3>Featured Parts</h3>
-                                                <p>Explore our featured part listings for premium products.</p>
+                                                <h3 class="featured-h3">Featured Parts</h3>
+                                                <p class="featured-p">Explore our featured part listings for premium products.</p>
                                                 
                                                 <div class="featured-listings-wrapper" id="featured-parts-wrapper">
                                                     <!-- Blueprint / Template Part Card used by your JS loop -->
