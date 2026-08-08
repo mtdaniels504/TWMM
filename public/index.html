@@ -15332,11 +15332,11 @@
                             if (id && id !== "Unknown" && id !== "null") {
                                 let url = "";
                                 if (type === "vehicle") {
-                                    url = `https://www.worldmotormarket.com/listing-vehicle?listing=${id}`;
+                                    url = `https://www.worldmotormarket.com/vehicles-listings?listing=${id}`;
                                 } else if (type === "part") {
-                                    url = `https://www.worldmotormarket.com/listing-part?listing=${id}`;
+                                    url = `https://www.worldmotormarket.com/parts-listings?listing=${id}`;
                                 } else if (type === "service") {
-                                    url = `https://www.worldmotormarket.com/listing-service?listing=${id}`;
+                                    url = `https://www.worldmotormarket.com/services-listings?listing=${id}`;
                                 }
                                 if (url) window.open(url, "_blank");
                             } else {
