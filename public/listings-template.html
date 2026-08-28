@@ -283,7 +283,7 @@
 
             .widthButton {
                 min-width: 66px;
-                width: 12dvw;
+                width: 13dvw;
                 max-width: 100px;
             }
 
@@ -4941,7 +4941,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 16dvw;
+            width: 25dvw;
             gap: 2px;
             background: transparent;
             border: none;
@@ -4951,7 +4951,7 @@
         }
 
         .details-container {
-            width: 16dvw;
+            width: 25dvw;
             display: flex;
             align-items: center;
             text-align: center;
@@ -4997,12 +4997,22 @@
         }
 
         #service-listing-details-section {
+            flex-grow: 1;
+            min-height: 100%;
+            height: 100%;
             width: 32dvw;
-            gap: 10px;
+            gap: 20px;
+            margin: 0 10px;
+            padding: 20px 10px;
         }
 
         #service-listing-details-section h4 {
             margin-bottom: 10px;
+        }
+
+        .service-details-box {
+            width: 100%;
+            gap: 5px;
         }
 
         #service-listing-details-section .selected-choices-row {
@@ -5041,6 +5051,7 @@
             box-shadow: none;
             margin: 0;
             padding: 0;
+            align-items: space-between;
         }
 
         .profanity-form, .partVehicleRow1, .partVehicleRow2 {
@@ -5078,6 +5089,7 @@
         /* Listings Details */
 
         .selected-choices-row {
+            min-width: 22dvw;
             width: 100%;
             display: flex;
             align-items: center;
@@ -5085,7 +5097,33 @@
             background: transparent;
             border: none;
             box-shadow: none;
-            padding: 5px;
+            padding: 5px 20px;
+            margin: 0;
+        }
+
+        #bidding-auction-row-vehicles {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            max-width: 60%;
+            padding: 0;
+            margin: 0;
+            gap: 1.6px;
+        }
+
+        .selected-choices-row span {
+            width: 50%;
+            margin: 0;
+        }
+
+        .sellStyle-selected-row span {
+            text-align: right;
+        }
+
+        
+        #bidding-auction-row-vehicles span {
+            width: auto;
+            padding: 0;
             margin: 0;
         }
 
@@ -5387,9 +5425,6 @@
             transform: none;
         }
 
-        .selected-choices-row {
-            justify-content: space-around;
-        }
 
         /* Style for display titles in Auction Display */
         #auction-display-sellStyle .auction-display-title-sellStyle {
@@ -5415,6 +5450,54 @@
         .sellStyle-btn-primary {
             margin: 5px auto;
         }
+
+/* ------------------------------------------------------------------ */
+/* Live Bidding Preview Section Layout                               */
+/* ------------------------------------------------------------------ */
+
+
+#selected-bidding-pricing {
+    display: inline-block;
+    width: auto;
+    margin-bottom: 4px;
+    padding-bottom: 2px;
+    text-decoration: none;
+}
+
+#listings-bidding-section .selected-choices-row {
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+}
+
+#listings-bidding-section h6.lesserP {
+    margin: 0;
+}
+
+/* Specific structural and layout adjustments for rows and elements */
+#listings-bidding-section .timer-preview-row {
+    border-style: dashed;
+}
+
+#listings-bidding-section div[style*="background: #f9f9f9"],
+#listings-bidding-section div[style*="background:"] {
+    border-left: 3px solid;
+    text-align: left;
+    width: 100%;
+}
+
+.action-preview-row {
+    width: 100%;
+}
+
+#listings-bidding-section .mock-bid-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: not-allowed;
+    margin: 0;
+}
 
         /* ------------------------------------------------------------------ */
 
@@ -5448,9 +5531,14 @@
             padding: 2px;
         }
 
+        .custom-description-listings h3 {
+            margin: 0 10px;
+        }
+
         .custom-description-display-box {
-            width: 100%;
+            width: calc(100% - 10px);
             padding: 20px 10px;
+            text-align: center;
         }
 
 
@@ -5477,7 +5565,15 @@
 
         .info-container {
             width: 100%;
-            padding: 2px 5px;
+            padding: 5px;
+        }
+
+        /* Make the container a flex grid wrapping items 4 per row */
+        .listing-info-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
         }
 
         .info-row {
@@ -5491,7 +5587,7 @@
 
         .info-section h3 {
             margin-left: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             text-decoration: underline;
         }
 
@@ -5521,6 +5617,9 @@
         }
 
         .listing-info-item {
+            flex: 0 0 calc(25% - 10px);
+            max-width: calc(25% - 10px);
+            margin-bottom: 0;
             justify-content: space-evenly;
         }
 
@@ -5641,29 +5740,56 @@
         }
 
 
-        /* Services Included Display */
+/* ------------------------------------------------------------------ */
+/* Services Included Display */
 
-        .services-included-listing {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 25dvw;
-            min-height: 20dvh;
-            max-height: 40dvh;
-            padding: 5px;
-            gap: 2px;
-        }
+.services-included-listing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25dvw;
+    padding: 5px;
+    gap: 2px;
+}
 
-        .selected-services {
-            flex-grow: 1;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            margin-top: 2px;
-        }
+.selected-services {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Forces exactly 2 items per row */
+    gap: 8px 12px; /* Spacing between rows and columns */
+    margin-top: 6px;
+    padding: 8px;
+    align-items: center;
+}
+
+/* Service Item Alignment and Font Consistency */
+.service-display-item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Icon Sizing and Spacing Layout */
+.status-icon {
+    margin-right: 8px;
+    width: 14px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Status Color Palette */
+.status-icon.red-x {
+    color: #e74c3c;
+}
+
+.status-icon.green-check {
+    color: #2ecc71;
+}
         
 
         /* ------------------------------------------------------------------ */
@@ -5950,13 +6076,34 @@
 
     /* Style for the Listing Buttons */
 
+        .listing-button-row {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+        }
+
         .listing-buttons {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            margin: 0;
             width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             text-align: center;
-            margin-top: 20px;
+        }
+
+
+        .listing-buttons .widthButton {
+            width: 25dvw;
+        }
+
+        .viewListing-Button {
+            margin: 0 auto;
+            width: 50dvw;
         }
 
 
@@ -7824,6 +7971,12 @@
             }
 
 
+
+            .mobileBidding-row {
+                display: flex;
+                justify-content: space-evenly;
+            }
+
             .selected-choices-row {
                 width: 100%;
                 display: flex;
@@ -7838,6 +7991,43 @@
                 margin: 0;
                 gap: 5px;
             }
+
+            #listings-bidding-section .selected-choices-row {
+                border: none;
+            }
+
+        #bidding-auction-row-vehicles {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: unset;
+        }
+
+
+        /* Specific structural and layout adjustments for rows and elements */
+        #listings-bidding-section .timer-preview-row {
+            border: 1px dashed;
+        }
+
+        .selected-choices-row span {
+            width: 100%;
+            margin: 0;
+        }
+
+        .selected-choices-row {
+            padding: 5px 2px;
+            margin: 0;
+        }
+
+        .sellStyle-selected-row span {
+            width: 100%;
+            text-align: center;
+        }
+
+        
+        #bidding-auction-row-vehicles span {
+            width: auto;
+        }
 
             .expand-full-button {
                 display: none;
@@ -7900,15 +8090,6 @@
             #listing-details-section {
                 width: 100%;
             }
-
-            #service-listing-details-section {
-                width: 100%;
-                gap: 5px;
-            }
-
-            #service-listing-details-section h4 {
-                margin-bottom: 5px;
-            }
             
             .details-section h3 {
                 margin: 0;
@@ -7920,6 +8101,15 @@
                 margin-bottom: 4px;
             }
 
+            #service-listing-details-section {
+                width: 100%;
+                gap: 10px;
+            }
+
+            #service-details-box {
+                gap: 2px;
+            }
+
             .details-form {
                 flex-direction: column;
                 gap: 2px;
@@ -7927,6 +8117,13 @@
 
             #details-form, .listing-details-form {
                 flex-direction: row;
+            }
+
+            #listing-vehicle-bidding {
+                flex-direction: column;
+                background: #fff;
+                margin: -5px 0 0 0;
+                padding: 0 5px 5px 5px;
             }
 
             .details-form label {
@@ -7938,14 +8135,6 @@
                 justify-content: center;
                 align-items: center;
                 gap: 2px;
-            }
-
-
-
-            /* Submit Button */
-
-            .submit-button button {
-                width: 30dvw;
             }
 
 
@@ -8096,6 +8285,9 @@
             }
 
             .listing-info-item {
+                flex: 0 0 calc(50% - 8px);
+                max-width: calc(50% - 8px);
+                margin-bottom: 0;
                 justify-content: space-evenly;
             }
 
@@ -11432,33 +11624,33 @@
                                                     <div class="sellStyle-row biddingRow1">
                                                         <div class="sellStyle-item">
                                                             <div class="price-input-sellStyle">
-                                                                <label id="price-label-parts" for="starting-price-input-sellStyle-parts">Starting Price:</label>
-                                                                <input class="tabcontent-sellStyle-input" id="starting-price-input-sellStyle-parts" placeholder="Enter amount" maxlength="15" style="width: 100%;">
+                                                                <label id="price-label-vehicles" for="starting-price-input-sellStyle-vehicles">Starting Price:</label>
+                                                                <input class="tabcontent-sellStyle-input" id="starting-price-input-sellStyle-vehicles" placeholder="Enter amount" maxlength="15" style="width: 100%;">
                                                             </div>
-                                                            <p class="error-message" id="error-message-sellStyle-parts" style="color: red; margin-top: 2px; height: 18px;"></p>
+                                                            <p class="error-message" id="error-message-sellStyle-vehicles" style="color: red; margin-top: 2px; height: 18px;"></p>
                                                         </div>
 
-                                                        <div class="sellStyle-item" id="buy-outright-wrapper-parts">
+                                                        <div class="sellStyle-item" id="buy-outright-wrapper-vehicles">
                                                             <div class="price-input-sellStyle">
-                                                                <label for="buy-outright-input-parts">Buy Outright Price:</label>
-                                                                <input class="tabcontent-sellStyle-input" id="buy-outright-input-parts" placeholder="Optional fixed price" maxlength="15" style="width: 100%;">
+                                                                <label for="buy-outright-input-vehicles">Buy Outright Price:</label>
+                                                                <input class="tabcontent-sellStyle-input" id="buy-outright-input-vehicles" placeholder="Optional fixed price" maxlength="15" style="width: 100%;">
                                                             </div>
-                                                            <p class="error-message" id="error-message-buy-outright-parts" style="color: red; margin-top: 2px; height: 18px;"></p>
+                                                            <p class="error-message" id="error-message-buy-outright-vehicles" style="color: red; margin-top: 2px; height: 18px;"></p>
                                                         </div>
                                                     </div>  
 
                                                     <!-- Row 2: Duration Length & Time Unit (Paired nicely) -->
                                                     <div class="sellStyle-row" style="display: flex; gap: 10px; margin-bottom: 5px;">
                                                         <div class="sellStyle-item">
-                                                            <label for="bidding-length-select-sellStyle-parts">Duration Length:</label>
-                                                            <select class="tabcontent-sellStyle-input" id="bidding-length-select-sellStyle-parts" style="width: 100%;">
+                                                            <label for="bidding-length-select-sellStyle-vehicles">Duration Length:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="bidding-length-select-sellStyle-vehicles" style="width: 100%;">
                                                                 <!-- Enforced 1-31 loop programmatically -->
                                                             </select>
                                                         </div>
 
                                                         <div class="sellStyle-item">
-                                                            <label for="bidding-time-unit-sellStyle-parts">Time Unit:</label>
-                                                            <select class="tabcontent-sellStyle-input" id="bidding-time-unit-sellStyle-parts" style="width: 100%;">
+                                                            <label for="bidding-time-unit-sellStyle-vehicles">Time Unit:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="bidding-time-unit-sellStyle-vehicles" style="width: 100%;">
                                                                 <option value="days" selected>Days</option>
                                                                 <option value="weeks">Weeks</option>
                                                             </select>
@@ -11467,9 +11659,9 @@
 
                                                     <!-- Row 3: Early-Accept Lock & Max Bid Ceiling Jump -->
                                                     <div class="sellStyle-row" style="display: flex; gap: 10px; margin-bottom: 5px;">
-                                                        <div class="sellStyle-item" id="lockout-wrapper-parts">
-                                                            <label for="early-accept-lockout-parts">Seller Early-Accept Lock:</label>
-                                                            <select class="tabcontent-sellStyle-input" id="early-accept-lockout-parts" style="width: 100%;">
+                                                        <div class="sellStyle-item" id="lockout-wrapper-vehicles">
+                                                            <label for="early-accept-lockout-vehicles">Seller Early-Accept Lock:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="early-accept-lockout-vehicles" style="width: 100%;">
                                                                 <option value="6" selected>Lock for first 6 Hours (Minimum)</option>
                                                                 <option value="12">Lock for first 12 Hours</option>
                                                                 <option value="24">Lock for first 24 Hours</option>
@@ -11477,8 +11669,8 @@
                                                         </div>
 
                                                         <div class="sellStyle-item">
-                                                            <label for="max-bid-increase-parts">Max Bid Ceiling Jump:</label>
-                                                            <select class="tabcontent-sellStyle-input" id="max-bid-increase-parts" style="width: 100%;">
+                                                            <label for="max-bid-increase-vehicles">Max Bid Ceiling Jump:</label>
+                                                            <select class="tabcontent-sellStyle-input" id="max-bid-increase-vehicles" style="width: 100%;">
                                                                 <option value="unlimited">Unlimited Increase</option>
                                                                 <option value="10">Max 10% above current bid</option>
                                                                 <option value="25">Max 25% above current bid</option>
@@ -11489,43 +11681,34 @@
 
                                                     <!-- Row 4: Listing Start Timing -->
                                                     <div class="sellStyle-row" style="margin-bottom: 10px;">
-                                                        <div class="sellStyle-display-block" id="launch-timing-wrapper-parts" style="width: 100%;">
+                                                        <div class="sellStyle-display-block" id="launch-timing-wrapper-vehicles" style="width: 100%;">
                                                             <div class="sellStyle-item">
-                                                                <label for="bidding-start-type-parts">Listing Start Timing:</label>
-                                                                <select class="tabcontent-sellStyle-input" id="bidding-start-type-parts" onchange="toggleLaunchTiming(this.value)" style="width: 100%;">
+                                                                <label for="bidding-start-type-vehicles">Listing Start Timing:</label>
+                                                                <select class="tabcontent-sellStyle-input" id="bidding-start-type-vehicles" onchange="toggleLaunchTiming(this.value)" style="width: 100%;">
                                                                     <option value="now" selected>Launch Immediately</option>
                                                                     <option value="schedule">Schedule a Launch Date & Time</option>
                                                                 </select>
                                                             </div>
 
-                                                            <div class="sellStyle-item" id="scheduled-input-box-parts" style="display: none; margin-top: 10px;">
-                                                                <label for="bidding-start-date-parts">Select Launch Date & Time:</label>
-                                                                <input type="datetime-local" class="tabcontent-sellStyle-input" id="bidding-start-date-parts" style="width: 100%;">
-                                                                <p id="error-message-bidding-date-parts" style="color: red; font-size: 13px; margin-top: 3px;"></p>
+                                                            <div class="sellStyle-item" id="scheduled-input-box-vehicles" style="display: none; margin-top: 10px;">
+                                                                <label for="bidding-start-date-vehicles">Select Launch Date & Time:</label>
+                                                                <input type="datetime-local" class="tabcontent-sellStyle-input" id="bidding-start-date-vehicles" style="width: 100%;">
+                                                                <p id="error-message-bidding-date-vehicles" style="color: red; font-size: 13px; margin-top: 3px;"></p>
                                                             </div>
                                                         </div>
                                                     </div>
-
-                                                    <!-- Row 5: Optional Reserve Pricing Feature Box -->
-                                                    <div class="sellStyle-row hidden-fields" id="reserve-box-parts" style="display: none; margin-bottom: 10px;">
-                                                        <div class="sellStyle-display-block" style="width: 100%;">
-                                                            <label for="reserve-price-parts">Hidden Reserve Target Price (Optional):</label>
-                                                            <input class="tabcontent-sellStyle-input" id="reserve-price-parts" placeholder="e.g. Winner must hit this amount to auto-win" maxlength="15" style="width: 100%;">
-                                                        </div>
-                                                    </div>
-
                                                 </div>   
                                             </div>
 
                                             <!-- Services Included Section (Kept intact below) -->
-                                            <div class="services-included-section" id="services-included">
+                                            <div class="services-included-section" id="services-included-bidding">
                                                 <div class="services-included-header">
                                                     <i class="nav-trigger IconC info-popup-trigger fa-solid fa-circle-question"
-                                                        data-sub="info-popup" data-section="services-included"
+                                                        data-sub="info-popup-bidding" data-section="services-included-bidding"
                                                     ></i>
-                                                    <div class="info-popup" id="info-popup" style="display: none;">
+                                                    <div class="info-popup" id="info-popup-bidding" style="display: none;">
                                                         <div class="info-popup-header">
-                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup"></i>
+                                                            <i class="exitButton displayIcon info-popup-exit fa-solid fa-xmark" data-cont="info-popup-bidding"></i>
                                                         </div>
                                                         <div class="info-popup-h5">
                                                             <h5>Sellers have the option to include services as they see fit, and the associated costs will be included in the final sales price.</h5>
@@ -11537,103 +11720,127 @@
                                                 
                                                 <div class="services-included-checkboxes">
                                                     <div class="services-checkbox-row services-checkbox-row1">
-                                                        <div class="services-checkbox" id="shipping-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="shipping-service" name="services" value="shipping">
-                                                            <span for="shipping-service">Shipping/Delivery</span>
+                                                        <div class="services-checkbox" id="shipping-checkbox-bidding">
+                                                            <input type="checkbox" class="checkbox" id="shipping-service-bidding" name="services" value="shipping-bidding">
+                                                            <span for="shipping-service-bidding">Shipping/Delivery</span>
                                                         </div>
-                                                        <div class="services-checkbox" id="inspection-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="inspection-service" name="services" value="inspection">
-                                                            <span for="inspection-service">Inspection</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="services-checkbox-row services-checkbox-row2">
-                                                        <div class="services-checkbox" id="detailing-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="detailing-service" name="services" value="detailing">
-                                                            <span for="detailing-service">Detailing</span>
-                                                        </div>
-                                                        <div class="services-checkbox" id="mechanic-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="mechanic-service" name="services" value="mechanic">
-                                                            <span for="mechanic-service">Mechanic Work (if necessary)</span>
+                                                        <div class="services-checkbox" id="inspection-checkbox-bidding">
+                                                            <input type="checkbox" class="checkbox" id="inspection-service-bidding" name="services" value="inspection-bidding">
+                                                            <span for="inspection-service-bidding">Inspection</span>
                                                         </div>
                                                     </div>
                                                     <div class="services-checkbox-row services-checkbox-row2">
-                                                        <div class="services-checkbox" id="title-verification-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="title-verification-service" name="services" value="title">
-                                                            <span for="title-verification-service">Title Verification</span>
+                                                        <div class="services-checkbox" id="detailing-checkbox-bidding">
+                                                            <input type="checkbox" class="checkbox" id="detailing-service-bidding" name="services" value="detailing-bidding">
+                                                            <span for="detailing-service-bidding">Detailing</span>
                                                         </div>
-                                                        <div class="services-checkbox" id="car-reports-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="car-reports-service" name="services" value="reports">
-                                                            <span for="car-reports-service">CarFax Report</span>
+                                                        <div class="services-checkbox" id="mechanic-checkbox-bidding">
+                                                            <input type="checkbox" class="checkbox" id="mechanic-service-bidding" name="services" value="mechanic-bidding">
+                                                            <span for="mechanic-service-bidding">Mechanic Work (if necessary)</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="services-checkbox-row services-checkbox-row2">
+                                                        <div class="services-checkbox" id="title-verification-checkbox-bidding">
+                                                            <input type="checkbox" class="checkbox" id="title-verification-service-bidding" name="services" value="title-bidding">
+                                                            <span for="title-verification-service-bidding">Title Verification</span>
+                                                        </div>
+                                                        <div class="services-checkbox" id="car-reports-checkbox-bidding">
+                                                            <input type="checkbox" class="checkbox" id="car-reports-service-bidding" name="services" value="reports-bidding">
+                                                            <span for="car-reports-service-bidding">CarFax Report</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <script>
-                                        // 1. Safe Number Builder Loop (Runs after elements load)
-                                        document.addEventListener("DOMContentLoaded", () => {
-                                            const lengthSelect = document.getElementById("bidding-length-select-sellStyle-parts");
-                                            if(lengthSelect) {
-                                                lengthSelect.innerHTML = ""; // Clear any hardcoded content
-                                                for (let i = 1; i <= 31; i++) {
-                                                    let opt = document.createElement('option');
-                                                    opt.value = i;
-                                                    opt.innerHTML = i;
-                                                    lengthSelect.appendChild(opt);
-                                                }
-                                            }
-                                        });
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const lengthSelect = document.getElementById("bidding-length-select-sellStyle-vehicles");
+        const timeUnitSelect = document.getElementById("bidding-time-unit-sellStyle-vehicles");
+        const startingPriceInput = document.getElementById("starting-price-input-sellStyle-vehicles");
+        const buyOutrightInput = document.getElementById("buy-outright-input-vehicles");
+        const buyOutrightError = document.getElementById("error-message-buy-outright-vehicles");
 
-                                        // 2. Dynamic Strategy Switcher (Standard vs Bidding vs Auction)
-                                        function toggleListingStrategy(strategy) {
-                                            const advancedPanel = document.getElementById("advanced-auction-fields-parts");
-                                            const priceLabel = document.getElementById("price-label-parts");
-                                            const lockoutWrapper = document.getElementById("lockout-wrapper-parts");
-                                            const reserveBox = document.getElementById("reserve-box-parts");
+        // Function to rebuild options based on Days vs Weeks
+        function updateLengthOptions(unit) {
+            if (!lengthSelect) return;
+            
+            const currentValue = parseInt(lengthSelect.value, 10) || 7;
+            lengthSelect.innerHTML = ""; // Clear existing options
 
-                                            if (!advancedPanel || !priceLabel) return;
+            const maxLimit = (unit === "weeks") ? 4 : 31;
+            
+            for (let i = 1; i <= maxLimit; i++) {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = i;
+                // Keep previous value if valid, otherwise default to a safe option
+                if (i === currentValue || (currentValue > maxLimit && i === maxLimit)) {
+                    opt.selected = true;
+                }
+                lengthSelect.appendChild(opt);
+            }
+            
+            // Trigger a change event so external preview scripts pick up the adjusted value
+            lengthSelect.dispatchEvent(new Event('change'));
+        }
 
-                                            if (strategy === "standard") {
-                                                advancedPanel.style.display = "none";
-                                                priceLabel.textContent = "Asking Price:";
-                                            } else {
-                                                advancedPanel.style.display = "block";
-                                                priceLabel.textContent = "Starting Bid Price:";
-                                                
-                                                if (strategy === "auction") {
-                                                    if (lockoutWrapper) lockoutWrapper.style.display = "none";
-                                                    if (reserveBox) reserveBox.style.display = "block";
-                                                } else {
-                                                    if (lockoutWrapper) lockoutWrapper.style.display = "block";
-                                                    if (reserveBox) reserveBox.style.display = "none";
-                                                }
-                                            }
-                                        }
+        // 1. Initialize Options on Load (Defaults to Days -> 1-31)
+        if (lengthSelect && timeUnitSelect) {
+            updateLengthOptions(timeUnitSelect.value);
 
-                                        // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
-                                        function toggleLaunchTiming(selection) {
-                                            const targetBox = document.getElementById("scheduled-input-box-parts");
-                                            const dateInput = document.getElementById("bidding-start-date-parts");
-                                            
-                                            if (!targetBox) return;
+            // Listen for time unit changes
+            timeUnitSelect.addEventListener("change", (e) => {
+                updateLengthOptions(e.target.value);
+            });
+        }
 
-                                            if (selection === "schedule") {
-                                                targetBox.style.display = "block";
-                                                
-                                                // Lock out past dates/times instantly
-                                                if (dateInput) {
-                                                    const now = new Date();
-                                                    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-                                                    dateInput.min = now.toISOString().slice(0, 16);
-                                                }
-                                            } else {
-                                                targetBox.style.display = "none";
-                                                if (dateInput) dateInput.value = ""; // Clear date value if switched back
-                                            }
-                                        }
-                                    </script>
+        // 2. Buy Outright vs Starting Price Validation
+        function validateBuyOutright() {
+            if (!startingPriceInput || !buyOutrightInput || !buyOutrightError) return true;
+
+            const startVal = parseFloat(startingPriceInput.value.replace(/,/g, '')) || 0;
+            const buyoutVal = parseFloat(buyOutrightInput.value.replace(/,/g, '')) || 0;
+
+            if (buyoutVal > 0 && buyoutVal <= startVal) {
+                buyOutrightError.textContent = "Buy Outright price must be greater than the Starting Price.";
+                buyOutrightInput.style.borderColor = "red";
+                return false;
+            } else {
+                buyOutrightError.textContent = "";
+                buyOutrightInput.style.borderColor = "";
+                return true;
+            }
+        }
+
+        if (startingPriceInput && buyOutrightInput) {
+            startingPriceInput.addEventListener("input", validateBuyOutright);
+            buyOutrightInput.addEventListener("input", validateBuyOutright);
+        }
+    });
+
+    // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
+    window.toggleLaunchTiming = function(selection) {
+        const targetBox = document.getElementById("scheduled-input-box-vehicles");
+        const dateInput = document.getElementById("bidding-start-date-vehicles");
+        
+        if (!targetBox) return;
+
+        if (selection === "schedule") {
+            targetBox.style.display = "block";
+            
+            // Lock out past dates/times instantly
+            if (dateInput) {
+                const now = new Date();
+                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                dateInput.min = now.toISOString().slice(0, 16);
+            }
+        } else {
+            targetBox.style.display = "none";
+            if (dateInput) dateInput.value = ""; // Clear date value if switched back
+        }
+    };
+</script>
 
                                                                     
 <div id="tab-auction-content" class="tabcontent-sellStyle transparent">
@@ -11800,21 +12007,10 @@
                                         <div class="vehicles-description-input">
                                             <!-- Kept custom-description class -->
                                             <textarea class="custom-description" rows="8" placeholder="Enter your custom description here" maxlength="250"></textarea>
-                                            <!-- Kept fullButton and custom-description-button classes -->
-                                            <button class="fullButton custom-description-button">Submit Custom Description</button>
                                         </div>
                                         <!-- Kept error-message class -->
                                         <p class="error-message" style="color: red; display: none;"></p>
-                                        
-                                        <!-- Kept custom-description-display-box class -->
-                                        <div class="custom-description-display-box" style="display: none;">
-                                            <!-- Kept custom-description-display class. Added pre-wrap style to safely preserve line breaks natively -->
-                                            <span class="custom-description-display" style="display: none; word-wrap: break-word; white-space: pre-wrap;"></span>
-                                            <!-- Kept custom-description-edit-section class -->
-                                            <span class="custom-description-edit-section" style="display: none;"></span>
-                                        </div>
-                                        <!-- Kept fullButton class. Changed ID to a class hook so it safely scales -->
-                                        <button class="fullButton custom-description-edit-button" style="display: none;">Edit</button>
+
                                     </div>
 
 
@@ -12322,8 +12518,8 @@
                                     </div>
                                 </div>
 
-                                <div class="submit-button">
-                                    <button id="submit-button" type="submit">Submit Listing</button>
+                                <div class="listing-buttons">
+                                    <button id="submit-button" type="submit" class="widthButton viewListing-Button">View Listing</button>
                                 </div>
                                 
 
@@ -12928,19 +13124,14 @@
                                     </div>
 
 
-                                    <div class="custom-description-section">
+                                    <div class="custom-description-section" data-listing="part-listing">
                                         <h3>Custom Description</h3>
                                         <p>Provide a custom description for your listing:</p>
                                         <div class="vehicles-description-input">
                                             <textarea class="custom-description" id="parts-custom-description" rows="8" placeholder="Enter your custom description here" oninput="limitTextarea(this, 250, 6); saveEditedVehiclesCustomDescription()"></textarea>
-                                            <button class="fullButton custom-description-button" id="parts-custom-description-button">Submit Custom Description</button>
                                         </div>
                                         <p class="error-message" id="parts-custom-description-error" style="color: red;"></p>
-                                        <div class="custom-description-display-box" id="parts-custom-description-display-box" style="display: none;">
-                                            <span class="custom-description-display" id="parts-custom-description-display" style="display: none; word-wrap: break-word;"></span>
-                                            <span class="custom-description-edit-section" id="parts-custom-description-edit-section" style="display: none;"></span>
-                                        </div>
-                                        <button class="fullButton" id="parts-custom-description-edit-button" style="display: none;">Edit</button>
+
                                     </div>
                    
 
@@ -13188,8 +13379,8 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="submit-button" id="parts-submit-button">
-                                        <button type="submit">Submit Listing</button>
+                                    <div class="listing-buttons" id="parts-submit-button">
+                                        <button type="submit" class="widthButton viewListing-Button">View Listing</button>
                                     </div>
                                 </div>
                             </div>
@@ -13608,7 +13799,7 @@
                                     </div>
 
                                 
-                                    <div class="services-custom-description-section">
+                                    <div class="services-custom-description-section custom-description-section" data-listing="service-listing">
                                         <div class="service-custom-description-header">
                                             <div class="service-custom-description-titles">
                                                 <h3>Custom Description</h3>
@@ -13616,7 +13807,6 @@
                                                 <p>Provide a custom description for your services listing:</p>               
                                                 <div class="services-description-input">
                                                     <textarea id="services-custom-description" rows="4" placeholder="Enter your custom description here" oninput="limitTextarea(this, 250, 6)"></textarea>
-                                                    <button id="services-custom-description-button">Submit Custom Description</button>
                                                 </div>
                                             </div>
                                             <!-- Open Hours Input Section -->
@@ -13654,9 +13844,6 @@
                                             </div>
                                         </div> 
                                         <p id="services-custom-description-error" style="color: red;"></p>
-                                        <span id="services-custom-description-display" style="display: none;  word-wrap: break-word;"></span>
-                                        <span id="services-custom-description-edit-section" style="display: none;"></span>
-                                        <button id="services-custom-description-edit-button" style="display: none;">Edit</button>
                                     </div>
                                     
                                     <!-- Service Section -->
@@ -13740,8 +13927,8 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="submit-button" id="service-submit-button">
-                                        <button type="submit">Submit Listing</button>
+                                    <div class="listing-buttons" id="service-submit-button">
+                                        <button type="submit" class="widthButton viewListing-Button">View Listing</button>
                                     </div>
                                     
                                 </div>
@@ -13757,8 +13944,7 @@
                                     data-sub="bodySubNav-list" data-section="Home"
                                 ></i>
                                 <div class="hiddenTextHrBox">
-                                    <h3 id="listing-title"></h3>
-                                    <hr>
+                                    <h2 id="listing-title"></h2>
                                 </div>
                                 <i class="nav-trigger IconC fas fa-bars nav-icon"
                                     data-section="Home" data-sub="sellerTools-dropdown"
@@ -13947,9 +14133,6 @@
                                 <!-- Main Image Section on the Listing Page -->
                                 <div class="image-container listing-image-container">
                                     <div class="image-section listing-image-section">
-                                        <label for="vehicle-image" class="image-upload">
-                                            <span class="browse-label">Welcome to Our Image Gallery! Add Images and Videos for Buyers to Scroll Through</span>
-                                        </label>
                                         <div class="mainImgBox">
                                             <div class="mainImgBox2">
                                                 <img src="TWMM_LogoTitle.png" alt="Listing Preview" class="image-preview listing-main-screen">
@@ -13958,7 +14141,6 @@
                                         <!-- Next and Previous buttons for scrolling -->
                                         <div class="scroll-buttons">
                                             <button class="smallButton scrollButton listing-previous-button">Previous</button>
-                                            <button class="smallButton scrollButton expand-full-button">Full</button>
                                             <button class="smallButton scrollButton listing-next-button">Next</button>
                                         </div>
                                     </div>
@@ -14031,22 +14213,69 @@
                                     </div>
                                                 
                                     <div class="details-container">                        
-                                        <div class="details-section listing-details-section" id="listings-pricing-section">
+                                        <div class="details-section listing-details-section" id="listings-pricing-section" style="display: none;">
                                             <!-- Listing Vehicle Details Section -->
                                             <h5 id="selected-vehicle-pricing">Pricing and Information</h5>
                                             <div class="details-form listing-details-form" id="listing-vehicle-pricing">  
-                                                <div class="selected-choices-row">               
+                                                <div class="selected-choices-row sellStyle-selected-row">               
                                                     <h6 class="lesserP">Asking Price:</h6><span class="lesserP" id="display-asking-price-listings"></span>
                                                 </div>
-                                                <div class="selected-choices-row">
+                                                <div class="selected-choices-row sellStyle-selected-row">
                                                     <h6 class="lesserP">Pick-Up/Delivery:</h6><span class="lesserP" id="display-fulfillment-listings"></span>
                                                 </div>
-                                                <div class="selected-choices-row">
+                                                <div class="selected-choices-row sellStyle-selected-row">
                                                     <h6 class="lesserP">Negotiable?</h6><span class="lesserP" id="display-negotiate-listings"></span>
                                                 </div>
-                                                <div class="selected-choices-row">
+                                                <div class="selected-choices-row sellStyle-selected-row">
                                                     <h6 class="lesserP">Plus/Minus:</h6><span class="lesserP" id="display-plusMinus-listings"></span>
                                                 </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="details-container">                               
+                                        <div class="details-section listing-details-section" id="listings-bidding-section">
+                                            <h5 id="selected-bidding-pricing">Live Bidding Preview</h5>
+                                            <div class="details-form listing-details-form" id="listing-vehicle-bidding">  
+                                                <div class="transparent mobileBidding-row">
+                                                    <!-- Current Bid / Starting Price Row -->
+                                                    <div class="selected-choices-row sellStyle-selected-row">            
+                                                        <h6 class="lesserP">Current Bid:</h6>
+                                                        <span class="lesserP" id="display-starting-price-listings">$0.00 <span style="color: #888;">(Starting Price)</span></span>
+                                                    </div>
+
+                                                    <!-- Buy Outright Price Row -->
+                                                    <div class="selected-choices-row sellStyle-selected-row" id="display-buy-outright-row-vehicles" style="display: none;">
+                                                        <h6 class="lesserP">Buy Outright:</h6>
+                                                        <span class="lesserP" id="display-buy-outright-listings">$0.00</span>
+                                                    </div>
+
+                                                    <!-- Bid Count & Reserve Status -->
+                                                    <div class="selected-choices-row sellStyle-selected-row">
+                                                        <h6 class="lesserP">Activity:</h6>
+                                                        <span class="lesserP" id="display-bid-count-listings">0 Bids</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="transparent mobileBidding-row">
+                                                    <!-- Duration & Time Remaining -->
+                                                    <div class="selected-choices-row sellStyle-selected-row">
+                                                        <h6 class="lesserP">Auction Length:</h6>
+                                                        <div class="transparent bidding-selected-row" id="bidding-auction-row-vehicles">
+                                                            <span class="lesserP" id="display-bidding-length-listings"></span> 
+                                                            <span class="lesserP" id="display-bidding-time-unit-listings"></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="lesserP selected-choices-row sellStyle-selected-row timer-preview-row">
+                                                        <h6 class="lesserP">Time Remaining:</h6>
+                                                        <span class="lesserP placeholder-timer" style="color: #666; font-style: italic;">Starts upon approval (--d --h --m)</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Buyer Action Mock -->
+                                                <div class="action-preview-row transparent">
+                                                    <button class="lesserP mock-bid-btn" disabled style="width: 100%; padding: 10px; background: #2c3e50; color: white; border: none; border-radius: 4px; cursor: not-allowed; font-weight: bold;">Place Bid (Buyer View)</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -14080,8 +14309,8 @@
                                 <div class="description-included">
                                     <div class="custom-description-listings">
                                         <h3>Custom Description</h3>
-                                        <div class="listing-custom-description">
-                                            <p id="listing-vehicles-custom-description"></p>
+                                        <div class="custom-description-display-box">
+                                            <p class="custom-description-display listing-custom-description-output" id="listing-vehicles-custom-description"></p>
                                         </div>
                                     </div>
                                 
@@ -14089,108 +14318,116 @@
                                     <div class="services-included-listing">
                                         <h3>Services Included</h3>
                                         <div class="selected-services">
-                                            <h5 id="shipping-label" style="display: none">Shipping/Delivery</h5>
-                                            <h5 id="inspection-label" style="display: none">Inspection</h5>
-                                            <h5 id="detailing-label" style="display: none">Detailing</h5>
-                                            <h5 id="mechanic-label" style="display: none">Mechanic Work</h5>
-                                            <h5 id="title-label" style="display: none">Title Verication</h5>
-                                            <h5 id="reports-label" style="display: none">Vehicle Reports</h5>
-                                            <!-- Add more labels for other services here -->
+                                            <h6 id="shipping-label" class=" lesserP service-display-item">
+                                                <i class="fa-solid fa-xmark status-icon red-x displayIcon"></i> Shipping/Delivery
+                                            </h6>
+                                            <h6 id="inspection-label" class=" lesserP service-display-item">
+                                                <i class="fa-solid fa-xmark status-icon red-x displayIcon"></i> Inspection
+                                            </h6>
+                                            <h6 id="detailing-label" class=" lesserP service-display-item">
+                                                <i class="fa-solid fa-xmark status-icon red-x displayIcon"></i> Detailing
+                                            </h6>
+                                            <h6 id="mechanic-label" class=" lesserP service-display-item">
+                                                <i class="fa-solid fa-xmark status-icon red-x displayIcon"></i> Mechanic Work
+                                            </h6>
+                                            <h6 id="title-label" class=" lesserP service-display-item">
+                                                <i class="fa-solid fa-xmark status-icon red-x displayIcon"></i> Title Verification
+                                            </h6>
+                                            <h6 id="reports-label" class=" lesserP service-display-item">
+                                                <i class="fa-solid fa-xmark status-icon red-x displayIcon"></i> Vehicle Reports
+                                            </h6>
                                         </div>
                                     </div>
                                 </div>
 
                                 <hr>
 
-                                <div class="info-section">
+                                <div class="info-section" id="vehicle-info-section" style="display: none;">
                                     <h3>Important Vehicle Information</h3>
-                                    <div class="info-container">
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Vehicle Theme:</strong>
-                                                <h5 id="listing-vehicle-theme-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item" id="listing-vin">
-                                                <strong>Vin Number:</strong>
-                                                <h5 id="listing-vehicle-vin-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Condition:</strong>
-                                                <h5 id="listing-vehicle-condition-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item" id="listing-mileage">
-                                                <strong>Mileage (in miles):</strong>
-                                                <h5 id="listing-vehicle-mileage-display"></h5>
-                                            </div>
+                                    <div class="info-container listing-info-container">
+                                        
+                                        <div class="info-item listing-info-item">
+                                            <strong>Vehicle Theme:</strong>
+                                            <h5 id="listing-vehicle-theme-display"></h5>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Fuel Type:</strong>
-                                                <h5 id="listing-vehicle-fuel-type-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Drive Type:</strong>
-                                                <h5 id="listing-vehicle-drive-type-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Transmission:</strong>
-                                                <h5 id="listing-vehicle-transmission-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Fuel Efficiency (MPG):</strong>
-                                                <h5 id="listing-vehicle-fuel-efficiency-display"></h5>
-                                            </div>
+                                    
+                                        <div class="info-item listing-info-item" id="listing-vin">
+                                            <strong>Vin Number:</strong>
+                                            <h5 id="listing-vehicle-vin-display"></h5>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Exterior Color:</strong>
-                                                <h5 id="listing-vehicle-exterior-color-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Interior Color:</strong>
-                                                <h5 id="listing-vehicle-interior-color-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Performance Upgrades:</strong>
-                                                <h5 id="listing-vehicle-performance-upgrades-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Aesthetic Upgrades:</strong>
-                                                <h5 id="listing-vehicle-aesthetic-upgrades-display"></h5>
-                                            </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Condition:</strong>
+                                            <h5 id="listing-vehicle-condition-display"></h5>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Engine Type:</strong>
-                                                <h5 id="listing-vehicle-engine-type-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Horsepower (hp):</strong>
-                                                <h5 id="listing-vehicle-horsepower-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Suspension Type:</strong>
-                                                <h5 id="listing-vehicle-suspension-type-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Tire Type:</strong>
-                                                <h5 id="listing-vehicle-tire-type-display"></h5>
-                                            </div>
+                                    
+                                        <div class="info-item listing-info-item" id="listing-mileage">
+                                            <strong>Mileage (in miles):</strong>
+                                            <h5 id="listing-vehicle-mileage-display"></h5>
                                         </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Fuel Type:</strong>
+                                            <h5 id="listing-vehicle-fuel-type-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Drive Type:</strong>
+                                            <h5 id="listing-vehicle-drive-type-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Transmission:</strong>
+                                            <h5 id="listing-vehicle-transmission-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Fuel Efficiency (MPG):</strong>
+                                            <h5 id="listing-vehicle-fuel-efficiency-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Exterior Color:</strong>
+                                            <h5 id="listing-vehicle-exterior-color-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Interior Color:</strong>
+                                            <h5 id="listing-vehicle-interior-color-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Performance Upgrades:</strong>
+                                            <h5 id="listing-vehicle-performance-upgrades-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Aesthetic Upgrades:</strong>
+                                            <h5 id="listing-vehicle-aesthetic-upgrades-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Engine Type:</strong>
+                                            <h5 id="listing-vehicle-engine-type-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Horsepower (hp):</strong>
+                                            <h5 id="listing-vehicle-horsepower-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Suspension Type:</strong>
+                                            <h5 id="listing-vehicle-suspension-type-display"></h5>
+                                        </div>
+                                    
+                                        <div class="info-item listing-info-item">
+                                            <strong>Tire Type:</strong>
+                                            <h5 id="listing-vehicle-tire-type-display"></h5>
+                                        </div>
+
                                     </div>
-                                </div>    
+                                </div> 
                             </div>
                                     <!-- Contact Information Listing Section -->
                             <div class="contact-information listing-contact-information">
@@ -14981,8 +15218,8 @@
                                 <div class="description-included">
                                     <div class="custom-description-listings">
                                         <h3>Custom Description</h3>
-                                        <div class="listing-custom-description">
-                                            <p id="listing-part-custom-description"></p>
+                                        <div class="custom-description-display-box">
+                                            <p class="custom-description-display listing-custom-description-output" id="listing-part-custom-description"></p>
                                         </div>
                                     </div>
                                 
@@ -15001,74 +15238,72 @@
 
                                 <hr>
 
-                                <div class="info-section">
-                                    <h3>Important Vehicle Information</h3>
-                                    <div class="info-container">
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Availability:</strong>
-                                                <h5 id="listing-part-availability-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item" id="listing-vin">
-                                                <strong>Part Size:</strong>
-                                                <h5 id="listing-part-size-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Additional Compatibility:</strong>
-                                                <span id="listing-part-compatibility-display"></span>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item" id="listing-mileage">
-                                                <strong>Part Number:</strong>
-                                                <h5 id="listing-part-number-display"></h5>
-                                            </div>
+                                <div class="info-section" id="part-info-section" style="display: none;">
+                                    <h3>Important Part Information</h3>
+                                    <div class="info-container listing-info-container">
+                                        
+                                        <div class="info-item listing-info-item">
+                                            <strong>Availability:</strong>
+                                            <h5 id="listing-part-availability-display"></h5>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Warranty:</strong>
-                                                <h5 id="listing-part-warranty-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Condition:</strong>
-                                                <h5 id="listing-part-condition-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Material:</strong>
-                                                <h5 id="listing-part-material-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Dimensions:</strong>
-                                                <h5 id="listing-part-dimensions-display"></h5>
-                                            </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Part Size:</strong>
+                                            <h5 id="listing-part-size-display"></h5>
                                         </div>
-                                        <div class="info-row">
-                                            <div class="info-item listing-info-item">
-                                                <strong>Weight:</strong>
-                                                <h5 id="listing-part-weight-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Color:</strong>
-                                                <h5 id="listing-part-color-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Finish:</strong>
-                                                <h5 id="listing-part-finish-display"></h5>
-                                            </div>
-                                
-                                            <div class="info-item listing-info-item">
-                                                <strong>Power Source:</strong>
-                                                <h5 id="listing-part-power-source-display"></h5>
-                                            </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Additional Compatibility:</strong>
+                                            <span id="listing-part-compatibility-display"></span>
                                         </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Part Number:</strong>
+                                            <h5 id="listing-part-number-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Warranty:</strong>
+                                            <h5 id="listing-part-warranty-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Condition:</strong>
+                                            <h5 id="listing-part-condition-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Material:</strong>
+                                            <h5 id="listing-part-material-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Dimensions:</strong>
+                                            <h5 id="listing-part-dimensions-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Weight:</strong>
+                                            <h5 id="listing-part-weight-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Color:</strong>
+                                            <h5 id="listing-part-color-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Finish:</strong>
+                                            <h5 id="listing-part-finish-display"></h5>
+                                        </div>
+
+                                        <div class="info-item listing-info-item">
+                                            <strong>Power Source:</strong>
+                                            <h5 id="listing-part-power-source-display"></h5>
+                                        </div>
+
                                     </div>
-                                </div>    
+                                </div>
                             </div>
 
                             <!-- Contact Information Listing Section -->
@@ -15785,32 +16020,36 @@
                                 <!-- Service Details Section -->
                                 <div class="details-section listing-details-section" id="service-listing-details-section">
                                     <!-- Listing Vehicle Details Section -->
-                                    <h4>Service Details</h4> 
-                                    <div class="selected-choices-row">               
-                                        <h5 id="selected-companyName"></h5>
-                                    </div>
-                                    <div class="selected-choices-row">               
-                                        <h5 class="lesserP">Service Address: <span class="lesserP" id="selected-serviceAddress"></span></h5>
-                                    </div>              
-                                    <div class="address-line" id="service-address-line-listing">
-                                        <div class="selected-choices-row">
-                                            <h5 class="lesserP">City:<span class="lesserP" id="selected-serviceCity"></span></h5>
+                                    <h2>Service Details</h2> 
+                                    <div class="transparent service-details-box">
+                                        <div class="selected-choices-row">               
+                                            <h4 id="selected-companyName"></h4>
+                                        </div>
+                                        <div class="selected-choices-row">               
+                                            <h5>Service Address: </h5><span id="selected-serviceAddress"></span>
+                                        </div>       
+                                        <div class="address-line" id="service-address-line-listing">
+                                            <div class="selected-choices-row">
+                                                <h5>City: </h5><span id="selected-serviceCity"></span>
+                                            </div>
+                                            <div class="selected-choices-row">
+                                                <h5>State: </h5><span id="selected-serviceState"></span>
+                                            </div>
+                                            <div class="selected-choices-row">
+                                                <h5>Zip Code: </h5><span id="selected-serviceZipCode"></span>
+                                            </div>
+                                        </div>
+                                    </div>       
+                                    <div class="transparent service-details-box">
+                                        <div class="selected-choices-row">               
+                                            <h5>Service Category:</h5><span id="selected-serviceCategory"></span>
                                         </div>
                                         <div class="selected-choices-row">
-                                            <h5 class="lesserP">State:<span class="lesserP" id="selected-serviceState"></span></h5>
+                                            <h5>Service Type:</h5><span id="selected-serviceType"></span>
                                         </div>
                                         <div class="selected-choices-row">
-                                            <h5 class="lesserP">Zip Code:<span class="lesserP" id="selected-serviceZipCode"></span></h5>
+                                            <h5>Service Type Con't.:</h5><span id="selected-customServiceType"></span>
                                         </div>
-                                    </div>
-                                    <div class="selected-choices-row">               
-                                        <h5 class="lesserP">Service Category:</h5><span class="lesserP" id="selected-serviceCategory"></span>
-                                    </div>
-                                    <div class="selected-choices-row">
-                                        <h5 class="lesserP">Service Type:</h5><span class="lesserP" id="selected-serviceType"></span>
-                                    </div>
-                                    <div class="selected-choices-row">
-                                        <h5 class="lesserP">Service Type Con't.:</h5><span class="lesserP" id="selected-customServiceType"></span>
                                     </div>
                                 </div>
                             </div>
@@ -15821,8 +16060,8 @@
                                     <div class="custom-description-listings">
                                         <h3>Custom Description</h3>
                                         <span class="url-display" style="display: none;"></span>
-                                        <div class="listing-custom-description">
-                                            <p id="listing-service-custom-description"></p>
+                                        <div class="custom-description-display-box">
+                                            <p class="custom-description-display listing-custom-description-output" id="listing-service-custom-description"></p>
                                         </div>
                                     </div>
 
@@ -21013,7 +21252,7 @@ customTitleInputs.forEach(customTitleInput => {
                     // FIX: Toggle the entire small image wrapper container based on the array length
                     if (listingSmallImageContainer) {
                         if (uploadedImagesArray.length >= 1) {
-                            listingSmallImageContainer.style.display = 'block'; // Or 'flex', depending on your CSS layout
+                            listingSmallImageContainer.style.display = 'flex'; // Or 'flex', depending on your CSS layout
                         } else {
                             listingSmallImageContainer.style.display = 'none';
                         }
@@ -22161,130 +22400,195 @@ customTitleInputs.forEach(customTitleInput => {
         
     </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const serviceCheckboxes = document.querySelectorAll('input[name="services"]');
+
+            serviceCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const serviceValue = this.value;
+                    const isChecked = this.checked;
+
+                    // Find the display label using your established naming convention
+                    const displayItem = document.getElementById(`${serviceValue}-label`);
+                    if (!displayItem) return;
+
+                    const icon = displayItem.querySelector('.status-icon');
+                    if (!icon) return;
+
+                    if (isChecked) {
+                        // Switch to green checkmark
+                        icon.className = "fa-solid fa-check status-icon green-check";
+                    } else {
+                        // Revert to red cross
+                        icon.className = "fa-solid fa-xmark status-icon red-x";
+                    }
+                });
+            });
+        });
+    </script>
+
     
     <!-- Bidding Information Script -->
 
-    <script>
-        (function() {
-            // Initialize variables to store the initial values for Bidding
-            let initialStartingPrice = "";
-            let initialBiddingLength = "2"; // Set the default value to "2"
-            let initialBiddingTimeUnit = "";
-            let hasInitialInput = false;
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Input & Display Elements
+        const startingPriceInput = document.getElementById("starting-price-input-sellStyle-vehicles");
+        const buyOutrightInput = document.getElementById("buy-outright-input-vehicles");
+        const lengthSelect = document.getElementById("bidding-length-select-sellStyle-vehicles");
+        const timeUnitSelect = document.getElementById("bidding-time-unit-sellStyle-vehicles");
+        const reserveInput = document.getElementById("reserve-price-vehicles");
+        const launchTypeSelect = document.getElementById("bidding-start-type-vehicles");
+        const startDateInput = document.getElementById("bidding-start-date-vehicles");
 
-            // Function to format a numeric value with commas
-            function formatNumberWithCommas(number) {
-                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        const displayStartingPrice = document.getElementById("display-starting-price-listings");
+        const displayBuyOutright = document.getElementById("display-buy-outright-listings");
+        const displayBuyOutrightRow = document.getElementById("display-buy-outright-row-vehicles");
+        const displayLength = document.getElementById("display-bidding-length-listings");
+        const displayTimeUnit = document.getElementById("display-bidding-time-unit-listings");
+        const displayBidCount = document.getElementById("display-bid-count-listings");
+
+        // 2. Populate Duration Length & Set Initial Display
+        if (lengthSelect) {
+            lengthSelect.innerHTML = ""; 
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.textContent = i;
+                if (i === 7) option.selected = true; 
+                lengthSelect.appendChild(option);
+            }
+            if (displayLength) {
+                displayLength.textContent = lengthSelect.value;
+            }
+        }
+
+        // 3. Set Initial Time Unit Display
+        if (timeUnitSelect && displayTimeUnit) {
+            displayTimeUnit.textContent = timeUnitSelect.value;
+        }
+
+        // Helper Function to Recalculate and Update Time Remaining Preview
+        function updateTimerPreview() {
+            const timerPreview = document.querySelector(".placeholder-timer");
+            if (!timerPreview) return;
+
+            const durationVal = parseInt(lengthSelect ? lengthSelect.value : 7, 10) || 7;
+            const timeUnit = timeUnitSelect ? timeUnitSelect.value : "days";
+            
+            let startDate = new Date(); // Default: starts now
+
+            if (launchTypeSelect && launchTypeSelect.value === "schedule" && startDateInput && startDateInput.value) {
+                startDate = new Date(startDateInput.value);
+                if (isNaN(startDate.getTime())) {
+                    startDate = new Date();
+                }
             }
 
-            // Function to handle submission of the bidding form
-            function submitBidding() {
-                const startingPriceInput = document.getElementById("starting-price-input-sellStyle");
-                const biddingLengthSelect = document.getElementById("bidding-length-select-sellStyle");
-                const biddingTimeUnitSelect = document.getElementById("bidding-time-unit-sellStyle");
-                const biddingDisplayStartingPrice = document.getElementById("display-starting-price-sellStyle");
-                const biddingDisplayBiddingLength = document.getElementById("display-bidding-length-sellStyle");
-                const biddingDisplayBiddingTimeUnit = document.getElementById("display-bidding-time-unit-sellStyle");
-                const errorMessageBidding = document.getElementById("error-message-sellStyle");
-                const submitBiddingButton = document.getElementById("submit-bidding-button-sellStyle");
-
-                // Get the values from the inputs
-                const startingPrice = startingPriceInput.value.trim();
-                const biddingLength = biddingLengthSelect.value;
-                const biddingTimeUnit = biddingTimeUnitSelect.value;
-
-                // Check if the inputs are empty initially
-                if (!hasInitialInput) {
-                    if (startingPrice === "" || biddingLength === "x" || biddingTimeUnit === "") {
-                        // Display an error message for empty inputs
-                        errorMessageBidding.textContent = "Please fill out all the fields.";
-                        return; // Exit the function early if inputs are empty
-                    }
-
-                    // Check if the starting price is not a valid number
-                    if (isNaN(parseFloat(startingPrice)) || !isFinite(startingPrice)) {
-                        // Display an error message for invalid input
-                        errorMessageBidding.textContent = "Please enter a valid numeric starting price.";
-                        return; // Exit the function early if the input is invalid
-                    }
-
-                    // Format the starting price with commas
-                    initialStartingPrice = "$" + formatNumberWithCommas(parseFloat(startingPrice));
-                    initialBiddingLength = biddingLength;
-                    initialBiddingTimeUnit = biddingTimeUnit;
-                    hasInitialInput = true;
-
-                    // Hide the submit button after it's clicked
-                    submitBiddingButton.style.display = "none";
-                }
-
-                // Clear any previous error message
-                errorMessageBidding.textContent = "";
-
-                // Update the display inputs
-                biddingDisplayStartingPrice.textContent = initialStartingPrice;
-                biddingDisplayBiddingLength.textContent = biddingLength;
-                biddingDisplayBiddingTimeUnit.textContent = biddingTimeUnit;
-                document.getElementById("bidding-display-sellStyle").style.display = "block";
+            let endDate = new Date(startDate.getTime());
+            if (timeUnit === "weeks") {
+                endDate.setDate(endDate.getDate() + (durationVal * 7));
+            } else {
+                endDate.setDate(endDate.getDate() + durationVal);
             }
 
-            // Function to change the starting price in Bidding
-            function changeStartingPrice() {
-                const startingPriceInput = document.getElementById("starting-price-input-sellStyle");
-                const newStartingPrice = startingPriceInput.value.trim();
-                const errorMessageBidding = document.getElementById("error-message-sellStyle");
+            const formattedStart = startDate.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+            const formattedEnd = endDate.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
 
-                // Clear any previous error message
-                errorMessageBidding.textContent = "";
+            timerPreview.style.fontStyle = "normal";
+            timerPreview.style.color = "#2c3e50";
+            
+            // Added lesserP explicitly to the date/time text containers
+            timerPreview.innerHTML = `
+                <span class="lesserP">Starts: <strong class="lesserP">${formattedStart}</strong></span><br>
+                <span class="lesserP">Ends: <strong class="lesserP">${formattedEnd}</strong></span>
+            `;
+        }
 
-                // Check if the input is empty
-                if (newStartingPrice === "") {
-                    // Display an error message for empty input
-                    errorMessageBidding.textContent = "Please enter a numeric starting price.";
-                    return;
+        // 4. Starting Price Listener
+        if (startingPriceInput && displayStartingPrice) {
+            const updatePriceDisplay = (val) => {
+                const trimmed = val.trim();
+                const numericVal = trimmed ? Number(trimmed).toLocaleString() : "0.00";
+                displayStartingPrice.innerHTML = `$${numericVal} <span class="lesserP" style="color: #888;">(Starting Price)</span>`;
+            };
+            updatePriceDisplay(startingPriceInput.value);
+            startingPriceInput.addEventListener("input", (e) => updatePriceDisplay(e.target.value));
+        }
+
+        // 5. Buy Outright Price Listener
+        if (buyOutrightInput && displayBuyOutright && displayBuyOutrightRow) {
+            const updateBuyOutrightDisplay = (val) => {
+                const trimmed = val.trim();
+                if (trimmed) {
+                    const numericVal = Number(trimmed).toLocaleString();
+                    displayBuyOutright.textContent = `$${numericVal}`;
+                    displayBuyOutrightRow.style.display = "flex";
+                } else {
+                    displayBuyOutrightRow.style.display = "none";
                 }
+            };
+            updateBuyOutrightDisplay(buyOutrightInput.value);
+            buyOutrightInput.addEventListener("input", (e) => updateBuyOutrightDisplay(e.target.value));
+        }
 
-                // Check if the input is not a valid numeric value
-                const trimmedStartingPrice = newStartingPrice.replace(/\$/g, '').trim();
-                if (isNaN(parseFloat(trimmedStartingPrice)) || !isFinite(trimmedStartingPrice) || parseFloat(trimmedStartingPrice) <= 0) {
-                    // Display an error message for invalid or non-positive input
-                    errorMessageBidding.textContent = "Please enter a valid numeric starting price greater than zero.";
-                    return;
-                }
-
-                // Format the starting price with commas
-                initialStartingPrice = "$" + formatNumberWithCommas(parseFloat(trimmedStartingPrice));
-                document.getElementById("display-starting-price-sellStyle").textContent = initialStartingPrice;
-            }
-
-            // Event listener for the submit button in Bidding
-            const submitBiddingButton = document.getElementById("submit-bidding-button-sellStyle");
-            submitBiddingButton.addEventListener("click", submitBidding);
-
-            // Event listener for changing the starting price in Bidding
-            document.getElementById("starting-price-input-sellStyle").addEventListener("input", changeStartingPrice);
-
-            // Event listener for changing the bidding length dropdown
-            document.getElementById("bidding-length-select-sellStyle").addEventListener("change", function () {
-                const biddingLengthSelect = document.getElementById("bidding-length-select-sellStyle");
-                const biddingDisplayBiddingLength = document.getElementById("display-bidding-length-sellStyle");
-                
-                // Update the display for bidding length
-                biddingDisplayBiddingLength.textContent = biddingLengthSelect.value;
+        // 6. Duration Length & Time Unit Listeners
+        if (lengthSelect && displayLength) {
+            lengthSelect.addEventListener("change", (e) => {
+                displayLength.textContent = e.target.value;
+                updateTimerPreview();
             });
+        }
 
-            // Event listener for changing the bidding time unit dropdown
-            document.getElementById("bidding-time-unit-sellStyle").addEventListener("change", function () {
-                const biddingTimeUnitSelect = document.getElementById("bidding-time-unit-sellStyle");
-                const biddingDisplayBiddingTimeUnit = document.getElementById("display-bidding-time-unit-sellStyle");
-                
-                // Update the display for bidding time unit
-                biddingDisplayBiddingTimeUnit.textContent = biddingTimeUnitSelect.value;
+        if (timeUnitSelect && displayTimeUnit) {
+            timeUnitSelect.addEventListener("change", (e) => {
+                displayTimeUnit.textContent = e.target.value;
+                updateTimerPreview();
             });
-        })();
+        }
+
+        // 7. Reserve Price Listener
+        if (reserveInput && displayBidCount) {
+            reserveInput.addEventListener("input", (e) => {
+                const hasReserve = e.target.value.trim().length > 0;
+                const reserveStatusHtml = hasReserve
+                    ? '<span class="lesserP" style="color: #27ae60; font-weight: bold;">Reserve Set</span>'
+                    : '<span class="lesserP" style="color: #d9534f; font-weight: bold;">Reserve Not Set</span>';
+                
+                displayBidCount.innerHTML = `<span class="lesserP">0 Bids &bull; ${reserveStatusHtml}</span>`;
+            });
+        }
+
+        updateTimerPreview();
+        window.updateTimerPreview = updateTimerPreview;
+    });
+
+    // 8. Launch Timing Switcher
+    window.toggleLaunchTiming = function(selection) {
+        const targetBox = document.getElementById("scheduled-input-box-vehicles");
+        const dateInput = document.getElementById("bidding-start-date-vehicles");
         
-    </script>
+        if (!targetBox) return;
 
+        if (selection === "schedule") {
+            targetBox.style.display = "block";
+            if (dateInput) {
+                const now = new Date();
+                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                dateInput.min = now.toISOString().slice(0, 16);
+
+                dateInput.onchange = function() {
+                    if (window.updateTimerPreview) window.updateTimerPreview();
+                };
+            }
+        } else {
+            targetBox.style.display = "none";
+            if (dateInput) dateInput.value = "";
+            if (window.updateTimerPreview) window.updateTimerPreview();
+        }
+    };
+</script>
 
     <!-- Auction Information Script -->
 
@@ -22425,7 +22729,7 @@ customTitleInputs.forEach(customTitleInput => {
         var initialTextareaContent = "";
 
         // Function to check if the input contains unwanted language for vehicles
-        function containsUnwantedLanguageForVehicles(input) {
+        function containsUnwantedLanguage(input) {
             // Define an array of unwanted words or phrases specific to vehicles
             var unwantedPhrasesForVehicles = ["arse", "arses", "ass", "asses", "assy", "assed", "asshole", "assholes", "assholed", "asswholed", "asswhole", "asswhol", "asswhols", "asshol", "asshols", "bastard", "bastards", "bastardy", "beaner", "beaners", "bitch", "bitches", "bitchs", "bitchz", "bitchez", "betch", "betches", "bitched", "bitchd", "bitchtits", "bitchtit", "blowjob", "blowjobs", "boner", "boners", "bonerz", "carpetmuncher", "carpetmunchers", "chesticle", "chesticles", "choad", "choads", "chode", "chode", "circlejerk", "clit", "clits", "cock", "cocks", "cockz", "coochy", "coochie", "coochies", "coon", "coons", "coonz", "cooter", "cooters", "cooterz", "cracka", "crackaz", "crackas", "cunt", "cunts", "cuntz", "cunty", "cuntbag", "cuntass", "cum", "cums", "cumz", "cumming", "dick", "dicks", "dickz", "dickface", "dickfaces", "dickfaced", "dickweed", "dickweeds", "dickweedz", "dildo", "dildos", "douche", "douches", "douched", "faggot", "faggots", "faggotz", "fellatio", "fuck", "fucks", "fuckz", "fucked", "fuckd", "fuk", "fuks", "fukz", "fucking", "fuckings", "fuckingz", "fucktard", "fucktards", "fucktardz", "fuckhead", "fuckheads", "fuckheadz", "fuq", "fuqs", "fuqz",  "gay", "gaywad", "gaywads", "gaywadz", "gooch", "gooches", "goochy", "goopchute", "goopchutes", "gringo", "gringos", "handjob", "handjobs", "handjobz", "heeb", "heebs", "homo", "homos", "hoochie", "hoochies", "honkey", "honkies", "jackass", "jackassed", "jackasses", "jagoff", "jagoffed", "jagoffs", "jerk off", "jerk offs", "jerk offed", "jigaboo", "jigaboos", "jizz", "jizzes", "jizzs", "jizzy", "jizzed", "jiz", "jizs", "jized", "jungle bunny", "junglebunny", "junglebunnies", "kike", "kikey", "kiked", "kikes", "kooch", "kooches", "koochies", "koochy", "kooched", "kunt", "kunts", "kuntz", "kunty", "kyke", "kykes", "kykey", "kykez", "kyked", "lameass", "lameassed", "lameasses", "lardass", "lardassed", "lardasses", "lesbian", "lesbians", "lesbo", "lezzie", "masturbate", "masterbate", "mcfaggot", "mothafucka", "motherfucker", "mothafucker", "motherfucka", "motherfucking", "motherfuckin", "muff", "muffdriver", "munging", "nigaboo", "nigga", "nigger", "niggerish", "niggaz", "niggerz", "nig", "niger", "nigers", "niggaz", "niggers", "niggas", "niglet", "nignog", "nutsack", "nut sack", "panooch", "peckerhead", "penis", "piss", "pollock", "poon", "poonani", "poonany", "poontang", "porch monkey", "porchmonkey", "prick", "punanny", "punta", "pussylicker", "pussy", "pussies", "pussyface", "shit", "slut", "queef", "queer", "queers", "queerbag", "queerbait", "queerhead", "queerhole", "sandnigger", "shit", "schlong", "scrotum", "scrote", "shitass", "shitfuck", "shitty", "shitbag", "shits", "shitcunt", "fuckshit", "spic", "spick", "suckass", "tard", "tards", "testicle", "testicles", "tit", "tits", "titty", "tittyfuck", "titties", "fucktitties", "fucktits", "twat", "twats", "twatty", "twatwaffle", "titfuck", "uglyfuck", "unclefucker", "vag", "vagina", "vajayjay", "wank", "wankjob", "wanker", "whore", "whoreface"];
             
@@ -22445,108 +22749,52 @@ customTitleInputs.forEach(customTitleInput => {
         }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Scan for all description wrappers (vehicles, parts, services)
+    // Scan all custom description sections across vehicles, parts, and services
     const descriptionSections = document.querySelectorAll('.custom-description-section');
 
     descriptionSections.forEach(section => {
-        // 2. Cache Creator-Side Form Templates
         const textArea = section.querySelector('.custom-description');
-        const submitBtn = section.querySelector('.custom-description-button');
         const errorMsg = section.querySelector('.error-message');
-        const displayBox = section.querySelector('.custom-description-display-box');
-        const textDisplay = section.querySelector('.custom-description-display');
-        const editSection = section.querySelector('.custom-description-edit-section');
-        const editBtn = section.querySelector('.custom-description-edit-button');
 
-        // Defensive guard: Exit safely if core elements are missing in this section
-        if (!textArea || !submitBtn || !errorMsg) return;
+        // Defensive guard: Exit safely if essential elements are missing
+        if (!textArea) return;
 
-        // 3. Dynamic Listing Connection Engine
+        // Connect to the respective listing output via data-listing attribute
         const listingId = section.getAttribute('data-listing');
         const listingContainer = document.getElementById(listingId);
-        
-        // FIX: Replaced hardcoded ID with class selector so it works across multiple sections
         const listingOutput = listingContainer ? listingContainer.querySelector('.listing-custom-description-output') : null;
 
-        // 4. Centralized Validation & State Machine
-        function getValidationState(value) {
-            if (value === "") return { isValid: false, type: "EMPTY", error: "Please Enter a Description" };
-            
-            // Reusable logic fallback for your language checker
-            const badWord = typeof containsUnwantedLanguageForVehicles === "function" 
-                ? containsUnwantedLanguageForVehicles(value) 
+        // Live input tracking and synchronization
+        function handleDescriptionInput() {
+            const value = textArea.value.trim();
+
+            // 1. Check for unwanted language using the generalized function
+            const badWord = typeof containsUnwantedLanguage === "function" 
+                ? containsUnwantedLanguage(value) 
                 : null;
-                
-            if (badWord) return { isValid: false, type: "PROFANITY", error: `Please avoid using: '${badWord}'` };
-            
-            return { isValid: true, type: "VALID", error: "" };
-        }
 
-        // 5. Shared Layout Toggler
-        function toggleUI(isEditing) {
-            // Arrays allow bulk style modifications instantly
-            const editingElements = [textArea, submitBtn];
-            const displayElements = [displayBox, textDisplay, editBtn, editSection].filter(Boolean);
+            if (badWord) {
+                if (errorMsg) {
+                    errorMsg.textContent = `Please avoid using: '${badWord}'`;
+                    errorMsg.style.display = 'block';
+                }
+                return;
+            }
 
-            editingElements.forEach(el => el.style.display = isEditing ? 'block' : 'none');
-            displayElements.forEach(el => el.style.display = isEditing ? 'none' : 'block');
-            
-            errorMsg.style.display = 'none';
-        }
-
-        // --- PILLAR 1: LIVE REFRESH ENGINE ---
-        function updateCustomDescriptionLogic() {
-            const descriptionValue = textArea.value.trim();
-            const state = getValidationState(descriptionValue);
-
-            // Don't show errors on live typing if the field is empty
-            if (state.type === "EMPTY") {
+            // Clear error if validation passes
+            if (errorMsg) {
                 errorMsg.style.display = 'none';
-                return;
             }
 
-            if (!state.isValid) {
-                errorMsg.textContent = state.error;
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            errorMsg.style.display = 'none';
-
-            // Background replication layout mirror
+            // 2. Update the respective listing output live
             if (listingOutput) {
-                listingOutput.textContent = descriptionValue;
-                listingOutput.style.whiteSpace = "pre-wrap"; 
+                listingOutput.textContent = value;
+                listingOutput.style.whiteSpace = "pre-wrap";
             }
         }
 
-        // --- PILLAR 2: ACTION LAYOUT COMMIT ---
-        function customDescriptionSubmitLogic() {
-            const descriptionValue = textArea.value.trim();
-            const state = getValidationState(descriptionValue);
-
-            if (!state.isValid) {
-                errorMsg.textContent = state.error;
-                errorMsg.style.display = 'block';
-                return;
-            }
-
-            // Lock values and swap layout cards
-            textDisplay.textContent = descriptionValue;
-            toggleUI(false); 
-        }
-
-        // --- PILLAR 3: REVERSAL ENGINE ---
-        function customDescriptionEditLogic() {
-            toggleUI(true);
-            updateCustomDescriptionLogic();
-            textArea.focus();
-        }
-
-        // 6. Bind Event Listeners Cleanly
-        textArea.addEventListener("input", updateCustomDescriptionLogic);
-        submitBtn.addEventListener('click', customDescriptionSubmitLogic);
-        if (editBtn) editBtn.addEventListener('click', customDescriptionEditLogic);
+        // Bind the live input event listener
+        textArea.addEventListener("input", handleDescriptionInput);
     });
 });
     </script>
@@ -28057,131 +28305,6 @@ customServiceTypeInput.addEventListener('input', function() {
     });
 </script>
 
-
-
-
-<script>
-    // Store the initial value of the textarea
-    var initialTextareaContent = "";
-
-    // Function to check if the input contains unwanted language for services
-    function containsUnwantedLanguageForServices(input) {
-        // Define an array of unwanted words or phrases specific to services
-        var unwantedPhrasesForServices = ["arse", "arses", "ass", "asses", "assy", "assed", "asshole", "assholes", "assholed", "asswholed", "asswhole", "asswhol", "asswhols", "asshol", "asshols", "bastard", "bastards", "bastardy", "beaner", "beaners", "bitch", "bitches", "bitchs", "bitchz", "bitchez", "betch", "betches", "bitched", "bitchd", "bitchtits", "bitchtit", "blowjob", "blowjobs", "boner", "boners", "bonerz", "carpetmuncher", "carpetmunchers", "chesticle", "chesticles", "choad", "choads", "chode", "chode", "circlejerk", "clit", "clits", "cock", "cocks", "cockz", "coochy", "coochie", "coochies", "coon", "coons", "coonz", "cooter", "cooters", "cooterz", "cracka", "crackaz", "crackas", "cunt", "cunts", "cuntz", "cunty", "cuntbag", "cuntass", "cum", "cums", "cumz", "cumming", "dick", "dicks", "dickz", "dickface", "dickfaces", "dickfaced", "dickweed", "dickweeds", "dickweedz", "dildo", "dildos", "douche", "douches", "douched", "faggot", "faggots", "faggotz", "fellatio", "fuck", "fucks", "fuckz", "fucked", "fuckd", "fuk", "fuks", "fukz", "fucking", "fuckings", "fuckingz", "fucktard", "fucktards", "fucktardz", "fuckhead", "fuckheads", "fuckheadz", "fuq", "fuqs", "fuqz",  "gay", "gaywad", "gaywads", "gaywadz", "gooch", "gooches", "goochy", "goopchute", "goopchutes", "gringo", "gringos", "handjob", "handjobs", "handjobz", "heeb", "heebs", "homo", "homos", "hoochie", "hoochies", "honkey", "honkies", "jackass", "jackassed", "jackasses", "jagoff", "jagoffed", "jagoffs", "jerk off", "jerk offs", "jerk offed", "jigaboo", "jigaboos", "jizz", "jizzes", "jizzs", "jizzy", "jizzed", "jiz", "jizs", "jized", "jungle bunny", "junglebunny", "junglebunnies", "kike", "kikey", "kiked", "kikes", "kooch", "kooches", "koochies", "koochy", "kooched", "kunt", "kunts", "kuntz", "kunty", "kyke", "kykes", "kykey", "kykez", "kyked", "lameass", "lameassed", "lameasses", "lardass", "lardassed", "lardasses", "lesbian", "lesbians", "lesbo", "lezzie", "masturbate", "masterbate", "mcfaggot", "mothafucka", "motherfucker", "mothafucker", "motherfucka", "motherfucking", "motherfuckin", "muff", "muffdriver", "munging", "nigaboo", "nigga", "nigger", "niggerish", "niggaz", "niggerz", "nig", "niger", "nigers", "niggaz", "niggers", "niggas", "niglet", "nignog", "nutsack", "nut sack", "panooch", "peckerhead", "penis", "piss", "pollock", "poon", "poonani", "poonany", "poontang", "porch monkey", "porchmonkey", "prick", "punanny", "punta", "pussylicker", "pussy", "pussies", "pussyface", "shit", "slut", "queef", "queer", "queers", "queerbag", "queerbait", "queerhead", "queerhole", "sandnigger", "shit", "schlong", "scrotum", "scrote", "shitass", "shitfuck", "shitty", "shitbag", "shits", "shitcunt", "fuckshit", "spic", "spick", "suckass", "tard", "tards", "testicle", "testicles", "tit", "tits", "titty", "tittyfuck", "titties", "fucktitties", "fucktits", "twat", "twats", "twatty", "twatwaffle", "titfuck", "uglyfuck", "unclefucker", "vag", "vagina", "vajayjay", "wank", "wankjob", "wanker", "whore", "whoreface"];
-        
-        var lowercaseInput = input.toLowerCase();
-
-        for (var phrase of unwantedPhrasesForServices) {
-            var regex = new RegExp(`(^|\\s|\\W)${phrase}($|\\s|\\W)`, "i");
-
-            if (regex.test(lowercaseInput)) {
-                return phrase;
-            }
-        }
-
-
-        return null; // No unwanted language found
-        }
-
-        // Function to handle submission of the custom description for services
-        function submitServicesCustomDescription() {
-            const servicesCustomDescriptionInput = document.getElementById("services-custom-description");
-            const servicesCustomDescriptionDisplay = document.getElementById("services-custom-description-display");
-            const servicesCustomDescriptionEditSection = document.getElementById("services-custom-description-edit-section");
-            const servicesCustomDescriptionError = document.getElementById("services-custom-description-error");
-
-            // Limit characters and rows
-            limitTextarea(servicesCustomDescriptionInput, 250, 6);
-
-            // Get the value from the input
-            const description = servicesCustomDescriptionInput.value.trim();
-
-            // Check if the description is not empty
-            if (description !== "") {
-                const unwantedLanguageForServices = containsUnwantedLanguageForServices(description);
-
-            if (!unwantedLanguageForServices) {
-                // Clear the error message
-                servicesCustomDescriptionError.style.display = "none";
-
-                // Replace newlines with <br> tags to preserve line breaks
-                const formattedDescription = description.replace(/\n/g, "<br>");
-
-                // Display the custom description and show the edit section
-                servicesCustomDescriptionDisplay.innerHTML = formattedDescription;
-                servicesCustomDescriptionDisplay.style.display = "block";
-                servicesCustomDescriptionEditSection.style.display = "block";
-
-                // Update the textarea's value
-                servicesCustomDescriptionInput.value = description;
-            } else {
-                // Display an error message for the specific unwanted language
-                servicesCustomDescriptionError.textContent = "Please avoid using: '" + unwantedLanguageForServices + "'";
-                servicesCustomDescriptionError.style.display = "block";
-            }
-            } else {
-                // Hide the error message for an empty description
-                servicesCustomDescriptionError.style.display = "none";
-            }
-        }
-
-        // Function to handle saving the edited custom description for services
-        function saveEditedServicesCustomDescription() {
-            const servicesCustomDescriptionInput = document.getElementById("services-custom-description");
-            const servicesCustomDescriptionDisplay = document.getElementById("services-custom-description-display");
-            const servicesCustomDescriptionEditSection = document.getElementById("services-custom-description-edit-section");
-
-            // Get the value from the input
-            const description = servicesCustomDescriptionInput.value.trim();
-
-            // Limit characters and rows
-            limitTextarea(servicesCustomDescriptionInput, 250, 6);
-
-            // Check if the description is not empty
-            if (description !== "") {
-                // Display the edited custom description and hide the edit section
-                servicesCustomDescriptionDisplay.innerHTML = description;
-                servicesCustomDescriptionEditSection.style.display = "none";
-
-                // Update the textarea's value
-                servicesCustomDescriptionInput.value = description;
-            }
-        }
-
-        // Event listener for the custom description prompt/submit button for services
-        document.getElementById("services-custom-description-button").addEventListener("click", function () {
-            if (this.textContent === "Submit Custom Description") {
-                submitServicesCustomDescription();
-            } else if (this.textContent === "Save") {
-                saveEditedServicesCustomDescription();
-            }
-        });
-
-        // Event listener for the custom description edit button for services
-        document.getElementById("services-custom-description-edit-button").addEventListener("click", function () {
-            // Show the custom description input field and change the button text
-            const servicesCustomDescriptionInput = document.getElementById("services-custom-description");
-            const servicesCustomDescriptionDisplay = document.getElementById("services-custom-description-display");
-            const servicesCustomDescriptionEditButton = document.getElementById("services-custom-description-button");
-            const servicesCustomDescriptionError = document.getElementById("services-custom-description-error");
-
-            servicesCustomDescriptionInput.style.display = "block";
-            servicesCustomDescriptionInput.value = servicesCustomDescriptionDisplay.innerHTML.replace(/<br\s*[\/]?>/gi, "\n");
-            servicesCustomDescriptionDisplay.style.display = "none";
-            servicesCustomDescriptionEditButton.textContent = "Submit Custom Description";
-
-            // Clear the error message
-            servicesCustomDescriptionError.style.display = "none";
-        });
-
-        // Store the initial textarea content when the page loads
-        window.addEventListener("load", function () {
-            const servicesCustomDescriptionInput = document.getElementById("services-custom-description");
-            initialTextareaContent = servicesCustomDescriptionInput.value.trim();
-        });
-</script>
-
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const addServiceButton = document.getElementById("add-service-button");
@@ -28737,55 +28860,6 @@ customServiceTypeInput.addEventListener('input', function() {
     });
 </script>
 
-    
-<script>
-
-    (function () {
-        // Store the initial values
-        const initialStartingPrice = "$0";
-        const initialBiddingLength = "1";
-        const initialBiddingTimeUnit = "Weeks";
-
-        // Initialize the initial display values
-        function initializeBiddingDisplay() {
-            const displayStartingPriceListings = document.getElementById("display-starting-price-listings");
-            const displayBiddingLengthListings = document.getElementById("display-bidding-length-listings");
-            const displayBiddingTimeUnitListings = document.getElementById("display-bidding-time-unit-listings");
-
-            displayStartingPriceListings.textContent = initialStartingPrice;
-            displayBiddingLengthListings.textContent = initialBiddingLength;
-            displayBiddingTimeUnitListings.textContent = initialBiddingTimeUnit;
-        }
-
-        // Function to update the listing display values based on the bidding section
-        function updateStartingPriceDisplay() {
-            const startingPriceDisplay = document.getElementById("display-starting-price-sellStyle");
-            const displayStartingPriceListings = document.getElementById("display-starting-price-listings");
-            displayStartingPriceListings.textContent = startingPriceDisplay.textContent;
-        }
-
-        function updateBiddingLengthDisplay() {
-            const biddingLengthDisplay = document.getElementById("display-bidding-length-sellStyle");
-            const displayBiddingLengthListings = document.getElementById("display-bidding-length-listings");
-            displayBiddingLengthListings.textContent = biddingLengthDisplay.textContent;
-        }
-
-        function updateBiddingTimeUnitDisplay() {
-            const biddingTimeUnitDisplay = document.getElementById("display-bidding-time-unit-sellStyle");
-            const displayBiddingTimeUnitListings = document.getElementById("display-bidding-time-unit-listings");
-            displayBiddingTimeUnitListings.textContent = biddingTimeUnitDisplay.textContent;
-        }
-
-        // Event listeners for changes in the Bidding section values
-        document.getElementById("starting-price-input-sellStyle").addEventListener("input", updateStartingPriceDisplay);
-        document.getElementById("bidding-length-select-sellStyle").addEventListener("change", updateBiddingLengthDisplay);
-        document.getElementById("bidding-time-unit-sellStyle").addEventListener("change", updateBiddingTimeUnitDisplay);
-
-        // Initialize the listing display values
-        initializeBiddingDisplay();
-    })();
-
-</script>
 
 <script>
 
@@ -28810,59 +28884,100 @@ customServiceTypeInput.addEventListener('input', function() {
 
 <script>
 
-    document.addEventListener("DOMContentLoaded", function() {
-        // Function to update the listing display with the selected option
-        function updateListingDisplay(selectId, displayId) {
-            const select = document.getElementById(selectId);
-            const display = document.getElementById(displayId);
-            const selectedOption = select.options[select.selectedIndex].text;
-            display.textContent = selectedOption;
-        }
+document.addEventListener("DOMContentLoaded", function() {
+    
+    function isEmptyValue(value) {
+        if (!value) return true;
+        const trimmed = value.trim().toLowerCase();
+        return trimmed === "" || trimmed.startsWith("select") || trimmed === "none";
+    }
 
-        // Function to update the listing display with the input value
-        function updateInputListingDisplay(inputId, displayId) {
-            const input = document.getElementById(inputId);
-            const display = document.getElementById(displayId);
-            display.textContent = input.value;
-        }
+    function updateAll() {
+        const section = document.getElementById("vehicle-info-section");
+        if (!section) return;
 
-    // Add event listeners for all the dropdowns
-        const dropdowns = [
-            { selectId: "vehicle-theme", displayId: "listing-vehicle-theme-display" },
-            { selectId: "vehicle-condition", displayId: "listing-vehicle-condition-display" },
-            { selectId: "vehicle-fuel-type", displayId: "listing-vehicle-fuel-type-display" },
-            { selectId: "vehicle-drive-type", displayId: "listing-vehicle-drive-type-display" },
-            { selectId: "vehicle-transmission", displayId: "listing-vehicle-transmission-display" },
-            { selectId: "vehicle-fuel-efficiency", displayId: "listing-vehicle-fuel-efficiency-display" },
-            { selectId: "vehicle-exterior-color", displayId: "listing-vehicle-exterior-color-display" },
-            { selectId: "vehicle-interior-color", displayId: "listing-vehicle-interior-color-display" },
-            { selectId: "vehicle-performance-upgrades", displayId: "listing-vehicle-performance-upgrades-display" },
-            { selectId: "vehicle-aesthetic-upgrades", displayId: "listing-vehicle-aesthetic-upgrades-display" },
-            { selectId: "vehicle-engine-type", displayId: "listing-vehicle-engine-type-display" },
-            { selectId: "vehicle-suspension-type", displayId: "listing-vehicle-suspension-type-display" },
-            { selectId: "vehicle-tire-type", displayId: "listing-vehicle-tire-type-display" }
+        let hasValidItem = false;
+
+        // Configurations for all inputs and dropdowns
+        const fields = [
+            { type: "select", id: "vehicle-theme", displayId: "listing-vehicle-theme-display" },
+            { type: "select", id: "vehicle-condition", displayId: "listing-vehicle-condition-display" },
+            { type: "select", id: "vehicle-fuel-type", displayId: "listing-vehicle-fuel-type-display" },
+            { type: "select", id: "vehicle-drive-type", displayId: "listing-vehicle-drive-type-display" },
+            { type: "select", id: "vehicle-transmission", displayId: "listing-vehicle-transmission-display" },
+            { type: "select", id: "vehicle-fuel-efficiency", displayId: "listing-vehicle-fuel-efficiency-display" },
+            { type: "select", id: "vehicle-exterior-color", displayId: "listing-vehicle-exterior-color-display" },
+            { type: "select", id: "vehicle-interior-color", displayId: "listing-vehicle-interior-color-display" },
+            { type: "select", id: "vehicle-performance-upgrades", displayId: "listing-vehicle-performance-upgrades-display" },
+            { type: "select", id: "vehicle-aesthetic-upgrades", displayId: "listing-vehicle-aesthetic-upgrades-display" },
+            { type: "select", id: "vehicle-engine-type", displayId: "listing-vehicle-engine-type-display" },
+            { type: "select", id: "vehicle-suspension-type", displayId: "listing-vehicle-suspension-type-display" },
+            { type: "select", id: "vehicle-tire-type", displayId: "listing-vehicle-tire-type-display" },
+            { type: "input", id: "vehicle-vin", displayId: "listing-vehicle-vin-display" },
+            { type: "input", id: "vehicle-mileage", displayId: "listing-vehicle-mileage-display" },
+            { type: "input", id: "vehicle-horsepower", displayId: "listing-vehicle-horsepower-display" }
         ];
 
-        dropdowns.forEach(dropdown => {
-            document.getElementById(dropdown.selectId).addEventListener("change", function () {
-                updateListingDisplay(dropdown.selectId, dropdown.displayId);
-            });
+        fields.forEach(field => {
+            const element = document.getElementById(field.id);
+            const display = document.getElementById(field.displayId);
+            if (!element || !display) return;
+
+            const container = display.closest('.info-item');
+            let val = element.value;
+            let text = field.type === "select" ? element.options[element.selectedIndex].text : val;
+
+            if (isEmptyValue(val)) {
+                if (container) container.style.display = "none";
+            } else {
+                display.textContent = text;
+                if (container) container.style.display = "flex";
+                hasValidItem = true;
+            }
         });
 
-        // Add event listeners for Vin and Mileage inputs
-        document.getElementById("vehicle-vin").addEventListener("input", function () {
-            updateInputListingDisplay("vehicle-vin", "listing-vehicle-vin-display");
-        });
+        // Toggle entire section visibility
+        if (hasValidItem) {
+            section.style.display = "flex"; 
+        } else {
+            section.style.display = "none";
+        }
+    }
 
-        document.getElementById("vehicle-mileage").addEventListener("input", function () {
-            updateInputListingDisplay("vehicle-mileage", "listing-vehicle-mileage-display");
+    // FIXED: Changed #my-vehicle-info-section to #vehicle-info-section to match your HTML ID
+    const allElements = document.querySelectorAll("#vehicle-info-section select, #vehicle-info-section input, select#vehicle-theme, select#vehicle-condition, select#vehicle-fuel-type, select#vehicle-drive-type, select#vehicle-transmission, select#vehicle-fuel-efficiency, select#vehicle-exterior-color, select#vehicle-interior-color, select#vehicle-performance-upgrades, select#vehicle-aesthetic-upgrades, select#vehicle-engine-type, select#vehicle-suspension-type, select#vehicle-tire-type, input#vehicle-vin, input#vehicle-mileage, input#vehicle-horsepower");
+    
+    // Fallback safeguard in case your form inputs live *outside* the display container HTML you shared:
+    const fallbackElements = fieldsList => {
+        fieldsList.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener("change", updateAll);
+                el.addEventListener("input", updateAll);
+            }
         });
+    };
 
-        document.getElementById("vehicle-horsepower").addEventListener("input", function () {
-            updateInputListingDisplay("vehicle-horsepower", "listing-vehicle-horsepower-display");
-        });
+    // Attach via query selector if they are inside the DOM, or directly via IDs to be bulletproof
+    const rawFieldIds = [
+        "vehicle-theme", "vehicle-condition", "vehicle-fuel-type", "vehicle-drive-type", 
+        "vehicle-transmission", "vehicle-fuel-efficiency", "vehicle-exterior-color", 
+        "vehicle-interior-color", "vehicle-performance-upgrades", "vehicle-aesthetic-upgrades", 
+        "vehicle-engine-type", "vehicle-suspension-type", "vehicle-tire-type", 
+        "vehicle-vin", "vehicle-mileage", "vehicle-horsepower"
+    ];
+    
+    rawFieldIds.forEach(id => {
+        const inputEl = document.getElementById(id);
+        if (inputEl) {
+            inputEl.addEventListener("change", updateAll);
+            inputEl.addEventListener("input", updateAll);
+        }
     });
 
+    // Run on initial page load
+    updateAll();
+});
 </script>
 
 <script>
@@ -29139,56 +29254,80 @@ customServiceTypeInput.addEventListener('input', function() {
 </script>
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    
+    function isEmptyValue(value) {
+        if (!value) return true;
+        const trimmed = value.trim().toLowerCase();
+        return trimmed === "" || trimmed.startsWith("select") || trimmed === "none";
+    }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        // Function to update the listing display with the selected option
-        function updateListingDisplay(selectId, displayId) {
-            const select = document.getElementById(selectId);
-            const display = document.getElementById(displayId);
-            const selectedOption = select.options[select.selectedIndex].text;
-            display.textContent = selectedOption;
-        }
+    function updateAll() {
+        const section = document.getElementById("part-info-section");
+        if (!section) return;
 
-        // Function to update the listing display with the input value
-        function updateInputListingDisplay(inputId, displayId) {
-            const input = document.getElementById(inputId);
-            const display = document.getElementById(displayId);
-            display.textContent = input.value;
-        }
+        let hasValidItem = false;
 
-        // Add event listeners for all the dropdowns
-        const dropdowns = [
-            { selectId: "part-availability", displayId: "listing-part-availability-display" },
-            { selectId: "part-warranty", displayId: "listing-part-warranty-display" },
-            { selectId: "part-condition", displayId: "listing-part-condition-display" },
-            { selectId: "part-material", displayId: "listing-part-material-display" },
-            { selectId: "part-color", displayId: "listing-part-color-display" },
-            { selectId: "part-finish", displayId: "listing-part-finish-display" },
-            { selectId: "part-power-source", displayId: "listing-part-power-source-display" }
+        // Configurations for all part inputs and dropdowns
+        const fields = [
+            { type: "select", id: "part-availability", displayId: "listing-part-availability-display" },
+            { type: "select", id: "part-warranty", displayId: "listing-part-warranty-display" },
+            { type: "select", id: "part-condition", displayId: "listing-part-condition-display" },
+            { type: "select", id: "part-material", displayId: "listing-part-material-display" },
+            { type: "select", id: "part-color", displayId: "listing-part-color-display" },
+            { type: "select", id: "part-finish", displayId: "listing-part-finish-display" },
+            { type: "select", id: "part-power-source", displayId: "listing-part-power-source-display" },
+            { type: "input", id: "addCompProfanityInput", displayId: "listing-part-compatibility-display" },
+            { type: "input", id: "part-sizes", displayId: "listing-part-size-display" },
+            { type: "input", id: "part-number", displayId: "listing-part-number-display" },
+            { type: "input", id: "part-dimensions", displayId: "listing-part-dimensions-display" },
+            { type: "input", id: "part-weight", displayId: "listing-part-weight-display" }
         ];
 
-        dropdowns.forEach(dropdown => {
-            document.getElementById(dropdown.selectId).addEventListener("change", function () {
-                updateListingDisplay(dropdown.selectId, dropdown.displayId);
-            });
+        fields.forEach(field => {
+            const element = document.getElementById(field.id);
+            const display = document.getElementById(field.displayId);
+            if (!element || !display) return;
+
+            const container = display.closest('.info-item');
+            let val = element.value;
+            let text = field.type === "select" ? element.options[element.selectedIndex].text : val;
+
+            if (isEmptyValue(val)) {
+                if (container) container.style.display = "none";
+            } else {
+                display.textContent = text;
+                if (container) container.style.display = "flex";
+                hasValidItem = true;
+            }
         });
 
-        // Add event listeners for inputs
-        const inputs = [
-            { inputId: "addCompProfanityInput", displayId: "listing-part-compatibility-display" },
-            { inputId: "part-sizes", displayId: "listing-part-size-display" },
-            { inputId: "part-number", displayId: "listing-part-number-display" },
-            { inputId: "part-dimensions", displayId: "listing-part-dimensions-display" },
-            { inputId: "part-weight", displayId: "listing-part-weight-display" }
-        ];
+        // Toggle entire section visibility
+        if (hasValidItem) {
+            section.style.display = "flex"; 
+        } else {
+            section.style.display = "none";
+        }
+    }
 
-        inputs.forEach(input => {
-            document.getElementById(input.inputId).addEventListener("input", function () {
-                updateInputListingDisplay(input.inputId, input.displayId);
-            });
-        });
+    // Attach event listeners to all part fields
+    const rawFieldIds = [
+        "part-availability", "part-warranty", "part-condition", "part-material", 
+        "part-color", "part-finish", "part-power-source", "addCompProfanityInput", 
+        "part-sizes", "part-number", "part-dimensions", "part-weight"
+    ];
+    
+    rawFieldIds.forEach(id => {
+        const inputEl = document.getElementById(id);
+        if (inputEl) {
+            inputEl.addEventListener("change", updateAll);
+            inputEl.addEventListener("input", updateAll);
+        }
     });
 
+    // Run on initial page load
+    updateAll();
+});
 </script>
 
 <script>
