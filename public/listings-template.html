@@ -5148,6 +5148,21 @@
             gap: 4px;
         }
 
+        .tabs-sellStyle.disabled-feature {
+            background: linear-gradient(178deg, #b0bec5 0%, #78909c 100%) !important;
+            color: #e0e0e0 !important;
+            border: 1px solid #90a4ae !important;
+            cursor: not-allowed !important;
+            opacity: 0.7;
+            pointer-events: auto; /* Keeps it clickable so the JS popup can fire */
+        }
+
+        .tabs-sellStyle.disabled-feature:hover,
+        .tabs-sellStyle.disabled-feature:active,
+        .tabs-sellStyle.disabled-feature:focus {
+            background: linear-gradient(178deg, #b0bec5 0%, #78909c 100%) !important;
+        }
+
         .header2 {
             height: 100%;
             padding: 36px;
@@ -5282,6 +5297,10 @@
             width: 100%;
             gap: 10px;
             padding: 5px;
+        }
+
+       .services-checkbox input.checkbox:disabled {
+            cursor: not-allowed;
         }
 
 
@@ -11456,7 +11475,7 @@
                                                         data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
                                                         data-target="tab-bidding-content" data-selfClass=".tab-sellStyle"
                                                 >Bidding</button>
-                                                <button class="fullButton navTab2 tab-sellStyle" id="tab-auction"
+                                                <button class="fullButton navTab2 tab-sellStyle disabled-feature" id="tab-auction"
                                                         data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
                                                         data-target="tab-auction-content" data-selfClass=".tab-sellStyle"
                                                 >Auction</button>
@@ -11563,21 +11582,21 @@
                                                 <div class="services-included-checkboxes">
                                                     <div class="services-checkbox-row services-checkbox-row1">
                                                         <div class="services-checkbox" id="shipping-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="shipping-service" name="services" value="shipping">
+                                                            <input type="checkbox" class="checkbox" id="shipping-service" name="services" value="shipping" disabled>
                                                             <span for="shipping-service">Shipping/Delivery</span>
                                                         </div>
                                                         <div class="services-checkbox" id="inspection-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="inspection-service" name="services" value="inspection">
+                                                            <input type="checkbox" class="checkbox" id="inspection-service" name="services" value="inspection" disabled>
                                                             <span for="inspection-service">Inspection</span>
                                                         </div>
                                                     </div>
                                                     <div class="services-checkbox-row services-checkbox-row2">
                                                         <div class="services-checkbox" id="detailing-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="detailing-service" name="services" value="detailing">
+                                                            <input type="checkbox" class="checkbox" id="detailing-service" name="services" value="detailing" disabled>
                                                             <span for="detailing-service">Detailing</span>
                                                         </div>
                                                         <div class="services-checkbox" id="mechanic-checkbox">
-                                                            <input type="checkbox" class="checkbox" id="mechanic-service" name="services" value="mechanic">
+                                                            <input type="checkbox" class="checkbox" id="mechanic-service" name="services" value="mechanic" disabled>
                                                             <span for="mechanic-service">Mechanic Work (if necessary)</span>
                                                         </div>
                                                     </div>
@@ -11721,31 +11740,31 @@
                                                 <div class="services-included-checkboxes">
                                                     <div class="services-checkbox-row services-checkbox-row1">
                                                         <div class="services-checkbox" id="shipping-checkbox-bidding">
-                                                            <input type="checkbox" class="checkbox" id="shipping-service-bidding" name="services" value="shipping-bidding">
+                                                            <input type="checkbox" class="checkbox" id="shipping-service-bidding" name="services" value="shipping" disabled>
                                                             <span for="shipping-service-bidding">Shipping/Delivery</span>
                                                         </div>
                                                         <div class="services-checkbox" id="inspection-checkbox-bidding">
-                                                            <input type="checkbox" class="checkbox" id="inspection-service-bidding" name="services" value="inspection-bidding">
+                                                            <input type="checkbox" class="checkbox" id="inspection-service-bidding" name="services" value="inspection" disabled>
                                                             <span for="inspection-service-bidding">Inspection</span>
                                                         </div>
                                                     </div>
                                                     <div class="services-checkbox-row services-checkbox-row2">
                                                         <div class="services-checkbox" id="detailing-checkbox-bidding">
-                                                            <input type="checkbox" class="checkbox" id="detailing-service-bidding" name="services" value="detailing-bidding">
+                                                            <input type="checkbox" class="checkbox" id="detailing-service-bidding" name="services" value="detailing" disabled>
                                                             <span for="detailing-service-bidding">Detailing</span>
                                                         </div>
                                                         <div class="services-checkbox" id="mechanic-checkbox-bidding">
-                                                            <input type="checkbox" class="checkbox" id="mechanic-service-bidding" name="services" value="mechanic-bidding">
+                                                            <input type="checkbox" class="checkbox" id="mechanic-service-bidding" name="services" value="mechanic" disabled>
                                                             <span for="mechanic-service-bidding">Mechanic Work (if necessary)</span>
                                                         </div>
                                                     </div>
                                                     <div class="services-checkbox-row services-checkbox-row2">
                                                         <div class="services-checkbox" id="title-verification-checkbox-bidding">
-                                                            <input type="checkbox" class="checkbox" id="title-verification-service-bidding" name="services" value="title-bidding">
+                                                            <input type="checkbox" class="checkbox" id="title-verification-service-bidding" name="services" value="title">
                                                             <span for="title-verification-service-bidding">Title Verification</span>
                                                         </div>
                                                         <div class="services-checkbox" id="car-reports-checkbox-bidding">
-                                                            <input type="checkbox" class="checkbox" id="car-reports-service-bidding" name="services" value="reports-bidding">
+                                                            <input type="checkbox" class="checkbox" id="car-reports-service-bidding" name="services" value="reports">
                                                             <span for="car-reports-service-bidding">CarFax Report</span>
                                                         </div>
                                                     </div>
@@ -11753,167 +11772,168 @@
                                             </div>
                                         </div>
                                     </div>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const lengthSelect = document.getElementById("bidding-length-select-sellStyle-vehicles");
-        const timeUnitSelect = document.getElementById("bidding-time-unit-sellStyle-vehicles");
-        const startingPriceInput = document.getElementById("starting-price-input-sellStyle-vehicles");
-        const buyOutrightInput = document.getElementById("buy-outright-input-vehicles");
-        const buyOutrightError = document.getElementById("error-message-buy-outright-vehicles");
 
-        // Function to rebuild options based on Days vs Weeks
-        function updateLengthOptions(unit) {
-            if (!lengthSelect) return;
-            
-            const currentValue = parseInt(lengthSelect.value, 10) || 7;
-            lengthSelect.innerHTML = ""; // Clear existing options
+                                    <script>
+                                        document.addEventListener("DOMContentLoaded", () => {
+                                            const lengthSelect = document.getElementById("bidding-length-select-sellStyle-vehicles");
+                                            const timeUnitSelect = document.getElementById("bidding-time-unit-sellStyle-vehicles");
+                                            const startingPriceInput = document.getElementById("starting-price-input-sellStyle-vehicles");
+                                            const buyOutrightInput = document.getElementById("buy-outright-input-vehicles");
+                                            const buyOutrightError = document.getElementById("error-message-buy-outright-vehicles");
 
-            const maxLimit = (unit === "weeks") ? 4 : 31;
-            
-            for (let i = 1; i <= maxLimit; i++) {
-                let opt = document.createElement('option');
-                opt.value = i;
-                opt.textContent = i;
-                // Keep previous value if valid, otherwise default to a safe option
-                if (i === currentValue || (currentValue > maxLimit && i === maxLimit)) {
-                    opt.selected = true;
-                }
-                lengthSelect.appendChild(opt);
-            }
-            
-            // Trigger a change event so external preview scripts pick up the adjusted value
-            lengthSelect.dispatchEvent(new Event('change'));
-        }
+                                            // Function to rebuild options based on Days vs Weeks
+                                            function updateLengthOptions(unit) {
+                                                if (!lengthSelect) return;
+                                                
+                                                const currentValue = parseInt(lengthSelect.value, 10) || 7;
+                                                lengthSelect.innerHTML = ""; // Clear existing options
 
-        // 1. Initialize Options on Load (Defaults to Days -> 1-31)
-        if (lengthSelect && timeUnitSelect) {
-            updateLengthOptions(timeUnitSelect.value);
+                                                const maxLimit = (unit === "weeks") ? 4 : 31;
+                                                
+                                                for (let i = 1; i <= maxLimit; i++) {
+                                                    let opt = document.createElement('option');
+                                                    opt.value = i;
+                                                    opt.textContent = i;
+                                                    // Keep previous value if valid, otherwise default to a safe option
+                                                    if (i === currentValue || (currentValue > maxLimit && i === maxLimit)) {
+                                                        opt.selected = true;
+                                                    }
+                                                    lengthSelect.appendChild(opt);
+                                                }
+                                                
+                                                // Trigger a change event so external preview scripts pick up the adjusted value
+                                                lengthSelect.dispatchEvent(new Event('change'));
+                                            }
 
-            // Listen for time unit changes
-            timeUnitSelect.addEventListener("change", (e) => {
-                updateLengthOptions(e.target.value);
-            });
-        }
+                                            // 1. Initialize Options on Load (Defaults to Days -> 1-31)
+                                            if (lengthSelect && timeUnitSelect) {
+                                                updateLengthOptions(timeUnitSelect.value);
 
-        // 2. Buy Outright vs Starting Price Validation
-        function validateBuyOutright() {
-            if (!startingPriceInput || !buyOutrightInput || !buyOutrightError) return true;
+                                                // Listen for time unit changes
+                                                timeUnitSelect.addEventListener("change", (e) => {
+                                                    updateLengthOptions(e.target.value);
+                                                });
+                                            }
 
-            const startVal = parseFloat(startingPriceInput.value.replace(/,/g, '')) || 0;
-            const buyoutVal = parseFloat(buyOutrightInput.value.replace(/,/g, '')) || 0;
+                                            // 2. Buy Outright vs Starting Price Validation
+                                            function validateBuyOutright() {
+                                                if (!startingPriceInput || !buyOutrightInput || !buyOutrightError) return true;
 
-            if (buyoutVal > 0 && buyoutVal <= startVal) {
-                buyOutrightError.textContent = "Buy Outright price must be greater than the Starting Price.";
-                buyOutrightInput.style.borderColor = "red";
-                return false;
-            } else {
-                buyOutrightError.textContent = "";
-                buyOutrightInput.style.borderColor = "";
-                return true;
-            }
-        }
+                                                const startVal = parseFloat(startingPriceInput.value.replace(/,/g, '')) || 0;
+                                                const buyoutVal = parseFloat(buyOutrightInput.value.replace(/,/g, '')) || 0;
 
-        if (startingPriceInput && buyOutrightInput) {
-            startingPriceInput.addEventListener("input", validateBuyOutright);
-            buyOutrightInput.addEventListener("input", validateBuyOutright);
-        }
-    });
+                                                if (buyoutVal > 0 && buyoutVal <= startVal) {
+                                                    buyOutrightError.textContent = "Buy Outright price must be greater than the Starting Price.";
+                                                    buyOutrightInput.style.borderColor = "red";
+                                                    return false;
+                                                } else {
+                                                    buyOutrightError.textContent = "";
+                                                    buyOutrightInput.style.borderColor = "";
+                                                    return true;
+                                                }
+                                            }
 
-    // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
-    window.toggleLaunchTiming = function(selection) {
-        const targetBox = document.getElementById("scheduled-input-box-vehicles");
-        const dateInput = document.getElementById("bidding-start-date-vehicles");
-        
-        if (!targetBox) return;
+                                            if (startingPriceInput && buyOutrightInput) {
+                                                startingPriceInput.addEventListener("input", validateBuyOutright);
+                                                buyOutrightInput.addEventListener("input", validateBuyOutright);
+                                            }
+                                        });
 
-        if (selection === "schedule") {
-            targetBox.style.display = "block";
-            
-            // Lock out past dates/times instantly
-            if (dateInput) {
-                const now = new Date();
-                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-                dateInput.min = now.toISOString().slice(0, 16);
-            }
-        } else {
-            targetBox.style.display = "none";
-            if (dateInput) dateInput.value = ""; // Clear date value if switched back
-        }
-    };
-</script>
+                                        // 3. New Timing Selector (Immediate vs Scheduled Date Picker)
+                                        window.toggleLaunchTiming = function(selection) {
+                                            const targetBox = document.getElementById("scheduled-input-box-vehicles");
+                                            const dateInput = document.getElementById("bidding-start-date-vehicles");
+                                            
+                                            if (!targetBox) return;
+
+                                            if (selection === "schedule") {
+                                                targetBox.style.display = "block";
+                                                
+                                                // Lock out past dates/times instantly
+                                                if (dateInput) {
+                                                    const now = new Date();
+                                                    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                                    dateInput.min = now.toISOString().slice(0, 16);
+                                                }
+                                            } else {
+                                                targetBox.style.display = "none";
+                                                if (dateInput) dateInput.value = ""; // Clear date value if switched back
+                                            }
+                                        };
+                                    </script>
 
                                                                     
-<div id="tab-auction-content" class="tabcontent-sellStyle transparent">
-    
-    <!-- A. Clean Confirmation Panel View (Hidden until submission matches validation rules) -->
-    <div id="auction-display-sellStyle" class="display-container-sellStyle" style="display: none;">
-        <h4 class="display-title-sellStyle">Configured Premium Sprint Auction</h4>
-        
-        <div class="display-content-sellStyle">
-            <div class="selected-choices-row">
-                <span class="display-label-sellStyle">Scheduled Start:</span> 
-                <span id="auction-display-start-time-sellStyle" class="display-value-sellStyle">-</span>
-            </div>
-            
-            <div class="selected-choices-row">
-                <span class="display-label-sellStyle">Auction Runtime:</span> 
-                <div class="display-value-sellStyle" style="background: none; border: none; box-shadow: none;">
-                    <span id="auction-display-length-sellStyle">-</span> 
-                    <span id="auction-display-time-unit-sellStyle"></span>
-                </div>
-            </div>
-            
-            <div class="selected-choices-row">
-                <span class="display-label-sellStyle">Starting Bid Window:</span> 
-                <span id="auction-display-starting-price-sellStyle" class="display-value-sellStyle">-</span>
-            </div>
-        </div>
+                                    <div id="tab-auction-content" class="tabcontent-sellStyle transparent">
+                                        
+                                        <!-- A. Clean Confirmation Panel View (Hidden until submission matches validation rules) -->
+                                        <div id="auction-display-sellStyle" class="display-container-sellStyle" style="display: none;">
+                                            <h4 class="display-title-sellStyle">Configured Premium Sprint Auction</h4>
+                                            
+                                            <div class="display-content-sellStyle">
+                                                <div class="selected-choices-row">
+                                                    <span class="display-label-sellStyle">Scheduled Start:</span> 
+                                                    <span id="auction-display-start-time-sellStyle" class="display-value-sellStyle">-</span>
+                                                </div>
+                                                
+                                                <div class="selected-choices-row">
+                                                    <span class="display-label-sellStyle">Auction Runtime:</span> 
+                                                    <div class="display-value-sellStyle" style="background: none; border: none; box-shadow: none;">
+                                                        <span id="auction-display-length-sellStyle">-</span> 
+                                                        <span id="auction-display-time-unit-sellStyle"></span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="selected-choices-row">
+                                                    <span class="display-label-sellStyle">Starting Bid Window:</span> 
+                                                    <span id="auction-display-starting-price-sellStyle" class="display-value-sellStyle">-</span>
+                                                </div>
+                                            </div>
 
-        <!-- Action Trigger to jump back into input view -->
-        <div class="display-actions-sellStyle">
-            <button type="button" id="edit-auction-button-sellStyle" class="lesserP widthButton sellStyle-btn-primary" onclick="editAuction()">Modify Auction Plan</button>
-        </div>
-    </div>
+                                            <!-- Action Trigger to jump back into input view -->
+                                            <div class="display-actions-sellStyle">
+                                                <button type="button" id="edit-auction-button-sellStyle" class="lesserP widthButton sellStyle-btn-primary" onclick="editAuction()">Modify Auction Plan</button>
+                                            </div>
+                                        </div>
 
-    <!-- B. Pro Sprint Entry Control Panel -->
-    <div id="auction-form-sellStyle" class="form-container-sellStyle transparent">
-        
-        <!-- Target Start Timestamp Selector -->
-        <div class="sellStyle-item transparent">
-            <label for="auction-start-time-sellStyle">Scheduled Launch Time:</label>
-            <input class="tabcontent-sellStyle-input" type="datetime-local" id="auction-start-time-sellStyle" name="auction-start-time-sellStyle" onchange="evaluateAuctionDayLimit()">
-            <p class="error-message error-message-text" id="error-message-datetime"></p>
-        </div>
+                                        <!-- B. Pro Sprint Entry Control Panel -->
+                                        <div id="auction-form-sellStyle" class="form-container-sellStyle transparent">
+                                            
+                                            <!-- Target Start Timestamp Selector -->
+                                            <div class="sellStyle-item transparent">
+                                                <label for="auction-start-time-sellStyle">Scheduled Launch Time:</label>
+                                                <input class="tabcontent-sellStyle-input" type="datetime-local" id="auction-start-time-sellStyle" name="auction-start-time-sellStyle" onchange="evaluateAuctionDayLimit()">
+                                                <p class="error-message error-message-text" id="error-message-datetime"></p>
+                                            </div>
 
-        <!-- Custom Variable Duration Controllers -->
-        <div class="sellStyle-row transparent">
-            <div class="sellStyle-item transparent">
-                <label for="auction-length-sellStyle">Auction Duration:</label>
-                <select class="tabcontent-sellStyle-input" id="auction-length-sellStyle" name="auction-length-sellStyle">
-                    <!-- Automatically restricted to 12 or 24 options by the Day Evaluation Engine -->
-                </select>
-            </div>
-            
-            <div class="sellStyle-item transparent">
-                <label for="auction-time-unit-sellStyle">Time Scale:</label>
-                <select class="tabcontent-sellStyle-input" id="auction-time-unit-sellStyle" name="auction-time-unit-sellStyle" onchange="evaluateAuctionDayLimit()">
-                    <option value="hours" selected>Hours</option>
-                    <option value="minutes">Minutes</option>
-                </select>
-            </div>
-        </div>
+                                            <!-- Custom Variable Duration Controllers -->
+                                            <div class="sellStyle-row transparent">
+                                                <div class="sellStyle-item transparent">
+                                                    <label for="auction-length-sellStyle">Auction Duration:</label>
+                                                    <select class="tabcontent-sellStyle-input" id="auction-length-sellStyle" name="auction-length-sellStyle">
+                                                        <!-- Automatically restricted to 12 or 24 options by the Day Evaluation Engine -->
+                                                    </select>
+                                                </div>
+                                                
+                                                <div class="sellStyle-item transparent">
+                                                    <label for="auction-time-unit-sellStyle">Time Scale:</label>
+                                                    <select class="tabcontent-sellStyle-input" id="auction-time-unit-sellStyle" name="auction-time-unit-sellStyle" onchange="evaluateAuctionDayLimit()">
+                                                        <option value="hours" selected>Hours</option>
+                                                        <option value="minutes">Minutes</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-        <!-- Price Input Field -->
-        <div class="sellStyle-item transparent">
-            <label for="auction-starting-price-sellStyle">Starting Price Entry:</label>
-            <input class="tabcontent-sellStyle-input" type="text" id="auction-starting-price-sellStyle" name="auction-starting-price-sellStyle" maxlength="15" placeholder="$0.00">
-            <p class="error-message error-message-text" id="error-message-auction-sellStyle"></p>
-        </div>
+                                            <!-- Price Input Field -->
+                                            <div class="sellStyle-item transparent">
+                                                <label for="auction-starting-price-sellStyle">Starting Price Entry:</label>
+                                                <input class="tabcontent-sellStyle-input" type="text" id="auction-starting-price-sellStyle" name="auction-starting-price-sellStyle" maxlength="15" placeholder="$0.00">
+                                                <p class="error-message error-message-text" id="error-message-auction-sellStyle"></p>
+                                            </div>
 
-        <!-- Process Submission Button -->
-        <button type="button" id="submit-auction-button-sellStyle" class="lesserP widthButton sellStyle-btn-primary" onclick="submitAuction()">Lock In & Schedule Auction</button>
-    </div>
-</div>
+                                            <!-- Process Submission Button -->
+                                            <button type="button" id="submit-auction-button-sellStyle" class="lesserP widthButton sellStyle-btn-primary" onclick="submitAuction()">Lock In & Schedule Auction</button>
+                                        </div>
+                                    </div>
 
                                     <script>
                                     (() => {
@@ -12948,7 +12968,7 @@
                                                 <button class="fullButton tab-sellStyle navTab2" id="part-tab-bidding"
                                                     data-section="content-parts" data-targetClass=".tabContent-sellStyle2" data-target="tab-bidding-content-parts"
                                                     data-selfClass=".tab-sellStyle" data-self="part-tab-bidding">Bidding</button>
-                                                <button class="fullButton tab-sellStyle navTab2" id="part-tab-auction"
+                                                <button class="fullButton tab-sellStyle navTab2 disabled-feature" id="part-tab-auction"
                                                     data-section="content-parts" data-targetClass=".tabContent-sellStyle2" data-target="tab-auction-content-parts"
                                                     data-selfClass=".tab-sellStyle" data-self="part-tab-auction">Auction</button>
                                             </div>
@@ -14281,26 +14301,16 @@
                                     </div>
                                 </div>
                                 
-                                <!-- <div class="tabcontent-listings" id="tab-bidding-content-listings" style="display: none;">
-                                    
-                                    <div class="bidding-section-listings" style="display: none;">
-                                        <h2>Bidding Details</h2>
-                                        
-                                        <div class="bidding-details-listings">
-                                            <p>Starting Price: <span class="display-input-listings" id="display-starting-price-listings"></span></p>
-                                            <p>Bidding Length: <span class="display-input-listings" id="display-bidding-length-listings"></span></p>
-                                            <p>Bidding Time Unit: <span class="display-input-listings" id="display-bidding-time-unit-listings"></span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                                    
+
+                                <!--                                  
                                 <div class="tabcontent-listings" id="tab-auction-content-listings" style="display: none;">
                                     
                                     <div class="auction-section-listings">
                                         <h2>Auction Details</h2>
                                         
                                     </div>
-                                </div> -->
+                                </div> 
+                                -->
 
                             </div>
 
@@ -22137,6 +22147,34 @@ customTitleInputs.forEach(customTitleInput => {
                 yearDropdown.appendChild(option);
             }
         });
+    </script>
+
+    <script>
+        document.getElementById('tab-auction').addEventListener('click', function(event) {
+            // Check if the button is marked as disabled
+            if (this.classList.contains('disabled-feature')) {
+                // Stop the tab-switching script from executing entirely
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                
+                // Show your popup message
+                alert("Stay tuned for more exciting tools and features");
+                return false;
+            }
+        }, true);
+
+        document.getElementById('part-tab-auction').addEventListener('click', function(event) {
+            // Check if the button is marked as disabled
+            if (this.classList.contains('disabled-feature')) {
+                // Stop the tab-switching script from executing entirely
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                
+                // Show your popup message
+                alert("Stay tuned for more exciting tools and features");
+                return false;
+            }
+        }, true);
     </script>
 
 
