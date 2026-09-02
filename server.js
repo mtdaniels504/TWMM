@@ -226,6 +226,12 @@ app.post('/api/listings', async (req, res) => {
                 negotiate: sanitizeText(payload.vehicle.negotiate) || '',
                 plus_minus: parseNumeric(payload.vehicle.plusMinus),
                 fulfillment: sanitizeText(payload.vehicle.fulfillment) || '',
+
+                starting_price: parseNumeric(payload.vehicle.startingPrice),
+                buy_outright: parseNumeric(payload.vehicle.buyOutright),
+                activity: sanitizeText(payload.vehicle.activity) || '',
+                auction_length: sanitizeText(payload.vehicle.auctionLength) || '',
+                time_unit: sanitizeText(payload.vehicle.timeUnit) || '',
                 
                 vehicle_type: sanitizeText(payload.vehicle.category) || '',
                 make: sanitizeText(payload.vehicle.make) || '',
