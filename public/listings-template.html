@@ -32607,6 +32607,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
             };
         
+            console.log('[Frontend Payload Debug] Data being sent to backend:', JSON.stringify(dataToSend, null, 2));
+
             try {
                 // Point to your Render backend deployment URL
                 const backendBaseURL = 'https://twmm-g972.onrender.com'; 
