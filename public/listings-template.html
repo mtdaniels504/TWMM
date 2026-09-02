@@ -11470,10 +11470,12 @@
                                                 <button class="fullButton navTab2 tab-sellStyle active" id="tab-asking-price"
                                                         data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
                                                         data-target="tab-asking-price-content" data-selfClass=".tab-sellStyle"
+                                                        data-slugSection=".listing-sellStyleSection" data-slugTarget="listings-pricing-section"
                                                 >Asking Price</button>
                                                 <button class="fullButton navTab2 tab-sellStyle" id="tab-bidding"
                                                         data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
                                                         data-target="tab-bidding-content" data-selfClass=".tab-sellStyle"
+                                                        data-slugSection=".listing-sellStyleSection" data-slugTarget="listings-bidding-section"
                                                 >Bidding</button>
                                                 <button class="fullButton navTab2 tab-sellStyle disabled-feature" id="tab-auction"
                                                         data-section="content-vehicles" data-targetClass=".tabcontent-sellStyle"
@@ -14233,7 +14235,7 @@
                                     </div>
                                                 
                                     <div class="details-container">                        
-                                        <div class="details-section listing-details-section" id="listings-pricing-section" style="display: none;">
+                                        <div class="details-section listing-details-section listing-sellStyleSection" id="listings-pricing-section">
                                             <!-- Listing Vehicle Details Section -->
                                             <h5 id="selected-vehicle-pricing">Pricing and Information</h5>
                                             <div class="details-form listing-details-form" id="listing-vehicle-pricing">  
@@ -14253,7 +14255,7 @@
                                         </div>
                                     </div>
                                     <div class="details-container">                               
-                                        <div class="details-section listing-details-section" id="listings-bidding-section">
+                                        <div class="details-section listing-details-section listing-sellStyleSection" id="listings-bidding-section" style="display: none;">
                                             <h5 id="selected-bidding-pricing">Live Bidding Preview</h5>
                                             <div class="details-form listing-details-form" id="listing-vehicle-bidding">  
                                                 <div class="transparent mobileBidding-row">
@@ -20781,6 +20783,9 @@
 
                 const selfClass = section.querySelectorAll(navTab.getAttribute('data-selfClass'));
                 const self = section.querySelectorAll(navTab.getAttribute('data-self'));
+                
+                const slugSection = document.querySelectorAll(navTab.getAttribute('data-slugSection'));
+                const slugTarget = document.getElementById(navTab.getAttribute('data-slugTarget'));
 
                 navTab.addEventListener('click', () => {
                     //Display Target Body and Add Actives
@@ -20793,6 +20798,11 @@
                     } else if (selfClass) {
                         selfClass.forEach(s => {s.classList.remove('active')});
                         navTab.classList.add('active');
+                    }
+
+                    if (slugSection && slugTarget) {
+                        slugSection.forEach(t => t.style.display = 'none');
+                        slugTarget.style.display = 'flex';
                     }
                 });
             });
@@ -32555,6 +32565,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     negotiate: getInputValue('display-negotiate-listings'),
                     plusMinus: parseFloat(getInputValue('display-plusMinus-listings').replace(/[$,]/g, '')),
                     fulfillment: getInputValue('display-fulfillment-listings'),
+                    startingPrice: parseFloat(getInputValue('display-starting-price-listings').replace(/[$,]/g, '')),
+                    buyOutright: parseFloat(getInputValue('display-buy-outright-listings').replace(/[$,]/g, '') || 0),
+                    activity: getInputValue('display-bid-count-listings'),
+                    auctionLength: getInputValue('display-bidding-length-listings'),
+                    timeUnit: getInputValue('display-bidding-time-unit-listings'),
                     description: encodeURIComponent(processedDescription),
                     theme: getInputValue('listing-vehicle-theme-display'),
                     vin: getInputValue('listing-vehicle-vin-display'),
