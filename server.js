@@ -365,6 +365,15 @@ app.post('/api/listings', async (req, res) => {
             return res.status(400).json({ success: false, error: 'Unknown payload structure category.' });
         }
 
+        // 2. Inspect the final processed record before database upsert
+        console.log('--- Final dbRecord Being Sent to Supabase ---', {
+            starting_price: dbRecord.starting_price,
+            buy_outright: dbRecord.buy_outright,
+            activity: dbRecord.activity,
+            auction_length: dbRecord.auction_length,
+            time_unit: dbRecord.time_unit
+        });
+
         if (!dbRecord.unique_listing_id) {
             return res.status(400).json({ success: false, error: 'Missing unique listing ID in payload.' });
         }
