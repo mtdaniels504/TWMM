@@ -14290,7 +14290,7 @@
 
                                                     <div class="lesserP selected-choices-row sellStyle-selected-row timer-preview-row">
                                                         <h6 class="lesserP">Time Remaining:</h6>
-                                                        <span class="lesserP placeholder-timer" style="color: #666; font-style: italic;">Starts upon approval (--d --h --m)</span>
+                                                        <span class="lesserP placeholder-timer" id="display-bidding-start-listings" style="color: #666; font-style: italic;">Starts upon approval (--d --h --m)</span>
                                                     </div>
                                                 </div>
                                                 
@@ -32570,6 +32570,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     activity: getInputValue('display-bid-count-listings'),
                     auctionLength: getInputValue('display-bidding-length-listings'),
                     timeUnit: getInputValue('display-bidding-time-unit-listings'),
+                    startTime: getInputValue('display-bidding-start-listings'),
                     description: encodeURIComponent(processedDescription),
                     theme: getInputValue('listing-vehicle-theme-display'),
                     vin: getInputValue('listing-vehicle-vin-display'),
