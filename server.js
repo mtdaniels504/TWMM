@@ -232,6 +232,7 @@ app.post('/api/listings', async (req, res) => {
                 activity: sanitizeText(payload.vehicle.activity) || '',
                 auction_length: sanitizeText(payload.vehicle.auctionLength) || '',
                 time_unit: sanitizeText(payload.vehicle.timeUnit) || '',
+                start_time: sanitizeText(payload.vehicle.startTime) || '',
                 
                 vehicle_type: sanitizeText(payload.vehicle.category) || '',
                 make: sanitizeText(payload.vehicle.make) || '',
@@ -364,15 +365,6 @@ app.post('/api/listings', async (req, res) => {
         } else {
             return res.status(400).json({ success: false, error: 'Unknown payload structure category.' });
         }
-
-        // 2. Inspect the final processed record before database upsert
-        console.log('--- Final dbRecord Being Sent to Supabase ---', {
-            starting_price: dbRecord.starting_price,
-            buy_outright: dbRecord.buy_outright,
-            activity: dbRecord.activity,
-            auction_length: dbRecord.auction_length,
-            time_unit: dbRecord.time_unit
-        });
 
         if (!dbRecord.unique_listing_id) {
             return res.status(400).json({ success: false, error: 'Missing unique listing ID in payload.' });
