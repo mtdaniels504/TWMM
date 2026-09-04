@@ -2,10 +2,13 @@
 <html lang="en">
     <head>
         <title>The World Motor Market / Listings Template</title>
-        <meta name="description" content="Looking to sell you vehicle, part, or services? We have all you're looking for here!">
+        <meta name="description" content="The World Motor Market, your one-stop-shop for all things motorin'!">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="google-adsense-account" content="ca-pub-2241743795999309">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2241743795999309" crossorigin="anonymous"></script>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
         
         <style id="General">
 
@@ -714,8 +717,8 @@
                 align-items: center;
                 margin: 0;
                 padding: 0;
-                width: 100vw;
-                max-width: 100vw;
+                width: 100%;
+                max-width: 100%;
                 height: 100%;
                 flex: 1;
                 border: none;
@@ -756,7 +759,7 @@
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: center;
-                height: calc(100dvh - 140px - 3.65dvw);
+                height: calc(100dvh - 140px - 3.75dvw);
                 max-height: 100%;
                 overflow-y: auto;
                 overflow-x: hidden;
@@ -783,6 +786,7 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 5px 10px;
+                bottom: 2px;
             }
 
             .tailHs, .tailButtons {
@@ -887,6 +891,7 @@
 
 
             #Home {
+                flex-grow: 1;
                 position: absolute;
                 display: flex;
                 flex-direction: column;
@@ -897,6 +902,7 @@
                 width: 100%;
                 max-width: 100%;
                 height: 100%;
+                max-height: 100dvh;
                 flex: 1;
                 border: none;
             }
@@ -1234,7 +1240,7 @@
                 align-items: center;
                 top: clamp(107.5px, 80px + 3.6dvw, 122px);
                 left: 3px;
-                height: calc(100dvh - 125px - 3.75dvw);
+                height: calc(100dvh - 133.2px - 3.75dvw);
                 max-height: 100%;
                 overflow-y: auto;
                 overflow-x: hidden;
@@ -1844,9 +1850,8 @@
 
         </style>
 
-        
         <style id="Dynamic"></style>
-
+        
         <style id="test">
 
 
@@ -2688,10 +2693,6 @@
 
             .content {
                 width: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
             }
 
 
@@ -2715,67 +2716,49 @@
             }
 
             .nested-bodyTabs {
-                margin: 5px 8px 5px -2px;
+                margin: 5px 0;
                 padding: 0 10px;
                 gap: 5px;
-            }
-
-            /* Nested Ad Styles */
-
-            .nested-ad-container {
-                position: relative;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 width: 100%;
-                height: 50px;
-
-            }
-
-            .nested-ad-container:hover {
-                transform: scale(1.02);
             }
 
             /* Nested Ad Styles */
 
             .nested-ad {
-                position: absolute;
-                width: calc(100% - 6px);
-                height: 44px;
+                position: relative;
                 display: flex;
-                justify-content: space-evenly;
+                flex-direction: column;
+                justify-content: center;
                 align-items: center;
-                opacity: 1;
-                transition: opacity 1s ease-in-out;
-                flex-wrap: nowrap;
+                width: 362px;
+                min-height: 62px;
             }
+
+            #nested-ad2 {
+                width: 100%;
+                margin: auto;
+            }
+
+            .map-and-ad {
+                display: flex;
+                flex-direction: column-reverse;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+            }
+
             
             /*hb Ad Body Discount*/
             .content-ad-slideContentBody {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-evenly;
+                justify-content: center;
                 align-items: center;
-                width: 323.6px;
-                height: 40px;
+                width: 100%;
+                min-height: 60px;
+                height: auto;
+                padding: 0 2px;
             }
-
-            .content-ad-slideContentBody:hover,
-            .content-ad-slideContentBody h3:hover,
-            .content-ad-slideContentBody p:hover {
-                transform: scale(1.02);
-                box-shadow: 0 0 10px rgba(0, 0, 0, .15);
-            }
-
-            .content-ad-slideContentBody h3 {
-                font-size: 6.5px;
-            }
-
-            .content-ad-slideContentBody p {
-                font-size: 6.5px;
-            }
-
 
 
             /* Nested Content Header Styles */
@@ -2960,10 +2943,15 @@
                 align-items: center;
                 padding: 10px 5px 0px 5px;
                 height: 28px;
+                cursor: pointer;
             } 
 
             .sideBarTab:hover, .sideBarTab:focus {
                 background: #f9f9f9;
+            }
+
+            .sideBarTab p {
+                cursor: pointer;
             }
 
             .sideBarTabHr {
@@ -3433,6 +3421,511 @@
                 align-items: flex-start;
             }
 
+
+            /* -- Services -- */
+
+
+            #servicesContent {
+                padding-top: 20px;
+            }
+
+            #servicesContent h2 {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+
+            .serviceSearch {
+                margin-bottom: 10px;
+            }
+
+            /* Style for the container that holds both sections */
+            .details-and-featured {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                padding: 10px 80px 10px 20px;
+            }
+
+            .nestedSearchandP {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                padding: 10px 5% 0 5%;
+                gap: 10px;
+                text-align: center;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            .nestedSearchandP p {
+                margin: 0 4%;
+            }
+
+
+
+            /* Buy Search Tool Styles */
+            .bodySearch {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #efefef, #e0e0e0);
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 100%;
+            }
+
+            .part-bodySearch {
+                width: calc(100% + 40px);
+                height: calc(100% + 20px);
+                padding-top: 10px;
+            }
+
+            .details-and-button, .details-container {
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .searchForm {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                padding: 20px;
+                gap: 10px;
+            }
+
+            .searchForm select {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;
+                width: 100%;
+                padding: 0 5px;
+            }
+
+            /* Style for the Featured Listings Section */
+            .featured-listings-container {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                min-width: 30%;
+                width: 100%;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                background: linear-gradient(178deg, #121418 0%, #05509b 100%);
+                border: 1.5px solid #333;
+                box-sizing: border-box;
+                text-align: center;
+            }
+
+            .featured-listings-container:hover {
+                border: 1.5px solid #0060b5;
+                box-shadow: 0 6px 16px rgba(0, 96, 181, 0.25);
+            }
+
+            .featured-listing-h3 {
+                width: 100%;
+                font-size: 13.5px;
+                text-align: center;
+                padding: 2.5px 5px;
+                color: #0060b5;
+            }
+
+            .featured-listing-p {
+                width: 100%;
+                font-size: 12px;
+                text-align: center;
+                padding: 2.5px 5px;
+                color: #eceef2;
+                margin: 0 0 10px 0;
+            }
+
+            /* Style for the Featured Listings Wrapper */
+            .featured-listings-wrapper {
+                display: flex;
+                overflow-x: auto;
+                overflow-y: hidden;
+                gap: 15px;
+                padding: 10px 5px;
+                box-sizing: border-box;
+                max-width: 100%;
+                scrollbar-width: thin;
+                scrollbar-color: #075baf #121418;
+            }
+
+            .featured-listings-wrapper::-webkit-scrollbar {
+                height: 6px;
+            }
+
+            .featured-listings-wrapper::-webkit-scrollbar-track {
+                background: #333;
+            }
+
+            .featured-listings-wrapper::-webkit-scrollbar-thumb {
+                background: #121418;
+                border-radius: 3px;
+            }
+
+            .featured-listings-wrapper::-webkit-scrollbar-thumb:hover {
+                background: #000;
+            }
+
+            /* Style for each Featured Listing Card */
+            .featured-listing {
+                flex: 0 0 240px;
+                height: 380px;
+                background: linear-gradient(178deg, #f5f8ff 0%, #eef0f6 100%);
+                border: 1.5px solid #dee0e3;
+                border-radius: 8px;
+                padding: 14px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                justify-content: space-between;
+                box-sizing: border-box;
+                transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            }
+
+            .featured-listing:hover {
+                transform: translateY(-4px);
+                border: 1.5px solid #ccddff;
+                background: linear-gradient(178deg, #fff 0%, #f5f8ff 100%);
+                box-shadow: 0 8px 20px rgba(0, 96, 181, 0.2);
+            }
+
+            /* Title Styling inside cards */
+            .featured-listing h4 {
+                margin: 0 0 4px 0;
+                font-size: 13px;
+                font-weight: 700;
+                color: #0060b5;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 100%;
+            }
+
+            /* Year, Make, Model, Trim info */
+            .vehicle-info {
+                color: #121418;
+                font-weight: 500;
+                margin-bottom: 2px;
+                line-height: 1.3;
+                width: 100%;
+            }
+
+            .vehicle-info p {
+                margin: 0;
+                padding: 0;
+                font-size: 12px;
+            }
+
+            /* Image container to constrain images */
+            .featured-img-container {
+                width: 100%;
+                height: 140px;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff;
+                padding: 4px;
+                border: 1px solid #e5e6e7;
+                border-radius: 6px;
+                box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .featured-img-container:hover {
+                border-color: #2274c7;
+                box-shadow: inset 0 2px 4px rgba(0, 96, 181, 0.08);
+            }
+
+            /* Image inside container */
+            .featured-img-container img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
+                transition: transform 0.3s ease;
+            }
+
+            .featured-listing:hover .featured-img-container img {
+                transform: scale(1.03);
+            }
+
+            /* Price styling */
+            .vehicle-price {
+                font-weight: 700;
+                color: #075baf;
+                margin: 2px 0;
+                letter-spacing: 0.3px;
+                font-size: 12.5px;
+            }
+
+            /* Description styling */
+            .vehicle-description {
+                font-size: 11.5px;
+                text-align: center;
+                color: #666;
+                max-height: 42px;
+                overflow-y: auto;
+                width: 100%;
+                line-height: 1.25;
+                scrollbar-width: none;
+            }
+
+            .vehicle-description::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Style for the "Learn More" Button */
+            .featured-listing .learn-more-button {
+                width: 100%;
+                background: linear-gradient(178deg, #2274c7 0%, #075baf 100%);
+                color: #fff;
+                border: 1px solid #0060b5;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+                font-weight: 600;
+                letter-spacing: 0.3px;
+                padding: 7px 12px;
+                margin-top: auto;
+                box-shadow: 0 2px 5px rgba(7, 91, 175, 0.25);
+            }
+
+            .featured-listing .learn-more-button:hover {
+                background: linear-gradient(178deg, #0060b5 0%, #05509b 100%);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 10px rgba(0, 96, 181, 0.35);
+            }
+
+
+
+            .searchButton {
+                min-height: 18px;
+                height: calc(17px + 0.35vw);
+                max-height: 20px;                
+            }
+
+            .service-sections,
+            .sell-sections {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                padding: 20px 0;
+                margin: 0;
+                width: 100%;
+            }
+
+            .service-section,
+            .sell-section {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                text-align: center;
+                padding: 25px 20px;
+                width: 100%;
+                border-radius: 5px;
+            }
+
+            .service-section:hover,
+            .sell-section:hover {
+                transform: translateY(-1px);
+                box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Separator Line Between Sections */
+            .separator {
+                width: 1.5px;
+                height: 96%;
+            }
+
+            .service-section h3,
+            .sell-section h3 {
+                margin: 5px 0;
+            }
+
+            .service-section p,
+            .sell-section p {
+                margin-bottom: 15px;
+            }
+
+            .learn-more-button {
+                margin-left: auto;
+            }
+
+
+            /* Sell Section Buttons Styles */
+            .list-button, .offer-button {
+                text-decoration: none;
+            }
+
+            .service-section .list-button:hover,
+            .sell-section .offer-button:hover,
+            .sell-section .list-button:hover {
+                background-color: #046df8;
+                transform: scale(1.05);
+            }
+
+            /* Rent Tab Content Styles */
+            #parts-rentContent,
+            #rentContent {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 0 20px;
+                gap: 10px;
+            }
+
+
+
+
+            #parts-rentContent p,
+            #rentContent p {
+                padding: 5px 0px;
+                margin: 10px 0;
+            }
+
+            .rent-parts-p,
+            .rent-vehicle-p {
+                padding: 0px 20px 10px 20px;
+            }
+
+
+
+
+            /* Style for the "details-and-button" section */
+            .details-and-button {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%; /* Adjust the width as needed */
+                margin-top: auto; /* Align to the top of the container */
+                margin-bottom: 20px;
+            }
+
+
+            /* Style for the Details Container */
+            .details-container {
+                width: 100%; /* Adjust as needed */
+                max-width: 100%;
+                height: auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 5px;
+                margin: 20px 0 10px 0;
+            }
+
+
+
+            .mcontainer {
+                z-index: 400;
+                box-sizing: border-box;
+                min-width: 100%;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            /* Create a container for the map */
+            #map-container {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+            }
+
+            #map-container h3 {
+                margin: 10px 0;
+            }
+
+            #map-container-content {
+                z-index: 420;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 92%;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+            }
+
+            /* Create a container for the input group */
+            .custom-input-group {
+                z-index: 420;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                height: auto;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .mapSearchButton {
+                border-radius: 0 0 1px 1px;
+            }
+
+
+
+            /* Style the input elements */
+            .custom-input {
+                flex: 1;
+                padding: 10px;
+                width: 100%;
+            }
+
+
+
+            /* Style the search button */
+            .custom-button {
+                border: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            /* Hover effect for the search button */
+            .custom-button:hover {
+                background-color: #0056b3;
+            }
+
                         
             .nav-content-blur {
                 z-index: 980;
@@ -3733,129 +4226,129 @@
             }
 
 
-            .reminders-container {
-                width: 100%;
-                max-height: calc(50dvh - 10dvw);
-                overflow-y: auto;
-                overflow-x: hidden;
-            }
+                .reminders-container {
+                    width: 100%;
+                    max-height: calc(50dvh - 10dvw);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                }
 
-            .form-group {
-                display: flex;
-                align-items: space-between;
-                width: 100%;
-                gap: 5px;
-            }
+                .form-group {
+                    display: flex;
+                    align-items: space-between;
+                    width: 100%;
+                    gap: 5px;
+                }
 
 
-            .form-group.vertical {
+                .form-group.vertical {
                 flex-direction: column;
                 align-items: flex-start;
-            }
+                }
 
-            .form-group input, .form-group textarea, .form-group select {
-                flex: 1;
-                width: 100%;
-                border-radius: 1px;
-                padding: 1px 2px;
-            }
+                .form-group input, .form-group textarea, .form-group select {
+                    flex: 1;
+                    width: 100%;
+                    border-radius: 1px;
+                    padding: 1px 2px;
+                }
 
-            /* Action Buttons */
-            .btn-container {
-                display: flex;
-                justify-content: space-between;
-                gap: 10%;
-            }
+                /* Action Buttons */
+                .btn-container {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10%;
+                }
 
-            .btn:disabled {
+                .btn:disabled {
                 color: var(--ios-gray);
                 cursor: not-allowed;
-            }
+                }
 
-            /* Reminders List Display */
-            .reminders-list {
+                /* Reminders List Display */
+                .reminders-list {
                 margin-top: 25px;
-            }
+                }
 
-            .list-title {
+                .list-title {
                 text-transform: uppercase;
-            }
+                }
 
-            .reminder-item {
+                .reminder-item {
                 display: flex;
                 align-items: flex-start;
                 animation: fadeIn 0.2s ease-in-out;
-            }
+                }
 
-            @keyframes fadeIn {
+                @keyframes fadeIn {
                 from { opacity: 0; transform: translateY(5px); }
                 to { opacity: 1; transform: translateY(0); }
-            }
+                }
 
             .checkbox-btn {
-                width: 16px;          /* Made smaller to look sleeker */
-                height: 16px;         /* Made smaller to look sleeker */
-                border: 1px solid var(--ios-border); /* Thinner border for a cleaner look */
-                border-radius: 2px;   /* Matches your 1-2px border-radius design */
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-top: 4px;      /* Aligns better with small title text */
-                flex-shrink: 0;
-                background-color: transparent;
-                transition: background-color 0.2s ease, border-color 0.2s ease;
+            width: 16px;          /* Made smaller to look sleeker */
+            height: 16px;         /* Made smaller to look sleeker */
+            border: 1px solid var(--ios-border); /* Thinner border for a cleaner look */
+            border-radius: 2px;   /* Matches your 1-2px border-radius design */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 4px;      /* Aligns better with small title text */
+            flex-shrink: 0;
+            background-color: transparent;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
             }
 
             .checkbox-btn:hover {
-                background-color: rgba(0, 122, 255, 0.1); /* Subtle blue tint on hover */
-                border-color: var(--ios-blue);            /* Clearer interactive cue */
+            background-color: rgba(0, 122, 255, 0.1); /* Subtle blue tint on hover */
+            border-color: var(--ios-blue);            /* Clearer interactive cue */
             }
 
-            .reminder-content {
+                .reminder-content {
                 flex: 1;
-            }
+                }
 
-            .reminder-title-row {
+                .reminder-title-row {
                 display: flex;
                 align-items: baseline;
                 gap: 6px;
-            }
+                }
 
-            .priority-marker {
+                .priority-marker {
                 font-weight: bold;
-            }
-            .p-low { color: var(--priority-low); }
-            .p-medium { color: var(--priority-med); }
-            .p-high { color: var(--priority-high); }
+                }
+                .p-low { color: var(--priority-low); }
+                .p-medium { color: var(--priority-med); }
+                .p-high { color: var(--priority-high); }
 
 
-            .reminder-notes {
+                .reminder-notes {
                 color: var(--ios-gray);
                 margin-top: 2px;
-            }
+                }
 
-            .reminder-meta {
+                .reminder-meta {
                 color: var(--ios-gray);
                 margin-top: 6px;
                 display: flex;
                 flex-wrap: wrap;
                 gap: 12px;
-            }
+                }
 
-            .meta-date { color: #ff3b30; } /* iOS uses red/orange text for alert times */
-            .meta-loc { color: var(--ios-gray); }
+                .meta-date { color: #ff3b30; } /* iOS uses red/orange text for alert times */
+                .meta-loc { color: var(--ios-gray); }
 
-            .empty-state {
+                .empty-state {
                 text-align: center;
                 color: var(--ios-gray);
                 padding: 4px 0;
-            }
+                }
 
 
                             
         </style>
-
+        
         <style id="PageSpecific">
 
         /* ------------------------------------------------------------------ */
@@ -7528,6 +8021,24 @@
 
             @media screen and (max-width: 800px) {
 
+                
+            #mainBodyContainer, #mainSubNav, .bodySubNav, .sideBar {
+                top: clamp(105.5px, 80px + 3.6dvw, 122px);
+            }
+
+                #plane3 {
+                    padding: 1px 2px;
+                }
+
+                #Home {
+                    margin: 0;
+                    padding: 0 2px;
+                }
+
+                section {
+                    margin: 1px 2px;
+                }
+
                 /* SubNav Styles */      
                 
                 .subNav {
@@ -7748,8 +8259,16 @@
                     gap: 2px;
                 }
 
+                .nested-ad {
+                    width: 100%;
+                }
+
+                .map-and-ad {
+                    flex-direction: column;
+                }
+
                 .nested-bodyTabs {
-                    margin: 6px 10px;
+                    margin: 2px 0;
                 }
 
                 .nested-ad-container {
@@ -7816,1132 +8335,1142 @@
                     padding: 0;
                 }
 
+
+                .custom-input-group {
+                    gap: 1px;
+                }
+
+                .custom-input {
+                    border-radius: 1px;
+                }
             }
 
         </style>
-
+        
         <style id="PageMobile">
 
-
-        /* Media Queries for Mobile */
-        @media screen and (max-width: 825px) {
-
+            /* Media Queries for Mobile */
+            @media screen and (max-width: 825px) {
 
 
-        /* ------------------------------------------------------------------ */
 
-        /* Main Tab Styles */
+            /* ------------------------------------------------------------------ */
 
-            .header {
-                width: 100%;
-                padding: 12.5px;
-                gap: 10px;
-            }
+            /* Main Tab Styles */
 
-            .adSlideContentandTabs {
-                display: none;
-            }
+                .header {
+                    width: 100%;
+                    padding: 12.5px;
+                    gap: 10px;
+                }
 
-            .adSlideContent-AP {
-                display: none;
-            }
+                .adSlideContentandTabs {
+                    display: none;
+                }
 
-            .adSlideContentandTabs-AP {
-                display: block;
-            }
+                .adSlideContent-AP {
+                    display: none;
+                }
 
-            #tabsSectionMobile {
+                .adSlideContentandTabs-AP {
+                    display: block;
+                }
+
+                #tabsSectionMobile {
+                    display: flex;
+                }
+
+                .content-title {
+                    padding-top: 12px;
+                    padding-bottom: 8px;
+                }
+
+                .content-title hr {
+                    height: 1.8px;
+                }
+
+
+
+            /* ------------------------------------------------------------------ */
+
+            /* Custom Title Styles */
+
+                .custom-title-section {
+                    width: 75%;
+                    margin: 6px auto;
+                }
+                
+                
+                /* Style for the title input container */
+                .title-input {
+                    display: flex;
+                    flex-direction: column; /* Stack input and button vertically on smaller screens */
+                    align-items: stretch; /* Stretch input and button horizontally */        
+                }
+
+                .title-prompt-button {
+                    width: 100%;
+                }
+
+                .verticalAd {
+                    display: none;
+                }
+
+                
+                .title-display {
+                    text-align: center;
+                    text-decoration: underline;
+                    overflow-wrap: break-word;
+                    margin: 6px 0;
+                }
+
+
+
+            /* ------------------------------------------------------------------ */
+
+            /* image-and-details Styles */
+
+                .image-and-details {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0;
+                    gap: 10px
+                }
+
+            /* ------------------------------------------------------------------ */
+
+            /* Image Styles */
+                
+                .image-container {
+                    width: 100%;
+                }
+
+                /* Image Sections */
+                .image-section {
+                    border: 1.2px dashed #046df8;
+                    height: 280px;
+                    margin: 0 auto;
+                    transition: none;
+                }
+
+                .listing-image-section {
+                    border: 1.2px solid #046df8;
+                }
+
+
+                .small-image-upload {
+                    border-radius: 0px 0px 2px 2px;
+                }
+
+                .image-spot,
+                .small-image-spot {
+                    border: 1px dashed #046df8;
+                }
+
+                .small-image-spot {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    align-items: center;
+                    height: 75px;
+                }
+                
+                .listing-small-image-spot {
+                    border: none;
+                    height: 60px;
+                }
+
+                .browse-label {
+                    width: calc(100% - 10px);
+                    margin: 5px auto;
+                }
+
+
+                /* Small Image Browse Label */
+
+                
+                .image-container {
+                    flex-direction: column;
+                    margin: auto;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 5px 0 0 0;
+                }
+
+
+                /* Small Images Container */
+                .small-images-container {
+                    flex-direction: row; /* Stack images vertically on smaller screens */
+                    justify-content: center;
+                    margin: 0;
+                    width: 100%;
+                }
+
+                
+
+                .listing-small-image-container {
+                    min-height: none;
+                    min-width: 100%;
+                    height: auto;
+                    justify-content: flex-start;
+                    border: 1px solid #0060b5;
+                }
+
+
+
+                .mobileBidding-row {
+                    display: flex;
+                    justify-content: space-evenly;
+                }
+
+                .selected-choices-row {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    justify-content: space-evenly;
+                    background: transparent;
+                    border: none;
+                    box-shadow: none;
+                    padding: 5px;
+                    margin: 0;
+                    gap: 5px;
+                }
+
+                #listings-bidding-section .selected-choices-row {
+                    border: none;
+                }
+
+            #bidding-auction-row-vehicles {
                 display: flex;
-            }
-
-            .content-title {
-                padding-top: 12px;
-                padding-bottom: 8px;
-            }
-
-            .content-title hr {
-                height: 1.8px;
-            }
-
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Custom Title Styles */
-
-            .custom-title-section {
-                width: 75%;
-                margin: 6px auto;
-            }
-            
-            
-            /* Style for the title input container */
-            .title-input {
-                display: flex;
-                flex-direction: column; /* Stack input and button vertically on smaller screens */
-                align-items: stretch; /* Stretch input and button horizontally */        
-            }
-
-            .title-prompt-button {
-                width: 100%;
-            }
-
-            .verticalAd {
-                display: none;
-            }
-
-            
-            .title-display {
-                text-align: center;
-                text-decoration: underline;
-                overflow-wrap: break-word;
-                margin: 6px 0;
-            }
-
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* image-and-details Styles */
-
-            .image-and-details {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                margin: 0;
-                gap: 10px
-            }
-
-        /* ------------------------------------------------------------------ */
-
-        /* Image Styles */
-            
-            .image-container {
-                width: 100%;
-            }
-
-            /* Image Sections */
-            .image-section {
-                border: 1.2px dashed #046df8;
-                height: 280px;
-                margin: 0 auto;
-                transition: none;
-            }
-
-            .listing-image-section {
-                border: 1.2px solid #046df8;
-            }
-
-
-            .small-image-upload {
-                border-radius: 0px 0px 2px 2px;
-            }
-
-            .image-spot,
-            .small-image-spot {
-                border: 1px dashed #046df8;
-            }
-
-            .small-image-spot {
-                display: flex;
-                flex-direction: column-reverse;
-                align-items: center;
-                height: 75px;
-            }
-            
-            .listing-small-image-spot {
-                border: none;
-                height: 60px;
-            }
-
-            .browse-label {
-                width: calc(100% - 10px);
-                margin: 5px auto;
-            }
-
-
-            /* Small Image Browse Label */
-
-            
-            .image-container {
-                flex-direction: column;
-                margin: auto;
                 align-items: center;
                 justify-content: center;
-                margin: 5px 0 0 0;
+                max-width: unset;
             }
 
 
-            /* Small Images Container */
-            .small-images-container {
-                flex-direction: row; /* Stack images vertically on smaller screens */
-                justify-content: center;
-                margin: 0;
+            /* Specific structural and layout adjustments for rows and elements */
+            #listings-bidding-section .timer-preview-row {
+                border: 1px dashed;
+            }
+
+            .selected-choices-row span {
                 width: 100%;
-            }
-
-            
-
-            .listing-small-image-container {
-                min-height: none;
-                min-width: 100%;
-                height: auto;
-                justify-content: flex-start;
-                border: 1px solid #0060b5;
-            }
-
-
-
-            .mobileBidding-row {
-                display: flex;
-                justify-content: space-evenly;
+                margin: 0;
             }
 
             .selected-choices-row {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                justify-content: space-evenly;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                padding: 5px;
+                padding: 5px 2px;
                 margin: 0;
-                gap: 5px;
             }
 
-            #listings-bidding-section .selected-choices-row {
-                border: none;
-            }
-
-        #bidding-auction-row-vehicles {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: unset;
-        }
-
-
-        /* Specific structural and layout adjustments for rows and elements */
-        #listings-bidding-section .timer-preview-row {
-            border: 1px dashed;
-        }
-
-        .selected-choices-row span {
-            width: 100%;
-            margin: 0;
-        }
-
-        .selected-choices-row {
-            padding: 5px 2px;
-            margin: 0;
-        }
-
-        .sellStyle-selected-row span {
-            width: 100%;
-            text-align: center;
-        }
-
-        
-        #bidding-auction-row-vehicles span {
-            width: auto;
-        }
-
-            .expand-full-button {
-                display: none;
-            }
-
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Vehicle Details Styles */
-
-        
-            .listing-details-box {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+            .sellStyle-selected-row span {
                 width: 100%;
-                margin-top: -10px;
-            }
-
-            .details-container {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            #partsDetails-container, #servicesDetails-container {
-                width: 100%;
-            }
-
-            .listings-details-section .lesserP, .listings-pricing-section .lesserP {
-                font-size: clamp(0.55rem, 0.3rem + .68dvw, 0.68rem);
-                margin: 0;
-                padding: 0;
-            }
-
-            .partListingDetailsBox, .partDetailsContainer {
-                width: 100%;
-                gap: 2px;
-            }
-
-            /* Adjusted Details Section Styles */
-            .details-section {
-                min-width: 100%;
-                width: 100%;
-                max-width: 100%;
-                margin: -3px 2px 0 2px;
-                padding: 4px;
-                font-size: 12px;
-                border-radius: 5px;
-            }
-
-            .listing-details-section {
-                margin: 0 2px;
-                padding: 6px 4px;
-                border-radius: 2px;
-            }
-
-            #listing-details-section {
-                width: 100%;
-            }
-            
-            .details-section h3 {
-                margin: 0;
-                margin-bottom: 8px;
-            }
-
-            .details-section h4 {
-                margin: 0;
-                margin-bottom: 4px;
-            }
-
-            #service-listing-details-section {
-                width: 100%;
-                gap: 10px;
-            }
-
-            #service-details-box {
-                gap: 2px;
-            }
-
-            .details-form {
-                flex-direction: column;
-                gap: 2px;
-            }
-
-            #details-form, .listing-details-form {
-                flex-direction: row;
-            }
-
-            #listing-vehicle-bidding {
-                flex-direction: column;
-                background: #fff;
-                margin: -5px 0 0 0;
-                padding: 0 5px 5px 5px;
-            }
-
-            .details-form label {
-                display: none;
-            }
-
-            .partVehicleRow1, .partVehicleRow2 {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 2px;
-            }
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* sellStyle Tabs Styles */
-
-
-            .header2 {
-                display: none;
-            }
-
-            .sellStyle-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 5px 2.5%;
-                gap: 2.5%;
-            }
-
-            .biddingRow1 {
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 0;
-                padding-bottom: 0;
-                margin: 0;
-                margin-top: 5px;
-                margin-bottom: -5px;
-            }
-
-            .sellStyleContainer {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .sellStyleBox {
-                min-height: auto;
-            }
-
-            .sellStyle-item {
-                margin-top: 2px;
-                gap: 5px;
-            }
-
-            .biddingRow1 .sellStyle-item {
-                margin-top: 0;
-                margin-bottom: 0;
-                padding: 0;
-            }
-
-
-            .price-input-sellStyle {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 2.5px;
-            }
-            
-            .price-input-sellStyleAP input, .price-input-sellStylePM input,
-            .fulfillment-section-sellStyle select, .negotiate-section-sellStyle select {
-                width: 100%;
-            }
-
-            .sellStyle-btn-primary {
-                width: 40%;
-            }
-
-        /* ------------------------------------------------------------------ */
-
-        /* sellStyle Display Styles */
-
-
-
-            .sellStyle-display-block {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 100%;
-                gap: 5px;
-            }
-
-            /* Style for display titles in Asking Price */
-            .display-title-sellStyle,
-            .display-title-sellStyle-parts {
-                justify-content: center;
                 text-align: center;
-            }
-
-            /* Style for display inputs in Asking Price */
-            .display-input-sellStyle,
-            .display-input-sellStyle-parts {
-                justify-content: center;
-                text-align: center;
-            }
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Custom Description Styles */
-
-            .custom-description-section {
-                text-align: center;
-            }
-
-            .vehicles-description-input {
-                min-width: unset;
-            }
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Info Section Styles */
-
-            /* Style for the info section */
-            .info-section {
-                padding: 15px;
-                margin: 2px auto;
-                text-align: center;
-            }
-
-            .info-container {
-                overflow-x: hidden;
-                overflow-y: auto;
-                max-height: 60dvh;
-            }
-
-            /* Style for the info rows */
-            .info-row {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-
-            /* Style for each info item */
-            .info-item {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-                min-height: 80px;
-                height: 80px;
-                margin-bottom: 10px;
-                padding: 15px 15px 10px 15px;
-                text-align: left;
-                gap: 5px;
-            }
-
-            .listing-info-item {
-                flex: 0 0 calc(50% - 8px);
-                max-width: calc(50% - 8px);
-                margin-bottom: 0;
-                justify-content: space-evenly;
-            }
-
-            .info-item strong {
-                font-size: 11px;
-                width: 100%;
-            }
-
-            .info-item select, .info-item input, .info-item textarea {
-                width: 100%;
-            }
-
-            .info-item textarea {
-                min-height: 60px;
             }
 
             
-
-            .contact-information {
-                padding: 0 10px 10px 10px;
-                margin-top: 10px;
+            #bidding-auction-row-vehicles span {
+                width: auto;
             }
 
-            .listing-contact-information {
-                padding-top: 5px;
-            }
-
-            .contact-information h3 {
-                margin: 0 0px 10px 0;
-            }
-
-            .listing-contact-information h3 {
-                margin-bottom: 15px;
-            }
-
-            /* Style for the contact information prompts and inputs */
-
-            .contact-item {
-                margin-bottom: 5px;
-            }
-
-            .listing-contact-item {
-                margin-bottom: 10px;
-            }
+                .expand-full-button {
+                    display: none;
+                }
 
 
 
-
-        /* ------------------------------------------------------------------ */
-
-        /* Service Description Section Styles */
-
-            .service-custom-description-header {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 100%;
-            }
-
-            .service-custom-description-titles {
-                width: 100%;
-            }
-
-        /* ------------------------------------------------------------------ */
-
-        /* Service Hours Section Styles */
             /* ------------------------------------------------------------------ */
 
-        /* Service Open Hours Styles */
+            /* Vehicle Details Styles */
 
-
-            .service-open-hours-listing {
-                text-align: center;
-                width: 100%;
-            }
-
-
-            .service-open-hours {
-                min-height: unset;
-                align-items: center;
-                justify-content: center;
-                width: 100%;
-                padding: 5px 5px 5px 5%;
-            }
-
-            .service-open-hours-listing-box {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .service-open-hours-day {
-                width: 100%;
-                justify-content: space-between;
-                gap: 5px;
-            }
-
-            .service-open-hours-day-listing {
-                flex-direction: column;
-                align-items: space-between;
-            }
-
-            .service-open-hours-day input {
-                width: 80%;
-            }
-
-        /* ------------------------------------------------------------------ */
-
-        /* Custom Services Section Styles */
-
-            .custom-services-section h2, .custom-services-section p {
-                margin: 0px;
-            }
-
-            #add-service-button {
-                width: 100%;
-            }
             
-            #service-rows-container {
-                box-sizing: border-box;
-                width: 100%;
-                height: auto;
-                display: flex;
-                flex-direction: column;
-            }
-
-            #service-rows-container2 {
-                max-height: 400px;
-            }
-
-            .service-provided-row {
-                flex-direction: column;
-            }
-
-            .service-provided-row2, .service-provided-group2 {
-                flex-direction: row;
-                align-items: flex-end;
-                gap: 2.5px;
-            }
-
-            .service-provided-group textarea {
-                max-height: 40px;
-            }
-
-
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Listing Image Styles */
-
-            /* Listing Image Container Styles */
-
-            /* Additional CSS to expand the section */
-            .expanded-section {
-                box-sizing: border-box;
-                width: 100vw; /* Full width of the viewport */
-                max-width: 100vw;
-                left: 0;
-                z-index: 999; /* Ensures the expanded section stays on top */
-            }
-        /* ------------------------------------------------------------------ */
-
-        /* Listing Details Styles */
-
-
-
-        /* ------------------------------------------------------------------ */
-
-        /* Listing sellStyle Styles */
-
-            #listing-sellStyle-display-row1,
-            #listing-sellStyle-display-row2 {
-                max-width: 94%;
-            }
-
-            .listing-sellStyle-display-block {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                width: 100%;
-                gap: 5px;
-            }
-
-            /* Style for display titles in Asking Price */
-            .listing-sellStyle-display-block label {
-                justify-content: center;
-                text-align: center;
-                width: 100%;
-                font-size: 13px;
-                margin: 0;
-            }
-
-            /* Style for display inputs in Asking Price */
-            .listing-sellStyle-display-block span {
-                justify-content: center;
-                text-align: center;
-                width: 100%;
-                font-size: 13px;
-                margin: 0;
-            }
-
-        /* ------------------------------------------------------------------ */
-
-        /* Listing Description/Info Styles */
-
-            .description-included {
-                flex-direction: column;
-                gap: 2px;
-            }
-
-            .custom-description-listings h3 {
-                padding-left: 0;
-                text-align: center;
-            }
-
-
-            /* Services Included Display */
-
-            .services-included-listing {
-                width: 100%;
-                min-height: 50px;
-            }
-
-
-
-
-
-
-            .legal {
-                box-sizing: border-box;
-                text-align: left;
-                width: 100%;
-                margin: 0;
-            }
-
-            .legal h2 {
-                margin: 10px auto;
-                font-size: 16px;
-            }
-
-            .legal h3 {
-                font-size: 14px;
-            }
-
-            .legal li {
-                font-size: 12px;
-            }
-
-            .legal p {
-                font-size: 13px;
-            }
-
-            .navDropdownInfoContainer {
-                padding: 5px;
-            }
-
-            #vehicle-listing-packages-general-info-title,
-            #part-listing-packages-general-info-title,
-            #service-listing-packages-general-info-title {
-                font-size: 14px;
-            }
-
-            .auth-info-icon {
-                font-size: 14px;
-            }
-
-            .auth-form h3 {
-                font-size: 12px;
-            }
-
-            .auth-form p {
-                font-size: 11px;
-            }
-
-            .auth-form li {
-                font-size: 10.5px;
-            }
-
-                        .auth-tooltip {
-                width: 80%;
-                height: auto;
-                display: none;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                background-color: #fff;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                padding: 10px 0 0 0;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                margin: 0 0 20px 0;
-                z-index: 1;
-            }
-
-            #auth-tooltip-p {
-                width: 90%;
-                font-size: 11.5px;
-                margin: 5px auto;
-            }
+                .listing-details-box {
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    margin-top: -10px;
+                }
+
+                .details-container {
+                    flex-direction: column;
+                    width: 100%;
+                }
+
+                #partsDetails-container, #servicesDetails-container {
+                    width: 100%;
+                }
+
+                .listings-details-section .lesserP, .listings-pricing-section .lesserP {
+                    font-size: clamp(0.55rem, 0.3rem + .68dvw, 0.68rem);
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .partListingDetailsBox, .partDetailsContainer {
+                    width: 100%;
+                    gap: 2px;
+                }
+
+                /* Adjusted Details Section Styles */
+                .details-section {
+                    min-width: 100%;
+                    width: 100%;
+                    max-width: 100%;
+                    margin: -3px 2px 0 2px;
+                    padding: 4px;
+                    font-size: 12px;
+                    border-radius: 5px;
+                }
+
+                .listing-details-section {
+                    margin: 0 2px;
+                    padding: 6px 4px;
+                    border-radius: 2px;
+                }
+
+                #listing-details-section {
+                    width: 100%;
+                }
+                
+                .details-section h3 {
+                    margin: 0;
+                    margin-bottom: 8px;
+                }
+
+                .details-section h4 {
+                    margin: 0;
+                    margin-bottom: 4px;
+                }
+
+                #service-listing-details-section {
+                    width: 100%;
+                    gap: 10px;
+                }
+
+                #service-details-box {
+                    gap: 2px;
+                }
+
+                .details-form {
+                    flex-direction: column;
+                    gap: 2px;
+                }
+
+                #details-form, .listing-details-form {
+                    flex-direction: row;
+                }
+
+                #listing-vehicle-bidding {
+                    flex-direction: column;
+                    background: #fff;
+                    margin: -5px 0 0 0;
+                    padding: 0 5px 5px 5px;
+                }
+
+                .details-form label {
+                    display: none;
+                }
+
+                .partVehicleRow1, .partVehicleRow2 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 2px;
+                }
+
+
+            /* ------------------------------------------------------------------ */
+
+            /* sellStyle Tabs Styles */
+
+
+                .header2 {
+                    display: none;
+                }
+
+                .sellStyle-row {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 2.5%;
+                    gap: 2.5%;
+                }
+
+                .biddingRow1 {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0;
+                    padding-bottom: 0;
+                    margin: 0;
+                    margin-top: 5px;
+                    margin-bottom: -5px;
+                }
+
+                .sellStyleContainer {
+                    flex-direction: column;
+                    justify-content: center;
+                }
+
+                .sellStyleBox {
+                    min-height: auto;
+                }
+
+                .sellStyle-item {
+                    margin-top: 2px;
+                    gap: 5px;
+                }
+
+                .biddingRow1 .sellStyle-item {
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    padding: 0;
+                }
+
+
+                .price-input-sellStyle {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 2.5px;
+                }
+                
+                .price-input-sellStyleAP input, .price-input-sellStylePM input,
+                .fulfillment-section-sellStyle select, .negotiate-section-sellStyle select {
+                    width: 100%;
+                }
+
+                .sellStyle-btn-primary {
+                    width: 40%;
+                }
+
+            /* ------------------------------------------------------------------ */
+
+            /* sellStyle Display Styles */
+
+
+
+                .sellStyle-display-block {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                    gap: 5px;
+                }
+
+                /* Style for display titles in Asking Price */
+                .display-title-sellStyle,
+                .display-title-sellStyle-parts {
+                    justify-content: center;
+                    text-align: center;
+                }
+
+                /* Style for display inputs in Asking Price */
+                .display-input-sellStyle,
+                .display-input-sellStyle-parts {
+                    justify-content: center;
+                    text-align: center;
+                }
+
+
+            /* ------------------------------------------------------------------ */
+
+            /* Custom Description Styles */
+
+                .custom-description-section {
+                    text-align: center;
+                }
+
+                .vehicles-description-input {
+                    min-width: unset;
+                }
+
+
+            /* ------------------------------------------------------------------ */
+
+            /* Info Section Styles */
+
+                /* Style for the info section */
+                .info-section {
+                    padding: 15px;
+                    margin: 2px auto;
+                    text-align: center;
+                }
+
+                .info-container {
+                    overflow-x: hidden;
+                    overflow-y: auto;
+                    max-height: 60dvh;
+                }
+
+                /* Style for the info rows */
+                .info-row {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                /* Style for each info item */
+                .info-item {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    min-height: 80px;
+                    height: 80px;
+                    margin-bottom: 10px;
+                    padding: 15px 15px 10px 15px;
+                    text-align: left;
+                    gap: 5px;
+                }
+
+                .listing-info-item {
+                    flex: 0 0 calc(50% - 8px);
+                    max-width: calc(50% - 8px);
+                    margin-bottom: 0;
+                    justify-content: space-evenly;
+                }
+
+                .info-item strong {
+                    font-size: 11px;
+                    width: 100%;
+                }
+
+                .info-item select, .info-item input, .info-item textarea {
+                    width: 100%;
+                }
+
+                .info-item textarea {
+                    min-height: 60px;
+                }
+
+                
+
+                .contact-information {
+                    padding: 0 10px 10px 10px;
+                    margin-top: 10px;
+                }
+
+                .listing-contact-information {
+                    padding-top: 5px;
+                }
+
+                .contact-information h3 {
+                    margin: 0 0px 10px 0;
+                }
+
+                .listing-contact-information h3 {
+                    margin-bottom: 15px;
+                }
+
+                /* Style for the contact information prompts and inputs */
+
+                .contact-item {
+                    margin-bottom: 5px;
+                }
+
+                .listing-contact-item {
+                    margin-bottom: 10px;
+                }
+
+
+
+
+            /* ------------------------------------------------------------------ */
+
+            /* Service Description Section Styles */
+
+                .service-custom-description-header {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                }
+
+                .service-custom-description-titles {
+                    width: 100%;
+                }
+
+            /* ------------------------------------------------------------------ */
+
+            /* Service Hours Section Styles */
+                /* ------------------------------------------------------------------ */
 
-            #auth-container {
-                box-sizing: border-box;
-                min-width: 100%;
-                max-width: 100%;
-                margin: 0 20px 10px 20px;
-            }
-
-            #auth-container h2 {
-                font-size: 14px;
-            }
-
-            #auth-container-p{
-                width: 90%;
-                font-size: 11px;
-                padding-bottom: 15px;
-            }
-
-            .auth-tooltip li {
-                width: 90%;
-            }
-
-            .auth-tab-form-container {
-                flex-direction: column;
-                font-size: 11px;
-                margin-top: 0px;
-            }
-
-            .auth-mobile-reverse-row {
-                flex-direction: column-reverse;
-                margin-top: 0;
-                padding-top: 0;
-            }
-
-            .auth-tab {
-                width: 90%;
-                height: 30px;
-                margin: 0px auto;
-            }
-
-            #auth-tab-container-sign-in,
-            #vehicle-legal-auth-tab-container-sign-in,
-            #part-legal-auth-tab-container-sign-in,
-            #service-legal-auth-tab-container-sign-in {
-                height: auto;
-                width: 100%;
-                border-right: none;
-                padding-bottom: 0;
-                margin: 0px 0px 5px 0px;
-            }
-
-            #auth-tab-container-log-in,
-            #vehicle-legal-auth-tab-container-log-in,
-            #part-legal-auth-tab-container-log-in,
-            #service-legal-auth-tab-container-log-in {
-                height: auto;
-                width: 100%;
-                border-left: none;
-                margin: 0px 0px 10px 0px;
-                padding-top: 5px;
-            }
-
-            .auth-form {
-                padding: 0px;
-                margin: 0px;
-            }
-
-            .auth-form h3 {
-                text-decoration: underline;
-                color: #046df8;
-                margin: 10px 5px 5px 5px;
-            }
-
-            .auth-form p {
-                margin: 10px;
-            }
-
-            .auth-form ul {
-                margin-top: 10px;
-                margin-bottom: 15px;
-            }
-
-            .auth-form-row-enter,
-            .auth-form-row-confirm,
-            .auth-form-row {
-                width: 100%;
-                padding: 5px;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 5px;
-            }
-
-            .auth-form-row-question,
-            .auth-form-row-answer {
-                width: 100%;
-                padding: 5px;
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 5px;
-            }
-
-            #auth-form-row-mobile,
-            #vehicle-legal-auth-form-row-mobile,
-            #part-legal-auth-form-row-mobile,
-            #service-legal-auth-form-row-mobile,
-            #vehicle-legal-recovery-row-mobile {
-                flex-direction: column;
-            }
-
-            .auth-form-row input {
-                width: 80%;
-                height: 18px;
-                font-size: 10.5px;
-                margin-right: 20px;
-            }
-
-            .auth-form-row-enter input,
-            .auth-form-row-confirm input,
-            .auth-form-row-question input,
-            .auth-form-row-answer input {
-                width: 80%;
-                height: 22px;
-                font-size: 11px;
-                margin-right: 20px;
-            }
-
-            .auth-form-row label {
-                text-align: right;
-                margin: 5px;
-                font-size: 10.5px;
-                width: 120px;
-            }
-
-            .auth-form-row-enter label,
-            .auth-form-row-confirm label,
-            .auth-form-row-question label,
-            .auth-form-row-answer label {
-                text-align: right;
-                margin: 5px;
-                font-size: 10.5px;
-                width: 120px;
-            }
-
-            .auth-form-button-container {
-                display: flex;
-                justify-content: flex-end;
-                width: 100%;
-                margin-right: 40px;
-            }
-
-
-
-        }
-
-        @media screen and (max-width: 650px) {
-
-
-            .expanded-section {
-                min-height: 100vw;
-                height: 100vw;
-                max-height: 100vw;
-                position: relative;
-            }
-
-            .expanded-section #listing-image-preview,
-            .expanded-section #listing-part-image-preview,
-            .expanded-section #listing-service-image-preview {
-                max-height: 75vw;
-            }
-
-            .legal {
-                box-sizing: border-box;
-                width: 100%;
-                height: auto;
-                background-color: #fff;
-                padding: 15px;
-                border-radius: 8px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-                margin: 20px 0px 20px 0px;
-            }
-
-            .navDropdownRowContainer h2 {
-                font-size: 14px;
-            }
+            /* Service Open Hours Styles */
 
-            /*Nav Container Tab*/
 
-            .addOnPackagesContainer {
-                margin-left: 10px;
-            }
-
-            .navDropdownRow,
-            .addOnPackageDropdown {
-                min-width: 250px;
-                max-width: 250px;
-            }
+                .service-open-hours-listing {
+                    text-align: center;
+                    width: 100%;
+                }
 
-            .navDropdownRow p,
-            .addOnPackageDropdown p {
-                font-size: 11px;
-            }
 
-            /*Nav Info Table*/
+                .service-open-hours {
+                    min-height: unset;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    padding: 5px 5px 5px 5%;
+                }
 
-            .navDropdownInfoContainer p {
-                font-size: 11px;
-                padding-bottom: 8px;
-            }
+                .service-open-hours-listing-box {
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+
+                .service-open-hours-day {
+                    width: 100%;
+                    justify-content: space-between;
+                    gap: 5px;
+                }
+
+                .service-open-hours-day-listing {
+                    flex-direction: column;
+                    align-items: space-between;
+                }
+
+                .service-open-hours-day input {
+                    width: 80%;
+                }
+
+            /* ------------------------------------------------------------------ */
+
+            /* Custom Services Section Styles */
+
+                .custom-services-section h2, .custom-services-section p {
+                    margin: 0px;
+                }
+
+                #add-service-button {
+                    width: 100%;
+                }
+                
+                #service-rows-container {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    flex-direction: column;
+                }
 
-            /*Table Node*/
+                #service-rows-container2 {
+                    max-height: 400px;
+                }
 
-            .navDropdownInfoGeneralNode {
-                padding: 8px 4px 8px 8px;
-                min-width: 120px;
-                max-width: 120px;
-            }
+                .service-provided-row {
+                    flex-direction: column;
+                }
 
-            .navDropdownInfoGeneralNode h3 {
-                font-size: 11px;
-            }
+                .service-provided-row2, .service-provided-group2 {
+                    flex-direction: row;
+                    align-items: flex-end;
+                    gap: 2.5px;
+                }
 
-            .navDropdownInfoGeneralNode p { 
-                font-size: 11px;
-            }
+                .service-provided-group textarea {
+                    max-height: 40px;
+                }
 
-            /*Node Prices Container*/
 
-            .NodePrice {
-                font-size: 13px !important;
-            }
 
-            #vehicle-basic-full-price,
-            #part-basic-full-price,
-            #service-basic-full-price {
-                padding-left: 8px !important;
-            }
 
-            .price-Ps-row {
-                min-width: 120px !important;
-                max-width: 120px !important;
-            }
+            /* ------------------------------------------------------------------ */
 
-            .NodePRow {
-                padding: 8px 4px !important;
-                min-width: 116px;
-                max-width: 116px;
-            }
+            /* Listing Image Styles */
 
-            /*Node P '-'*/
+                /* Listing Image Container Styles */
 
-            .NodeP-s {
-                min-width: 6px !important;
-                width: 6px !important;
-                max-width: 6px !important;
-                padding-left: 5px !important;
-            }
+                /* Additional CSS to expand the section */
+                .expanded-section {
+                    box-sizing: border-box;
+                    width: 100vw; /* Full width of the viewport */
+                    max-width: 100vw;
+                    left: 0;
+                    z-index: 999; /* Ensures the expanded section stays on top */
+                }
+            /* ------------------------------------------------------------------ */
 
-            /*Node P 'p'*/
+            /* Listing Details Styles */
 
-            .NodePp {
-                min-width: 105px !important;
-                width: 105px !important;
-                max-width: 105px !important;
-            }
 
-            /*Individual Nodes*/
 
+            /* ------------------------------------------------------------------ */
 
-            #vehicle-listing-packages-info-general h3,
-            #part-listing-packages-info-general h3,
-            #service-listing-packages-info-general h3 {
-                font-size: 13px;
-            }
+            /* Listing sellStyle Styles */
 
-            /*Column Titles Nodes*/
-            #vehicle-listing-packages-info-general .navDropdownInfoGeneralNode,
-            #part-listing-packages-info-general .navDropdownInfoGeneralNode,
-            #service-listing-packages-info-general .navDropdownInfoGeneralNode {
-                min-height: 90px;
-                max-height: 90px;
-            }
+                #listing-sellStyle-display-row1,
+                #listing-sellStyle-display-row2 {
+                    max-width: 94%;
+                }
 
-            /*Row Title Nodes*/
-            #vehicle-listing-packages-free-info-title,
-            #vehicle-listing-packages-basic-info-title,
-            #vehicle-listing-packages-verified-info-title,
-            #vehicle-listing-packages-featured-info-title,
-            #vehicle-listing-packages-exclusive-info-title,
-            #part-listing-packages-free-info-title,
-            #part-listing-packages-basic-info-title,
-            #part-listing-packages-verified-info-title,
-            #part-listing-packages-featured-info-title,
-            #part-listing-packages-exclusive-info-title,
-            #service-listing-packages-free-info-title,
-            #service-listing-packages-basic-info-title,
-            #service-listing-packages-verified-info-title,
-            #service-listing-packages-featured-info-title,
-            #service-listing-packages-exclusive-info-title {
-                padding-left: 10px;
-            }
+                .listing-sellStyle-display-block {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                    gap: 5px;
+                }
 
-            /*Container Border Radius*/
-
-            .addOnPackageDropdownOptions {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: flex-start;
-                box-sizing: border-box;
-                min-width: 260px;
-                max-width: 260px;
-                height: auto;
-                margin: 0 0 5px 0;
-                padding: 15px;
-                border-bottom: 1px solid #ccc;
-                border-left: 1px solid #ccc;
-                border-right: #e4e4e5;
-                overflow-x: scroll;
-                overflow-y: hidden;
+                /* Style for display titles in Asking Price */
+                .listing-sellStyle-display-block label {
+                    justify-content: center;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 13px;
+                    margin: 0;
+                }
+
+                /* Style for display inputs in Asking Price */
+                .listing-sellStyle-display-block span {
+                    justify-content: center;
+                    text-align: center;
+                    width: 100%;
+                    font-size: 13px;
+                    margin: 0;
+                }
+
+            /* ------------------------------------------------------------------ */
+
+            /* Listing Description/Info Styles */
+
+                .description-included {
+                    flex-direction: column;
+                    gap: 2px;
+                }
+
+                .custom-description-listings h3 {
+                    padding-left: 0;
+                    text-align: center;
+                }
+
+
+                /* Services Included Display */
+
+                .services-included-listing {
+                    width: 100%;
+                    min-height: 50px;
+                }
+
+
+
+
+
+
+                .legal {
+                    box-sizing: border-box;
+                    text-align: left;
+                    width: 100%;
+                    margin: 0;
+                }
+
+                .legal h2 {
+                    margin: 10px auto;
+                    font-size: 16px;
+                }
+
+                .legal h3 {
+                    font-size: 14px;
+                }
+
+                .legal li {
+                    font-size: 12px;
+                }
+
+                .legal p {
+                    font-size: 13px;
+                }
+
+                .navDropdownInfoContainer {
+                    padding: 5px;
+                }
+
+                #vehicle-listing-packages-general-info-title,
+                #part-listing-packages-general-info-title,
+                #service-listing-packages-general-info-title {
+                    font-size: 14px;
+                }
+
+                .auth-info-icon {
+                    font-size: 14px;
+                }
+
+                .auth-form h3 {
+                    font-size: 12px;
+                }
+
+                .auth-form p {
+                    font-size: 11px;
+                }
+
+                .auth-form li {
+                    font-size: 10.5px;
+                }
+
+                            .auth-tooltip {
+                    width: 80%;
+                    height: auto;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                    padding: 10px 0 0 0;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    margin: 0 0 20px 0;
+                    z-index: 1;
+                }
+
+                #auth-tooltip-p {
+                    width: 90%;
+                    font-size: 11.5px;
+                    margin: 5px auto;
+                }
+
+                #auth-container {
+                    box-sizing: border-box;
+                    min-width: 100%;
+                    max-width: 100%;
+                    margin: 0 20px 10px 20px;
+                }
+
+                #auth-container h2 {
+                    font-size: 14px;
+                }
+
+                #auth-container-p{
+                    width: 90%;
+                    font-size: 11px;
+                    padding-bottom: 15px;
+                }
+
+                .auth-tooltip li {
+                    width: 90%;
+                }
+
+                .auth-tab-form-container {
+                    flex-direction: column;
+                    font-size: 11px;
+                    margin-top: 0px;
+                }
+
+                .auth-mobile-reverse-row {
+                    flex-direction: column-reverse;
+                    margin-top: 0;
+                    padding-top: 0;
+                }
+
+                .auth-tab {
+                    width: 90%;
+                    height: 30px;
+                    margin: 0px auto;
+                }
+
+                #auth-tab-container-sign-in,
+                #vehicle-legal-auth-tab-container-sign-in,
+                #part-legal-auth-tab-container-sign-in,
+                #service-legal-auth-tab-container-sign-in {
+                    height: auto;
+                    width: 100%;
+                    border-right: none;
+                    padding-bottom: 0;
+                    margin: 0px 0px 5px 0px;
+                }
+
+                #auth-tab-container-log-in,
+                #vehicle-legal-auth-tab-container-log-in,
+                #part-legal-auth-tab-container-log-in,
+                #service-legal-auth-tab-container-log-in {
+                    height: auto;
+                    width: 100%;
+                    border-left: none;
+                    margin: 0px 0px 10px 0px;
+                    padding-top: 5px;
+                }
+
+                .auth-form {
+                    padding: 0px;
+                    margin: 0px;
+                }
+
+                .auth-form h3 {
+                    text-decoration: underline;
+                    color: #046df8;
+                    margin: 10px 5px 5px 5px;
+                }
+
+                .auth-form p {
+                    margin: 10px;
+                }
+
+                .auth-form ul {
+                    margin-top: 10px;
+                    margin-bottom: 15px;
+                }
+
+                .auth-form-row-enter,
+                .auth-form-row-confirm,
+                .auth-form-row {
+                    width: 100%;
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .auth-form-row-question,
+                .auth-form-row-answer {
+                    width: 100%;
+                    padding: 5px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                #auth-form-row-mobile,
+                #vehicle-legal-auth-form-row-mobile,
+                #part-legal-auth-form-row-mobile,
+                #service-legal-auth-form-row-mobile,
+                #vehicle-legal-recovery-row-mobile {
+                    flex-direction: column;
+                }
+
+                .auth-form-row input {
+                    width: 80%;
+                    height: 18px;
+                    font-size: 10.5px;
+                    margin-right: 20px;
+                }
+
+                .auth-form-row-enter input,
+                .auth-form-row-confirm input,
+                .auth-form-row-question input,
+                .auth-form-row-answer input {
+                    width: 80%;
+                    height: 22px;
+                    font-size: 11px;
+                    margin-right: 20px;
+                }
+
+                .auth-form-row label {
+                    text-align: right;
+                    margin: 5px;
+                    font-size: 10.5px;
+                    width: 120px;
+                }
+
+                .auth-form-row-enter label,
+                .auth-form-row-confirm label,
+                .auth-form-row-question label,
+                .auth-form-row-answer label {
+                    text-align: right;
+                    margin: 5px;
+                    font-size: 10.5px;
+                    width: 120px;
+                }
+
+                .auth-form-button-container {
+                    display: flex;
+                    justify-content: flex-end;
+                    width: 100%;
+                    margin-right: 40px;
+                }
+
+
+
+            }
+
+            @media screen and (max-width: 650px) {
+
+
+                .expanded-section {
+                    min-height: 100vw;
+                    height: 100vw;
+                    max-height: 100vw;
+                    position: relative;
+                }
+
+                .expanded-section #listing-image-preview,
+                .expanded-section #listing-part-image-preview,
+                .expanded-section #listing-service-image-preview {
+                    max-height: 75vw;
+                }
+
+                .legal {
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: auto;
+                    background-color: #fff;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+                    margin: 20px 0px 20px 0px;
+                }
+
+                .navDropdownRowContainer h2 {
+                    font-size: 14px;
+                }
+
+                /*Nav Container Tab*/
+
+                .addOnPackagesContainer {
+                    margin-left: 10px;
+                }
+
+                .navDropdownRow,
+                .addOnPackageDropdown {
+                    min-width: 250px;
+                    max-width: 250px;
+                }
+
+                .navDropdownRow p,
+                .addOnPackageDropdown p {
+                    font-size: 11px;
+                }
+
+                /*Nav Info Table*/
+
+                .navDropdownInfoContainer p {
+                    font-size: 11px;
+                    padding-bottom: 8px;
+                }
+
+                /*Table Node*/
+
+                .navDropdownInfoGeneralNode {
+                    padding: 8px 4px 8px 8px;
+                    min-width: 120px;
+                    max-width: 120px;
+                }
+
+                .navDropdownInfoGeneralNode h3 {
+                    font-size: 11px;
+                }
+
+                .navDropdownInfoGeneralNode p { 
+                    font-size: 11px;
+                }
+
+                /*Node Prices Container*/
+
+                .NodePrice {
+                    font-size: 13px !important;
+                }
+
+                #vehicle-basic-full-price,
+                #part-basic-full-price,
+                #service-basic-full-price {
+                    padding-left: 8px !important;
+                }
+
+                .price-Ps-row {
+                    min-width: 120px !important;
+                    max-width: 120px !important;
+                }
+
+                .NodePRow {
+                    padding: 8px 4px !important;
+                    min-width: 116px;
+                    max-width: 116px;
+                }
+
+                /*Node P '-'*/
+
+                .NodeP-s {
+                    min-width: 6px !important;
+                    width: 6px !important;
+                    max-width: 6px !important;
+                    padding-left: 5px !important;
+                }
+
+                /*Node P 'p'*/
+
+                .NodePp {
+                    min-width: 105px !important;
+                    width: 105px !important;
+                    max-width: 105px !important;
+                }
+
+                /*Individual Nodes*/
+
+
+                #vehicle-listing-packages-info-general h3,
+                #part-listing-packages-info-general h3,
+                #service-listing-packages-info-general h3 {
+                    font-size: 13px;
+                }
+
+                /*Column Titles Nodes*/
+                #vehicle-listing-packages-info-general .navDropdownInfoGeneralNode,
+                #part-listing-packages-info-general .navDropdownInfoGeneralNode,
+                #service-listing-packages-info-general .navDropdownInfoGeneralNode {
+                    min-height: 90px;
+                    max-height: 90px;
+                }
+
+                /*Row Title Nodes*/
+                #vehicle-listing-packages-free-info-title,
+                #vehicle-listing-packages-basic-info-title,
+                #vehicle-listing-packages-verified-info-title,
+                #vehicle-listing-packages-featured-info-title,
+                #vehicle-listing-packages-exclusive-info-title,
+                #part-listing-packages-free-info-title,
+                #part-listing-packages-basic-info-title,
+                #part-listing-packages-verified-info-title,
+                #part-listing-packages-featured-info-title,
+                #part-listing-packages-exclusive-info-title,
+                #service-listing-packages-free-info-title,
+                #service-listing-packages-basic-info-title,
+                #service-listing-packages-verified-info-title,
+                #service-listing-packages-featured-info-title,
+                #service-listing-packages-exclusive-info-title {
+                    padding-left: 10px;
+                }
+
+                /*Container Border Radius*/
+
+                .addOnPackageDropdownOptions {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    box-sizing: border-box;
+                    min-width: 260px;
+                    max-width: 260px;
+                    height: auto;
+                    margin: 0 0 5px 0;
+                    padding: 15px;
+                    border-bottom: 1px solid #ccc;
+                    border-left: 1px solid #ccc;
+                    border-right: #e4e4e5;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                }
+
+                .addOnPackageContainer li {
+                    font-size: 12px;
+                    white-space: nowrap;
+                }
+                
             }
 
-            .addOnPackageContainer li {
-                font-size: 12px;
-                white-space: nowrap;
-            }
-            
-        }
         </style>
+
     </head>
     <body>
+
         <!-- -- Back Planes -- -->
 
         <div id="Back">
@@ -8963,7 +9492,6 @@
 
             <div class="backPlane" id="plane3">
 
-                
                 <!--mainSubNav(Head)-->
                 <div class="subNav" id="mainSubNav" style="display: none;">
 
@@ -9273,154 +9801,117 @@
 
                 <div class="subNav bodySubNav" id="bodySubNav-help" style="display: none;">
 
-                    <div class="subNavGroup subNavGroup1">
-
-                        <!--subNavHome-->
-                        <a href="https://www.worldmotormarket.com" style="text-decoration: none; color: inherit;">
-                            <div class="subNavRow subNavBlue">
-                                <span class="subNavItem">Home</span>
-                                <i class="subNavButton subHomeButton fa-solid fa-home"></i>
+                    <div class="transparent column">
+                        <div class="subNavGroup subNavBlueWhite">                                                               
+                            <!--subNavHelp-->
+                            <div class="subNavRow" data-target="#mainSubNav-help" data-slug="#mainSubMore-help">
+                                <span class="subNavItem center">FAQs/Help</span>
                             </div>
-                        </a>
-
-                        <hr class="navLinksBoxShadow shadow">
-
-                        <div class="subNavGroup">
-                        
-                            <!--subNavVehicles-->
-                            <a href="https://www.worldmotormarket.com/vehicles" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Vehicles</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>
-                            </a>
-                            
-                            <!--subNavParts-->
-                            <a href="https://www.worldmotormarket.com/parts" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Parts/Supplies</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>
-                            </a>
-                            
-                            <!--subNavServices-->
-                            <a href="https://www.worldmotormarket.com/services" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Services</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>
-                            </a>
-
                         </div>
 
-                        <hr class="navLinksBoxShadow shadow">
+                        <div class="subNavGroup subNavGroup1">
 
-                        <div class="subNavGroup">
-                        
-                            <!--subNavListings-->
-                            <a href="https://www.worldmotormarket.com/listings-template" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Listings Template</span>
-                                    <i class="subNavButton subPlusButton">+</i>
+                            <!-- Hidden Inner FAQ Sheet Wrapper -->
+                            <div id="marketplace-faq-list-container" class="column" style="width: 100%; align-items: flex-start; gap: 4px; padding-left: 6px; margin-top: 4px; background: transparent; border: none; box-shadow: none;">
+                                
+                                <!-- Question 1: Buying/Selling Vehicles & Parts -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-1" data-slug="#mkt-faq-chev-1" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">How do I list or buy vehicles and parts?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-1" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-1" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Posting takes minutes—just upload clear photos, specify details, and set your price. New listings go through a quick review and approval process that takes up to 24 hours. Buyers can browse active listings directly or use our filters to find exact components and cars nearby.</p>
+                                    </div>
                                 </div>
-                            </a>
 
-                            <!--subNavMap-->
-                            <a href="https://www.worldmotormarket.com/maps" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Map</span>
-                                    <i class="subNavButton subPlusButton">+</i>
+                                <!-- Question 2: Rental Feature Status -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-2" data-slug="#mkt-faq-chev-2" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">When will vehicle and tool rentals launch?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-2" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-2" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Our peer-to-peer rental system is currently in development! Soon, owners will be able to rent out specialty vehicles, trailers, and heavy shop tools with integrated scheduling and security deposits.</p>
+                                    </div>
                                 </div>
-                            </a>
 
-                            <!--subNavBlog-->
-                            <a href="https://www.worldmotormarket.com/blognews" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Blog/News</span>
-                                    <i class="subNavButton subPlusButton">+</i>
-                                </div>  
-                            </a> 
-
-                            <!--subNavAccount-->
-                            <a href="https://www.worldmotormarket.com/oasis-member" style="text-decoration: none; color: inherit;">
-                                <div class="subNavRow">
-                                    <span class="subNavItem">Oasis Member</span>
-                                    <i class="subNavButton subPlusButton">+</i>
+                                <!-- Question 3: Service Providers & Individual Services -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-3" data-slug="#mkt-faq-chev-3" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">How do service provider profiles and menu offerings work?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-3" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-3" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Shops and mechanics get a dedicated business profile showing their core info, location, and reviews. Underneath, they can list specific individual services (e.g., diagnostics, oil changes, detailing) with custom pricing and descriptions.</p>
+                                    </div>
                                 </div>
-                            </a>
 
+                                <!-- Question 4: Advertising System for Service Providers -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-4" data-slug="#mkt-faq-chev-4" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">How do service ads display across the site?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-4" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-4" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Providers can promote their business via standard listings or separate ad placements. These promotional ads rotate dynamically in randomized order across designated sections throughout the platform to maximize exposure.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Question 5: Safety and Transactions -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-5" data-slug="#mkt-faq-chev-5" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">Are transactions and bookings handled on the platform?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-5" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-5" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Yes, users can message sellers, book service appointments, and process payments securely through our integrated gateway, keeping your transaction history centralized in one dashboard.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Question 6: Verified Service Providers -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-6" data-slug="#mkt-faq-chev-6" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">How do I know a service provider is trusted?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-6" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-6" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Look for the "Verified Pro" badge on provider profiles. This indicates that our team has reviewed their business credentials, licensing, and insurance details, alongside authentic customer ratings and reviews.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Question 7: Direct Messaging and Inquiries -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-7" data-slug="#mkt-faq-chev-7" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">Can I message sellers or service shops directly?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-7" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-7" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Absolutely. Every vehicle listing, part, and service profile features an integrated chat button allowing you to ask questions, negotiate prices, or coordinate service timelines in real time.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Question 8: Editing or Removing Listings/Ads -->
+                                <div class="column" style="width: 100%; align-items: flex-start; background: transparent; border: none; box-shadow: none; margin: 0; padding: 2px;">
+                                    <div class="row subNavRow" data-target="#mkt-faq-ans-8" data-slug="#mkt-faq-chev-8" style="width: 100%; justify-content: space-between; background: transparent; border: none; box-shadow: none; margin: 0; padding: 0;">
+                                        <span class="fineP" style="font-weight: 600; text-align: left; max-width: 85%;">How do I update or delete my listing or ad campaign?</span>
+                                        <i class="IconC fa-solid fa-chevron-down subMoreToggle" id="mkt-faq-chev-8" style="font-size: 0.45rem;"></i>
+                                    </div>
+                                    <div id="mkt-faq-ans-8" class="subNavRow2" style="display: none;">
+                                        <p class="fineP textMuted" style="text-align: left; line-height: 1.3; opacity: 0.85;">Log into your user dashboard, navigate to the "My Listings" or "Active Ads" tab, and select the item you wish to modify. You can update pricing, swap out promotional graphics, or mark items as sold instantly.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
 
-                    <div class="subNavGroup subNavBlueWhite">
-                                                                                                    
-                        <!--subNavHelp-->
-                        <div class="subNavRow" data-target="#mainSubNav-help" data-slug="#mainSubMore-help">
-                            <span class="subNavItem">FAQs/Help</span>
-                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="mainSubMore-help"></i>
-                        </div>  
-                        <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="mainSubNav-help" style="display: none;">
-                            <hr class="subNavHr">
-                            <div class="subNavMoreBox">
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Frequently Asked Questions</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Help</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">About Us</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/terms-of-services" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Terms of Services</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
+                    <div class="subNavGroup subNavGroup1">
+                        <!--subNavHome-->
+                        <a href="https://www.worldmotormarket.com/faqs" style="text-decoration: none; color: inherit;">
+                            <div class="subNavRow subNavBlue">
+                                <span class="subNavItem center">See More</span>
                             </div>
-                        </div>
-
-                        <!--subNavSettings-->
-                        <div class="subNavRow" data-target="#mainSubNav-settings" data-slug="#mainSubMore-settings">
-                            <span class="subNavItem">Settings</span>
-                            <i class="subNavButton displayIcon subMoreToggle fa-solid fa-chevron-down" id="mainSubMore-settings"></i>
-                        </div>
-                        <!--subNavMoreHelp-->
-                        <div class="subNavMore" id="mainSubNav-settings" style="display: none;">
-                            <hr class="subNavHr">
-                            <div class="subNavMoreBox">
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">General</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/faqshelp" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Preferences</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                                <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
-                                    <div class="subNavRow2">
-                                        <span class="subNavItem">Account</span>
-                                        <i class="subNavButton subPlusButton">+</i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
+                        </a>
                     </div>
                 </div>
 
@@ -9624,11 +10115,11 @@
                                 </div>
 
                                 <div class="sideBarPageBody">
-                                    <div class="initialSideBarPageBody" style="display: none;">
+                                    <div class="initialSideBarPageBody">
                                         <p class="lesserP">There are currently no items in your cart</p>
                                         <p class="lesserP">Please refresh the page or shop now!</p>
                                     </div>
-                                    <div class="subContent-cart">
+                                    <div class="subContent-cart" style="display: none;">
                                         <div class="cartBody">
                                             <div class="cartPart cartBody1">
                                                 <div class="cartBodyImg">
@@ -9729,109 +10220,9 @@
                                             </div>
                                         </div>
                                         <hr class="shadow">
-                                        <div class="cartBody">
-                                            <div class="cartPart cartBody1">
-                                                <div class="cartBodyImg">
-                                                    <div class="sideBodyHeadLeft sideBodyHeadLeft2">
-                                                        <label class="custom-checkbox">
-                                                            <input type="checkbox">
-                                                            <div class="checkbox">
-                                                                <i class="fineIcon fa-solid fa-check"></i>
-                                                            </div>
-                                                        </label>
-                                                        <h5 class="lesserP" id="cartActive-cartNumber">1.</h5>
-                                                        <h5 class="lesserP" id="cartActive-vehicleType">Car</h5>
-                                                    </div>
-                                                    <img src="IMG_5260.JPG">
-                                                </div>
-                                                <div class="cartBodyAlt">
-                                                    <p class="lesserP">This is an example text for what the alt of an image may be.</p>
-                                                </div>
-                                                <div class="cartQuantity cartQuantityMobile">
-                                                    <p class="lesserP cartBodyListItem">Quantity:</p>
-                                                    <div class="cartBodyListItem2">
-                                                        <i class="displayIcon fa-solid fa-minus"></i>
-                                                        <h5 class="lesserP cartBodyListItem" id="cartActive-quantity">1</h5>
-                                                        <i class="displayIcon fa-solid fa-plus"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cartPart cartBody2">
-                                                <div class="cartBodyList cartBodyDetails">
-                                                    <div class="cartBodyList1">
-                                                        <h6>Vehicle Details</h6>
-                                                        <div class="cartBodyListRow">
-                                                            <p class="lesserP cartBodyListItem">Make:</p>
-                                                            <p class="lesserP cartBodyListItem" id="cartActive-make">Hyundai</p>
-                                                        </div>
-                                                        <div class="cartBodyListRow">
-                                                            <p class="lesserP cartBodyListItem">Model:</p>
-                                                            <p class="lesserP cartBodyListItem" id="cartActive-model">Tucson</p>
-                                                        </div>
-                                                        <div class="cartBodyListRow">
-                                                            <p class="lesserP cartBodyListItem">Year:</p>
-                                                            <p class="lesserP cartBodyListItem" id="cartActive-year">2018</p>
-                                                        </div>
-                                                        <div class="cartBodyListRow">
-                                                            <p class="lesserP cartBodyListItem">Color:</p>
-                                                            <p class="lesserP cartBodyListItem" id="cartActive-color">Grey</p>
-                                                        </div>
-                                                        <div class="cartBodyList2" id="cartBodyList2" style="display: none;">
-                                                            <div class="cartBodyListRow">
-                                                                <p class="lesserP cartBodyListItem">Trim:</p>
-                                                                <p class="lesserP cartBodyListItem" id="cartActive-trim">UT</p>
-                                                            </div>
-                                                            <div class="cartBodyListRow">
-                                                                <p class="lesserP cartBodyListItem">Theme:</p>
-                                                                <p class="lesserP cartBodyListItem" id="cartActive-condition">Used, Needs Repair</p>
-                                                            </div>
-                                                            <div class="cartBodyListRow">
-                                                                <p class="lesserP cartBodyListItem">Color:</p>
-                                                                <p class="lesserP cartBodyListItem" id="cartActive-mileage">100,000</p>
-                                                            </div>
-                                                            <div class="cartBodyListRow">
-                                                                <p class="lesserP cartBodyListItem">Drive Type:</p>
-                                                                <p class="lesserP cartBodyListItem" id="cartActive-driveType">All-Wheel Drive</p>
-                                                            </div>
-                                                            <div class="cartBodyListRow">
-                                                                <p class="lesserP cartBodyListItem">Fuel Type:</p>
-                                                                <p class="lesserP cartBodyListItem" id="cartActive-fuelType">Regular, 87</p>
-                                                            </div>
-                                                        </div>
-                                                        <i class="displayIcon fa-solid fa-ellipsis" data-target="cartBodyList2"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="cartBodyList cartBodyList1 cartBodyCheckOut">
-                                                    <h6>Checkout</h6>
-                                                    <div class="cartBodyListRow cartQuantityDesktop">
-                                                        <p class="lesserP cartBodyListItem">Quantity:</p>
-                                                        <div class="cartBodyListItem2">
-                                                            <i class="displayIcon fa-solid fa-minus"></i>
-                                                            <p class="lesserP cartBodyListItem" id="cartActive-quantity">1</p>
-                                                            <i class="displayIcon fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cartBodyListRow">
-                                                        <p class="lesserP cartBodyListItem">Price:</p>
-                                                        <p class="lesserP cartBodyListItem" id="cartActive-price">$12,000</p>
-                                                    </div>
-                                                    <hr class="shadow">
-                                                    <div class="cartBodyListRow">
-                                                        <span class="lesserP cartBodyListItem">Sub Total:</span>
-                                                        <p class="lesserP cartBodyListItem" id="cartActive-subtotal">$12,000</p>
-                                                    </div>
-
-                                                    <div class="cartBodyListRow" id="cartBodyListRow-delivery">
-                                                        <p class="lesserP cartBodyListItem">Delivery Option:</p>
-                                                        <p class="lesserP cartBodyListItem" id="cartActive-deliveryOption">Pick Up</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class="shadow">
                                     </div>
                                 </div>
-                                <div class="cartTotals">
+                                <div class="cartTotals" style="display: none;">
                                     <h5>Cart Totals</h5>
                                     <div class="cartTotalsContainer">
                                         <div class="cartTotalsColumn1">
@@ -9906,11 +10297,11 @@
                                     </div>
                                 </div>
                                 <div class="sideBarPageBody" id="sideBarPageBody-cartHistory">
-                                    <div class="initialSideBarPageBody" style="display: none;">
+                                    <div class="initialSideBarPageBody">
                                         <p class="lesserP">No Cart History found</p>
                                         <p class="lesserP">Please refresh the page or start your journey now!</p>
                                     </div>
-                                    <div class="subContent-cart">
+                                    <div class="subContent-cart" style="display: none;">
                                         <div class="subContentContainer">
                                             <div class="subNavRow subNavRow3">
                                                 <label class="custom-checkbox">
@@ -9925,139 +10316,20 @@
                                                 <p class="lesserP subNavRowP2">11/09/1994</p>
                                                 <i class="displayIcon fa-solid fa-ellipsis"></i>
                                             </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_5260.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
-                                                <p class="lesserP subNavRowP1">Hyundai Sante Fe</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_6702.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
-                                                <p class="lesserP subNavRowP1">Jeep Cherokee</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_5414.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
-                                                <p class="lesserP subNavRowP1">windsheild Wiper</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_5332.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
-                                                <p class="lesserP subNavRowP1">windsheild Wiper</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_6149.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
-                                                <p class="lesserP subNavRowP1">Car Mat</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_6727.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
-                                                <p class="lesserP subNavRowP1">Buggati z12</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_5643.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
-                                                <p class="lesserP subNavRowP1">BMW H2</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_5414.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Part</span>
-                                                <p class="lesserP subNavRowP1">'Tires (Set of 4)'</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
-                                            <div class="subNavRow subNavRow3">
-                                                <label class="custom-checkbox">
-                                                    <input type="checkbox">
-                                                    <div class="checkbox">
-                                                        <i class="fineIcon fa-solid fa-check"></i>
-                                                    </div>
-                                                </label>
-                                                <img class="subNavRowImg" src="IMG_6724.JPG">
-                                                <span class="lesserP subNavItem subNavRowSpan">Car</span>
-                                                <p class="lesserP subNavRowP1">Oldsmobile Legacy</p>
-                                                <p class="lesserP subNavRowP2">11/09/1994</p>
-                                                <i class="displayIcon fa-solid fa-ellipsis"></i>
-                                            </div>
                                         </div>
                                         <div class="displayIcons pageNumbers">
                                             <i class="displayIcon pageNumber">&lt;&lt;</i>
                                             <i class="displayIcon pageNumber fa-solid fa-minus"></i>
-                                            <i class="displayIcon pageNumber">1</i>
-                                            <i class="displayIcon pageNumber">2</i>
-                                            <i class="displayIcon pageNumber">3</i>
-                                            <i class="displayIcon pageNumber">4</i>
-                                            <i class="displayIcon pageNumber">5</i>
+                                            <div class="pageNumbersBox">
+                                                <i class="displayIcon pageNumber">1</i>
+                                            </div>
                                             <i class="displayIcon pageNumber fa-solid fa-plus"></i>
                                             <i class="displayIcon pageNumber">>></i>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <div class="cartTotals" id="cartTotals-cartHistory">
+                                <div class="cartTotals" id="cartTotals-cartHistory" style="display: none;">
                                     <h5>Cart Insights</h5>
                                     <div class="cartTotalsContainer cartsTotalsContainerHistory">
                                         <div class="cartTotalsHistoryBox cartTotalsColumn1-history2">
@@ -10319,7 +10591,8 @@
 
                         </div>
                     </div>
-                </div>                                                
+                </div>    
+                                                            
                 <!-- Dropdown Menu -->
                 <div class="sideBar" id="chat-dropdown">
                     <div class="subNavGroup subNavGroup1 sideBarContent">
@@ -11061,7 +11334,7 @@
 
                             <!-- mainTitle -->
                             <div class="sectionHead mainSectionHead">
-                                <h2 class="sectionHeadH2" id="mainSectionHeadH2" data-section="Home">Listings Template</h2>
+                                <h2 class="sectionHeadH2" id="mainSectionHeadH2" data-section="Home">Home Page</h2>
                             </div>
 
                             <!-- mainSearchBar -->
@@ -16927,7 +17200,7 @@
                     </section>
 
 
-<!-- Home Tail -->
+                    <!-- Home Tail -->
                     <section class="Tail part" id="mainTail">
                         <div class="IconAs mainTailIcons">
                             <i class="nav-trigger IconA fa-solid fa-gear"
@@ -16943,8 +17216,13 @@
                             <h6 class="fineP">2026</h6>
                         </div>
                         <div class="tailButtons">
-                            <button class="lesserP smallButton moreButton">About Us</button>
-                            <button class="lesserP smallButton moreButton">Contact Us</button>
+                            
+                            <a href="https://www.worldmotormarket.com/about-us" style="text-decoration: none; color: inherit;">
+                                <button class="lesserP smallButton moreButton">About Us</button>
+                            </a>
+                            <a href="https://www.worldmotormarket.com/contact-us" style="text-decoration: none; color: inherit;">
+                                <button class="lesserP smallButton moreButton">Contact Us</button>
+                            </a>
                         </div>
                         <i class="IconA fa-solid fa-user"></i>
                     </section>
@@ -18404,7 +18682,6 @@
                     </div>
                 </section>
 
-
                 
                 <section class="nav-content-blur" id="nav-content-blur" style="display: none;">
                     <div class="blur-display ad-content-display">
@@ -19404,10 +19681,9 @@
             </div>
             </div>
             </div>
-            </div>
         </div>
 
-
+        
         <script id="colorPalette_script">
 
             const white1 = '#fff';
@@ -19435,12 +19711,12 @@
                 intLightNorm: {
                     
                     //General
-                    body: {background: `${white1}`, color: `${black2}`},
+                    'html, body': {background: 'linear-gradient(150deg, #9BD0FF 0%, #F0F8FF 12.5%, #BFE2FF 25%, #E0F2FF 37.5%, #9BD0FF 50%, #F0F8FF 62.5%, #BFE2FF 75%, #E0F2FF 87.5%, #9BD0FF 100%)'},
                     section: {background: `${white2}`, border: `1.5px solid ${grey1}`},
                     'section:hover': {background: `${white1}`, border: `1.5px solid ${white3}`},
                     div: {background: `linear-gradient(178deg, ${white1} 0%, ${grey1} 100%)`, border: `1px solid ${grey2}`},
                     '.backPlane': {background: `${white1}`, border: `${white1}`},
-                    '#Home': {background: `${white1}`, border: `${white1}`},
+                    '#Home, #plane3': {background: 'linear-gradient(170deg, #9BD0FF 0%, #F0F8FF 12.5%, #BFE2FF 25%, #E0F2FF 37.5%, #9BD0FF 50%, #F0F8FF 62.5%, #CBEB9B 80%, #9BCF74 100%) fixed'},
                     
                     //Text
                     h1: {color: `${cobalt1}`},
@@ -19526,13 +19802,6 @@
                     '.subNavBlueWhite': {background: `linear-gradient(178deg, ${white1} 0%, ${whiteBlue} 100%)`, border: `1.5px solid ${whiteBlueNeon}`},
                     '.subHomeButton': {color: `${white2}`},
                     '.subNavBlue .subNavRow, .subNavBlue .subNavRow2': {color: `${black1}`},
-
-                    '.header': {background: `linear-gradient(145deg, #f7f7f7, #e0e0e0)`},
-                    '.mainImgBox': {background: `${black1}`},
-                    '.custom-services-section': {background: `linear-gradient(178deg, ${white1} 0%, ${whiteBlue} 100%)`, border: `1.5px solid ${whiteBlueNeon}`},
-                    '#service-rows-container2': {background: `linear-gradient(145deg, #f7f7f7, #e0e0e0)`},
-                    '.service-row-template': {border: `1.8px solid ${cobaltLight}`},
-                    '.service-row-template:hover': {border: `1.8px solid ${cobalt1}`},
                 },
                 dark: {},
                 custom: {}
@@ -19583,6 +19852,8 @@
                     
                     setTimeout(() => {
                         p3.style.opacity = '1';
+
+                        document.body.style.borderTop = "1.2px solid #BFE2FF";
                     }, 150);
 
                 }, 650);
@@ -19761,143 +20032,6 @@
             }
 
             
-        </script>
-
-        <!-- Include Leaflet JavaScript file -->
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <!-- Include Bootstrap JavaScript for responsive behavior -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/@popperjs/core@^2.0.0"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-                <script>
-
-            var map = L.map('map').setView([39.7392, -104.9903], 13);
-            var markers = []; // Array to store markers
-
-                L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-                    maxZoom: 20,
-                    attribution: 'Map data &copy; Google'
-                }).addTo(map);
-
-            // Create the starting marker with the 'black-marker-icon' class for a black marker
-            var startingMarker = L.marker([39.7392, -104.9903], { icon: L.divIcon({ className: 'black-marker-icon' }) }).addTo(map);
-
-            // Add a popup to the starting marker
-            startingMarker.bindPopup("<b>Hello, Denver!</b><br>Denver, CO").openPopup();
-
-            function searchByZipcode(zipcode) {
-                var apiUrl = `https://api.zippopotam.us/us/${zipcode}`;
-            
-                fetch(apiUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Location not found');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Extract latitude and longitude from the API response
-                        var latitude = parseFloat(data.places[0].latitude);
-                        var longitude = parseFloat(data.places[0].longitude);
-            
-                        // Create a marker for the location
-                        var marker = L.marker([latitude, longitude]);
-                        markers.push(marker); // Add the marker to the array
-            
-                        // Add the marker to the map
-                        marker.addTo(map);
-            
-                        // Update the map view to the coordinates
-                        map.setView([latitude, longitude], 13);
-                    })
-                    .catch(error => alert(error.message));
-            }
-            
-            function searchByPlaceName(placeName) {
-                var nominatimUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${placeName}`;
-
-                fetch(nominatimUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Address or Place not found');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // Loop through the results and create markers for each location
-                        for (var i = 0; i < data.length; i++) {
-                            var latitude = parseFloat(data[i].lat);
-                            var longitude = parseFloat(data[i].lon);
-
-                            // Extract business description, address, and zipcode
-                            var business = data[i].display_name;
-                            var address = data[i].address;
-                            var zipcode = data[i].postcode;
-
-                            // Create a marker for the location
-                            var marker = L.marker([latitude, longitude]);
-
-                            business = business.replace(/([^0-9]),/g, '$1<br>');
-
-                            // Split the string at line breaks
-                            const lines = business.split('<br>');
-
-                            // Limit it to 5 line breaks
-                            const limitedLines = lines.slice(0, 5).join('<br>');
-
-                            // Join any remaining lines after the 5th line to the 5th line with a comma (no space)
-                            const remainingLines = (lines.slice(5).join('') ? ',' : '') + lines.slice(5).join('');
-
-                            marker.bindPopup(`
-                                <div class="custom-popup">
-                                    <h3>${limitedLines.split('<br>')[0]}</h3>
-                                    <p>${limitedLines.split('<br>').slice(1).join('<br>')}${remainingLines}</p>
-                                </div>
-                            `, {});
-
-                            markers.push(marker); // Add the marker to the array
-
-                            // Add the marker to the map
-                            marker.addTo(map);
-                        }
-
-                        // If there are results, update the map view to the first result's coordinates
-                        if (data.length > 0) {
-                            map.setView([parseFloat(data[0].lat), parseFloat(data[0].lon)], 13);
-                        }
-                    })
-                    .catch(error => alert(error.message));
-            }
-
-            
-            function searchLocation() {
-                // Clear previous markers
-                for (var i = 0; i < markers.length; i++) {
-                    map.removeLayer(markers[i]);
-                }
-                markers = []; // Reset the markers array
-            
-                // Retrieve input values
-                var addressInput = document.getElementById('addressInput').value;
-                var zipcodeInput = document.getElementById('zipcodeInput').value;
-            
-                // Combine the input values with a space
-                var combinedInput = `${addressInput} ${zipcodeInput}`.trim();
-            
-                // Check if the combined input looks like a zip code (5 digits)
-                if (/^\d{5}$/.test(combinedInput)) {
-                    // It's a zip code
-                    searchByZipcode(combinedInput);
-                } else {
-                    // It's not a zip code, treat it as a place name
-                    searchByPlaceName(combinedInput);
-                }
-            }
-
-
-            
-        const APIFY_TOKEN = "apify_api_l2Q4NRPfHdgw41q60PZMJBDgkG8ZbM1g2SeU"; 
         </script>
 
 
@@ -20163,6 +20297,7 @@
             })
 
         </script>
+
         <script>
             // DOM Elements
             const form = document.getElementById('reminder-form');
@@ -20262,6 +20397,7 @@
             // Initial Empty Render View
             renderReminders();
         </script>
+
         <script>
 
             /*Icons*/
@@ -20711,7 +20847,6 @@
             });
 
         </script>
-
         
         <script>
             
@@ -20792,7 +20927,7 @@
                 navTab.addEventListener('click', () => {
                     //Display Target Body and Add Actives
                     targetClass.forEach(t => t.style.display = 'none');
-                    target.style.display = 'flex';
+                    target.style.display = 'block';
 
                     if (selfClass && self) {
                         selfClass.forEach(s => {s.classList.remove('active')});
@@ -20906,7 +21041,6 @@
             });
 
         </script>
-
 
         <!-- WORLDMOTORMARKET -->
 
