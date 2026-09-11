@@ -945,7 +945,7 @@
                 padding: 0 auto;
                 min-width: 120px;
                 width: 30dvw;
-                height: 30px;
+                height: 32px;
                 margin-right: 2.5px;
             }
 
@@ -4853,6 +4853,7 @@
                 font-size: 9px;
                 margin: 0;
                 padding: 5px;
+                border-radius: 5px;
             }
 
             .ad-slide.active {
@@ -4885,11 +4886,11 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                min-width: 100%;
-                max-width: 100%;
+                min-width: 96%;
+                max-width: 96%;
                 min-height: fit-content;
                 height: auto;
-                max-height: 30px;
+                max-height: 28px;
                 background: transparent;
                 border: none;
                 box-shadow: none;
@@ -4902,14 +4903,10 @@
             .ad-Logo {
                 min-width: 30px;
                 width: auto;
-                max-width: 12vw;
+                max-width: 100%;
                 min-height: 15px;
                 height: auto;
-                max-height: 30px;
-            }
-
-            .ad-header-image {
-                display: none;
+                max-height: 28px;
             }
 
             /*hb Ad Body*/
@@ -4958,17 +4955,12 @@
                 flex: 1;
                 z-index: 601;
                 width: 100%;
-                max-width: 12vw;
                 height: 100%;
-                max-height: 10vw;
+                max-height: 7vw;
             }
 
-            .ad-ContentHead h3 {
-                z-index: 602;
-                position: absolute;
-                margin-bottom: 5px;
-                font-size: 9.5px;
-                font-weight: 600;
+            .ad-ContentBody h3 {
+                margin: 3px 0 2px 0;
             }
 
             
@@ -4987,15 +4979,16 @@
                 background: transparent;
                 border: none;
                 box-shadow: none;
-                margin: -2px 0 0 0;
-                padding: 0 0 2px 0;
+                margin: 0;
+                padding: 0;
             }
 
 
             .ad-ContentTail {
                 background: linear-gradient(155deg, #007bff, #218cff, #2d92ff, #3697ff, #2d92ff, #218cff, #007bff, #007bff, #1285ff, #218cff, #2990ff, #218cff, #1285ff, #007bff, #007bff, #1285ff, #218cff, #2990ff, #218cff, #1285ff, #007bff, #007bff, #1285ff, #218cff, #2990ff, #218cff, #1285ff, #007bff, #007bff, #1285ff, #218cff, #2990ff, #218cff, #1285ff, #007bff);
+                width: calc(100% + 10px);
                 padding: 8px 3px 5px 3px;
-                margin-top: -10px;
+                margin-top: 2px;
                 margin-bottom: 5px;
             }
 
@@ -5005,26 +4998,22 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 12vw;
-                max-width: 12vw;
+                width: 100%;
                 min-height: 100px;
                 height: auto;
                 max-height: 100%;
                 padding: 0;
-                margin: -5px 0 5px 0;
+                margin: 0;
             }
 
             .inner-ad-slideContent {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                min-width: 100%;
                 width: 100%;
-                max-width: 100%;
                 min-height: fit-content;
                 height: auto;
                 max-height: 100%;
-                font-size: 9px;
                 padding: 5px;
                 margin: 0;
                 gap: 2px;
@@ -5042,14 +5031,7 @@
                 flex-direction: column;
                 justify-content: flex-end;
                 align-items: center;
-                min-width: 49%;
-                width: 49%;
-                max-width: 49%;
-                min-height: 120px;
-                height: 120px;
-                max-height: 100%;
-                font-size: 9px;
-                padding: 10px 5px 0 5px;
+                height: 100%;
                 margin: 0;
                 border-radius: 5px;
                 border: 1px solid #fff;
@@ -5067,41 +5049,29 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, .15);
             }
 
-            .inner-ad-slideContentBody h3 {
-                z-index: 602;
-                font-size: 8.5px;
-                font-weight: 700;
-                cursor: pointer;
-                height: 20%;
-            }
-
             .inner-ad-slideContentBody p {
                 flex: 1;
                 display: flex;
                 justify-content: center;
                 align-items: flex-start;
                 padding: 2px 1px;
-                margin: 0 0 5px 0;
-                z-index: 602;
-                font-size: 8px;
                 font-weight: 550;
                 cursor: pointer;
                 color: #000;
                 background-color: #fff;
                 height: 100%;
-                width: fit-content;
-                max-width: 120%;
+                width: 100%;
                 border-radius: 0 0 5px 5px;
                 letter-spacing: 0.4px;
             }
                         
             .ad-Image {
                 width: 100%;
-                max-width: 50px;
+                max-width: 40px;
                 height: 100%;
-                max-height: 50px;
+                max-height: 40px;
                 padding: 0;
-                margin: 0px 0 2px 0;
+                margin: 5px 0 2px 0;
             }
 
                 .adPageNav {
@@ -8029,6 +7999,10 @@
                     margin: 1px 2px;
                 }
 
+                .sectionHead {
+                    height: 28px;
+                }
+
                 /* SubNav Styles */      
                 
                 .subNav {
@@ -10038,10 +10012,10 @@
                                                     <div class="form-group">
                                                         <label class="lesserP" for="priority">Priority</label>
                                                         <select id="priority">
-                                                        <option class="" value="none">None</option>
-                                                        <option class="" value="low">Low</option>
-                                                        <option class="" value="medium">Medium</option>
-                                                        <option class="" value="high">High</option>
+                                                            <option class="" value="none">None</option>
+                                                            <option class="" value="low">Low</option>
+                                                            <option class="" value="medium">Medium</option>
+                                                            <option class="" value="high">High</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -11427,26 +11401,25 @@
                                                     <div class="ad-content">
                                                         <div class="ad-Header">
                                                             <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
-                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                                         </div>
                                                         <div class="ad-Body">
                                                             <div class="ad-ContentHead">
                                                                 <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
-                                                                <h3>The World Motor Market</h3>
                                                             </div>
                                                             <div class="ad-ContentBody">
-                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                                <h3 class="lesserP">The World Motor Market</h3>
+                                                                <p class="fineP">The one-stop-shop for all your motoring needs</p>
                                                             </div>
                                                             <div class="ad-ContentTail">
                                                                 <div class="inner-ad-slide">
                                                                     <div class="inner-ad-slideContent">
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
-                                                                            <h3>25% off!</h3>
-                                                                            <p>Get a chrstmas themed car candle now!</p>
+                                                                            <h3 class="lesserP">25% off!</h3>
+                                                                            <p class="fineP">Get a chrstmas themed car candle now!</p>
                                                                         </div>
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
-                                                                            <h3>$12 off</h3>
-                                                                            <p>any new plane or RV!</p>
+                                                                            <h3 class="lesserP">$12 off</h3>
+                                                                            <p class="fineP">any new plane or RV!</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -11460,26 +11433,25 @@
                                                     <div class="ad-content">
                                                         <div class="ad-Header">
                                                             <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
-                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                                         </div>
                                                         <div class="ad-Body">
                                                             <div class="ad-ContentHead">
                                                                 <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
-                                                                <h3>The World Motor Market</h3>
                                                             </div>
                                                             <div class="ad-ContentBody">
-                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                                <h3 class="lesserP">The World Motor Market</h3>
+                                                                <p class="fineP">The one-stop-shop for all your motoring needs</p>
                                                             </div>
                                                             <div class="ad-ContentTail">
                                                                 <div class="inner-ad-slide">
                                                                     <div class="inner-ad-slideContent">
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
-                                                                            <h3>13.42% off</h3>
-                                                                            <p>all parachute related gear!</p>
+                                                                            <h3 class="lesserP">13.42% off</h3>
+                                                                            <p class="fineP">all parachute related gear!</p>
                                                                         </div>
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
-                                                                            <h3>Buy Now!</h3>
-                                                                            <p>Helicopter Propellers half off!</p>
+                                                                            <h3 class="lesserP">Buy Now!</h3>
+                                                                            <p class="fineP">Helicopter Propellers half off!</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -11493,26 +11465,25 @@
                                                     <div class="ad-content">
                                                         <div class="ad-Header">
                                                             <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
-                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                                         </div>
                                                         <div class="ad-Body">
                                                             <div class="ad-ContentHead">
                                                                 <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
-                                                                <h3>The World Motor Market</h3>
                                                             </div>
                                                             <div class="ad-ContentBody">
-                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                                <h3 class="lesserP">The World Motor Market</h3>
+                                                                <p class="fineP">The one-stop-shop for all your motoring needs</p>
                                                             </div>
                                                             <div class="ad-ContentTail">
                                                                 <div class="inner-ad-slide">
                                                                     <div class="inner-ad-slideContent">
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
-                                                                            <h3>New</h3>
-                                                                            <p>Life Vests at affordable Pricing!</p>
+                                                                            <h3 class="lesserP">New</h3>
+                                                                            <p class="fineP">Life Vests at affordable Pricing!</p>
                                                                         </div>
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
-                                                                            <h3>Take the Wheel!</h3>
-                                                                            <p>20% off all spaceship steering wheels</p>
+                                                                            <h3 class="lesserP">Take the Wheel!</h3>
+                                                                            <p class="fineP">20% off all spaceship steering wheels</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -11526,26 +11497,25 @@
                                                     <div class="ad-content">
                                                         <div class="ad-Header">
                                                             <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
-                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                                         </div>
                                                         <div class="ad-Body">
                                                             <div class="ad-ContentHead">
                                                                 <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
-                                                                <h3>The World Motor Market</h3>
                                                             </div>
                                                             <div class="ad-ContentBody">
-                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                                <h3 class="lesserP">The World Motor Market</h3>
+                                                                <p class="fineP">The one-stop-shop for all your motoring needs</p>
                                                             </div>
                                                             <div class="ad-ContentTail">
                                                                 <div class="inner-ad-slide">
                                                                     <div class="inner-ad-slideContent">
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
-                                                                            <h3>Sky High Savings!</h3>
-                                                                            <p>Paragliding lessons now 30% off.</p>
+                                                                            <h3 class="lesserP">Sky High Savings!</h3>
+                                                                            <p class="fineP">Paragliding lessons now 30% off.</p>
                                                                         </div>
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
-                                                                            <h3>Get a Lift!</h3>
-                                                                            <p>Hydraulic jacks 17% off.</p>
+                                                                            <h3 class="lesserP">Get a Lift!</h3>
+                                                                            <p class="fineP">Hydraulic jacks 17% off.</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -11559,26 +11529,25 @@
                                                     <div class="ad-content">
                                                         <div class="ad-Header">
                                                             <img class="ad-Logo" alt="Advertisement Logo" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logo%20black_1689225977.png?width=400&optimize=medium">
-                                                            <img class="ad-header-image" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/logoPicFull_1694070069.png?width=400&optimize=medium">
                                                         </div>
                                                         <div class="ad-Body">
                                                             <div class="ad-ContentHead">
                                                                 <img id="ad-content-img-1" alt="Advertisement Image" src="https://images.editor.website/uploads/b/2ce9b83d6428de527874466a246c1e92c51025a40221f97258f66bbdd457fc4d/Picture6_1696563841.jpg?width=400&optimize=medium">
-                                                                <h3>The World Motor Market</h3>
                                                             </div>
                                                             <div class="ad-ContentBody">
-                                                                <p class="lesserP">The one-stop-shop for all your motoring needs</p>
+                                                                <h3 class="lesserP">The World Motor Market</h3>
+                                                                <p class="fineP">The one-stop-shop for all your motoring needs</p>
                                                             </div>
                                                             <div class="ad-ContentTail">
                                                                 <div class="inner-ad-slide">
                                                                     <div class="inner-ad-slideContent">
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody1">
-                                                                            <h3>Hot Deal!</h3>
-                                                                            <p>Electric skateboards, for when walking is too mainstream.</p>
+                                                                            <h3 class="lesserP">Hot Deal!</h3>
+                                                                            <p class="fineP">Electric skateboards, for when walking is too mainstream.</p>
                                                                         </div>
                                                                         <div class="inner-ad-slideContentBody" id="inner-ad-slideContentBody2">
-                                                                            <h3>Dive In!</h3>
-                                                                            <p>Buy one snorkel, get a free nose clip!</p>
+                                                                            <h3 class="lesserP">Dive In!</h3>
+                                                                            <p class="fineP">Buy one snorkel, get a free nose clip!</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
